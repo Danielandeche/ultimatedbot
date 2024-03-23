@@ -758,7 +758,18 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                 </Block>
             </Category>
         </Category>
-
+        <Category id='utility' name={localize('Binarytools')}>           
+            <Category name={localize('Binarytool Notifyer')} id='notifications'>
+                <Block type='notify'>
+                    <Field name='NOTIFICATION_TYPE'>success</Field>
+                    <Value name='MESSAGE'>
+                        <Shadow type='text'>
+                            <Field name='TEXT'>Binarytool</Field>
+                        </Shadow>
+                    </Value>
+                </Block>
+            </Category>
+        </Category>
         <Examples id='examples'>
             <Example id='sell_available'>
                 <Block type='during_purchase'>

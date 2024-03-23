@@ -153,7 +153,19 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
             <Block type='after_purchase' />
             <Block type='trade_again' />
         </Category>
-
+        
+        <Category id='utility' name={localize('Binarytools')}>           
+            <Category name={localize('Binarytool Notifyer')} id='notifications'>
+                <Block type='btnotify'>
+                    <Field name='NOTIFICATION_TYPE'>success</Field>
+                    <Value name='MESSAGE'>
+                        <Shadow type='text'>
+                            <Field name='TEXT'>Binarytool</Field>
+                        </Shadow>
+                    </Value>
+                </Block>
+            </Category>
+        </Category>
         <Category id='analysis' name={localize('Analysis')}>
             <Category id='indicators' name={localize('Indicators')}>
                 <Block type='sma_statement'>
@@ -356,18 +368,6 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                         </Block>
                     </Statement>
                 </Block>
-            </Category>
-            <Category id='utility' name={localize('Binarytools')}>           
-                <Category name={localize('Binarytool Notifyer')} id='notifications'>
-                    <Block type='btnotify'>
-                        <Field name='NOTIFICATION_TYPE'>success</Field>
-                        <Value name='MESSAGE'>
-                            <Shadow type='text'>
-                                <Field name='TEXT'>Binarytool</Field>
-                            </Shadow>
-                        </Value>
-                    </Block>
-                </Category>
             </Category>
             <Category name={localize('Tick and candle analysis')} id='tick_analysis'>
                 <Block type='tick_analysis' />

@@ -9,7 +9,7 @@ Blockly.Blocks.btnotify = {
     definition() {
         return {
             message0: localize(
-                'Notify {{ notification_type }} with sound: {{ notification_sound }} {{ input_message }}',
+                'Binarytool {{ notification_type }} with sound: {{ notification_sound }} {{ input_message }}',
                 {
                     notification_type: '%1',
                     notification_sound: '%2',

@@ -1240,7 +1240,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                     <Field name='NOTIFICATION_SOUND'>silent</Field>
                     <Value name='MESSAGE'>
                         <Shadow type='text'>
-                            <Field name='TEXT'>abc</Field>
+                            <Field name='TEXT'>binarytool</Field>
                         </Shadow>
                         <Block type='todatetime'>
                             <Value name='TIMESTAMP'>
@@ -1379,7 +1379,9 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                                     </Field>
                                                 </Block>
                                             </Value>
-                                        </Block>
+                                        </Block>                          
+                                    </Next>
+                                    <Next>
                                         <Block type='btnotify'>
                                             <Field name='NOTIFICATION_TYPE'>success</Field>
                                             <Field name='NOTIFICATION_SOUND'>silent</Field>
@@ -1393,7 +1395,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                                     </Field>
                                                 </Block>
                                             </Value>
-                                        </Block>
+                                        </Block>                          
                                     </Next>
                                 </Block>
                             </Statement>
@@ -1456,6 +1458,8 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                                 </Block>
                                             </Value>
                                         </Block>
+                                    </Next>
+                                    <Next>
                                         <Block type='btnotify'>
                                             <Field name='NOTIFICATION_TYPE'>success</Field>
                                             <Field name='NOTIFICATION_SOUND'>silent</Field>
@@ -1512,6 +1516,8 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                 </Block>
                             </Value>
                         </Block>
+                    </Statement>
+                    <Statement name='DO'>
                         <Block type='btnotify'>
                             <Field name='NOTIFICATION_TYPE'>success</Field>
                             <Field name='NOTIFICATION_SOUND'>silent</Field>
@@ -1592,6 +1598,8 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                         </Block>
                                     </Value>
                                 </Block>
+                            </Statement>
+                            <Statement name='DO'>
                                 <Block type='btnotify'>
                                     <Field name='NOTIFICATION_TYPE'>success</Field>
                                     <Field name='NOTIFICATION_SOUND'>silent</Field>
@@ -1652,6 +1660,8 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                                 </Shadow>
                                             </Value>
                                         </Block>
+                                    </Next>
+                                    <Next>
                                         <Block type='btnotify'>
                                             <Field name='NOTIFICATION_TYPE'>success</Field>
                                             <Field name='NOTIFICATION_SOUND'>silent</Field>
@@ -1721,6 +1731,8 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                                 </Shadow>
                                             </Value>
                                         </Block>
+                                    </Next>
+                                    <Next>
                                         <Block type='btnotify'>
                                             <Field name='NOTIFICATION_TYPE'>success</Field>
                                             <Field name='NOTIFICATION_SOUND'>silent</Field>

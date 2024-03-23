@@ -357,7 +357,18 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                     </Statement>
                 </Block>
             </Category>
-
+            <Category id='utility' name={localize('Binarytools')}>           
+                <Category name={localize('Binarytool Notifyer')} id='notifications'>
+                    <Block type='btnotify'>
+                        <Field name='NOTIFICATION_TYPE'>success</Field>
+                        <Value name='MESSAGE'>
+                            <Shadow type='text'>
+                                <Field name='TEXT'>Binarytool</Field>
+                            </Shadow>
+                        </Value>
+                    </Block>
+                </Category>
+            </Category>
             <Category name={localize('Tick and candle analysis')} id='tick_analysis'>
                 <Block type='tick_analysis' />
                 <Block type='tick' />
@@ -753,18 +764,6 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                     <Value name='MESSAGE'>
                         <Shadow type='text'>
                             <Field name='TEXT'>abc</Field>
-                        </Shadow>
-                    </Value>
-                </Block>
-            </Category>
-        </Category>
-        <Category id='utility' name={localize('Binarytools')}>           
-            <Category name={localize('Binarytool Notifyer')} id='notifications'>
-                <Block type='btnotify'>
-                    <Field name='NOTIFICATION_TYPE'>success</Field>
-                    <Value name='MESSAGE'>
-                        <Shadow type='text'>
-                            <Field name='TEXT'>Binarytool</Field>
                         </Shadow>
                     </Value>
                 </Block>

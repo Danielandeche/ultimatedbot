@@ -2,7 +2,7 @@ import { localize } from '@deriv/translations';
 import { emptyTextValidator } from '../../../../utils';
 import { config } from '../../../../../constants/config';
 
-Blockly.Blocks.notify = {
+Blockly.Blocks.btnotify = {
     init() {
         this.jsonInit(this.definition());
     },
@@ -57,7 +57,7 @@ Blockly.Blocks.notify = {
     },
 };
 
-Blockly.JavaScript.notify = block => {
+Blockly.JavaScript.btnotify = block => {
     const notificationType = block.getFieldValue('NOTIFICATION_TYPE');
     const sound = block.getFieldValue('NOTIFICATION_SOUND');
     const message_block = block.getInputTargetBlock('MESSAGE');
@@ -72,6 +72,6 @@ Blockly.JavaScript.notify = block => {
         Blockly.JavaScript.valueToCode(block, 'MESSAGE', Blockly.JavaScript.ORDER_ATOMIC) ||
         `"${localize('<empty message>')}"`;
 
-    const code = `Bot.notify({ className: 'journal__text--${notificationType}', message: ${message}, sound: '${sound}', block_id: '${block.id}', variable_name: '${variable_name}' });\n`;
+    const code = `Bot.btnotify({ className: 'journal__text--${notificationType}', message: ${message}, sound: '${sound}', block_id: '${block.id}', variable_name: '${variable_name}' });\n`;
     return code;
 };

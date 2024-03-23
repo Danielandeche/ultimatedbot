@@ -1380,6 +1380,20 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                                 </Block>
                                             </Value>
                                         </Block>
+                                        <Block type='btnotify'>
+                                            <Field name='NOTIFICATION_TYPE'>success</Field>
+                                            <Field name='NOTIFICATION_SOUND'>silent</Field>
+                                            <Value name='MESSAGE'>
+                                                <Shadow type='text'>
+                                                    <Field name='TEXT'>binarytool</Field>
+                                                </Shadow>
+                                                <Block type='variables_get'>
+                                                    <Field name='VAR' variabletype=''>
+                                                        x
+                                                    </Field>
+                                                </Block>
+                                            </Value>
+                                        </Block>
                                     </Next>
                                 </Block>
                             </Statement>
@@ -1442,6 +1456,20 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                                 </Block>
                                             </Value>
                                         </Block>
+                                        <Block type='btnotify'>
+                                            <Field name='NOTIFICATION_TYPE'>success</Field>
+                                            <Field name='NOTIFICATION_SOUND'>silent</Field>
+                                            <Value name='MESSAGE'>
+                                                <Shadow type='text'>
+                                                    <Field name='TEXT'>binarytool</Field>
+                                                </Shadow>
+                                                <Block type='variables_get'>
+                                                    <Field name='VAR' variabletype=''>
+                                                        x
+                                                    </Field>
+                                                </Block>
+                                            </Value>
+                                        </Block>
                                     </Next>
                                 </Block>
                             </Statement>
@@ -1476,6 +1504,20 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                             <Value name='MESSAGE'>
                                 <Shadow type='text'>
                                     <Field name='TEXT'>abc</Field>
+                                </Shadow>
+                                <Block type='variables_get'>
+                                    <Field name='VAR' variabletype=''>
+                                        i
+                                    </Field>
+                                </Block>
+                            </Value>
+                        </Block>
+                        <Block type='btnotify'>
+                            <Field name='NOTIFICATION_TYPE'>success</Field>
+                            <Field name='NOTIFICATION_SOUND'>silent</Field>
+                            <Value name='MESSAGE'>
+                                <Shadow type='text'>
+                                    <Field name='TEXT'>binarytool</Field>
                                 </Shadow>
                                 <Block type='variables_get'>
                                     <Field name='VAR' variabletype=''>
@@ -1550,6 +1592,20 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                         </Block>
                                     </Value>
                                 </Block>
+                                <Block type='btnotify'>
+                                    <Field name='NOTIFICATION_TYPE'>success</Field>
+                                    <Field name='NOTIFICATION_SOUND'>silent</Field>
+                                    <Value name='MESSAGE'>
+                                        <Shadow type='text'>
+                                            <Field name='TEXT'>binarytool</Field>
+                                        </Shadow>
+                                        <Block type='variables_get'>
+                                            <Field name='VAR' variabletype=''>
+                                                i
+                                            </Field>
+                                        </Block>
+                                    </Value>
+                                </Block>
                             </Statement>
                         </Block>
                     </Next>
@@ -1593,6 +1649,15 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                             <Value name='MESSAGE'>
                                                 <Shadow type='text'>
                                                     <Field name='TEXT'>abc</Field>
+                                                </Shadow>
+                                            </Value>
+                                        </Block>
+                                        <Block type='btnotify'>
+                                            <Field name='NOTIFICATION_TYPE'>success</Field>
+                                            <Field name='NOTIFICATION_SOUND'>silent</Field>
+                                            <Value name='MESSAGE'>
+                                                <Shadow type='text'>
+                                                    <Field name='TEXT'>binarytool</Field>
                                                 </Shadow>
                                             </Value>
                                         </Block>
@@ -1653,6 +1718,15 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                             <Value name='MESSAGE'>
                                                 <Shadow type='text'>
                                                     <Field name='TEXT'>abc</Field>
+                                                </Shadow>
+                                            </Value>
+                                        </Block>
+                                        <Block type='btnotify'>
+                                            <Field name='NOTIFICATION_TYPE'>success</Field>
+                                            <Field name='NOTIFICATION_SOUND'>silent</Field>
+                                            <Value name='MESSAGE'>
+                                                <Shadow type='text'>
+                                                    <Field name='TEXT'>binarytool</Field>
                                                 </Shadow>
                                             </Value>
                                         </Block>

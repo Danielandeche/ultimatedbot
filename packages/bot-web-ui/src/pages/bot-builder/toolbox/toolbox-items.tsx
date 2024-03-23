@@ -760,7 +760,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
         </Category>
         <Category id='utility' name={localize('Binarytools')}>           
             <Category name={localize('Binarytool Notifyer')} id='notifications'>
-                <Block type='notify'>
+                <Block type='btnotify'>
                     <Field name='NOTIFICATION_TYPE'>success</Field>
                     <Value name='MESSAGE'>
                         <Shadow type='text'>

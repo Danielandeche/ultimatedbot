@@ -1234,6 +1234,25 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                     </Value>
                 </Block>
             </Example>
+            <Example id='todatetime'>
+                <Block type='btnotify'>
+                    <Field name='NOTIFICATION_TYPE'>success</Field>
+                    <Field name='NOTIFICATION_SOUND'>silent</Field>
+                    <Value name='MESSAGE'>
+                        <Shadow type='text'>
+                            <Field name='TEXT'>abc</Field>
+                        </Shadow>
+                        <Block type='todatetime'>
+                            <Value name='TIMESTAMP'>
+                                <Shadow type='math_number'>
+                                    <Field name='NUM'>0</Field>
+                                </Shadow>
+                                <Block type='epoch' />
+                            </Value>
+                        </Block>
+                    </Value>
+                </Block>
+            </Example>
             <Example id='constrain'>
                 <Block type='math_constrain'>
                     <Value name='VALUE'>

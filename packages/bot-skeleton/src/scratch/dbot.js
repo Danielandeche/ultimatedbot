@@ -16,18 +16,18 @@ import './blockly';
 import ap1 from './xml/binarytools_bots/$DollarprinterbotOrignal$.xml';
 import ap2 from './xml/binarytools_bots/Dollar Printer KE.xml';
 import ap3 from './xml/binarytools_bots/360 Printer Bot [Original].xml';
-import ap4 from './xml/binarytools_bots/Genos 2023 OVER_UNDER Bot';
+import ap4 from './xml/binarytools_bots/Genos 2023 OVER_UNDER Bot.xml';
 import ap5 from './xml/binarytools_bots/M7M Ver 4.2 Still Amazing.xml';
 import ap6 from './xml/binarytools_bots/MASTER SET VERSION 4.5.xml';
 import ap7 from './xml/binarytools_bots/TRADE CITY BOT Version 1.2.xml';
 export const binarytools_bot_list = [
     { id: 0, name: '$DollarprinterbotOrignal$', xml: ap1 },
-    { id: 1, name: 'Dollar Printer KE', xml: ap1 },
-    { id: 2, name: '360 Printer Bot [Original]', xml: ap1 },
-    { id: 3, name: 'Genos 2023 OVER_UNDER Bot', xml: ap1 },
-    { id: 4, name: 'M7M Ver 4.2 Still Amazing', xml: ap1 },
-    { id: 5, name: 'MASTER SET VERSION 4.5', xml: ap1 },
-    { id: 6, name: 'TRADE CITY BOT Version 1.2', xml: ap1 },
+    { id: 1, name: 'Dollar Printer KE', xml: ap2 },
+    { id: 2, name: '360 Printer Bot [Original]', xml: ap3 },
+    { id: 3, name: 'Genos 2023 OVER_UNDER Bot', xml: ap4 },
+    { id: 4, name: 'M7M Ver 4.2 Still Amazing', xml: ap5 },
+    { id: 5, name: 'MASTER SET VERSION 4.5', xml: ap6 },
+    { id: 6, name: 'TRADE CITY BOT Version 1.2', xml: ap7 },
 ]
 class DBot {
     constructor() {

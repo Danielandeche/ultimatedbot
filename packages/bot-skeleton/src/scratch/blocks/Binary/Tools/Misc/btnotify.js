@@ -2,7 +2,7 @@ import { localize } from '@deriv/translations';
 import { emptyTextValidator } from '../../../../utils';
 import { config } from '../../../../../constants/config';
 
-Blockly.Blocks.btnotify = {
+Blockly.Blocks.notify = {
     init() {
         this.jsonInit(this.definition());
     },
@@ -57,7 +57,7 @@ Blockly.Blocks.btnotify = {
     },
 };
 
-Blockly.JavaScript.btnotify = block => {
+Blockly.JavaScript.notify = block => {
     const notificationType = block.getFieldValue('NOTIFICATION_TYPE');
     const sound = block.getFieldValue('NOTIFICATION_SOUND');
     const message_block = block.getInputTargetBlock('MESSAGE');

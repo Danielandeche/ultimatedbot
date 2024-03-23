@@ -162,7 +162,7 @@ const AppWrapper = observer(() => {
                             id='id-bot-builder'
                         />
                         <div
-                            icon='IcEmptyStar'
+                            icon='IcFullStar'
                             label={<Localize i18n_default_text='Binarytool Bots' />}
                             id='id-dbot-binarytools-bots'
                         >

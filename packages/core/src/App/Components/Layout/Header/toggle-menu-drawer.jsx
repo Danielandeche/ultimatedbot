@@ -21,7 +21,8 @@ import PlatformSwitcher from './platform-switcher';
 import MenuLink from './menu-link';
 import { MobileLanguageMenu, MenuTitle } from './Components/ToggleMenu';
 import { useRemoteConfig } from '@deriv/api';
-import TelegramIcon from 'path_to_telegram_icon_component';
+import { FaTelegram } from 'react-icons/fa';
+
 
 
 const ToggleMenuDrawer = observer(({ platform_config }) => {
@@ -251,8 +252,9 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                     className='header__mobile-drawer-icon'
                 />
             </a>
-            <a id='dt_mobile_drawer_toggle' href='https://t.me/your_channel_link' className='header__mobile-drawer-toggle'>
-                <TelegramIcon width='16px' height='16px' className='header__mobile-drawer-icon' />
+            {/* Use the React Icons FaTelegram component */}
+            <a id='dt_mobile_drawer_toggle' href='https://t.me/binarytools' className='header__mobile-drawer-toggle'>
+                <FaTelegram size={16} className='header__mobile-drawer-icon' />
             </a>
 
             <MobileDrawer

@@ -94,7 +94,7 @@ describe('RecentComponent', () => {
 
     it('Should render SaveModal in desktop', () => {
         render(<SaveModal />, { wrapper });
-        const modal_text = screen.getByText(/Enter your bot name, choose to save on your computer or Google Drive/i);
+        const modal_text = screen.getByText(/Enter your Binarytool Bot name, choose to save on your computer or Google Drive/i);
 
         expect(modal_text).toBeInTheDocument();
     });
@@ -102,7 +102,7 @@ describe('RecentComponent', () => {
     it('Should render SaveModal in mobile mode', () => {
         mock_store.ui.is_mobile = true;
         render(<SaveModal />, { wrapper });
-        const modal_text = screen.getByText(/Enter your bot name, choose to save on your computer or Google Drive/i);
+        const modal_text = screen.getByText(/Enter your Binarytool Bot name, choose to save on your computer or Google Drive/i);
 
         expect(modal_text).toBeInTheDocument();
     });

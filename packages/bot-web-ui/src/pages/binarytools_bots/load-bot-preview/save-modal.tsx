@@ -54,7 +54,7 @@ const SaveModalForm = ({
                         <div className='modal__content'>
                             <Text size='xs' line_height='l'>
                                 {localize(
-                                    'Enter your bot name, choose to save on your computer or Google Drive, and hit '
+                                    'Enter your Binarytool Bot name, choose to save on your computer or Google Drive, and hit '
                                 )}
                                 <strong>{localize('Save.')}</strong>
                             </Text>

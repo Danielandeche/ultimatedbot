@@ -46,7 +46,7 @@ Blockly.Blocks.btnotify = {
         return {
             display_name: localize('Binarytool Notify'),
             description: localize(
-                'This block displays a message. You can specify the color of the message and choose from 6 different sound options.'
+                'This block is designed to showcase messages with customizable features. You have the flexibility to designate the message color and select from a range of six distinct sound options.'
             ),
         };
     },

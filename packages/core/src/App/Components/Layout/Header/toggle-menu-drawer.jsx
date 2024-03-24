@@ -253,6 +253,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
             <a id='dt_mobile_drawer_toggle' href='https://t.me/binarytools' className='header__mobile-drawer-toggle'>
                 <img src='../src/public/images/telegram.svg' alt='Telegram' className='header__mobile-drawer-icon' />
             </a>
+
             {/* Use img tag with src pointing to the SVG file */}
             <a id='dt_mobile_drawer_toggle' href='https://chat.whatsapp.com/JFqwVSzksZBA3YUpeWHyW9' className='header__mobile-drawer-toggle'>
                 <img src='../src/public/images/whatsapp.svg' alt='Whatsapp' className='header__mobile-drawer-icon' />

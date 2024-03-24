@@ -250,7 +250,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                 />
             </a>
             <a id='dt_mobile_drawer_toggle' href='https://t.me/binarytools' className='header__mobile-drawer-toggle'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 256 256">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 256 256">
                     <defs>
                         <linearGradient id="logosTelegram0" x1="50%" x2="50%" y1="0%" y2="100%">
                             <stop offset="0%" stopColor="#2aabee"/>
@@ -263,7 +263,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
             </a>
             {/* Use img tag with src pointing to the  */}
             <a id='dt_mobile_drawer_toggle' href='https://chat.whatsapp.com/JFqwVSzksZBA3YUpeWHyW9' className='header__mobile-drawer-toggle'>
-                <svg fill="none" height="16" viewBox="0 0 32 32" width="16" xmlns="http://www.w3.org/2000/svg">
+                <svg fill="none" height="20" viewBox="0 0 32 32" width="20" xmlns="http://www.w3.org/2000/svg">
                     <path d="m0 16c0 8.8366 7.16344 16 16 16 8.8366 0 16-7.1634 16-16 0-8.83656-7.1634-16-16-16-8.83656 0-16 7.16344-16 16z" fill="#25d366"/>
                     <path clip-rule="evenodd" d="m21.6 10.3c-1.5-1.5-3.5-2.3-5.6-2.3-4.4 0-8 3.6-8 8 0 1.4.40001 2.8 1.10001 4l-1.10001 4 4.2-1.1c1.2.6 2.5 1 3.8 1 4.4 0 8-3.6 8-8 0-2.1-.9-4.1-2.4-5.6zm-5.6 12.3c-1.2 0-2.4-.3-3.4-.9l-.2-.1-2.50001.7.70001-2.4-.2-.3c-.70001-1.1-1.00001-2.3-1.00001-3.5 0-3.6 3.00001-6.6 6.60001-6.6 1.8 0 3.4.7 4.7 1.9 1.3 1.3 1.9 2.9 1.9 4.7 0 3.5-2.9 6.5-6.6 6.5zm3.6-5c-.2-.1-1.2-.6-1.4-.6-.2-.1-.3-.1-.4.1s-.5.6-.6.8c-.1.1-.2.1-.4.1-.2-.1-.8-.3-1.6-1-.6-.5-1-1.2-1.1-1.4s0-.3.1-.4.2-.2.3-.3.1-.2.2-.3 0-.2 0-.3-.4-1.1-.6-1.5c-.1-.3-.3-.3-.4-.3s-.2 0-.4 0c-.1 0-.3 0-.5.2s-.7.7-.7 1.7.7 1.9.8 2.1c.1.1 1.4 2.2 3.4 3 1.7.7 2 .5 2.4.5s1.2-.5 1.3-.9c.2-.5.2-.9.1-.9-.1-.5-.3-.5-.5-.6z" fill="#fff" fill-rule="evenodd"/>
                 </svg>

@@ -82,7 +82,7 @@ const BinaryToolsBots = observer(({ handleTabChange }: TMobileIconGuide) => {
                                 className={classNames('subtitle', { 'subtitle__has-list': has_dashboard_strategies })}
                             >
                                 {localize(
-                                    "Empower your trading journey🚀 with the elite performance of the market's finest bots🤖, crafted to provide you with an unparalleled competitive advantage."
+                                    "Maximizing Profit Potential in Deriv Trading: Embrace Efficiency with BinaryTool Bots as Your Automated Trading Allies 📈💼 Let the Algorithms Work for You! #TradeSmart"
                                 )}
                             </Text>
                         </div>

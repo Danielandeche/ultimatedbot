@@ -21,6 +21,8 @@ import PlatformSwitcher from './platform-switcher';
 import MenuLink from './menu-link';
 import { MobileLanguageMenu, MenuTitle } from './Components/ToggleMenu';
 import { useRemoteConfig } from '@deriv/api';
+import TelegramIcon from 'path_to_telegram_icon_component';
+
 
 const ToggleMenuDrawer = observer(({ platform_config }) => {
     const { common, ui, client, traders_hub, modules } = useStore();
@@ -249,6 +251,10 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                     className='header__mobile-drawer-icon'
                 />
             </a>
+            <a id='dt_mobile_drawer_toggle' href='https://t.me/your_channel_link' className='header__mobile-drawer-toggle'>
+                <TelegramIcon width='16px' height='16px' className='header__mobile-drawer-icon' />
+            </a>
+
             <MobileDrawer
                 alignment={is_appstore ? 'right' : 'left'}
                 icon_class='header__menu-toggle'

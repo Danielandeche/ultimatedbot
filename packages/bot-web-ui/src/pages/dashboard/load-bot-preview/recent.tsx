@@ -17,7 +17,7 @@ type THeader = {
 
 const HEADERS: THeader[] = [
     {
-        label: localize('Bot name'),
+        label: localize('Binarytool Bot'),
         className: 'bot-list__header__label',
     },
     {

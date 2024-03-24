@@ -144,7 +144,7 @@ describe('RecentComponent', () => {
             });
         }
         render(<SaveModal />, { wrapper });
-        const input = screen.getByRole('textbox', { name: /Bot name/i });
+        const input = screen.getByRole('textbox', { name: /Binarytool Bot/i });
 
         userEvent.clear(input);
         userEvent.click(screen.getByRole('radio', { name: /Local/i }));

@@ -66,7 +66,7 @@ const SaveModalForm = ({
                                             type='text'
                                             placeholder={localize('Untitled Strategy')}
                                             error={touched[field.name] && errors[field.name]}
-                                            label={localize('Bot name')}
+                                            label={localize('Binarytool Bot')}
                                             onFocus={e => setCurrentFocus(e.currentTarget.name)}
                                             onBlur={() => setCurrentFocus(null)}
                                             {...field}

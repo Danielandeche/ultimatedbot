@@ -21,8 +21,6 @@ import PlatformSwitcher from './platform-switcher';
 import MenuLink from './menu-link';
 import { MobileLanguageMenu, MenuTitle } from './Components/ToggleMenu';
 import { useRemoteConfig } from '@deriv/api';
-import { FaTelegram } from 'react-icons/fa';
-
 
 
 const ToggleMenuDrawer = observer(({ platform_config }) => {
@@ -241,11 +239,6 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
     const { cs_chat_livechat, cs_chat_whatsapp } = data;
     const is_trading_hub_category =
         route.startsWith(routes.traders_hub) || route.startsWith(routes.cashier) || route.startsWith(routes.account);
-    const telegramIconStyle = {
-        backgroundColor: 'blue',
-        borderRadius: '50%',
-        padding: '8px'
-    };
     return (
         <React.Fragment>
             <a id='dt_mobile_drawer_toggle' onClick={toggleDrawer} className='header__mobile-drawer-toggle'>
@@ -256,9 +249,9 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                     className='header__mobile-drawer-icon'
                 />
             </a>
-            {/* Use the React Icons FaTelegram component */}
+            {/* Use img tag with src pointing to the SVG file */}
             <a id='dt_mobile_drawer_toggle' href='https://t.me/binarytools' className='header__mobile-drawer-toggle'>
-                <FaTelegram size={16} className='header__mobile-drawer-icon' />
+                <img src='/workspaces/private/packages/core/src/public/images/telegram.svg' alt='Telegram' className='header__mobile-drawer-icon' />
             </a>
 
             <MobileDrawer

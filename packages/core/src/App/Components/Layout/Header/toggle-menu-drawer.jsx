@@ -250,7 +250,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                 />
             </a>
             <a id='dt_mobile_drawer_toggle' href='https://t.me/ binarytools' className='header__mobile-drawer-toggle'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 256 256">
                     <defs>
                         <linearGradient id="logosTelegram0" x1="50%" x2="50%" y1="0%" y2="100%">
                             <stop offset="0%" stopColor="#2aabee"/>
@@ -265,8 +265,21 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
 
             {/* Use img tag with src pointing to the SVG file */}
             <a id='dt_mobile_drawer_toggle' href='https://chat.whatsapp.com/JFqwVSzksZBA3YUpeWHyW9' className='header__mobile-drawer-toggle'>
-                <img src='../src/public/images/whatsapp.svg' alt='Whatsapp' className='header__mobile-drawer-icon' />
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                    <defs>
+                        <linearGradient id="logosWhatsappIcon0" x1="50%" x2="50%" y1="100%" y2="0%">
+                            <stop offset="0%" stop-color="#1faf38"/>
+                            <stop offset="100%" stop-color="#60d669"/>
+                        </linearGradient>
+                        <linearGradient id="logosWhatsappIcon1" x1="50%" x2="50%" y1="100%" y2="0%">
+                            <stop offset="0%" stop-color="#f9f9f9"/>
+                            <stop offset="100%" stop-color="#fff"/>
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#logosWhatsappIcon0)" d="M5.463 7.456c-.006 1.677.658 3.843 1.428 5.499L4.433 14.697l4.232-1.104a122.994 122.994 0 0 0 5.8.97h.054c3.815 0 6.018-3.183 6.047-6.01c.013-1.867-1.775-3.773-3.009-5.025c-1.23-1.254-2.125-1.906-4.043-1.921c-3.823 0-6.022 3.18-6.05 6.004"/><path fill="url(#logosWhatsappIcon1)" d="M1.07 7.416c-.007 1.457 .86 2.38 2.014 3.704L0 13.147l4.571-1.717c1.118 .151 2.58 .503 3.91 .511h.055c3.248 0 5.434-3.168 5.464-5.423c.012-1.548-1.236-3.065-2.3-4.15c-1.065-1.084-4.95-4.986-5.948-5.981c-1.042-1.04-1.975-1.001-2.243-1.008c-1.234-.018-2.242 1.144-2.656 1.726c-.487 .644-.243 1.346-.12 1.756c.118 .411 .518 1.057 .976 1.567c.476 .52 1.14 1.043 1.719 1.52"/><path fill="#fff" d="M3.678 4.148c-.386-.303-.897-.41-1.166-.503c-.342-.123-.732-.074-1.104-.074c-.372 0-.975.199-1.492 .984c-.516 .785-1.975 2.892-1.975 7.561c0 4.67 3.413 9.813 3.905 10.94c.492 1.126 6.433 9.307 15.405 12.073c7.904 2.82 9.504 2.25 11.218 2.017c1.713-.233 5.547-3.068 6.305-6.505c.78-3.287 .78-6.014 .547-6.846c-.234-.832-.732-1.324-1.781-2.516c-.78-.79-4.656-3.383-5.405-3.946c-.75-.563-1.375-.704-1.938 .708c-.564 1.41-1.781 4.356-2.188 5.312c-.406 .957-.68 1.024-1.406 .271c-.722-.766-3.062-2.943-5.831-9.806c-2.157-6.442-3.594-10.308-4.064-11.639c-.47-1.33-.04-2.21 .279-2.622c.32-.41 .712-1.08 1.068-1.622c.36-.548 .479-.988 .72-1.377c.239-.39 .594-.546 .33-.19z"/>
+                </svg>
             </a>
+
             <MobileDrawer
                 alignment={is_appstore ? 'right' : 'left'}
                 icon_class='header__menu-toggle'

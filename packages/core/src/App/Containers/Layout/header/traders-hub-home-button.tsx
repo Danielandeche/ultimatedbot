@@ -1,7 +1,8 @@
 import React from 'react';
+import { useHistory, useLocation } from 'react-router';
 import classNames from 'classnames';
 import { Icon, Text } from '@deriv/components';
-import { useHistory } from 'react-router-dom';
+import { routes } from '@deriv/shared';
 import { observer, useStore } from '@deriv/stores';
 import { Localize } from '@deriv/translations';
 import { useFeatureFlags } from '@deriv/hooks';
@@ -10,11 +11,18 @@ const TradersHubHomeButton = observer(() => {
     const { ui } = useStore();
     const { is_dark_mode_on } = ui;
     const history = useHistory();
-    const { pathname } = history.location;
+    const location = useLocation();
+    const { pathname } = location;
     const { is_next_wallet_enabled, is_next_tradershub_enabled } = useFeatureFlags();
 
-    const redirectToExternalSite = () => {
-        window.location.href = 'https://block.binarytool.site'; // Redirect to external site
+    const redirect_routes = () => {
+        if (is_next_wallet_enabled) {
+            return routes.wallets;
+        } else if (is_next_tradershub_enabled) {
+            return routes.traders_hub_v2;
+        }
+
+        return routes.traders_hub;
     };
 
     return (
@@ -26,7 +34,7 @@ const TradersHubHomeButton = observer(() => {
                     pathname === routes.traders_hub_v2 ||
                     pathname === routes.wallets,
             })}
-            onClick={redirectToExternalSite}
+            onClick={() => history.push(redirect_routes())}
         >
             <div className='traders-hub-header__tradershub--home-logo'>
                 <Icon
@@ -35,7 +43,7 @@ const TradersHubHomeButton = observer(() => {
                 />
             </div>
             <Text className='traders-hub-header__tradershub--text'>
-                <Localize i18n_default_text="Binarytool Block" />
+                <Localize i18n_default_text="Trader's Hub" />
             </Text>
         </div>
     );

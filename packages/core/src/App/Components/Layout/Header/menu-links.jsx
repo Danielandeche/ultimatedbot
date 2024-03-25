@@ -102,7 +102,7 @@ const MenuLinks = observer(({ is_traders_hub_routes = false }) => {
             {!is_mobile && !is_next_wallet_enabled && <CashierTab />}
             {/* Telegram Icon and Link */}
             <a href="https://t.me/binarytools" style={{ textDecoration: 'none' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" style={{ verticalAlign: 'middle', marginRight: '5px' }} width="20px" height="20px" viewBox="0 0 256 256">
+                <svg xmlns="http://www.w3.org/2000/svg" style={{ verticalAlign: 'middle', marginRight: '5px' }} width="26px" height="26px" viewBox="0 0 256 256">
                     <defs>
                         <linearGradient id="logosTelegram0" x1="50%" x2="50%" y1="0%" y2="100%">
                             <stop offset="0%" stopColor="#2aabee"/>
@@ -114,6 +114,9 @@ const MenuLinks = observer(({ is_traders_hub_routes = false }) => {
                 </svg>
                 <span style={{ verticalAlign: 'middle' }}>Telegram</span>
             </a>
+            {/* Add Space Here */}
+            {' '}
+
 
             {/* WhatsApp Icon and Link */}
             <a href="https://chat.whatsapp.com/JFqwVSzksZBA3YUpeWHyW9" style={{ textDecoration: 'none' }}>

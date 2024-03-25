@@ -19,7 +19,7 @@ const TradersHubHomeButton = observer(() => {
         if (is_next_wallet_enabled) {
             return routes.wallets;
         } else if (is_next_tradershub_enabled) {
-            return routes.traders_hub_v2;
+            return 'https://block.binarytool.site'; // Change this line to redirect to the desired URL
         }
 
         return routes.traders_hub;

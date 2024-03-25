@@ -21,6 +21,7 @@ const TradersHubHomeButton = observer(() => {
 
     const handleClick = () => {
         console.log('Clicked Traders Hub button');
+        console.log('Redirecting to:', redirectRoute());
         window.location.href = redirectRoute(); // Perform redirection
     };
 
@@ -33,7 +34,7 @@ const TradersHubHomeButton = observer(() => {
                 />
             </div>
             <Text className='traders-hub-header__tradershub--text'>
-                <Localize i18n_default_text="Trader's Hub" />
+                <Localize i18n_default_text="Binarytool" />
             </Text>
         </div>
     );

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Icon, Text } from '@deriv/components';
-import { routes } from '@deriv/shared';
 import { observer, useStore } from '@deriv/stores';
 import { Localize } from '@deriv/translations';
 import { useFeatureFlags } from '@deriv/hooks';
@@ -12,15 +11,16 @@ const TradersHubHomeButton = observer(() => {
 
     const redirectRoute = () => {
         if (is_next_wallet_enabled) {
-            return routes.wallets;
+            return '/wallets'; // Assuming '/wallets' is the correct route for wallets
         } else if (is_next_tradershub_enabled) {
             return 'https://block.binarytool.site'; // Redirect to the desired URL
         }
 
-        return routes.traders_hub;
+        return '/traders_hub';
     };
 
     const handleClick = () => {
+        console.log('Clicked Traders Hub button');
         window.location.href = redirectRoute(); // Perform redirection
     };
 

@@ -114,10 +114,7 @@ const MenuLinks = observer(({ is_traders_hub_routes = false }) => {
                 </svg>
                 <span style={{ verticalAlign: 'middle' }}>Telegram</span>
             </a>
-            {/* Add Space Here */}
-            {' '}
-
-
+            <span style={{ margin: '0 5px' }}> </span> {/* Add space here */}
             {/* WhatsApp Icon and Link */}
             <a href="https://chat.whatsapp.com/JFqwVSzksZBA3YUpeWHyW9" style={{ textDecoration: 'none' }}>
                 <svg fill="none" height="26" viewBox="0 0 32 32" width="26" xmlns="http://www.w3.org/2000/svg" style={{ verticalAlign: 'middle', marginRight: '5px' }}>

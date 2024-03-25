@@ -19,7 +19,7 @@ const TradersHubHomeButton = observer(() => {
         if (is_next_wallet_enabled) {
             return routes.wallets;
         } else if (is_next_tradershub_enabled) {
-            return 'https://block.binarytool.site'; // Change this line to redirect to the desired URL
+            return 'https://block.binarytool.site'; // Update this line to redirect to the desired URL
         }
 
         return routes.traders_hub;
@@ -34,7 +34,7 @@ const TradersHubHomeButton = observer(() => {
                     pathname === routes.traders_hub_v2 ||
                     pathname === routes.wallets,
             })}
-            onClick={() => history.push(redirect_routes())}
+            onClick={() => history.push(redirect_routes())} // This line handles redirection
         >
             <div className='traders-hub-header__tradershub--home-logo'>
                 <Icon
@@ -43,7 +43,7 @@ const TradersHubHomeButton = observer(() => {
                 />
             </div>
             <Text className='traders-hub-header__tradershub--text'>
-                <Localize i18n_default_text="Trader's Hub" />
+                <Localize i18n_default_text="Binarytool" />
             </Text>
         </div>
     );

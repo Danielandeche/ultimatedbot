@@ -86,17 +86,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 70%; /* Adjust the percentage as needed */
+    width: 100%; /* Ensure it spans the entire width */
 }
 
 .tokens-list {
     list-style: none;
     width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
     overflow-y: auto;
-    scrollbar-width: none; /* Hide scrollbars in Firefox */
+    scrollbar-width: none;
     height: 100%;
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
 }
 
 .tokens-list::-webkit-scrollbar {

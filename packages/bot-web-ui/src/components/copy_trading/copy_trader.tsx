@@ -10,8 +10,8 @@ const CopyTrader = observer(() => {
 
     return (
         <Dialog
-            title={localize('Copy Trading Tokens')}
             confirm_button_text={localize('Close')}
+            title={localize('Copy Trading Tokens')}
             is_visible={is_copy_trader_visible}
             onConfirm={() => setCopyTraderModalVisibility()}
             className='failed-verification-modal'

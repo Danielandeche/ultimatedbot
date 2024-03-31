@@ -162,10 +162,10 @@ const MainCopyTrader = observer(() => {
                 <div className='enable_sync'>
                     <div className='enable_disable'>
                         <input type='checkbox' checked={config.copy_trading.is_active} onChange={handleCPChange} />
-                        <Localize i18n_default_text='Enable Copy Trading' />
+                        <Localize i18n_default_text='Enable' />
                     </div>
                     <div className='sync_data'>
-                        <button onClick={() => handleSynceData()}>{syncing ? 'Syncing...' : 'Sync Tokens'}</button>
+                        <button onClick={() => handleSynceData()}>{syncing ? 'Syncing...' : 'Sync'}</button>
                     </div>
                 </div>
             </div>

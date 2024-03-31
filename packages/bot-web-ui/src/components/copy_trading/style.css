@@ -100,21 +100,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    max-height: 70%; /* Set max height to 70% of the dialog's height */
+    overflow-y: auto; /* Add vertical scrollbar if content overflows */
+    width: 100%;
 }
 
 .tokens-list {
     list-style: none;
     width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    overflow-y: auto;
-    scrollbar-width: none; /* Hide scrollbars in Firefox */
-    height: 100%;
-}
-
-.tokens-list::-webkit-scrollbar {
-    display: none; /* Hide scrollbars in Chrome, Safari, etc. */
+    padding: 0;
+    margin: 0;
 }
 
 .token {
@@ -126,64 +121,25 @@
     justify-content: space-between;
     align-items: center;
     transition: all 1s ease;
-    width: 100%;
+    width: calc(100% - 1rem);
+    padding: 0.5rem;
 }
 
-.filter-todo {
-    padding: 1rem;
-}
-.token li {
-    flex: 1;
-}
-
-.trash-btn,
-.complete-btn {
-    background: #ff6f47;
-    color: #fff;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    font-size: 1rem;
-}
-.complete-btn {
-    background: rgb(11, 212, 162);
-}
-.token-item {
-    padding: 0rem 0.5rem;
-}
-
-.fa-trash,
-.fa-check {
-    pointer-events: none;
-}
-
-.fall {
-    transform: translateY(10rem) rotateZ(20deg);
-    opacity: 0;
-}
-
-.token_info {
+.token-info {
     font-size: 14px;
     margin-top: 20px;
     font-weight: 600;
+    text-align: center;
 }
 
-.token_info.dark_active {
-    color: #fff;
+.failed-verification-modal {
+    width: auto; /* Set width to auto */
+    height: auto; /* Set height to auto */
 }
 
-/* 
-@media (max-width: 720px) {
-    .main_copy {
-        width: 100%;
-    }
-    .main_copy .title h1 {
-        font-size: 3rem;
-        width: 100%;
-    }
-
+/* Add media query if needed */
+/*@media (max-width: 720px) {
     .tokens-container {
-        width: 65%;
-        height: 80%;
+        max-height: calc(70vh - 150px); // Adjust max-height as needed
     }
-} */
+}*/

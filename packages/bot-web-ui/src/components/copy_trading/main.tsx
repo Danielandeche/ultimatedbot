@@ -117,11 +117,6 @@ const MainCopyTrader = observer(({ onClose }) => {
         config.copy_trading.is_active = !enableCP;
     };
 
-    const handleCloseButtonClick = () => {
-        onClose();
-    };
-
-
     const handleSynceData = async () => {
         setSyncing(true);
         const login_id = getToken().account_id!;

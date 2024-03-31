@@ -132,10 +132,6 @@
     text-align: center;
 }
 
-.failed-verification-modal {
-    width: auto; /* Set width to auto */
-    height: auto; /* Set height to auto */
-}
 
 /* Add media query if needed */
 /*@media (max-width: 720px) {

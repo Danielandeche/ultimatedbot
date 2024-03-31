@@ -165,7 +165,7 @@ const MainCopyTrader = observer(({ onClose }) => {
                         <Localize i18n_default_text='Enable' />
                     </div>
                     <div className='sync_data'>
-                        <button onClick={() => handleSynceData()}>{syncing ? 'Syncing...' : 'Sync Tokens'}</button>
+                        <button onClick={() => handleSynceData()}>{syncing ? 'Syncing...' : 'Sync'}</button>
                     </div>
                 </div>
             </div>

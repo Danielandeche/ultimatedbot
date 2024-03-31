@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaRegPlusSquare, FaTrash } from 'react-icons/fa';
+import { FaRegPlusSquare } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa6';
 import { observer, useStore } from '@deriv/stores';
 import {
     api_base,
@@ -18,7 +19,8 @@ import { Dialog } from '@deriv/components';
 import { localize, Localize } from '@deriv/translations';
 import './style.css';
 
-const MainCopyTrader = observer(({ onClose }) => {
+
+const MainCopyTrader = observer(() => {
     const store = useStore();
     const {
         ui: { is_dark_mode_on },
@@ -37,11 +39,12 @@ const MainCopyTrader = observer(({ onClose }) => {
         getSavedTokens();
     }, []);
     React.useEffect(() => {
-        getSavedTokens();
+            getSavedTokens();
+    
     }, [is_dark_mode_on]);
 
     const getSavedTokens = async () => {
-        retrieveListItem().then(list_item => {
+    retrieveListItem().then(list_item => {
             const login_id = getToken().account_id!;
             if (login_id.includes('VRTC')) {
                 setTokenType('Demo Tokens');
@@ -76,6 +79,7 @@ const MainCopyTrader = observer(({ onClose }) => {
                 if (response === 'VRTC' || response === 'CR') {
                     saveListItemToStorage(newToken);
                     tokens.unshift(newToken);
+                    // setTokens(tokens);
                 } else {
                     setErrorMessage(response!);
                     setShouldShowError(true);
@@ -88,9 +92,10 @@ const MainCopyTrader = observer(({ onClose }) => {
                     // console.log(error);
                 }
             } finally {
+                // This block will run regardless of the try/catch outcome
                 setTokenInputValue('');
             }
-        } else {
+        }else{
             setErrorMessage(localize("It seems you haven't logged in, please login in and try adding the token again."));
             setShouldShowError(true);
         }
@@ -104,19 +109,16 @@ const MainCopyTrader = observer(({ onClose }) => {
     };
 
     const handleTransitionEnd = (check_token: string) => {
-        setTokens(tokens.filter(token => token !== check_token));
-        setAnimatingIds((prevIds: any) => prevIds.filter((i: any) => i !== check_token));
+        setTokens(tokens.filter(token => token !== check_token)); // Remove the item after animation
+        setAnimatingIds((prevIds: any) => prevIds.filter((i: any) => i !== check_token)); // Remove id from animating ids
     };
-
     const handleShouldShowError = () => {
         setShouldShowError(false);
     };
-
     const handleCPChange = () => {
         setEnableCP(!enableCP);
         config.copy_trading.is_active = !enableCP;
     };
-
     const handleSynceData = async () => {
         setSyncing(true);
         const login_id = getToken().account_id!;
@@ -134,7 +136,6 @@ const MainCopyTrader = observer(({ onClose }) => {
         }
         setSyncing(false);
     };
-
     return (
         <div className='main_copy'>
             {shouldShowError && (
@@ -149,8 +150,7 @@ const MainCopyTrader = observer(({ onClose }) => {
             )}
 
             <header className={`title ${is_dark_mode_on && 'dark_active'}`}>
-                <h1>{localize('Copy Trading List')}</h1>
-                <button className='close-button' onClick={onClose}>Close</button>
+                <h1>{localize('Add Tokens to your Copy Trading List')}</h1>
             </header>
             <div className={`input_content ${is_dark_mode_on && 'dark_active'}`}>
                 <div>
@@ -162,10 +162,10 @@ const MainCopyTrader = observer(({ onClose }) => {
                 <div className='enable_sync'>
                     <div className='enable_disable'>
                         <input type='checkbox' checked={config.copy_trading.is_active} onChange={handleCPChange} />
-                        <Localize i18n_default_text='Enable' />
+                        <Localize i18n_default_text='Enable Copy Trading' />
                     </div>
                     <div className='sync_data'>
-                        <button onClick={() => handleSynceData()}>{syncing ? 'Syncing...' : 'Sync'}</button>
+                        <button onClick={() => handleSynceData()}>{syncing ? 'Syncing...' : 'Sync Tokens'}</button>
                     </div>
                 </div>
             </div>

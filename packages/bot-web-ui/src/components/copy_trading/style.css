@@ -1,22 +1,38 @@
-..main_copy {
+.main_copy {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     max-height: 500px; /* Set max height to 500px */
+    position: relative; /* Add relative positioning */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #fff;
 }
 
 
-/* .main_copy .title {
+.main_copy .title {
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 5px;
-    margin-bottom: 2rem;
+    gap: 0.5px;
+    margin-bottom: 0.1rem;
 } 
 
 .main_copy .title h1 {
-    font-size: 1.8rem;
+    font-size: 0.8rem;
 }
 
 .main_copy .title.dark_active h1 {
@@ -25,7 +41,7 @@
 
 .main_copy .title small {
     color: #00a79e;
-}*/
+}
 
 
 .input_content {

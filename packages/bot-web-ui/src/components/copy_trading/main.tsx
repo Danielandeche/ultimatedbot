@@ -1,6 +1,5 @@
 import React from 'react';
-import { FaRegPlusSquare } from 'react-icons/fa';
-import { FaTrash } from 'react-icons/fa6';
+import { FaRegPlusSquare, FaTrash } from 'react-icons/fa';
 import { observer, useStore } from '@deriv/stores';
 import {
     api_base,
@@ -19,8 +18,7 @@ import { Dialog } from '@deriv/components';
 import { localize, Localize } from '@deriv/translations';
 import './style.css';
 
-
-const MainCopyTrader = observer(() => {
+const MainCopyTrader = observer(({ onClose }) => {
     const store = useStore();
     const {
         ui: { is_dark_mode_on },
@@ -39,12 +37,11 @@ const MainCopyTrader = observer(() => {
         getSavedTokens();
     }, []);
     React.useEffect(() => {
-            getSavedTokens();
-    
+        getSavedTokens();
     }, [is_dark_mode_on]);
 
     const getSavedTokens = async () => {
-    retrieveListItem().then(list_item => {
+        retrieveListItem().then(list_item => {
             const login_id = getToken().account_id!;
             if (login_id.includes('VRTC')) {
                 setTokenType('Demo Tokens');
@@ -79,7 +76,6 @@ const MainCopyTrader = observer(() => {
                 if (response === 'VRTC' || response === 'CR') {
                     saveListItemToStorage(newToken);
                     tokens.unshift(newToken);
-                    // setTokens(tokens);
                 } else {
                     setErrorMessage(response!);
                     setShouldShowError(true);
@@ -92,10 +88,9 @@ const MainCopyTrader = observer(() => {
                     // console.log(error);
                 }
             } finally {
-                // This block will run regardless of the try/catch outcome
                 setTokenInputValue('');
             }
-        }else{
+        } else {
             setErrorMessage(localize("It seems you haven't logged in, please login in and try adding the token again."));
             setShouldShowError(true);
         }
@@ -109,16 +104,19 @@ const MainCopyTrader = observer(() => {
     };
 
     const handleTransitionEnd = (check_token: string) => {
-        setTokens(tokens.filter(token => token !== check_token)); // Remove the item after animation
-        setAnimatingIds((prevIds: any) => prevIds.filter((i: any) => i !== check_token)); // Remove id from animating ids
+        setTokens(tokens.filter(token => token !== check_token));
+        setAnimatingIds((prevIds: any) => prevIds.filter((i: any) => i !== check_token));
     };
+
     const handleShouldShowError = () => {
         setShouldShowError(false);
     };
+
     const handleCPChange = () => {
         setEnableCP(!enableCP);
         config.copy_trading.is_active = !enableCP;
     };
+
     const handleSynceData = async () => {
         setSyncing(true);
         const login_id = getToken().account_id!;
@@ -136,8 +134,10 @@ const MainCopyTrader = observer(() => {
         }
         setSyncing(false);
     };
+
     return (
         <div className='main_copy'>
+            <button className='close-button' onClick={onClose}>Close</button>
             {shouldShowError && (
                 <Dialog
                     title={localize('Error while adding new token!')}
@@ -162,7 +162,7 @@ const MainCopyTrader = observer(() => {
                 <div className='enable_sync'>
                     <div className='enable_disable'>
                         <input type='checkbox' checked={config.copy_trading.is_active} onChange={handleCPChange} />
-                        <Localize i18n_default_text='Enable Copy Trading' />
+                        <Localize i18n_default_text='Enable' />
                     </div>
                     <div className='sync_data'>
                         <button onClick={() => handleSynceData()}>{syncing ? 'Syncing...' : 'Sync Tokens'}</button>

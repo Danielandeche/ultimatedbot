@@ -11,14 +11,13 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: red; /* Set background color to red */
-    color: white; /* Set text color to white */
+    background-color: #ff0000; /* Red */
+    color: #ffffff; /* White */
     border: none; /* Remove border */
     padding: 5px 10px; /* Add padding for better appearance */
     border-radius: 4px; /* Add border radius for rounded corners */
     cursor: pointer; /* Add cursor pointer */
 }
-
 
 .main_copy .title {
     display: flex;

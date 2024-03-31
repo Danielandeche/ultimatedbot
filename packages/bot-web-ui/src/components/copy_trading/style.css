@@ -11,15 +11,16 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: transparent;
+    background-color: #ff6f47; /* Red background */
+    color: #fff; /* White text */
     border: none;
-    color: #ff6f47;
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
     font-size: 14px;
     cursor: pointer;
 }
 
 .close-button:hover {
-    color: #fff;
+    background-color: #e03a1a; /* Darker red on hover */
 }
 
 

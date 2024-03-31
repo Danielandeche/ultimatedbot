@@ -117,6 +117,11 @@ const MainCopyTrader = observer(({ onClose }) => {
         config.copy_trading.is_active = !enableCP;
     };
 
+    const handleCloseButtonClick = () => {
+        onClose();
+    };
+
+
     const handleSynceData = async () => {
         setSyncing(true);
         const login_id = getToken().account_id!;
@@ -137,7 +142,6 @@ const MainCopyTrader = observer(({ onClose }) => {
 
     return (
         <div className='main_copy'>
-            <button className='close-button' onClick={onClose}>Close</button>
             {shouldShowError && (
                 <Dialog
                     title={localize('Error while adding new token!')}
@@ -151,6 +155,7 @@ const MainCopyTrader = observer(({ onClose }) => {
 
             <header className={`title ${is_dark_mode_on && 'dark_active'}`}>
                 <h1>{localize('Copy Trading List')}</h1>
+                <button className='close-button' onClick={onClose}>Close</button>
             </header>
             <div className={`input_content ${is_dark_mode_on && 'dark_active'}`}>
                 <div>

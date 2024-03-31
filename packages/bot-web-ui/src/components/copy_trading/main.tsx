@@ -148,10 +148,6 @@ const MainCopyTrader = observer(() => {
                     {errorMessage}
                 </Dialog>
             )}
-
-            <header className={`title ${is_dark_mode_on && 'dark_active'}`}>
-                <h1>{localize('Add Tokens to your Copy Trading List')}</h1>
-            </header>
             <div className={`input_content ${is_dark_mode_on && 'dark_active'}`}>
                 <div>
                     <input type='text' value={tokenInputValue} onChange={handleTokenInputChange} />

@@ -16,14 +16,6 @@ const CopyTrader = observer(() => {
             is_visible={is_copy_trader_visible}
             onConfirm={() => setCopyTraderModalVisibility()}
             className='failed-verification-modal'
-            has_close_icon={false} // Remove close icon
-            has_footer={false} // Remove footer
-            width='auto' // Set width to auto
-            height='auto' // Set height to auto
-            content_style={{ // Set content style
-                maxHeight: '50vh', // Set max height to 70% of viewport height
-                overflowY: 'auto' // Add vertical scrollbar if content overflows
-            }}
         >
             <MainCopyTrader />
             {/* Close button if needed */}

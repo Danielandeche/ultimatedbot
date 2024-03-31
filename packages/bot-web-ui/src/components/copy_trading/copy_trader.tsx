@@ -21,7 +21,7 @@ const CopyTrader = observer(() => {
             width='auto' // Set width to auto
             height='auto' // Set height to auto
             content_style={{ // Set content style
-                maxHeight: '70vh', // Set max height to 70% of viewport height
+                maxHeight: '50vh', // Set max height to 70% of viewport height
                 overflowY: 'auto' // Add vertical scrollbar if content overflows
             }}
         >

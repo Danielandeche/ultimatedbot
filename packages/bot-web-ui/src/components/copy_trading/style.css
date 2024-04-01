@@ -172,7 +172,7 @@
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 720px) {
+/* @media (max-width: 720px) {
     .main_copy {
         width: 100%;
     }
@@ -185,4 +185,4 @@
         width: 65%;
         height: 80%;
     }
-}
+} */

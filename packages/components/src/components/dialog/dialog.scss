@@ -97,6 +97,10 @@
         &--centered {
             align-self: center;
         }
+        
+        .main-copy__content & {
+            overflow: scroll;
+        }
     }
     &__footer {
         display: flex;

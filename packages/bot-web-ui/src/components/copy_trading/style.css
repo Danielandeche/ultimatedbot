@@ -5,25 +5,6 @@
     flex-direction: column;
 }
 
-.custom-dialog-content {
-    /* Add styles as needed for the container */
-}
-
-.main-copy__content {
-    align-self: flex-start;
-    margin-bottom: 0.1rem;
-    max-width: calc(440px - 4.8rem);
-    width: 100%;
-
-    /* postcss-bem-linter: ignore */
-    .dc-input__label {
-        background-color: var(--general-main-2);
-    }
-    &--centered {
-        align-self: center;
-    }
-}
-
 .close-button {
     position: absolute;
     top: 10px;

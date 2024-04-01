@@ -18,7 +18,9 @@ const CopyTrader = observer(() => {
             className='failed-verification-modal'
         >
             <div className='custom-dialog-content'>
-                <MainCopyTrader />
+                <div className='main-copy__content'>
+                    <MainCopyTrader />
+                </div>
             </div>
             {/* Close button if needed */}
             <button className='close-button' onClick={() => setCopyTraderModalVisibility()}>

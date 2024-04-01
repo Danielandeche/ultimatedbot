@@ -17,7 +17,7 @@ const CopyTrader = observer(() => {
             onConfirm={() => setCopyTraderModalVisibility()}
             className='failed-verification-modal'
         >
-            <div className='dc-dialog__content'>
+            <div className='maincontent'>
                 {/* Apply the overflow style directly to the dc-dialog__content */}
                 <MainCopyTrader style={{ overflow: 'scroll' }} />
             </div>

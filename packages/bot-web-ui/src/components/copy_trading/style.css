@@ -5,7 +5,7 @@
     flex-direction: column;
 }
 
-.custom-dialog-content {
+.dc-dialog__content {
     overflow: scroll;
 }
 

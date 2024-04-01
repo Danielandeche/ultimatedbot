@@ -5,9 +5,12 @@
     flex-direction: column;
 }
 
-/* .dc-dialog__content {
+.custom-dialog-content {
+    align-self: flex-start;
+    margin-bottom: 0.1rem;
+    width: 100%;
     overflow: scroll;
-} */
+}
 
 .close-button {
     position: absolute;

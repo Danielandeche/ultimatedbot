@@ -186,23 +186,3 @@
         height: 80%;
     }
 }
-
-.main-copy__content {
-    /* Apply styles to main-copy__content */
-    align-self: flex-start;
-    margin-bottom: 0.4rem;
-    max-width: calc(440px - 4.8rem);
-    width: 100%;
-
-    /* postcss-bem-linter: ignore */
-    .dc-input__label {
-        background-color: var(--general-main-2);
-    }
-
-    &--centered {
-        align-self: center;
-    }
-
-    /* Apply overlay scroll style to main-copy__content */
-    overflow: scroll;
-}

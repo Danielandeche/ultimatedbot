@@ -18,7 +18,7 @@ import {
 } from '@deriv/bot-skeleton';
 import './style.css';
 
-const MainCopyTrader = observer(() => {
+const CopyTrading = observer(() => {
     const store = useStore();
     const {
         ui: { is_dark_mode_on },
@@ -191,4 +191,4 @@ const MainCopyTrader = observer(() => {
     );
 });
 
-export default MainCopyTrader;
+export default CopyTrading;

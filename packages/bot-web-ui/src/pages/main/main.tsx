@@ -184,9 +184,7 @@ const AppWrapper = observer(() => {
                             icon='IcChartsTabDbot'
                             label={<Localize i18n_default_text='Trial Tool' />}
                             id='id-dbot-copytrading'
-                        >
-                            <CopyTrading handleTabChange={handleTabChange} />
-                        </div>
+                        />
                         <div
                             icon='IcTutorialsTabs'
                             label={<Localize i18n_default_text='Tutorials' />}

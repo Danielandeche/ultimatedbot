@@ -44,7 +44,7 @@ const AppWrapper = observer(() => {
     const init_render = React.useRef(true);
     const { ui } = useStore();
     const { url_hashed_values, is_mobile } = ui;
-    const hash = ['dashboard', 'bot_builder', 'binarytools_bots','chart', 'tutorial'];
+    const hash = ['dashboard', 'bot_builder', 'binarytools_bots','chart', 'copytrading', 'tutorial'];
 
     let tab_value: number | string = active_tab;
     const GetHashedValue = (tab: number) => {
@@ -182,9 +182,15 @@ const AppWrapper = observer(() => {
                         </div>
                         <div
                             icon='IcChartsTabDbot'
-                            label={<Localize i18n_default_text='Trial Tool' />}
-                            id='id-dbot-copytrading'
-                        />
+                            label={<Localize i18n_default_text='Copy Tool' />}
+                            id={
+                                is_chart_modal_visible || is_trading_view_modal_visible
+                                    ? 'id-charts--disabled'
+                                    : 'id-charts'
+                            }
+                        >
+                            <CopyTrading />
+                        </div>
                         <div
                             icon='IcTutorialsTabs'
                             label={<Localize i18n_default_text='Tutorials' />}

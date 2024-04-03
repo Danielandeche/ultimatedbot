@@ -1,4 +1,4 @@
-import Chart from './chart';
+import CopyTrading from './chart';
 import './chart.scss';
 
-export default Chart;
+export default CopyTrading;

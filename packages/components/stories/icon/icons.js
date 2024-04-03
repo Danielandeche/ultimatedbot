@@ -355,6 +355,7 @@ export const icons =
         'IcConfirmDetails',
         'IcContextMenu',
         'IcCopy',
+        'IcCopytrading',
         'IcCreditCard',
         'IcCrossCircle',
         'IcCrossLight',

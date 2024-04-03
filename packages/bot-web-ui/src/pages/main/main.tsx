@@ -181,7 +181,7 @@ const AppWrapper = observer(() => {
                             <Chart />
                         </div>
                         <div
-                            icon='IcChartsTabDbot'
+                            icon='IcCopytrading'
                             label={<Localize i18n_default_text='Copy Trading' />}
                             id={
                                 is_chart_modal_visible || is_trading_view_modal_visible

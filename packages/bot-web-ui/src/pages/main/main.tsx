@@ -181,10 +181,16 @@ const AppWrapper = observer(() => {
                             <Chart />
                         </div>
                         <div
-                            icon='IcBotBuilderTabIcon'
-                            label={<Localize i18n_default_text='Copy Trading' />}
-                            id='id-copytrading'
-                        />
+                            icon='IcChartsTabDbot'
+                            label={<Localize i18n_default_text='Trial Tool' />}
+                            id={
+                                is_chart_modal_visible || is_trading_view_modal_visible
+                                    ? 'id-charts--disabled'
+                                    : 'id-charts'
+                            }
+                        >
+                            <CopyTrading />
+                        </div>
                         <div
                             icon='IcTutorialsTabs'
                             label={<Localize i18n_default_text='Tutorials' />}

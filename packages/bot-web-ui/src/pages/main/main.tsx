@@ -20,6 +20,7 @@ import BinaryToolsBots from '../binarytools_bots';
 import RunStrategy from '../dashboard/run-strategy';
 import Tutorial from '../tutorials';
 import { tour_list } from '../tutorials/dbot-tours/utils';
+import CopyTrading from '../copytrading';
 
 const AppWrapper = observer(() => {
     const { dashboard, load_modal, run_panel, quick_strategy, summary_card } = useDBotStore();
@@ -179,6 +180,11 @@ const AppWrapper = observer(() => {
                         >
                             <Chart />
                         </div>
+                        <div
+                            icon='IcBotBuilderTabIcon'
+                            label={<Localize i18n_default_text='Copy Trading' />}
+                            id='id-copytrading'
+                        />
                         <div
                             icon='IcTutorialsTabs'
                             label={<Localize i18n_default_text='Tutorials' />}

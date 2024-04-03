@@ -16,7 +16,6 @@ import {
     retrieveCopyTradingTokens,
     getToken
 } from '@deriv/bot-skeleton';
-import './style.css';
 
 const CopyTrading = observer(() => {
     const store = useStore();

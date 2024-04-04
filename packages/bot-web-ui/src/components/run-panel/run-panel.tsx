@@ -247,7 +247,7 @@ const RunPanel = observer(() => {
     } = run_panel;
     const { active_tour, active_tab } = dashboard;
     const { total_payout, total_profit, total_stake, won_contracts, lost_contracts, number_of_runs } = statistics;
-    const { BOT_BUILDER, CHART } = DBOT_TABS;
+    const { BOT_BUILDER, COPYTRADING, CHART } = DBOT_TABS;
 
     React.useEffect(() => {
         onMount();

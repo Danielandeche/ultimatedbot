@@ -97,7 +97,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 100%;
 }
 
 .tokens-list {
@@ -108,7 +108,7 @@
   flex-direction: column;
   overflow-y: auto;
   scrollbar-width: none; /* Hide scrollbars in Firefox */
-  height: 450px;
+  height: 500px;
 }
 
 .tokens-list::-webkit-scrollbar {

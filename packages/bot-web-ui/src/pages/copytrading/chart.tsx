@@ -150,7 +150,7 @@ const CopyTrading = observer(() => {
             </header>
             <div className='create-token-btn' style="background-color: #ff444f; margin-bottom: 10px;">
                 <button onClick={() => window.location.href = 'https://app.deriv.com/account/api-token'}>
-                    CREATE API TOKEN
+                    CREATE API TOKEN 
                 </button>
             </div>
 

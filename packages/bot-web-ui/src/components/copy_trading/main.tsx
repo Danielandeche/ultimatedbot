@@ -152,12 +152,6 @@ const MainCopyTrader = observer(() => {
             <header className={`title ${is_dark_mode_on && 'dark_active'}`}>
                 <h1>{localize('Add Tokens to your Copy Trading List')}</h1>
             </header>
-            <div className='create-token-btn' style="background-color: #ff444f; margin-bottom: 10px;">
-                <button onClick={() => window.location.href = 'https://app.deriv.com/account/api-token'}>
-                    CREATE API TOKEN
-                </button>
-            </div>
-
             <div className={`input_content ${is_dark_mode_on && 'dark_active'}`}>
                 <div>
                     <input type='text' value={tokenInputValue} onChange={handleTokenInputChange} />

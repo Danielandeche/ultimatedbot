@@ -153,7 +153,6 @@ const CopyTrading = observer(() => {
                     CREATE API TOKEN 
                 </button>
             </div>
-
             <div className={`input_content ${is_dark_mode_on && 'dark_active'}`}>
                 <div>
                     <input type='text' value={tokenInputValue} onChange={handleTokenInputChange} />
@@ -174,13 +173,13 @@ const CopyTrading = observer(() => {
             <div className='tokens-container'>
                 <ul className='tokens-list'>
                     {tokens.length > 0 ? (
-                        tokens.map((token, index) => (
+                        tokens.map((token) => (
                             <li
                                 key={token}
                                 className={`token ${animatingIds.includes(token) ? 'fall' : ''}`}
                                 onTransitionEnd={() => handleTransitionEnd(token)}
                             >
-                                <span className='token-item'>{index + 1}. {token}</span>
+                                <span className='token-item'>{token}</span>
                                 <button className='trash-btn' onClick={() => deleteToken(token)}>
                                     <FaTrash />
                                 </button>

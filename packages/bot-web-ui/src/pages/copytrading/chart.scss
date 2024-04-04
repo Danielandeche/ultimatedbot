@@ -221,13 +221,13 @@
 
 .tokens-list {
   list-style: none;
-  width: 100%;
+  width: 80%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow-y: auto;
-  scrollbar-width: none; /* Hide scrollbars in Firefox */
-  height: 500px;
+  overflow: auto;
+  scrollbar-width: none;
+  height: 50vh;
 }
 
 .tokens-list::-webkit-scrollbar {

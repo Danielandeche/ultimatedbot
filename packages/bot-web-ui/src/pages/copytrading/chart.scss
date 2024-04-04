@@ -124,13 +124,20 @@
     top: 0;
 }
 
- .main_copy {
+.main_copy {
     width: 74%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  }
+  
+  .create-token-button {
+    width: 80%;
+    font-size: 2px;
+    background-color: #ff6f47;
+    color: #fff;
   }
   
   .main_copy .title {
@@ -222,16 +229,8 @@
   .tokens-list {
     list-style: none;
     width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    max-height: 500px; /* Limiting maximum height */
     overflow-y: auto;
-    scrollbar-width: none; /* Hide scrollbars in Firefox */
-    height: 500px;
-  }
-  
-  .tokens-list::-webkit-scrollbar {
-    display: none; /* Hide scrollbars in Chrome, Safari, etc. */
   }
   
   .token {
@@ -291,13 +290,6 @@
   .token_info.dark_active {
     color: #fff;
   }
-
-  .create-token-button {
-    width: 80%;
-    font-size: 2px;
-    background-color: #ff6f47;
-    color: #fff;
-  }                                   
   
   /* Mobile Responsiveness */
   @media (max-width: 720px) {
@@ -316,6 +308,7 @@
       height: 97%;
     }
   }
+  
 @media only screen and (min-width: 768px) {
     .main_copy {
       width: 80%;

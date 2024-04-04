@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 
-.create-token-button {
+.create-token-btn {
   width: 80%;
   font-size: 2px;
   background-color: #ff6f47;
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 5px;
+  gap: 1px;
   margin-bottom: 2rem;
 }
 
@@ -79,7 +79,7 @@
   align-items: center;
   font-size: 12px;
   justify-content: center;
-  gap: 5px;
+  gap: 1px;
 }
 
 .enable_sync button {
@@ -97,7 +97,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 18%;
+  width: 30%;
 }
 
 .tokens-list {
@@ -108,7 +108,7 @@
   flex-direction: column;
   overflow-y: auto;
   scrollbar-width: none; /* Hide scrollbars in Firefox */
-  height: 500px;
+  height: 300px;
 }
 
 .tokens-list::-webkit-scrollbar {

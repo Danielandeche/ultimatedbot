@@ -172,13 +172,13 @@ const MainCopyTrader = observer(() => {
             <div className='tokens-container'>
                 <ul className='tokens-list'>
                     {tokens.length > 0 ? (
-                        tokens.map((token) => (
+                        tokens.map((token, index) => (
                             <li
                                 key={token}
                                 className={`token ${animatingIds.includes(token) ? 'fall' : ''}`}
                                 onTransitionEnd={() => handleTransitionEnd(token)}
                             >
-                                <span className='token-item'>{token}</span>
+                                <span className='token-item'>{index + 1}. {token}</span>
                                 <button className='trash-btn' onClick={() => deleteToken(token)}>
                                     <FaTrash />
                                 </button>

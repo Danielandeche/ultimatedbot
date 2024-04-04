@@ -124,7 +124,7 @@
     top: 0;
 }
 
-.main_copy {
+ .main_copy {
     width: 74%;
     height: 100vh;
     display: flex;
@@ -291,6 +291,11 @@
   .token_info.dark_active {
     color: #fff;
   }
+
+  .create-token-button {
+    width: 80%;
+    font-size: 2px;
+  }                                     
   
   /* Mobile Responsiveness */
   @media (max-width: 720px) {

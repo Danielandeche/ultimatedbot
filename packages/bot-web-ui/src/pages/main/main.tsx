@@ -206,7 +206,7 @@ const AppWrapper = observer(() => {
                         </div>
                         <div
                             icon='IcTradingViewChart'
-                            label={<Localize i18n_default_text='Trading View' />}
+                            label={<Localize i18n_default_text='Trading Chart' />}
                             id={
                                 is_chart_modal_visible || is_trading_view_modal_visible
                                     ? 'id-charts--disabled'

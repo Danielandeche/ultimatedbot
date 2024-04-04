@@ -7,12 +7,12 @@
   flex-direction: column;
 }
 
-.create-token-btn {
+/* .create-token-btn {
   width: 80%;
   font-size: 2px;
   background-color: #ff6f47;
   color: #fff;
-}  
+}   */
 
 .main_copy .title {
   display: flex;

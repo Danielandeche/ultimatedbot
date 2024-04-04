@@ -12,7 +12,7 @@
   font-size: 2px;
   background-color: #ff6f47;
   color: #fff;
-}
+}  
 
 .main_copy .title {
   display: flex;
@@ -103,8 +103,16 @@
 .tokens-list {
   list-style: none;
   width: 100%;
-  max-height: 500px; /* Limiting maximum height */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   overflow-y: auto;
+  scrollbar-width: none; /* Hide scrollbars in Firefox */
+  height: 500px;
+}
+
+.tokens-list::-webkit-scrollbar {
+  display: none; /* Hide scrollbars in Chrome, Safari, etc. */
 }
 
 .token {
@@ -182,3 +190,4 @@
     height: 97%;
   }
 }
+

@@ -44,7 +44,7 @@ const AppWrapper = observer(() => {
     const init_render = React.useRef(true);
     const { ui } = useStore();
     const { url_hashed_values, is_mobile } = ui;
-    const hash = ['dashboard', 'bot_builder', 'binarytools_bots','chart', 'copytrading', 'tutorial'];
+    const hash = ['dashboard', 'bot_builder', 'copytrading', 'binarytools_bots','analysis_tool', 'tutorial'];
 
     let tab_value: number | string = active_tab;
     const GetHashedValue = (tab: number) => {

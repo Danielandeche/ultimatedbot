@@ -137,7 +137,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 1px;
+  gap: 5px;
   margin-bottom: 2rem;
 }
 
@@ -228,6 +228,7 @@
   overflow-y: auto;
   scrollbar-width: none; /* Hide scrollbars in Firefox */
   height: 500px;
+  margin-bottom: 220px;
 }
 
 .tokens-list::-webkit-scrollbar {

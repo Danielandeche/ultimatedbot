@@ -129,7 +129,7 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 }
 
@@ -227,7 +227,7 @@
   flex-direction: column;
   overflow-y: auto;
   scrollbar-width: none; /* Hide scrollbars in Firefox */
-  height: 500px;
+  height: 450px;
 }
 
 .tokens-list::-webkit-scrollbar {

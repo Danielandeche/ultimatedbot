@@ -44,7 +44,7 @@ const AppWrapper = observer(() => {
     const init_render = React.useRef(true);
     const { ui } = useStore();
     const { url_hashed_values, is_mobile } = ui;
-    const hash = ['dashboard', 'bot_builder', 'copytrading', 'binarytools_bots', 'analysistool', 'tutorial'];
+    const hash = ['dashboard', 'bot_builder', 'binarytools_bots', 'copytrading', 'analysistool', 'tutorial'];
 
     let tab_value: number | string = active_tab;
     const GetHashedValue = (tab: number) => {
@@ -163,6 +163,13 @@ const AppWrapper = observer(() => {
                             id='id-bot-builder'
                         />
                         <div
+                            icon='IcFullStar'
+                            label={<Localize i18n_default_text='Binarytool Bots' />}
+                            id='id-dbot-binarytools-bots'
+                        >
+                            <BinaryToolsBots handleTabChange={handleTabChange} />
+                        </div>
+                        <div
                             icon='IcCopytrading'
                             label={<Localize i18n_default_text='Copy Trading' />}
                             id={
@@ -172,13 +179,6 @@ const AppWrapper = observer(() => {
                             }
                         >
                             <CopyTrading />
-                        </div>
-                        <div
-                            icon='IcFullStar'
-                            label={<Localize i18n_default_text='Binarytool Bots' />}
-                            id='id-dbot-binarytools-bots'
-                        >
-                            <BinaryToolsBots handleTabChange={handleTabChange} />
                         </div>
                         <div
                             icon='IcChartsTabDbot'

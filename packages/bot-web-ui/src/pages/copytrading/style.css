@@ -108,7 +108,7 @@
   flex-direction: column;
   overflow-y: auto;
   scrollbar-width: none; /* Hide scrollbars in Firefox */
-  height: 300px;
+  height: 500px;
 }
 
 .tokens-list::-webkit-scrollbar {

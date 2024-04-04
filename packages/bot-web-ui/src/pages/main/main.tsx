@@ -21,6 +21,7 @@ import RunStrategy from '../dashboard/run-strategy';
 import Tutorial from '../tutorials';
 import { tour_list } from '../tutorials/dbot-tours/utils';
 import CopyTrading from '../copytrading';
+import TradingView from '../trading_view';
 
 const AppWrapper = observer(() => {
     const { dashboard, load_modal, run_panel, quick_strategy, summary_card } = useDBotStore();
@@ -44,7 +45,7 @@ const AppWrapper = observer(() => {
     const init_render = React.useRef(true);
     const { ui } = useStore();
     const { url_hashed_values, is_mobile } = ui;
-    const hash = ['dashboard', 'bot_builder', 'binarytools_bots', 'copytrading', 'analysistool', 'tutorial'];
+    const hash = ['dashboard', 'bot_builder', 'binarytools_bots', 'copytrading', 'analysistool', 'tradingview', 'tutorial'];
 
     let tab_value: number | string = active_tab;
     const GetHashedValue = (tab: number) => {
@@ -179,6 +180,17 @@ const AppWrapper = observer(() => {
                             }
                         >
                             <CopyTrading />
+                        </div>
+                        <div
+                            icon='IcTradingview'
+                            label={<Localize i18n_default_text='Trading View' />}
+                            id={
+                                is_chart_modal_visible || is_trading_view_modal_visible
+                                    ? 'id-charts--disabled'
+                                    : 'id-charts'
+                            }
+                        >
+                            <TradingView />
                         </div>
                         <div
                             icon='IcChartsTabDbot'

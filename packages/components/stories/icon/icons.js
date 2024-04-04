@@ -610,6 +610,7 @@ export const icons =
         'IcTourGuideStep2',
         'IcTrade',
         'IcTradingViewChart',
+        'IcTradingview',
         'IcTransactions',
         'IcTutorialsTabs',
         'IcUnarchive',

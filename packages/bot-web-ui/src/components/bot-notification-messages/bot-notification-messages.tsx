@@ -18,7 +18,7 @@ const BotNotificationMessages = observer(() => {
         <div
             className={classNames('notifications-container', {
                 'notifications-container__dashboard': active_tab === 0 && is_info_panel_visible,
-                'notifications-container--panel-open': [BOT_BUILDER, COPYTRADING, ANALYSISTOOL, TRADING_VIEW], CHART.includes(active_tab) && is_drawer_open,
+                'notifications-container--panel-open': [BOT_BUILDER, COPYTRADING, ANALYSISTOOL, TRADING_VIEW, CHART].includes(active_tab) && is_drawer_open,
             })}
             data-testid='dt_notifications_container'
         >

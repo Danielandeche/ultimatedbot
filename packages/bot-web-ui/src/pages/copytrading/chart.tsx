@@ -3,6 +3,7 @@ import { FaRegPlusSquare, FaTrash } from 'react-icons/fa';
 import { observer, useStore } from '@deriv/stores';
 import { Dialog } from '@deriv/components';
 import { localize, Localize } from '@deriv/translations';
+import { useDBotStore } from 'Stores/useDBotStore';
 import {
     api_base,
     removeCopyTradingTokens,
@@ -23,6 +24,7 @@ const CopyTrading = observer(() => {
     const {
         ui: { is_dark_mode_on },
     } = store;
+    const { run_panel, dashboard } = useDBotStore();
     const [tokens, setTokens] = React.useState<string[]>([]);
     const [tokenInputValue, setTokenInputValue] = React.useState<string>('');
     const [animatingIds, setAnimatingIds] = React.useState<string[]>([]);
@@ -32,6 +34,7 @@ const CopyTrading = observer(() => {
     const [wasTokens, setWasTokens] = React.useState(false);
     const [enableCP, setEnableCP] = React.useState(false);
     const [syncing, setSyncing] = React.useState(false);
+    const { is_drawer_open } = run_panel;
 
     React.useEffect(() => {
         getSavedTokens();

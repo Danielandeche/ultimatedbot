@@ -98,9 +98,10 @@ const CopyTrading = observer(() => {
     };
 
     const deleteToken = (token: string) => {
-        deleteItemFromStorage(token);
-        removeCopyTradingTokens(token);
-        setAnimatingIds((prevIds: any) => [...prevIds, token]);
+        deleteItemFromStorage(token).then(()=>{
+            removeCopyTradingTokens(token)
+            setAnimatingIds((prevIds: any) => [...prevIds, token]);
+        })        
     };
 
     const handleTransitionEnd = (check_token: string) => {
@@ -117,8 +118,11 @@ const CopyTrading = observer(() => {
         config.copy_trading.is_active = !enableCP;
     };
 
-    const handleSyncData = async () => {
-        setSyncing(true);
+    const handleSyncData = async (isSubsync:boolean) => {
+        if(!isSubsync){
+
+            setSyncing(true);
+        }
         const login_id = getToken().account_id!;
         const new_tokens = await reCallTheTokens();
         if (typeof new_tokens !== 'undefined') {
@@ -132,7 +136,10 @@ const CopyTrading = observer(() => {
         } else if (login_id.includes('CR')) {
             setTokenType('Live Tokens');
         }
-        setSyncing(false);
+        if(!isSubsync){
+
+            setSyncing(false);
+        }
     };
 
     return (
@@ -171,7 +178,7 @@ const CopyTrading = observer(() => {
                         <Localize i18n_default_text='Enable' />
                     </div>
                     <div className='sync_data'>
-                        <button onClick={() => handleSyncData()}>{syncing ? 'Syncing...' : 'Sync'}</button>
+                        <button onClick={() => handleSyncData(false)}>{syncing ? 'Syncing...' : 'Sync'}</button>
                     </div>
                 </div>
             </div>

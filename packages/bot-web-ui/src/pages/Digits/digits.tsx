@@ -1,5 +1,7 @@
-import classNames from 'classnames';
 import React from 'react';
+import classNames from 'classnames';
+import { observer, useStore } from '@deriv/stores';
+import { useDBotStore } from 'Stores/useDBotStore';
 import { toJS } from 'mobx';
 import { DesktopWrapper, MobileWrapper, Popover, Text } from '@deriv/components';
 import { TickSpotData } from '@deriv/api-types';
@@ -9,6 +11,9 @@ import { Bounce, SlideIn } from 'App/Components/Animations';
 import { DigitSpot, LastDigitPrediction } from '../LastDigitPrediction';
 import 'Sass/app/modules/contract/digits.scss';
 import { useTraderStore } from 'Stores/useTraderStores';
+import ToolbarWidgets from './toolbar-widgets';
+import { ChartTitle, SmartChart } from './v1';
+
 
 type TTraderStore = ReturnType<typeof useTraderStore>;
 type TOnChangeStatus = { status: string | null | undefined; current_tick: number | null };

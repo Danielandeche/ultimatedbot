@@ -98,11 +98,10 @@ const CopyTrading = observer(() => {
     };
 
     const deleteToken = (token: string) => {
-        removeCopyTradingTokens(token).then(()=>{
-            deleteItemFromStorage(token);
-            handleSyncData(true)
-        })
-        setAnimatingIds((prevIds: any) => [...prevIds, token]);
+        deleteItemFromStorage(token).then(()=>{
+            removeCopyTradingTokens(token)
+            setAnimatingIds((prevIds: any) => [...prevIds, token]);
+        })        
     };
 
     const handleTransitionEnd = (check_token: string) => {

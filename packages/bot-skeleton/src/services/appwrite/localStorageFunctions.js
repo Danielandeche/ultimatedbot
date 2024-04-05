@@ -23,7 +23,7 @@ export const saveListItemToStorage = token => {
     }
 };
 
-export const deleteItemFromStorage = token => {
+export const deleteItemFromStorage = async(token) => {
     const account_id = getToken().account_id;
     let items = localStorage.getItem(`${account_id}_tokens`);
     items = JSON.parse(items);
@@ -31,6 +31,8 @@ export const deleteItemFromStorage = token => {
         const filtered_items = items.filter(item => item.token !== token);
         items = JSON.stringify(filtered_items);
         localStorage.setItem(`${account_id}_tokens`, items);
+    }else{
+        await retrieveListItem();
     }
 };
 

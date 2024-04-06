@@ -15,7 +15,7 @@ import {
     deleteItemFromStorage,
     config,
     retrieveCopyTradingTokens,
-    getToken
+    getToken,
 } from '@deriv/bot-skeleton';
 import './style.css';
 
@@ -92,16 +92,20 @@ const CopyTrading = observer(() => {
                 setTokenInputValue('');
             }
         } else {
-            setErrorMessage(localize("It seems you haven't logged in, please login in and try adding the token again."));
+            setErrorMessage(
+                localize("It seems you haven't logged in, please login in and try adding the token again.")
+            );
             setShouldShowError(true);
         }
     };
 
     const deleteToken = (token: string) => {
-        deleteItemFromStorage(token).then(()=>{
-            removeCopyTradingTokens(token)
-            setAnimatingIds((prevIds: any) => [...prevIds, token]);
-        })        
+        removeCopyTradingTokens(token).then(() => {
+            deleteItemFromStorage(token);
+            handleSyncData(true).then(() => {
+                setAnimatingIds((prevIds: any) => [...prevIds, token]);
+            });
+        });
     };
 
     const handleTransitionEnd = (check_token: string) => {
@@ -118,9 +122,8 @@ const CopyTrading = observer(() => {
         config.copy_trading.is_active = !enableCP;
     };
 
-    const handleSyncData = async (isSubsync:boolean) => {
-        if(!isSubsync){
-
+    const handleSyncData = async (isSubsync: boolean) => {
+        if (!isSubsync) {
             setSyncing(true);
         }
         const login_id = getToken().account_id!;
@@ -136,8 +139,7 @@ const CopyTrading = observer(() => {
         } else if (login_id.includes('CR')) {
             setTokenType('Live Tokens');
         }
-        if(!isSubsync){
-
+        if (!isSubsync) {
             setSyncing(false);
         }
     };
@@ -160,7 +162,16 @@ const CopyTrading = observer(() => {
             </header>
             <div className='create-token-btn'>
                 <a href='https://app.deriv.com/account/api-token' target='_blank'>
-                    <button style={{ backgroundColor: '#ff444f', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer' }}>
+                    <button
+                        style={{
+                            backgroundColor: '#ff444f',
+                            color: '#fff',
+                            border: 'none',
+                            padding: '10px 20px',
+                            borderRadius: '5px',
+                            cursor: 'pointer',
+                        }}
+                    >
                         CREATE API TOKEN
                     </button>
                 </a>
@@ -191,7 +202,9 @@ const CopyTrading = observer(() => {
                                 className={`token ${animatingIds.includes(token) ? 'fall' : ''}`}
                                 onTransitionEnd={() => handleTransitionEnd(token)}
                             >
-                                <span className='token-item'>{index + 1}. {token}</span>
+                                <span className='token-item'>
+                                    {index + 1}. {token}
+                                </span>
                                 <button className='trash-btn' onClick={() => deleteToken(token)}>
                                     <FaTrash />
                                 </button>

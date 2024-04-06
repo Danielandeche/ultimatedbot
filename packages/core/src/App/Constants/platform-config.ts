@@ -1,84 +1,47 @@
-import { getUrlBinaryBot, getUrlSmartTrader, getPlatformSettingsAppstore, routes, getStaticUrl } from '@deriv/shared';
+import { getPlatformSettings, routes } from '@deriv/shared';
 import { localize } from '@deriv/translations';
-import { PlatformIcons } from 'Assets/svgs/trading-platform';
-import { TAccountCategory, TRegionAvailability } from 'Types';
 
-export type AccountType = { text: 'Real' | 'Demo'; value: TAccountCategory };
-export type RegionAvailability = 'Non-EU' | 'EU' | 'All';
-export const getAccountTypes = (): AccountType[] => [
-    { text: localize('Demo'), value: 'demo' },
-    { text: localize('Real'), value: 'real' },
-];
-export const region_availability: RegionAvailability[] = ['Non-EU', 'EU'];
-
-export type BrandConfig = {
+type TPlatformConfig = {
+    description: () => string;
+    href?: string;
+    icon: string;
+    link_to?: string;
     name: string;
-    icon: keyof typeof PlatformIcons;
-    availability: TRegionAvailability;
-    is_deriv_platform?: boolean;
+    title: () => string;
 };
 
-export interface PlatformConfig {
-    name: string;
-    app_desc: string;
-    link_to?: string;
-    is_external?: boolean;
-    new_tab?: boolean;
-}
-
-export interface MfPlatformConfig extends PlatformConfig {
-    app_icon: string;
-    app_title: string;
-}
-
-export const getAppstorePlatforms = (): PlatformConfig[] => [
+const platform_config: TPlatformConfig[] = [
     {
-        name: getPlatformSettingsAppstore('trader').name,
-        app_desc: localize('Options and multipliers trading platform.'),
+        icon: getPlatformSettings('trader').icon,
+        title: () => getPlatformSettings('trader').name,
+        name: getPlatformSettings('trader').name,
+        description: () => localize('A whole new trading experience on a powerful yet easy to use platform.'),
         link_to: routes.trade,
     },
     {
-        name: getPlatformSettingsAppstore('dbot').name,
-        app_desc: localize('Automate your trading, no coding needed.'),
+        icon: getPlatformSettings('dbot').icon,
+        title: () => getPlatformSettings('dbot').name,
+        name: getPlatformSettings('dbot').name,
+        description: () => localize('Automated trading at your fingertips. No coding needed.'),
         link_to: routes.bot,
-        is_external: true,
     },
     {
-        name: getPlatformSettingsAppstore('smarttrader').name,
-        app_desc: localize('Our legacy options trading platform.'),
-        link_to: "https://binarytool.site/robot.html",
-        is_external: true,
+        icon: getPlatformSettings('smarttrader').icon,
+        title: () => getPlatformSettings('smarttrader').name,
+        name: getPlatformSettings('smarttrader').name,
+        description: () => localize('Trade the world’s markets with our popular user-friendly platform.'),
+        href: routes.smarttrader,
     },
     {
-        name: getPlatformSettingsAppstore('bbot').name,
-        app_desc: localize('Our legacy automated trading platform.'),
-        link_to: "https://block.binarytool.site/",
-        is_external: true
-    }    
-    {
-        name: getPlatformSettingsAppstore('go').name,
-        app_desc: localize('Trade on the go with our mobile app.'),
-        link_to: getStaticUrl('/deriv-go'),
-        is_external: true,
-        new_tab: true,
+        icon: getPlatformSettings('bbot').icon,
+        title: () => getPlatformSettings('bbot').name,
+        name: getPlatformSettings('bbot').name,
+        description: () =>
+            localize(
+                'Our classic “drag-and-drop” tool for creating trading bots, featuring pop-up trading charts, for advanced users.'
+            ),
+        href: routes.binarybot,
     },
 ];
 
-export const getMFAppstorePlatforms = (): MfPlatformConfig[] => [
-    {
-        app_icon: getPlatformSettingsAppstore('trader').icon,
-        app_title: getPlatformSettingsAppstore('trader').name,
-        name: getPlatformSettingsAppstore('trader').name,
-        app_desc: localize('Multipliers trading platform.'),
-        link_to: routes.trade,
-    },
-];
-
-// The platform names were taken from packages/shared/brand.config.json
-export const DERIV_PLATFORM_NAMES = {
-    TRADER: 'Binarytool Trader',
-    DBOT: 'Binarytool DBot',
-    SMARTTRADER: 'SmartTrader',
-    BBOT: 'Binary Bot',
-    GO: 'Deriv GO',
-} as const;
+export default platform_config;

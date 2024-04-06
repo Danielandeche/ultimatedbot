@@ -76,7 +76,7 @@ const PlatformSwitcher = ({
                     height={25}
                 />
 
-                <Icon className='platform-switcher__arrow' icon='IcChevronDownBold' />
+                <Icon className='platform-switcher__arrow' icon='IcBinarytool' />
             </div>
             <CSSTransition
                 mountOnEnter

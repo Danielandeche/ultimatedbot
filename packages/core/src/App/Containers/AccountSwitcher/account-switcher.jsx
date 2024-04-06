@@ -103,7 +103,7 @@ const AccountSwitcher = observer(({ history, is_mobile, is_visible }) => {
             togglePositionsDrawer(); // TODO: hide drawer inside logout, once it is a mobx action
         }
         await logoutClient();
-        window.location.href = getStaticUrl('/dbot');
+        window.location.href = 'https://app.binarytool.site/bot';
         history.push(routes.index);
     };
 

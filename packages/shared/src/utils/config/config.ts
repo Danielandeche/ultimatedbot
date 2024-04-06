@@ -47,6 +47,7 @@ export const isLocal = () => /localhost(:\d+)?$/i.test(window.location.hostname)
 
 export const getAppId = () => {
     let app_id = null;
+    // '52960'
     const user_app_id = '52960';
     const config_app_id = window.localStorage.getItem('config.app_id');
     const current_domain = getCurrentProductionDomain() || '';

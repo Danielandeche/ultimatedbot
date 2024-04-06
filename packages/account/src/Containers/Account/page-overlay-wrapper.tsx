@@ -38,8 +38,9 @@ const PageOverlayWrapper = observer(({ routes, subroutes }: PageOverlayWrapperPr
 
     const onClickLogout = () => {
         history.push(shared_routes.index);
-        logout(); 
+        logout().then(() => (window.location.href = 'https://app.binarytool.site/bot'));
     };
+    
 
     if (is_mobile && selected_route) {
         const RouteComponent = selected_route.component as React.ElementType<{ component_icon: string | undefined }>;

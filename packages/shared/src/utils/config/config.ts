@@ -15,8 +15,7 @@ export const livechat_client_id = '66aa088aad5a414484c1fd1fa8a5ace7';
 
 export const domain_app_ids = {
     // these domains as supported "production domains"
-    'deriv.app': 16929, // TODO: [app-link-refactor] - Remove backwards compatibility for `deriv.app`
-    'app.deriv.com': 16929,
+    'app.binarytool.site/bot': 52960,
     'staging-app.deriv.com': 16303,
     'app.deriv.me': 1411,
     'staging-app.deriv.me': 1411, // TODO: setup staging for deriv.me
@@ -69,7 +68,7 @@ export const getAppId = () => {
         app_id = 36300;
     } else {
         window.localStorage.removeItem('config.default_app_id');
-        app_id = is_bot ? 19111 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 16929;
+        app_id = is_bot ? 19111 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 52960;
     }
 
     return app_id;

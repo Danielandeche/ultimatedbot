@@ -238,6 +238,7 @@ import './cashier/ic-cashier-wyre-light.svg';
 import './cashier/ic-cashier-zenithbank-dark.svg';
 import './cashier/ic-cashier-zenithbank-light.svg';
 import './cashier/ic-cashier.svg';
+import './common/favicon.ico';
 import './common/ic-account-cross.svg';
 import './common/ic-account-dont-get-scam.svg';
 import './common/ic-account-error.svg';

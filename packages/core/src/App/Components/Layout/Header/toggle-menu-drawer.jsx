@@ -423,7 +423,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                                             toggleDrawer();
                                             history.push(routes.index);
                                             logoutClient().then(() => {
-                                                window.location.href = getStaticUrl('/');
+                                                window.location.href = getStaticUrl('/dbot');
                                             });
                                         }}
                                         className='dc-mobile-drawer__item'

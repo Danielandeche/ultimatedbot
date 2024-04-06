@@ -15,8 +15,7 @@ const AccountClosed = observer(() => {
         if (timer > 0) {
             setTimer(timer - 1);
         } else {
-            clearInterval(handleInterval);
-            window.location.href = 'https://app.binarytool.site';
+            window.location.href = getStaticUrl('/', { is_appstore });
         }
     }, [is_appstore, timer]);
 

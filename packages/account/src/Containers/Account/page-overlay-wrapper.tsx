@@ -38,7 +38,7 @@ const PageOverlayWrapper = observer(({ routes, subroutes }: PageOverlayWrapperPr
 
     const onClickLogout = () => {
         history.push(shared_routes.index);
-        logout().then(() => (window.location.href = getStaticUrl('/')));
+        logout().then(() => (window.location.href = getStaticUrl('/dbot')));
     };
 
     if (is_mobile && selected_route) {

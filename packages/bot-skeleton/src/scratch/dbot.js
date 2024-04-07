@@ -13,21 +13,31 @@ import { isAllRequiredBlocksEnabled, updateDisabledBlocks, validateErrorOnBlockD
 import './blockly';
 
 // Custom Bots
-import ap1 from './xml/binarytools_bots/$DollarprinterbotOrignal$.xml';
-import ap2 from './xml/binarytools_bots/Dollar Printer KE.xml';
-import ap3 from './xml/binarytools_bots/360 Printer Bot [Original].xml';
-import ap4 from './xml/binarytools_bots/Genos 2023 OVER_UNDER Bot.xml';
-import ap5 from './xml/binarytools_bots/M7M Ver 4.2 Still Amazing.xml';
-import ap6 from './xml/binarytools_bots/MASTER SET VERSION 4.5.xml';
-import ap7 from './xml/binarytools_bots/TRADE CITY BOT Version 1.2.xml';
+import ap1 from './xml/binarytools_bots/Rise-Fall Equals Antenna Ai DBot.xml';
+import ap2 from './xml/binarytools_bots/Higher_Lower JET Candles Ai D-Bot.xml';
+import ap3 from './xml/binarytools_bots/Ultimate Even-Odd Switcher Ai D-Bot.xml';
+import ap4 from './xml/binarytools_bots/iRace Candlesticks Patterns Ai D-Bot.xml';
+import ap5 from './xml/binarytools_bots/7_Sequence Digits Ai DBot .xml';
+import ap6 from './xml/binarytools_bots/$DollarprinterbotOrignal$.xml';
+import ap7 from './xml/binarytools_bots/Dollar Printer KE.xml';
+import ap8 from './xml/binarytools_bots/360 Printer Bot [Original].xml';
+import ap9 from './xml/binarytools_bots/Genos 2023 OVER_UNDER Bot.xml';
+import ap10 from './xml/binarytools_bots/M7M Ver 4.2 Still Amazing.xml';
+import ap11 from './xml/binarytools_bots/MASTER SET VERSION 4.5.xml';
+import ap12 from './xml/binarytools_bots/TRADE CITY BOT Version 1.2.xml';
 export const binarytools_bot_list = [
-    { id: 0, name: '$DollarprinterbotOrignal$', xml: ap1 },
-    { id: 1, name: 'Dollar Printer KE', xml: ap2 },
-    { id: 2, name: '360 Printer Bot [Original]', xml: ap3 },
-    { id: 3, name: 'Genos 2023 OVER_UNDER Bot', xml: ap4 },
-    { id: 4, name: 'M7M Ver 4.2 Still Amazing', xml: ap5 },
-    { id: 5, name: 'MASTER SET VERSION 4.5', xml: ap6 },
-    { id: 6, name: 'TRADE CITY BOT Version 1.2', xml: ap7 },
+    { id: 0, name: 'Rise-Fall Equals Antenna Ai DBot', xml: ap1 },
+    { id: 1, name: 'Higher_Lower JET Candles Ai D-Bot', xml: ap2 },
+    { id: 2, name: 'Ultimate Even-Odd Switcher Ai D-Bot', xml: ap3 },
+    { id: 3, name: 'iRace Candlesticks Patterns Ai D-Bot', xml: ap4 },
+    { id: 4, name: '7_Sequence Digits Ai DBot', xml: ap5 },
+    { id: 5, name: '$DollarprinterbotOrignal$', xml: ap6 },
+    { id: 6, name: 'Dollar Printer KE', xml: ap7 },
+    { id: 7, name: '360 Printer Bot [Original]', xml: ap8 },
+    { id: 8, name: 'Genos 2023 OVER_UNDER Bot', xml: ap9 },
+    { id: 9, name: 'M7M Ver 4.2 Still Amazing', xml: ap10 },
+    { id: 10, name: 'MASTER SET VERSION 4.5', xml: ap11 },
+    { id: 11, name: 'TRADE CITY BOT Version 1.2', xml: ap12 },
 ]
 class DBot {
     constructor() {

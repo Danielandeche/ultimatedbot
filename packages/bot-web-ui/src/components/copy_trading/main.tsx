@@ -25,6 +25,7 @@ const MainCopyTrader = observer(() => {
     const {
         ui: { is_dark_mode_on },
     } = store;
+    const { run_panel, dashboard } = useDBotStore();
     const [tokens, setTokens] = React.useState<string[]>([]);
     const [tokenInputValue, setTokenInputValue] = React.useState<string>('');
     const [animatingIds, setAnimatingIds] = React.useState<string[]>([]);
@@ -34,17 +35,17 @@ const MainCopyTrader = observer(() => {
     const [wasTokens, setWasTokens] = React.useState(false);
     const [enableCP, setEnableCP] = React.useState(false);
     const [syncing, setSyncing] = React.useState(false);
+    const { is_drawer_open } = run_panel;
 
     React.useEffect(() => {
         getSavedTokens();
     }, []);
     React.useEffect(() => {
-            getSavedTokens();
-    
+        getSavedTokens();
     }, [is_dark_mode_on]);
 
     const getSavedTokens = async () => {
-    retrieveListItem().then(list_item => {
+        retrieveListItem().then(list_item => {
             const login_id = getToken().account_id!;
             if (login_id.includes('VRTC')) {
                 setTokenType('Demo Tokens');
@@ -71,15 +72,14 @@ const MainCopyTrader = observer(() => {
     };
 
     const addToken = async () => {
-        if(getToken().account_id){
+        if (getToken().account_id) {
             try {
                 const newToken = tokenInputValue.trim();
                 const response = await updateCopyTradingTokens(tokenInputValue.trim());
-    
+
                 if (response === 'VRTC' || response === 'CR') {
                     saveListItemToStorage(newToken);
                     tokens.unshift(newToken);
-                    // setTokens(tokens);
                 } else {
                     setErrorMessage(response!);
                     setShouldShowError(true);
@@ -88,39 +88,45 @@ const MainCopyTrader = observer(() => {
                 if (typeof error.error !== 'undefined') {
                     setErrorMessage(error.error.message);
                     setShouldShowError(true);
-                } else {
-                    // console.log(error);
                 }
             } finally {
-                // This block will run regardless of the try/catch outcome
                 setTokenInputValue('');
             }
-        }else{
-            setErrorMessage(localize("It seems you haven't logged in, please login in and try adding the token again."));
+        } else {
+            setErrorMessage(
+                localize("It seems you haven't logged in, please login in and try adding the token again.")
+            );
             setShouldShowError(true);
         }
-        
     };
 
     const deleteToken = (token: string) => {
-        deleteItemFromStorage(token);
-        removeCopyTradingTokens(token);
-        setAnimatingIds((prevIds: any) => [...prevIds, token]);
+        removeCopyTradingTokens(token).then(() => {
+            deleteItemFromStorage(token);
+            handleSyncData(true).then(() => {
+                setAnimatingIds((prevIds: any) => [...prevIds, token]);
+            });
+        });
     };
 
     const handleTransitionEnd = (check_token: string) => {
-        setTokens(tokens.filter(token => token !== check_token)); // Remove the item after animation
-        setAnimatingIds((prevIds: any) => prevIds.filter((i: any) => i !== check_token)); // Remove id from animating ids
+        setTokens(tokens.filter(token => token !== check_token));
+        setAnimatingIds((prevIds: any) => prevIds.filter((i: any) => i !== check_token));
     };
+
     const handleShouldShowError = () => {
         setShouldShowError(false);
     };
+
     const handleCPChange = () => {
         setEnableCP(!enableCP);
         config.copy_trading.is_active = !enableCP;
     };
-    const handleSynceData = async () => {
-        setSyncing(true);
+
+    const handleSyncData = async (isSubsync: boolean) => {
+        if (!isSubsync) {
+            setSyncing(true);
+        }
         const login_id = getToken().account_id!;
         const new_tokens = await reCallTheTokens();
         if (typeof new_tokens !== 'undefined') {
@@ -134,8 +140,11 @@ const MainCopyTrader = observer(() => {
         } else if (login_id.includes('CR')) {
             setTokenType('Live Tokens');
         }
-        setSyncing(false);
+        if (!isSubsync) {
+            setSyncing(false);
+        }
     };
+
     return (
         <div className='main_copy'>
             {shouldShowError && (
@@ -152,6 +161,22 @@ const MainCopyTrader = observer(() => {
             <header className={`title ${is_dark_mode_on && 'dark_active'}`}>
                 <h1>{localize('Add Tokens to your Copy Trading List')}</h1>
             </header>
+            <div className='create-token-btn'>
+                <a href='https://app.deriv.com/account/api-token' target='_blank'>
+                    <button
+                        style={{
+                            backgroundColor: '#ff444f',
+                            color: '#fff',
+                            border: 'none',
+                            padding: '10px 20px',
+                            borderRadius: '5px',
+                            cursor: 'pointer',
+                        }}
+                    >
+                        CREATE API TOKEN
+                    </button>
+                </a>
+            </div>
             <div className={`input_content ${is_dark_mode_on && 'dark_active'}`}>
                 <div>
                     <input type='text' value={tokenInputValue} onChange={handleTokenInputChange} />
@@ -165,7 +190,7 @@ const MainCopyTrader = observer(() => {
                         <Localize i18n_default_text='Enable' />
                     </div>
                     <div className='sync_data'>
-                        <button onClick={() => handleSynceData()}>{syncing ? 'Syncing...' : 'Sync'}</button>
+                        <button onClick={() => handleSyncData(false)}>{syncing ? 'Syncing...' : 'Sync'}</button>
                     </div>
                 </div>
             </div>
@@ -178,7 +203,9 @@ const MainCopyTrader = observer(() => {
                                 className={`token ${animatingIds.includes(token) ? 'fall' : ''}`}
                                 onTransitionEnd={() => handleTransitionEnd(token)}
                             >
-                                <span className='token-item'>{index + 1}. {token}</span>
+                                <span className='token-item'>
+                                    {index + 1}. {token}
+                                </span>
                                 <button className='trash-btn' onClick={() => deleteToken(token)}>
                                     <FaTrash />
                                 </button>

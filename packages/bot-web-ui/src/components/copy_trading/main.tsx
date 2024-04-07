@@ -25,7 +25,6 @@ const MainCopyTrader = observer(() => {
     const {
         ui: { is_dark_mode_on },
     } = store;
-    const { run_panel, dashboard } = useDBotStore();
     const [tokens, setTokens] = React.useState<string[]>([]);
     const [tokenInputValue, setTokenInputValue] = React.useState<string>('');
     const [animatingIds, setAnimatingIds] = React.useState<string[]>([]);
@@ -35,7 +34,6 @@ const MainCopyTrader = observer(() => {
     const [wasTokens, setWasTokens] = React.useState(false);
     const [enableCP, setEnableCP] = React.useState(false);
     const [syncing, setSyncing] = React.useState(false);
-    const { is_drawer_open } = run_panel;
 
     React.useEffect(() => {
         getSavedTokens();

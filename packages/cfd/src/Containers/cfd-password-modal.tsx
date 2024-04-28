@@ -590,7 +590,7 @@ const CFDPasswordModal = observer(({ form_error, platform }: TCFDPasswordModalPr
     const history = useHistory();
 
     const [is_password_modal_exited, setPasswordModalExited] = React.useState(true);
-    const is_bvi = landing_companies?.mt_financial_company?.financial_stp?.shortcode === 'bvi';
+    const is_bvi =  'bvi';
     const has_mt5_account = Boolean(mt5_login_list?.length);
     const should_set_trading_password =
         Array.isArray(account_status?.status) &&
@@ -862,7 +862,7 @@ const CFDPasswordModal = observer(({ form_error, platform }: TCFDPasswordModalPr
 
     const cfd_password_form = (
         <CFDPasswordForm
-            is_bvi={is_bvi}
+            is_bvi={true}
             closeModal={closeModal}
             error_type={error_type}
             error_message={error_message}

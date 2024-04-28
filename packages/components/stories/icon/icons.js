@@ -247,7 +247,6 @@ export const icons =
         'IcCashier'
     ],
     'common': [
-        'IcBinarytool',
         'IcAccountCross',
         'IcAccountDontGetScam',
         'IcAccountError',

@@ -50,7 +50,7 @@ const TopUpDemoModal = observer(({ platform }: TTopUpDemoModalProps) => {
 
     const ctrader_companies = getCTraderCompanies();
     const dxtrade_companies = getDxCompanies();
-    const mt5_companies = getMtCompanies(isEuRegion);
+    const mt5_companies = getMtCompanies(false);
 
     const topUpVirtual = async (platform: string) => {
         if (platform === CFD_PLATFORMS.MT5) {

@@ -297,6 +297,8 @@ export const icons =
         'IcBank',
         'IcBell',
         'IcBeyonic',
+        'IcBinarybot',
+        'IcBinarydbot',
         'IcBlackWarning',
         'IcBlock',
         'IcBlockedAdvertisersBarred',

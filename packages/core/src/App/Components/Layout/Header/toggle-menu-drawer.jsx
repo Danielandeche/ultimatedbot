@@ -321,7 +321,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                                 <MobileDrawer.Item>
                                     <MenuLink
                                         link_to="https://app.binarytool.site/bot"
-                                        icon='IcBinaryDBot'
+                                        icon='IcBinarydbot'
                                         text={localize('Binary DBot')}
                                         onClickLink={toggleDrawer}
                                     />
@@ -329,7 +329,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                                 <MobileDrawer.Item>
                                     <MenuLink
                                         link_to="https://block.binarytool.site"
-                                        icon='IcBinaryBot'
+                                        icon='IcBinarybot'
                                         text={localize('Binary Bot')}
                                         onClickLink={toggleDrawer}
                                     />

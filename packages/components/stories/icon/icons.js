@@ -796,8 +796,6 @@ export const icons =
         'IcOptionUpDownAsian'
     ],
     'rebranding': [
-        'IcBinaryBot',
-        'IcBinaryDBot',
         'IcRebrandingBinaryBot',
         'IcRebrandingCtraderDashboard',
         'IcRebrandingDerivBotDashboard',

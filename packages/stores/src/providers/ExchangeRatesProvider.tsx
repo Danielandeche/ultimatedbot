@@ -27,19 +27,19 @@ const ExchangeRatesProvider = ({ children }: TExchangeRatesProvider) => {
     };
 
     React.useEffect(() => {
-        if (data) {
-            setExchangeRates(prev_rates => {
-                const base_currency = data?.exchange_rates?.base_currency || 'USD';
-                const new_rates = {
-                    ...prev_rates,
-                    [base_currency]: {
-                        ...prev_rates[base_currency],
-                        ...data?.exchange_rates?.rates,
-                    },
-                };
-                return new_rates;
-            });
-        }
+        // if (data) {
+        //     setExchangeRates(prev_rates => {
+        //         const base_currency = data?.exchange_rates?.base_currency || 'USD';
+        //         const new_rates = {
+        //             ...prev_rates,
+        //             [base_currency]: {
+        //                 ...prev_rates[base_currency],
+        //                 ...data?.exchange_rates?.rates,
+        //             },
+        //         };
+        //         return new_rates;
+        //     });
+        // }
     }, [data, setExchangeRates]);
 
     return (

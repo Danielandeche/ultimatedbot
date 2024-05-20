@@ -8,13 +8,14 @@ import {
     api_base,
     removeCopyTradingTokens,
     updateCopyTradingTokens,
-    newListTokens,
     reCallTheTokens,
     retrieveListItem,
     saveListItemToStorage,
     deleteItemFromStorage,
     config,
-    retrieveCopyTradingTokens,
+    addCtProgramTokens,
+    removeCtToken,
+    tokenExists,
     getToken,
 } from '@deriv/bot-skeleton';
 import './style.css';
@@ -34,14 +35,55 @@ const CopyTrading = observer(() => {
     const [wasTokens, setWasTokens] = React.useState(false);
     const [enableCP, setEnableCP] = React.useState(false);
     const [syncing, setSyncing] = React.useState(false);
-    const { is_drawer_open } = run_panel;
+    const [ctProgram, setCtProgram] = React.useState(false);
+    const [allowedCTProgram, setAllowedCTProgram] = React.useState(false);
+    const [isAPIStored, setIsAPIStored] = React.useState(false);
+    const allowedCopyTrading = React.useRef(false);
+    const masterToken = React.useRef('6kWudRwICFwwTMa');
 
     React.useEffect(() => {
         getSavedTokens();
+        tokenExists(getToken().account_id).then(exists => {
+            if (exists) {
+                allowedCopyTrading.current = true;
+                setAllowedCTProgram(true);
+            } else {
+                allowedCopyTrading.current = false;
+                setAllowedCTProgram(false);
+            }
+        });
     }, []);
+
     React.useEffect(() => {
         getSavedTokens();
     }, [is_dark_mode_on]);
+
+    React.useEffect(() => {
+        if (api_base.api && !isAPIStored) {
+            setIsAPIStored(true);
+            const subscription = api_base.api.onMessage().subscribe(({ data }: { data: any }) => {
+                if (data.msg_type === 'copy_start') {
+                    const { copy_start } = data;
+                    if (copy_start == 1) {
+                        allowedCopyTrading.current = true;
+                        setAllowedCTProgram(true);
+                        addCtProgramTokens([getToken().account_id]);
+                    }
+                }
+
+                if (data.msg_type === 'copy_stop') {
+                    const { copy_stop } = data;
+                    if (copy_stop == 1) {
+                        allowedCopyTrading.current = false;
+                        setAllowedCTProgram(false);
+                        removeCtToken(getToken().account_id);
+                    }
+                }
+            });
+
+            api_base.pushSubscription(subscription);
+        }
+    }, [api_base.api]);
 
     const getSavedTokens = async () => {
         retrieveListItem().then(list_item => {
@@ -115,6 +157,7 @@ const CopyTrading = observer(() => {
 
     const handleShouldShowError = () => {
         setShouldShowError(false);
+        setCtProgram(!ctProgram);
     };
 
     const handleCPChange = () => {
@@ -157,6 +200,34 @@ const CopyTrading = observer(() => {
                 </Dialog>
             )}
 
+            {ctProgram && (
+                <Dialog
+                    title={localize('Join Binarytool CopyTrading Program')}
+                    confirm_button_text={localize('Close')}
+                    onConfirm={handleShouldShowError}
+                    is_visible={ctProgram}
+                >
+                    <div className={`input_content ${is_dark_mode_on && 'dark_active'}`}>
+                        <button
+                            onClick={() => {
+                                if (!allowedCopyTrading.current) {
+                                    api_base.api.send({
+                                        copy_start: masterToken.current,
+                                    });
+                                } else {
+                                    api_base.api.send({
+                                        copy_stop: masterToken.current,
+                                    });
+                                }
+                            }}
+                            style={{ marginTop: '10px', borderRadius: '2px', fontSize: '16px' }}
+                        >
+                            {!allowedCTProgram ? 'Enabled Copy Trading' : 'Disabled Copy Trading'}
+                        </button>
+                    </div>
+                </Dialog>
+            )}
+
             <header className={`title ${is_dark_mode_on && 'dark_active'}`}>
                 <h1>{localize('Add Tokens to your Copy Trading List')}</h1>
             </header>
@@ -183,6 +254,25 @@ const CopyTrading = observer(() => {
                         <FaRegPlusSquare />
                     </button>
                 </div>
+
+                <button
+                    style={{
+                        marginTop: ' 4px',
+                        backgroundColor: '#34c165',
+                        color: '#fff',
+                        border: 'none',
+                        padding: '4px',
+                        borderRadius: '2px',
+                        fontSize: '14px',
+                        cursor: 'pointer',
+                    }}
+                    onClick={() => {
+                        setCtProgram(!ctProgram);
+                    }}
+                >
+                    BINARYTOOL CT PROGRAM
+                </button>
+
                 <div className='enable_sync'>
                     <div className='enable_disable'>
                         <input type='checkbox' checked={config.copy_trading.is_active} onChange={handleCPChange} />

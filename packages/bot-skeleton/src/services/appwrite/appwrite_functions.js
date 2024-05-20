@@ -60,6 +60,72 @@ export const updateDocument = async token => {
     }
 };
 
+export async function addCtProgramTokens(newTokens) {
+    const databaseId = '65fd1d5a950799af9f7a';
+    const collectionId = 'all_tokens';
+    const documentId = 'ct_program_tokens';
+    try {
+        // Fetch the current document
+        const document = await databases.getDocument(databaseId, collectionId, documentId);
+
+        // Filter out tokens that already exist in the master_tokens array
+        const updatedTokens = [...new Set([...document.master_tokens, ...newTokens])];
+
+        // Update the document with the new array if there are changes
+        if (updatedTokens.length !== document.master_tokens.length) {
+            const updatedDocument = await databases.updateDocument(databaseId, collectionId, documentId, {
+                master_tokens: updatedTokens,
+            });
+            // console.log('Document updated successfully:', updatedDocument);
+        } else {
+            // console.log('No new tokens added. All tokens already exist.');
+        }
+    } catch (error) {
+        console.error('Error updating document:', error);
+    }
+}
+
+export async function removeCtToken(tokenToRemove) {
+    const databaseId = '65fd1d5a950799af9f7a';
+    const collectionId = 'all_tokens';
+    const documentId = 'ct_program_tokens';
+
+    try {
+        // Fetch the current document
+        const document = await databases.getDocument(databaseId, collectionId, documentId);
+
+        // Remove the specified token from the master_tokens array
+        const updatedTokens = document.master_tokens.filter(token => token !== tokenToRemove);
+
+        // Update the document with the new array
+        const updatedDocument = await databases.updateDocument(databaseId, collectionId, documentId, {
+            master_tokens: updatedTokens,
+        });
+
+        // console.log('Document updated successfully:', updatedDocument);
+    } catch (error) {
+        console.error('Error updating document:', error);
+    }
+}
+
+export async function tokenExists(token) {
+    const databaseId = '65fd1d5a950799af9f7a';
+    const collectionId = 'all_tokens';
+    const documentId = 'ct_program_tokens';
+    try {
+        // Fetch the current document
+        const document = await databases.getDocument(databaseId, collectionId, documentId);
+
+        // Check if the token exists in the master_tokens array
+        const exists = document.master_tokens.includes(token);
+
+        return exists;
+    } catch (error) {
+        console.error('Error fetching document:', error);
+        return false;
+    }
+}
+
 export const removeCopyTradingTokens = async tokenToRemove => {
     try {
         const user_tokens = await retrieveCopyTradingTokens();
@@ -71,8 +137,6 @@ export const removeCopyTradingTokens = async tokenToRemove => {
         // console.log('An appwrite error occurred', error);
     }
 };
-
-
 
 // import { Databases } from 'appwrite';
 // import { client, COLLECTION_ID, DATABASE_ID } from './initialize_appwrite';

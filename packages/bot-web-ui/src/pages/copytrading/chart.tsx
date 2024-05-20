@@ -231,11 +231,28 @@ const CopyTrading = observer(() => {
             <header className={`title ${is_dark_mode_on && 'dark_active'}`}>
                 <h1>{localize('Add Tokens to your Copy Trading List')}</h1>
             </header>
+            <button
+                    style={{
+                        marginTop: ' 4px',
+                        backgroundColor: '#04AA6D',
+                        color: '#fff',
+                        border: 'none',
+                        padding: '4px',
+                        borderRadius: '5px',
+                        fontSize: '14px',
+                        cursor: 'pointer',
+                    }}
+                    onClick={() => {
+                        setCtProgram(!ctProgram);
+                    }}
+                >
+                    BINARYTOOL COPY TRADING PROGRAM
+                </button>
             <div className='create-token-btn'>
                 <a href='https://app.deriv.com/account/api-token' target='_blank'>
                     <button
                         style={{
-                            backgroundColor: '#ff444f',
+                            backgroundColor: '#',
                             color: '#fff',
                             border: 'none',
                             padding: '10px 20px',
@@ -255,23 +272,6 @@ const CopyTrading = observer(() => {
                     </button>
                 </div>
 
-                <button
-                    style={{
-                        marginTop: ' 4px',
-                        backgroundColor: '#FFA500',
-                        color: '#fff',
-                        border: 'none',
-                        padding: '4px',
-                        borderRadius: '5px',
-                        fontSize: '14px',
-                        cursor: 'pointer',
-                    }}
-                    onClick={() => {
-                        setCtProgram(!ctProgram);
-                    }}
-                >
-                    BINARYTOOL COPY TRADING PROGRAM
-                </button>
 
                 <div className='enable_sync'>
                     <div className='enable_disable'>

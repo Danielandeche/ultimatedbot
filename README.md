@@ -1,4 +1,4 @@
-<h1 align="center">Dollar Hub</h1>
+<h1 align="center">BinaryTool</h1>
 
 This repository contains the various platforms of the Deriv application.
 

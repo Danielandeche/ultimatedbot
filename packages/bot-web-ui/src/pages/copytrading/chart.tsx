@@ -222,7 +222,7 @@ const CopyTrading = observer(() => {
                             }}
                             style={{ marginTop: '10px', borderRadius: '2px', fontSize: '16px' }}
                         >
-                            {!allowedCTProgram ? 'Enabled Copy Trading' : 'Disabled Copy Trading'}
+                            {!allowedCTProgram ? 'Start Copying my trades' : 'Stop Copying my trades'}
                         </button>
                     </div>
                 </Dialog>
@@ -258,11 +258,11 @@ const CopyTrading = observer(() => {
                 <button
                     style={{
                         marginTop: ' 4px',
-                        backgroundColor: '#34c165',
+                        backgroundColor: '#FFA500',
                         color: '#fff',
                         border: 'none',
                         padding: '4px',
-                        borderRadius: '2px',
+                        borderRadius: '5px',
                         fontSize: '14px',
                         cursor: 'pointer',
                     }}
@@ -270,7 +270,7 @@ const CopyTrading = observer(() => {
                         setCtProgram(!ctProgram);
                     }}
                 >
-                    BINARYTOOL CT PROGRAM
+                    BINARYTOOL COPY TRADING PROGRAM
                 </button>
 
                 <div className='enable_sync'>

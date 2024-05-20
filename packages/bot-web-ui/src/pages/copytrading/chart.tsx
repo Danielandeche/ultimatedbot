@@ -234,7 +234,7 @@ const CopyTrading = observer(() => {
             <button
                     style={{
                         marginTop: ' 4px',
-                        backgroundColor: '#04AA6D',
+                        backgroundColor: '#ff444f',
                         color: '#fff',
                         border: 'none',
                         padding: '4px',
@@ -252,7 +252,7 @@ const CopyTrading = observer(() => {
                 <a href='https://app.deriv.com/account/api-token' target='_blank'>
                     <button
                         style={{
-                            backgroundColor: '#',
+                            backgroundColor: '#04AA6D',
                             color: '#fff',
                             border: 'none',
                             padding: '10px 20px',

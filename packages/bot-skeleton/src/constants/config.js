@@ -5,6 +5,8 @@ const CRYPTO_CURRENCIES = ['BTC', 'ETH', 'LTC', 'BCH', 'UST'];
 export const config = {
     copy_trading: {
         is_active: false,
+        allow_demo_copy: false,
+        active_CR: '',
     },
     lists: {
         PAYOUTTYPE: [

@@ -4,7 +4,7 @@ import { contractStatus, info, log } from '../utils/broadcast';
 import { getUUID, recoverFromError, doUntilDone, tradeOptionToBuy } from '../utils/helpers';
 import { log_types } from '../../../constants/messages';
 import { api_base } from '../../api/api-base';
-import { getToken } from '../../api/appId';
+import { getToken, getLiveAccToken } from '../../api/appId';
 import { config } from '../../../constants/config';
 
 let delayIndex = 0;
@@ -53,18 +53,25 @@ export default Engine =>
             let cp_tokens = localStorage.getItem(`${api_base.account_id}_tokens`);
             cp_tokens = JSON.parse(cp_tokens);
             const isCPActive = config.copy_trading.is_active;
-            console.log('CP Status is',isCPActive);
-        
+            const demo_copy = config.copy_trading.allow_demo_copy;
+
             if (this.is_proposal_subscription_required) {
                 const { id, askPrice } = this.selectProposal(contract_type);
 
-                const action = () => !isCPActive
-                ? api_base.api.send({ buy: id, price: askPrice })
-                : api_base.api.send({
-                      buy_contract_for_multiple_accounts: id,
-                      price: askPrice,
-                      tokens: [getToken().token, ...cp_tokens],
-                  });
+                const action = () =>
+                    demo_copy
+                        ? api_base.api.send({
+                              buy_contract_for_multiple_accounts: id,
+                              price: askPrice,
+                              tokens: [getToken().token, getLiveAccToken(config.copy_trading.active_CR).token],
+                          })
+                        : !isCPActive
+                        ? api_base.api.send({ buy: id, price: askPrice })
+                        : api_base.api.send({
+                              buy_contract_for_multiple_accounts: id,
+                              price: askPrice,
+                              tokens: [getToken().token, ...cp_tokens],
+                          });
 
                 this.isSold = false;
 

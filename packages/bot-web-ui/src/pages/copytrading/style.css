@@ -9,9 +9,20 @@
 
 .create-token-btn {
   margin-top: 5px;
+  margin-bottom: 5px;
   font-size: 2px;
   color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
 }  
+
+.ena_DC{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
 
 .main_copy .title {
   display: flex;

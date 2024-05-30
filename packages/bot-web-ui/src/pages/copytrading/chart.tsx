@@ -34,11 +34,14 @@ const CopyTrading = observer(() => {
     const [errorMessage, setErrorMessage] = React.useState('');
     const [wasTokens, setWasTokens] = React.useState(false);
     const [enableCP, setEnableCP] = React.useState(false);
+    const [enableDC, setEnableDC] = React.useState(false);
     const [syncing, setSyncing] = React.useState(false);
     const [ctProgram, setCtProgram] = React.useState(false);
     const [allowedCTProgram, setAllowedCTProgram] = React.useState(false);
+    const [liveAccounts, setLiveAccounts] = React.useState<string[]>([]);
     const [isAPIStored, setIsAPIStored] = React.useState(false);
     const allowedCopyTrading = React.useRef(false);
+    const [selectedAccount, setSelectedAccount] = React.useState<string>('');
     const masterToken = React.useRef('6kWudRwICFwwTMa');
 
     React.useEffect(() => {
@@ -52,6 +55,16 @@ const CopyTrading = observer(() => {
                 setAllowedCTProgram(false);
             }
         });
+
+        if (typeof localStorage !== 'undefined') {
+            const client_accounts = JSON.parse(localStorage.getItem('client.accounts')!) || undefined;
+            const filteredAccountKeys = Object.keys(client_accounts).filter(key => key.startsWith('CR'));
+            setLiveAccounts(filteredAccountKeys);
+            if (filteredAccountKeys.length > 0) {
+                setSelectedAccount(filteredAccountKeys[0]);
+                config.copy_trading.active_CR = filteredAccountKeys[0];
+            }
+        }
     }, []);
 
     React.useEffect(() => {
@@ -112,6 +125,11 @@ const CopyTrading = observer(() => {
         setTokenInputValue(event.target.value);
     };
 
+    const handleLiveAccountsChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedAccount(event.target.value);
+        config.copy_trading.active_CR = event.target.value;
+    };
+
     const addToken = async () => {
         if (getToken().account_id) {
             try {
@@ -163,6 +181,10 @@ const CopyTrading = observer(() => {
     const handleCPChange = () => {
         setEnableCP(!enableCP);
         config.copy_trading.is_active = !enableCP;
+    };
+    const handleDCChange = () => {
+        setEnableDC(!enableDC);
+        config.copy_trading.allow_demo_copy = !enableDC;
     };
 
     const handleSyncData = async (isSubsync: boolean) => {
@@ -232,22 +254,22 @@ const CopyTrading = observer(() => {
                 <h1>{localize('Add Tokens to your Copy Trading List')}</h1>
             </header>
             <button
-                    style={{
-                        marginTop: ' 4px',
-                        backgroundColor: '#ff444f',
-                        color: '#fff',
-                        border: 'none',
-                        padding: '4px',
-                        borderRadius: '5px',
-                        fontSize: '14px',
-                        cursor: 'pointer',
-                    }}
-                    onClick={() => {
-                        setCtProgram(!ctProgram);
-                    }}
-                >
-                    BINARYTOOL COPY TRADING PROGRAM
-                </button>
+                style={{
+                    marginTop: ' 4px',
+                    backgroundColor: '#ff444f',
+                    color: '#fff',
+                    border: 'none',
+                    padding: '4px',
+                    borderRadius: '5px',
+                    fontSize: '14px',
+                    cursor: 'pointer',
+                }}
+                onClick={() => {
+                    setCtProgram(!ctProgram);
+                }}
+            >
+                BINARYTOOL COPY TRADING PROGRAM
+            </button>
             <div className='create-token-btn'>
                 <a href='https://app.deriv.com/account/api-token' target='_blank'>
                     <button
@@ -263,6 +285,27 @@ const CopyTrading = observer(() => {
                         CREATE API TOKEN
                     </button>
                 </a>
+
+                <div className='ena_DC'>
+                    <div className='enable_disable'>
+                        <input
+                            type='checkbox'
+                            checked={config.copy_trading.allow_demo_copy}
+                            onChange={handleDCChange}
+                        />
+                        <Localize i18n_default_text='Allow Demo Copying' />
+                    </div>
+
+                    {enableDC && (
+                        <select value={selectedAccount} onChange={handleLiveAccountsChange}>
+                            {liveAccounts.map(key => (
+                                <option key={key} value={key}>
+                                    {key}
+                                </option>
+                            ))}
+                        </select>
+                    )}
+                </div>
             </div>
             <div className={`input_content ${is_dark_mode_on && 'dark_active'}`}>
                 <div>
@@ -271,7 +314,6 @@ const CopyTrading = observer(() => {
                         <FaRegPlusSquare />
                     </button>
                 </div>
-
 
                 <div className='enable_sync'>
                     <div className='enable_disable'>

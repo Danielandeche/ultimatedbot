@@ -166,7 +166,7 @@ const AppWrapper = observer(() => {
                         />
                         <div
                             icon='IcFullStar'
-                            label={<Localize i18n_default_text='Binarytool Bots' />}
+                            label={<Localize i18n_default_text='Binarytool Bot' />}
                             id='id-dbot-binarytools-bots'
                         >
                             <BinaryToolsBots handleTabChange={handleTabChange} />

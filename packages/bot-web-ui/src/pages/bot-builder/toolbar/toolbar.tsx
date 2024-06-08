@@ -38,15 +38,6 @@ const Toolbar = observer(() => {
         <React.Fragment>
             <div className='toolbar dashboard__toolbar' data-testid='dashboard__toolbar'>
                 <div className='toolbar__section'>
-                    {is_mobile && (
-                        <ToolbarButton
-                            popover_message={localize('Click here to start building your Binarytool Bot.')}
-                            button_id='db-toolbar__get-started-button'
-                            button_classname='toolbar__btn toolbar__btn--icon toolbar__btn--start'
-                            buttonOnClick={handleQuickStrategyOpen}
-                            button_text={localize('Quick strategy')}
-                        />
-                    )}
                     <WorkspaceGroup
                         has_redo_stack={has_redo_stack}
                         has_undo_stack={has_undo_stack}

@@ -26,7 +26,7 @@ import ap10 from './xml/binarytools_bots/M7M Ver 4.2 Still Amazing.xml';
 import ap11 from './xml/binarytools_bots/MASTER SET VERSION 4.5.xml';
 import ap12 from './xml/binarytools_bots/TRADE CITY BOT Version 1.2.xml';
 export const binarytools_bot_list = [
-    { id:+ 0, name: 'Rise-Fall Equals Antenna Ai DBot', xml: ap1 },
+    { id: 0, name: 'Rise-Fall Equals Antenna Ai DBot', xml: ap1 },
     { id: 1, name: 'Higher_Lower JET Candles Ai D-Bot', xml: ap2 },
     { id: 2, name: 'Ultimate Even-Odd Switcher Ai D-Bot', xml: ap3 },
     { id: 3, name: 'iRace Candlesticks Patterns Ai D-Bot', xml: ap4 },

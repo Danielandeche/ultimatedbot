@@ -74,17 +74,6 @@ const BinaryToolsBots = observer(({ handleTabChange }: TMobileIconGuide) => {
                                     {localize('Load or build your bot')}
                                 </Text>
                             )}
-                            <Text
-                                as='p'
-                                color='prominent'
-                                line_height='s'
-                                size={is_mobile ? 'xxs' : 's'}
-                                className={classNames('subtitle', { 'subtitle__has-list': has_dashboard_strategies })}
-                            >
-                                {localize(
-                                    "Maximizing Profit Potential in Deriv Trading: Embrace Efficiency with BinaryTool Bots as Your Automated Trading Allies 📈💼 Let the Algorithms Work for You! #TradeSmart"
-                                )}
-                            </Text>
                         </div>
                         <div
                             className={classNames('tab__dashboard__centered', {

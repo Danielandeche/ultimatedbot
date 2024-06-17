@@ -14,6 +14,7 @@ import { useDBotStore } from 'Stores/useDBotStore';
 import RunPanel from '../../components/run-panel';
 import StrategyNotification from '../../components/strategy-notification';
 import AnalysisTool from '../analysistool';
+import Strategies from '../strategies';
 import ChartModal from '../chart/chart-modal';
 import Chart from '../chart';
 import Dashboard from '../dashboard';
@@ -46,7 +47,7 @@ const AppWrapper = observer(() => {
     const init_render = React.useRef(true);
     const { ui } = useStore();
     const { url_hashed_values, is_mobile } = ui;
-    const hash = ['dashboard', 'bot_builder', 'binarytools_bots', 'copytrading', 'analysistool', 'tradingview', 'chart', 'tutorial'];
+    const hash = ['dashboard', 'bot_builder', 'binarytools_bots', 'copytrading', 'analysistool', 'strategies', 'tradingview', 'chart', 'tutorial'];
 
     let tab_value: number | string = active_tab;
     const GetHashedValue = (tab: number) => {
@@ -192,6 +193,17 @@ const AppWrapper = observer(() => {
                             }
                         >
                             <AnalysisTool />
+                        </div>
+                        <div
+                            icon='IcTradingview'
+                            label={<Localize i18n_default_text='Strategies' />}
+                            id={
+                                is_chart_modal_visible || is_trading_view_modal_visible
+                                    ? 'id-charts--disabled'
+                                    : 'id-charts'
+                            }
+                        >
+                            <Strategies />
                         </div>
                         <div
                             icon='IcTradingview'

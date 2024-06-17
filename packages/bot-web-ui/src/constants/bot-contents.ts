@@ -17,9 +17,9 @@ export const DBOT_TABS: TDashboardTabIndex = Object.freeze({
     BINARYTOOLS_BOTS: 2,
     COPYTRADING: 3,
     ANALYSISTOOL: 4,
-    TRADING_VIEW: 5,
-    CHART: 6,
-    TUTORIAL: 7,
+    TRADING_VIEW: 6,
+    CHART: 7,
+    TUTORIAL: 8,
 });
 
 export const MAX_STRATEGIES = 10;

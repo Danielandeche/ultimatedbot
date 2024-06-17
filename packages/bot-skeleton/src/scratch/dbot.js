@@ -13,31 +13,27 @@ import { isAllRequiredBlocksEnabled, updateDisabledBlocks, validateErrorOnBlockD
 import './blockly';
 
 // Custom Bots
-import ap1 from './xml/binarytools_bots/Rise-Fall Equals Antenna Ai DBot.xml';
-import ap2 from './xml/binarytools_bots/Higher_Lower JET Candles Ai D-Bot.xml';
-import ap3 from './xml/binarytools_bots/Ultimate Even-Odd Switcher Ai D-Bot.xml';
-import ap4 from './xml/binarytools_bots/iRace Candlesticks Patterns Ai D-Bot.xml';
-import ap5 from './xml/binarytools_bots/7_Sequence Digits Ai DBot .xml';
-import ap6 from './xml/binarytools_bots/$DollarprinterbotOrignal$.xml';
-import ap7 from './xml/binarytools_bots/Dollar Printer KE.xml';
-import ap8 from './xml/binarytools_bots/360 Printer Bot [Original].xml';
-import ap9 from './xml/binarytools_bots/Genos 2023 OVER_UNDER Bot.xml';
-import ap10 from './xml/binarytools_bots/M7M Ver 4.2 Still Amazing.xml';
-import ap11 from './xml/binarytools_bots/MASTER SET VERSION 4.5.xml';
-import ap12 from './xml/binarytools_bots/TRADE CITY BOT Version 1.2.xml';
+import ap1 from './xml/binarytools_bots/Even-Odd {Run after 30 Seconds}.xml';
+import ap2 from './xml/binarytools_bots/AUTO C4 VOLT 🇬🇧 2 🇬🇧 AI PREMIUM ROBOT.xml';
+import ap3 from './xml/binarytools_bots/$DollarprinterbotOrignal$.xml';
+import ap4 from './xml/binarytools_bots/Big  Boyz Rise fall.xml';
+import ap5 from './xml/binarytools_bots/GREEN GOAT V1.xml';
+import ap6 from './xml/binarytools_bots/KTT 77 Battalion Pro Max.xml';
+import ap7 from './xml/binarytools_bots/KTT Russian V12 Bot.xml';
+import ap8 from './xml/binarytools_bots/KTT Small Account Bot.xml';
+import ap9 from './xml/binarytools_bots/M27 Auto Switch bot 2024.xml';
+import ap10 from './xml/binarytools_bots/TRADE CITY BOT Version 2.0.xml';
 export const binarytools_bot_list = [
-    { id: 0, name: 'Rise-Fall Equals Antenna Ai DBot', xml: ap1 },
-    { id: 1, name: 'Higher_Lower JET Candles Ai D-Bot', xml: ap2 },
-    { id: 2, name: 'Ultimate Even-Odd Switcher Ai D-Bot', xml: ap3 },
-    { id: 3, name: 'iRace Candlesticks Patterns Ai D-Bot', xml: ap4 },
-    { id: 4, name: '7_Sequence Digits Ai DBot', xml: ap5 },
-    { id: 5, name: '$DollarprinterbotOrignal$', xml: ap6 },
-    { id: 6, name: 'Dollar Printer KE', xml: ap7 },
-    { id: 7, name: '360 Printer Bot [Original]', xml: ap8 },
-    { id: 8, name: 'Genos 2023 OVER_UNDER Bot', xml: ap9 },
-    { id: 9, name: 'M7M Ver 4.2 Still Amazing', xml: ap10 },
-    { id: 10, name: 'MASTER SET VERSION 4.5', xml: ap11 },
-    { id: 11, name: 'TRADE CITY BOT Version 1.2', xml: ap12 },
+    { id: 0, name: 'Even-Odd {Run after 30 Seconds}', xml: ap1 },
+    { id: 1, name: 'AUTO C4 VOLT 🇬🇧 2 🇬🇧 AI PREMIUM ROBOT', xml: ap2 },
+    { id: 2, name: '$DollarprinterbotOrignal$', xml: ap3 },
+    { id: 3, name: 'Big  Boyz Rise fall', xml: ap4 },
+    { id: 4, name: 'GREEN GOAT V1', xml: ap5 },
+    { id: 5, name: 'KTT 77 Battalion Pro Max', xml: ap6 },
+    { id: 6, name: 'KTT Russian V12 Bot', xml: ap7 },
+    { id: 7, name: 'KTT Small Account Bot', xml: ap8 },
+    { id: 8, name: 'M27 Auto Switch bot 2024', xml: ap9 },
+    { id: 9, name: 'TRADE CITY BOT Version 2.0', xml: ap10 },
 ]
 class DBot {
     constructor() {

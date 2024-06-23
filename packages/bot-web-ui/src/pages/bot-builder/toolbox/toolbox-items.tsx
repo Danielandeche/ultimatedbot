@@ -164,6 +164,9 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                         </Shadow>
                     </Value>
                 </Block>
+
+                <Block type='set_tp' />
+                <Block type='set_sl' />
             </Category>
         </Category>
         <Category id='analysis' name={localize('Analysis')}>

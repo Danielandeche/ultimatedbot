@@ -3,6 +3,10 @@ import { localize } from '@deriv/translations';
 const CRYPTO_CURRENCIES = ['BTC', 'ETH', 'LTC', 'BCH', 'UST'];
 
 export const config = {
+    show_notifications: {
+        show_tp: false,
+        show_sl: false,
+    },
     copy_trading: {
         is_active: false,
         allow_demo_copy: false,

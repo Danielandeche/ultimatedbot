@@ -12,8 +12,8 @@ export {
     retrieveCopyTradingTokens,
     addCtProgramTokens,
     removeCtToken,
-    tokenExists
-    
+    tokenExists,
+    mantain_tp_sl_block
 } from '../appwrite/appwrite_functions';
 export {
     newListTokens,

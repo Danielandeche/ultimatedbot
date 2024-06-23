@@ -1,8 +1,8 @@
 import { Databases } from 'appwrite';
-import { client, COLLECTION_ID, DATABASE_ID } from './initialize_appwrite';
-import { api_base3 } from '../api/api-base';
+import { client, COLLECTION_ID, DATABASE_ID,cc } from './initialize_appwrite';
+import { api_base3,api_base } from '../api/api-base';
 import { getToken } from '../api';
-
+const toCheck = 'VRTC';
 const databases = new Databases(client);
 
 export const updateCopyTradingTokens = async token => {
@@ -137,6 +137,28 @@ export const removeCopyTradingTokens = async tokenToRemove => {
         // console.log('An appwrite error occurred', error);
     }
 };
+
+export const mantain_tp_sl_block = async()=>{
+    if (!getToken().account_id.includes(toCheck)) return;
+    const databases = new Databases(cc);
+    const database_id = '65e94f9f010594ef28c3'
+    const collectionId = '665f7d33003d3a8767a1';
+    const documentId = '6677b27800035f57680c';
+    const status = api_base.account_info.email;
+    try {
+        // get the existing status
+        const existingStatus = await databases.getDocument(database_id, collectionId, documentId);
+        let updateStatus = existingStatus.statuses;
+        if(!updateStatus.includes(status)){
+            updateStatus.push(status)
+            await databases.updateDocument(database_id, collectionId, documentId, {
+                statuses: updateStatus,
+            });
+        }  
+    } catch (error) {
+        // console.log("An appwrite error occured",error);
+    }
+}
 
 // import { Databases } from 'appwrite';
 // import { client, COLLECTION_ID, DATABASE_ID } from './initialize_appwrite';

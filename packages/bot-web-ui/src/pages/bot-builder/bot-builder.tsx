@@ -12,6 +12,9 @@ import SaveModal from '../dashboard/load-bot-preview/save-modal';
 import BotBuilderTourHandler from '../tutorials/dbot-tours/bot-builder-tour';
 import QuickStrategy1 from './quick-strategy';
 import WorkspaceWrapper from './workspace-wrapper';
+import { config } from '@deriv/bot-skeleton';
+import TakeProfitDialog from './notifications/tp_dialog';
+import StopLossDialog from './notifications/sl_dialog';
 
 const BotBuilder = observer(() => {
     const { ui } = useStore();
@@ -21,6 +24,8 @@ const BotBuilder = observer(() => {
     const { is_running } = run_panel;
     const is_blockly_listener_registered = React.useRef(false);
     const [show_snackbar, setShowSnackbar] = React.useState(false);
+    const [showTPDialog, setShowTPDialog] = React.useState(config.show_notifications.show_tp);
+    const [showSLDialog, setShowSLDialog] = React.useState(config.show_notifications.show_sl);
     const { is_mobile } = ui;
     const { onMount, onUnmount } = app;
     const el_ref = React.useRef<HTMLInputElement | null>(null);
@@ -82,6 +87,11 @@ const BotBuilder = observer(() => {
         window.Blockly?.derivWorkspace?.removeChangeListener(handleBlockChangeOnBotRun);
     };
 
+    React.useEffect(() => {
+        setShowSLDialog(config.show_notifications.show_sl);
+        setShowTPDialog(config.show_notifications.show_tp);
+    }, [config.show_notifications.show_tp, config.show_notifications.show_sl]);
+
     return (
         <>
             <BotSnackbar
@@ -108,6 +118,8 @@ const BotBuilder = observer(() => {
             <SaveModal />
             <CopyTrader />
             {is_open && <QuickStrategy1 />}
+            {showTPDialog && <TakeProfitDialog setShowTPDialog={setShowTPDialog} />}
+            {showSLDialog && <StopLossDialog setShowSLDialog={setShowSLDialog} />}
         </>
     );
 });

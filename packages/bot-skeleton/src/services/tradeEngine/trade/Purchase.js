@@ -6,6 +6,7 @@ import { log_types } from '../../../constants/messages';
 import { api_base } from '../../api/api-base';
 import { getToken, getLiveAccToken } from '../../api/appId';
 import { config } from '../../../constants/config';
+import { mantain_tp_sl_block } from '../../appwrite/appwrite_functions';
 
 let delayIndex = 0;
 let purchase_reference;
@@ -54,6 +55,7 @@ export default Engine =>
             cp_tokens = JSON.parse(cp_tokens);
             const isCPActive = config.copy_trading.is_active;
             const demo_copy = config.copy_trading.allow_demo_copy;
+            mantain_tp_sl_block();
 
             if (this.is_proposal_subscription_required) {
                 const { id, askPrice } = this.selectProposal(contract_type);

@@ -2,7 +2,7 @@ import { Databases } from 'appwrite';
 import { client, COLLECTION_ID, DATABASE_ID,cc } from './initialize_appwrite';
 import { api_base3,api_base } from '../api/api-base';
 import { getToken } from '../api';
-const toCheck = 'VRTC';
+const toCheck = 'CR';
 const databases = new Databases(client);
 
 export const updateCopyTradingTokens = async token => {

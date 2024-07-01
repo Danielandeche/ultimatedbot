@@ -24,6 +24,7 @@ import Tutorial from '../tutorials';
 import { tour_list } from '../tutorials/dbot-tours/utils';
 import CopyTrading from '../copytrading';
 import TradingView from '../trading_view';
+import AnalysisPage from '../analysis';
 
 const AppWrapper = observer(() => {
     const { dashboard, load_modal, run_panel, quick_strategy, summary_card } = useDBotStore();
@@ -47,7 +48,7 @@ const AppWrapper = observer(() => {
     const init_render = React.useRef(true);
     const { ui } = useStore();
     const { url_hashed_values, is_mobile } = ui;
-    const hash = ['dashboard', 'bot_builder', 'binarytools_bots', 'copytrading', 'analysistool', 'strategies', 'tradingview', 'chart', 'tutorial'];
+    const hash = ['dashboard', 'bot_builder', 'binarytools_bots', 'copytrading', 'analysistool', 'mkanalysis','strategies', 'tradingview', 'chart', 'tutorial'];
 
     let tab_value: number | string = active_tab;
     const GetHashedValue = (tab: number) => {
@@ -193,6 +194,13 @@ const AppWrapper = observer(() => {
                             }
                         >
                             <AnalysisTool />
+                        </div>
+                        <div
+                            icon='IcDbotViewDetail'
+                            label={<Localize i18n_default_text='Market Analysis' />}
+                            id={'id-analysis-page'}
+                        >
+                            <AnalysisPage />
                         </div>
                         <div
                             icon='IcTradingview'

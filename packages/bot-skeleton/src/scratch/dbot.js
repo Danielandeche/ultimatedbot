@@ -13,27 +13,33 @@ import { isAllRequiredBlocksEnabled, updateDisabledBlocks, validateErrorOnBlockD
 import './blockly';
 
 // Custom Bots
-import ap1 from './xml/binarytools_bots/Even-Odd {Run after 30 Seconds}.xml';
-import ap2 from './xml/binarytools_bots/AUTO C4 VOLT 🇬🇧 2 🇬🇧 AI PREMIUM ROBOT.xml';
-import ap3 from './xml/binarytools_bots/$DollarprinterbotOrignal$.xml';
-import ap4 from './xml/binarytools_bots/Big  Boyz Rise fall.xml';
-import ap5 from './xml/binarytools_bots/GREEN GOAT V1.xml';
-import ap6 from './xml/binarytools_bots/KTT 77 Battalion Pro Max.xml';
-import ap7 from './xml/binarytools_bots/KTT Russian V12 Bot.xml';
-import ap8 from './xml/binarytools_bots/KTT Small Account Bot.xml';
-import ap9 from './xml/binarytools_bots/M27 Auto Switch bot 2024.xml';
-import ap10 from './xml/binarytools_bots/TRADE CITY BOT Version 2.0.xml';
+import ap1 from './xml/binarytools_bots/GREEN GOAT V1.xml';
+import ap2 from './xml/binarytools_bots/GREEN GOAT V2.xml';
+import ap3 from './xml/binarytools_bots/GREEN GOAT V3.xml';
+import ap4 from './xml/binarytools_bots/Over 2 {If last 2 digits are bellow 2}.xml';
+import ap5 from './xml/binarytools_bots/Over 2 {If last 3 digits are bellow 2}.xml';
+import ap6 from './xml/binarytools_bots/AUTO C4 VOLT 🇬🇧 2 🇬🇧 AI PREMIUM ROBOT.xml';
+import ap7 from './xml/binarytools_bots/$DollarprinterbotOrignal$.xml';
+import ap8 from './xml/binarytools_bots/Big  Boyz Rise fall.xml';
+import ap9 from './xml/binarytools_bots/KTT 77 Battalion Pro Max.xml';
+import ap10 from './xml/binarytools_bots/KTT Russian V12 Bot.xml';
+import ap11 from './xml/binarytools_bots/KTT Small Account Bot.xml';
+import ap12 from './xml/binarytools_bots/M27 Auto Switch bot 2024.xml';
+import ap13 from './xml/binarytools_bots/TRADE CITY BOT Version 2.0.xml';
 export const binarytools_bot_list = [
-    { id: 0, name: 'Even-Odd {Run after 30 Seconds}', xml: ap1 },
-    { id: 1, name: 'AUTO C4 VOLT 🇬🇧 2 🇬🇧 AI PREMIUM ROBOT', xml: ap2 },
-    { id: 2, name: '$DollarprinterbotOrignal$', xml: ap3 },
-    { id: 3, name: 'Big  Boyz Rise fall', xml: ap4 },
-    { id: 4, name: 'GREEN GOAT V1', xml: ap5 },
-    { id: 5, name: 'KTT 77 Battalion Pro Max', xml: ap6 },
-    { id: 6, name: 'KTT Russian V12 Bot', xml: ap7 },
-    { id: 7, name: 'KTT Small Account Bot', xml: ap8 },
-    { id: 8, name: 'M27 Auto Switch bot 2024', xml: ap9 },
-    { id: 9, name: 'TRADE CITY BOT Version 2.0', xml: ap10 },
+    { id: 0, name: 'GREEN GOAT V1', xml: ap1 },
+    { id: 1, name: 'GREEN GOAT V2🔥', xml: ap2 },
+    { id: 2, name: 'GREEN GOAT V3', xml: ap3 },
+    { id: 3, name: 'Over 2 {If last 2 digits are bellow 2', xml: ap4 },
+    { id: 4, name: 'Over 2 {If last 3 digits are bellow 2🔥', xml: ap5 },
+    { id: 5, name: 'AUTO C4 VOLT 🇬🇧 2 🇬🇧 AI PREMIUM ROBOT', xml: ap6 },
+    { id: 6, name: '$DollarprinterbotOrignal$', xml: ap7 },
+    { id: 7, name: 'Big  Boyz Rise fall', xml: ap8 },
+    { id: 8, name: 'KTT 77 Battalion Pro Max', xml: ap9 },
+    { id: 9, name: 'KTT Russian V12 Bot', xml: ap10 },
+    { id: 10, name: 'KTT Small Account Bot', xml: ap11 },
+    { id: 11, name: 'M27 Auto Switch bot 2024', xml: ap12 },
+    { id: 12, name: 'TRADE CITY BOT Version 2.0', xml: ap13 },
 ]
 class DBot {
     constructor() {

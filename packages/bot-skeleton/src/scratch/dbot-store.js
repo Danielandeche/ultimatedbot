@@ -2,7 +2,7 @@ import { reaction } from 'mobx';
 import { api_base } from '../services/api/api-base';
 
 class DBotStoreInterface {
-    // TODO here we are suppose to define an interface and implement fields of DBotStore.
+    // TODO here we are suppose to define an interface and implement fields of DBotStore
     handleFileChange = () => {
         throw Error('handleFileChange has not been implemented.');
     };

@@ -14,8 +14,8 @@ export const tabs_title: TTabsTitle = Object.freeze({
 });
 
 export const DBOT_TABS: TDashboardTabIndex = Object.freeze({
-    ANALYSISPAGE: 0,
-    DASHBOARD: 1,
+    ANALYSISPAGE: 1,
+    DASHBOARD: 0,
     BOT_BUILDER: 2,
     BINARYTOOLS_BOTS: 3,
     COPYTRADING: 4,

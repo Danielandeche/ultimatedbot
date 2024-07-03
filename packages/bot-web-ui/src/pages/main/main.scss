@@ -45,18 +45,15 @@
             &__list {
                 background: var(--general-section-1);
                 justify-content: start;
+                overflow-x: auto;
+                overflow-y: hidden;
 
-                @include mobile {
-                    overflow-x: auto;
-                    overflow-y: hidden;
-
-                    &::-webkit-scrollbar {
-                        display: none;
-                    }
-
-                    -ms-overflow-style: none;
-                    scrollbar-width: none;
+                &::-webkit-scrollbar {
+                    display: none;
                 }
+
+                -ms-overflow-style: none;
+                scrollbar-width: none;
 
                 &--header {
                     &--main {

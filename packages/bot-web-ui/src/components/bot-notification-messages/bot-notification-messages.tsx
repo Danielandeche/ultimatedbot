@@ -4,7 +4,7 @@ import { observer, useStore } from '@deriv/stores';
 import { DBOT_TABS } from 'Constants/bot-contents';
 import { useDBotStore } from 'Stores/useDBotStore';
 
-const { BOT_BUILDER, COPYTRADING, ANALYSISTOOL, TRADING_VIEW , CHART} = DBOT_TABS;
+const { ANALYSISPAGE, BOT_BUILDER, COPYTRADING, ANALYSISTOOL, TRADING_VIEW , CHART} = DBOT_TABS;
 
 const BotNotificationMessages = observer(() => {
     const { ui } = useStore();
@@ -18,7 +18,7 @@ const BotNotificationMessages = observer(() => {
         <div
             className={classNames('notifications-container', {
                 'notifications-container__dashboard': active_tab === 0 && is_info_panel_visible,
-                'notifications-container--panel-open': [BOT_BUILDER, COPYTRADING, ANALYSISTOOL, TRADING_VIEW, CHART].includes(active_tab) && is_drawer_open,
+                'notifications-container--panel-open': [ANALYSISPAGE, BOT_BUILDER, COPYTRADING, ANALYSISTOOL, TRADING_VIEW, CHART].includes(active_tab) && is_drawer_open,
             })}
             data-testid='dt_notifications_container'
         >

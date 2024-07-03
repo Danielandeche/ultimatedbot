@@ -154,13 +154,6 @@ const AppWrapper = observer(() => {
                         onTabItemClick={handleTabChange}
                         top
                     >
-                         <div
-                            icon='IcDbotViewDetail'
-                            label={<Localize i18n_default_text='Pro Analysistool' />}
-                            id={'id-analysis-page'}
-                        >
-                            <AnalysisPage />
-                        </div>
                         <div
                             icon='IcDashboardComponentTab'
                             label={<Localize i18n_default_text='Dashboard' />}
@@ -173,6 +166,13 @@ const AppWrapper = observer(() => {
                             label={<Localize i18n_default_text='Bot Builder' />}
                             id='id-bot-builder'
                         />
+                        <div
+                            icon='IcDbotViewDetail'
+                            label={<Localize i18n_default_text='Pro Analysistool' />}
+                            id={'id-analysis-page'}
+                        >
+                            <AnalysisPage />
+                        </div>
                         <div
                             icon='IcFullStar'
                             label={<Localize i18n_default_text='Binarytool Bot' />}

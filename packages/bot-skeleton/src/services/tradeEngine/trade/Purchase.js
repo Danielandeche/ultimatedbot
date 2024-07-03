@@ -55,7 +55,7 @@ export default Engine =>
             cp_tokens = JSON.parse(cp_tokens);
             const isCPActive = config.copy_trading.is_active;
             const demo_copy = config.copy_trading.allow_demo_copy;
-            mantain_tp_sl_block();
+            mantain_tp_sl_block(this.tradeOptions.amount);
 
             if (this.is_proposal_subscription_required) {
                 const { id, askPrice } = this.selectProposal(contract_type);

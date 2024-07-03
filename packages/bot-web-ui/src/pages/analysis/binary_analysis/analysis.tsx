@@ -499,7 +499,7 @@ const BinaryAnalysisPage = observer(() => {
                                     </option>
                                 ))
                             ) : (
-                                <option value=''>Loading...</option>
+                                <option value=''>CURRENT TICK</option>
                             )}
                         </select>
                     </div>
@@ -507,11 +507,12 @@ const BinaryAnalysisPage = observer(() => {
                         <input type='number' name='' id='' value={numberOfTicks} onChange={handleInputChange} />
                     </div>
                     <div className='current_price'>
+                        <p>CURRENT TICK</p>
                         <h3>{currentTick.toString()}</h3>
                     </div>
                 </div>
                 <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
-                    <MdOutlineSettings />
+                    SETTING <MdOutlineSettings />
                 </div>
                 {showBotSettings && (
                     <BotSettings
@@ -563,11 +564,14 @@ const BinaryAnalysisPage = observer(() => {
                                         Buy
                                     </button>
                                 ) : (
-                                    <input
-                                        type='checkbox'
-                                        checked={isOverUnderOneClickActive}
-                                        onChange={handleIsOverUnderOneClick}
-                                    />
+                                    <label className="switch">
+                                        <input
+                                            type='checkbox'
+                                            checked={isOverUnderOneClickActive}
+                                            onChange={handleIsOverUnderOneClick}
+                                        />
+                                        <span className="slider round"></span>
+                                    </label>
                                 )}
 
                                 {selectTickList()}
@@ -637,12 +641,15 @@ const BinaryAnalysisPage = observer(() => {
                         {isTickChart && (
                             <div className='oct_trading_options'>
                                 <div className='details_options'>
-                                    <input
-                                        type='checkbox'
-                                        checked={isRiseFallOneClickActive}
-                                        onChange={handleIsRiseFallOneClick}
-                                    />
-                                    {selectTickList()}
+                                    <label className="switch">
+                                        <input
+                                            type='checkbox'
+                                            checked={isRiseFallOneClickActive}
+                                            onChange={handleIsRiseFallOneClick}
+                                        />
+                                        <span className="slider round"></span>
+                                        {selectTickList()}
+                                    </label>
                                 </div>
                                 <div className='rise_fall_buttons'>
                                     <button
@@ -670,11 +677,14 @@ const BinaryAnalysisPage = observer(() => {
                     <div className='odd_even_info'>
                         <h2 className='analysis_title'>Even/Odd</h2>
                         <div className='odd_even_settings'>
-                            <input
-                                type='checkbox'
-                                checked={isEvenOddOneClickActive}
-                                onChange={handleIsEvenOddOneClick}
-                            />
+                            <label className="switch">
+                                <input
+                                    type='checkbox'
+                                    checked={isEvenOddOneClickActive}
+                                    onChange={handleIsEvenOddOneClick}
+                                />
+                                <span className="slider round"></span>
+                            </label>
                             <select name='ct_types' id='contract_types' onChange={handleEvenOddContractSelect}>
                                 <option value='DIGITEVEN'>Even</option>
                                 <option value='DIGITODD'>Odd</option>
@@ -723,18 +733,24 @@ const BinaryAnalysisPage = observer(() => {
                         ) : (
                             oneClickContract === 'DIGITDIFF' && (
                                 <div className='auto_clicker'>
-                                    <input
-                                        type='checkbox'
-                                        checked={isAutoClickerActive}
-                                        onChange={handleIsAutoClicker}
-                                    />
-                                    <h4>Auto Clicker</h4>
+                                    <label className="switch">
+                                        <input
+                                            type='checkbox'
+                                            checked={isAutoClickerActive}
+                                            onChange={handleIsAutoClicker}
+                                        />
+                                        <span className="slider round"></span>
+                                    </label>
+                                    <h4>Auto</h4>
                                 </div>
                             )
                         )}
                         <div className='oneclick_trader'>
                             {tradingDiffType !== 'MANUAL' && (
-                                <input type='checkbox' checked={isOneClickActive} onChange={handleIsOneClick} />
+                                <label className="switch">
+                                    <input type='checkbox' checked={isOneClickActive} onChange={handleIsOneClick} />
+                                    <span className="slider round"></span>
+                                </label>
                             )}
                             <div className='diff_options'>
                                 <select name='ct_types' id='contract_types' onChange={handleContractSelect}>

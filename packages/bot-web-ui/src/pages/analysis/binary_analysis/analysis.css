@@ -13,7 +13,7 @@
 
 .main_app #symbol_options {
     padding: 8px 20px;
-    border: none;
+    border: 2px solid #FFAD3A;
     border-radius: 2px;
 }
 
@@ -65,13 +65,20 @@
 .main_app .symbol_price .current_price {
     font-size: 16px;
     font-weight: 700;
-    background: #dfe1e7;
+    background: transparent;
     padding: 10px 30px;
-    border-radius: 3px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.main_app .symbol_price .current_price h3 {
+    font-size: 18px;
+    color: #cc2e3d;
+    font-weight: bolder;
 }
 
 .main_app .top_bar .guide {
-    font-size: 2.8rem;
+    font-size: 1.8rem;
     color: #0ba70b;
     cursor: pointer;
 }
@@ -638,3 +645,55 @@
         gap: 10px;
     }
 }
+
+
+/* Toggle switch styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px; /* Adjust width as needed */
+    height: 20px; /* Adjust height as needed */
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: background-color 0.4s;
+    border-radius: 20px; /* Rounded corners */
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px; /* Adjust width of the toggle */
+    width: 16px; /* Adjust height of the toggle */
+    left: 2px; /* Adjust left position of the toggle */
+    bottom: 2px; /* Adjust bottom position of the toggle */
+    background-color: #fff;
+    transition: transform 0.4s;
+    border-radius: 50%; /* Rounded shape */
+  }
+  
+  .switch input:checked + .slider {
+    background-color: #2196F3; /* Toggle background color when checked */
+  }
+  
+  .switch input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3; /* Focus outline color */
+  }
+  
+  .switch input:checked + .slider:before {
+    transform: translateX(20px); /* Move toggle to the right when checked */
+  }
+  

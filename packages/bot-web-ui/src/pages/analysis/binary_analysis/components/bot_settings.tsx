@@ -118,12 +118,15 @@ const BotSettings = ({
                             {localize('Enable/Disable')}
                         </Text>
                     </label>
-                    <input
-                        type='checkbox'
-                        checked={enableSlTpValue}
-                        id='enable_tp_sl'
-                        onChange={handleIsActiveInActive}
-                    />
+                    <label className="switch">
+                        <input
+                            type='checkbox'
+                            checked={enableSlTpValue}
+                            id='enable_tp_sl'
+                            onChange={handleIsActiveInActive}
+                        />
+                        <span className="slider round"></span>
+                    </label>
                 </div>
                 <div className='copy_demo_trades'>
                     <label htmlFor='copy_demo'>
@@ -131,7 +134,10 @@ const BotSettings = ({
                             {localize('Copy Demo Status:')}
                         </Text>
                     </label>
-                    <input type='checkbox' checked={enableCopyDemo} id='copy_demo' onChange={handleDemoCopy} />
+                    <label className="switch">
+                        <input type='checkbox' checked={enableCopyDemo} id='copy_demo' onChange={handleDemoCopy} />
+                        <span className="slider round"></span>
+                    </label>
                 </div>
 
                 {enableCopyDemo && (

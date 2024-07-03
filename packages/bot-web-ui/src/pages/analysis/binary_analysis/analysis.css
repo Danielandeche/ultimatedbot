@@ -612,7 +612,7 @@
         flex-direction: column;
         padding: 15px;
         margin-top: 0rem;
-        height: 110%;
+        height: auto;
     }
 
     .pie_diff .pie {

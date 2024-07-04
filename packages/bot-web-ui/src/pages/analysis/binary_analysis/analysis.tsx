@@ -490,8 +490,7 @@ const BinaryAnalysisPage = observer(() => {
         const titleStyle = {
             textAlign: 'center',
             fontSize: '24px',
-            color: 'red',
-            fontweight: '900:
+            color: 'red'
         };
     
         return (

@@ -13,9 +13,9 @@ export const tabs_title: TTabsTitle = Object.freeze({
     CHART: 'Chart',
 });
 
-export const DBOT_TABS: TDashboardTabIndex = Object.freeze({
-    ANALYSISPAGE: 0,
+export const DBOT_TABS: TDashboardTabIndex = Object.freeze({  
     DASHBOARD: 1,
+    ANALYSIS
     BOT_BUILDER: 2,
     BINARYTOOLS_BOTS: 3,
     COPYTRADING: 4,

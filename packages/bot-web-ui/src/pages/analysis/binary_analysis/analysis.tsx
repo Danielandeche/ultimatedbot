@@ -48,11 +48,11 @@ type ActiveSymbolTypes = {
 
 const BinaryAnalysisPage = observer(() => {
     const [isSubscribed, setIsSubscribed] = useState(false);
-    const [currentTick, setCurrentTick] = useState<number | String>('Loading...');
+    const [currentTick, setCurrentTick] = useState<number | String>('Updating...');
     const [allLastDigitList, setAllLastDigitList] = useState<number[]>([]);
     const [isTickChart, setIsTickChart] = useState(true);
     const [lastDigit, setLastDigit] = useState(0);
-    const [numberOfTicks, setNumberOfTicks] = useState<string | number>(50);
+    const [numberOfTicks, setNumberOfTicks] = useState<string | number>(1000);
     const [optionsList, setOptions] = useState<SymbolData[]>([]);
     const [overValue, setOverValue] = useState<string | number>(4);
     const [martingaleValue, setMartingaleValue] = useState<string | number>(1.2);
@@ -486,6 +486,32 @@ const BinaryAnalysisPage = observer(() => {
         setIsOverUnderOneClickActive(!isOverUnderOneClickActive);
     };
 
+    const YouTubeEmbedCard = ({ title, videoId }) => {
+        const titleStyle = {
+            textAlign: 'center',
+            fontSize: '24px',
+            color: 'red'
+        };
+    
+        return (
+            <div className='youtube_embed_card'>
+                <h2 className='youtube_embed_title' style={titleStyle}>{title}</h2>
+                <div className='youtube_embed_video'>
+                    <iframe
+                        width='100%'
+                        height='315'
+                        src={`https://www.youtube.com/embed/${videoId}`}
+                        title={title}
+                        frameBorder='0'
+                        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                        allowFullScreen
+                    ></iframe>
+                </div>
+            </div>
+        );
+    };
+
+
     return (
         <div className='main_app'>
             <div className='top_bar'>
@@ -499,15 +525,16 @@ const BinaryAnalysisPage = observer(() => {
                                     </option>
                                 ))
                             ) : (
-                                <option value=''>CURRENT TICK</option>
+                                <option value=''>SELECT MARKET</option>
                             )}
                         </select>
                     </div>
                     <div className='no_of_ticks'>
+                        <h4>NO. OF TICKS:</h4>
                         <input type='number' name='' id='' value={numberOfTicks} onChange={handleInputChange} />
                     </div>
                     <div className='current_price'>
-                        <p>CURRENT TICK</p>
+                        <h4>CURRENT TICK</h4>
                         <h3>{currentTick.toString()}</h3>
                     </div>
                 </div>
@@ -547,6 +574,7 @@ const BinaryAnalysisPage = observer(() => {
                         ) : (
                             oneClickContract === 'DIGITDIFF' && (
                                 <div className='auto_clicker'>
+                                    <h4>Auto Differ:</h4>
                                     <label className="switch">
                                         <input
                                             type='checkbox'
@@ -555,16 +583,16 @@ const BinaryAnalysisPage = observer(() => {
                                         />
                                         <span className="slider round"></span>
                                     </label>
-                                    <h4>Auto</h4>
                                 </div>
+
                             )
                         )}
                         <div className='oneclick_trader'>
                             {tradingDiffType !== 'MANUAL' && (
-                                <label className="switch">
+                                <><h4>Enable:</h4><label className="switch">
                                     <input type='checkbox' checked={isOneClickActive} onChange={handleIsOneClick} />
                                     <span className="slider round"></span>
-                                </label>
+                                </label></>
                             )}
                             <div className='diff_options'>
                                 <select name='ct_types' id='contract_types' onChange={handleContractSelect}>
@@ -661,7 +689,7 @@ const BinaryAnalysisPage = observer(() => {
             </div>
             {/* Middle Cards */}
             <div className='rf_ou'>
-                <div className='over_under card1'>
+            -<div className='over_under card1'>
                     <div className='over_under_options'>
                         {/* <h2 className='analysis_title'>Over/Under</h2> */}
                         <div className='digit_inputs'>
@@ -795,6 +823,11 @@ const BinaryAnalysisPage = observer(() => {
                     <RiseFallBarChart allDigitList={getLastDigitList()} is_mobile={is_mobile} />
                 </div>
             </div>
+            {/* Embedded YouTube Cards */}
+            <YouTubeEmbedCard title="Differ Guide" videoId="YOUR_YOUTUBE_VIDEO_ID_1" />
+            <YouTubeEmbedCard title="Rise and Fall Guide" videoId="YOUR_YOUTUBE_VIDEO_ID_2" />
+            <YouTubeEmbedCard title="Over Under Guide" videoId="YOUR_YOUTUBE_VIDEO_ID_3" />
+            <YouTubeEmbedCard title="Even Odd Guide" videoId="YOUR_YOUTUBE_VIDEO_ID_4" />
         </div>
     );
 });

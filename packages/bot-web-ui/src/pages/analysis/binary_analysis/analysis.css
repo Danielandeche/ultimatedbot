@@ -14,21 +14,21 @@
 .main_app #symbol_options {
     padding: 8px 20px;
     border: 2px solid #FFAD3A;
-    border-radius: 2px;
+    border-radius: 5px;
 }
 
 .no_of_ticks {
     display: flex;
-    gap: 5px;
     align-items: center;
+    border: 2px solid #FFAD3A;
+    border-radius: 5px;
 }
 
 .no_of_ticks input {
-    text-align: center;
     padding: 8px;
     border-radius: 2px;
     font-size: 14px;
-    width: 80px;
+    width: 70px;
 }
 
 .no_of_ticks .sync_btn {
@@ -591,6 +591,7 @@
     }
     .main_app .rf_ou {
         flex-direction: column;
+        height: auto;
     }
 
     .line_chart {
@@ -610,9 +611,6 @@
 
     .main_app .pie_diff {
         flex-direction: column;
-        padding: 15px;
-        margin-top: 0rem;
-        height: auto;
     }
 
     .pie_diff .pie {
@@ -651,7 +649,7 @@
 .switch {
     position: relative;
     display: inline-block;
-    width: 40px; /* Adjust width as needed */
+    width: 30px; /* Adjust width as needed */
     height: 20px; /* Adjust height as needed */
   }
   
@@ -668,7 +666,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #e78d8d;
     transition: background-color 0.4s;
     border-radius: 20px; /* Rounded corners */
   }
@@ -686,11 +684,11 @@
   }
   
   .switch input:checked + .slider {
-    background-color: #2196F3; /* Toggle background color when checked */
+    background-color: #0ba70b; /* Toggle background color when checked */
   }
   
   .switch input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3; /* Focus outline color */
+    box-shadow: 0 0 1px #0ba70b; /* Focus outline color */
   }
   
   .switch input:checked + .slider:before {

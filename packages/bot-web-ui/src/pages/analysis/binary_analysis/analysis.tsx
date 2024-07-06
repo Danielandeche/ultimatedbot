@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import ApolloLineChart from './components/line_chart';
-import MyResponsivePie from './components/pie_chart';
+import PieChart from './components/pie_chart';
 import OverUnderBarChart from './components/ou_bar_chart';
 import { observer, useStore } from '@deriv/stores';
 import DiffersBalls from './components/differs_balls';
@@ -69,6 +69,7 @@ const BinaryAnalysisPage = observer(() => {
     const [overUnderContract, setOverUnderContract] = useState('DIGITOVER');
     const [overUnderDirection, setOverUnderDirection] = useState('SAME');
     const [evenOddContract, setEvenOddContract] = useState('DIGITEVEN');
+    const [sameDiffEvenOdd, setSameDiffEvenOdd] = useState('SAME');
     const [oneClickDuration, setOneClickDuration] = useState(1);
     const [oneClickAmount, setOneClickAmount] = useState<number | string>(0.5);
     const [customPrediction, setCustomPrediction] = useState<number | string>(0);
@@ -463,6 +464,10 @@ const BinaryAnalysisPage = observer(() => {
         const selectedValue = event.target.value;
         setEvenOddContract(selectedValue);
     };
+    const handleSameDiffEvenOddContractSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedValue = event.target.value;
+        setSameDiffEvenOdd(selectedValue);
+    };
 
     const handleDurationSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedValue = event.target.value;
@@ -490,12 +495,14 @@ const BinaryAnalysisPage = observer(() => {
         const titleStyle = {
             textAlign: 'center',
             fontSize: '24px',
-            color: 'red'
+            color: 'red',
         };
-    
+
         return (
             <div className='youtube_embed_card'>
-                <h2 className='youtube_embed_title' style={titleStyle}>{title}</h2>
+                <h2 className='youtube_embed_title' style={titleStyle}>
+                    {title}
+                </h2>
                 <div className='youtube_embed_video'>
                     <iframe
                         width='100%'
@@ -510,7 +517,6 @@ const BinaryAnalysisPage = observer(() => {
             </div>
         );
     };
-
 
     return (
         <div className='main_app'>
@@ -539,7 +545,7 @@ const BinaryAnalysisPage = observer(() => {
                     </div>
                 </div>
                 <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
-                <MdOutlineSettings /> Risk Management 
+                    <MdOutlineSettings /> Risk Management
                 </div>
                 {showBotSettings && (
                     <BotSettings
@@ -575,24 +581,26 @@ const BinaryAnalysisPage = observer(() => {
                             oneClickContract === 'DIGITDIFF' && (
                                 <div className='auto_clicker'>
                                     <h4>Auto Differ:</h4>
-                                    <label className="switch">
+                                    <label className='switch'>
                                         <input
                                             type='checkbox'
                                             checked={isAutoClickerActive}
                                             onChange={handleIsAutoClicker}
                                         />
-                                        <span className="slider round"></span>
+                                        <span className='slider round'></span>
                                     </label>
                                 </div>
-
                             )
                         )}
                         <div className='oneclick_trader'>
                             {tradingDiffType !== 'MANUAL' && (
-                                <><h4>Enable:</h4><label className="switch">
-                                    <input type='checkbox' checked={isOneClickActive} onChange={handleIsOneClick} />
-                                    <span className="slider round"></span>
-                                </label></>
+                                <>
+                                    <h4>Enable:</h4>
+                                    <label className='switch'>
+                                        <input type='checkbox' checked={isOneClickActive} onChange={handleIsOneClick} />
+                                        <span className='slider round'></span>
+                                    </label>
+                                </>
                             )}
                             <div className='diff_options'>
                                 <select name='ct_types' id='contract_types' onChange={handleContractSelect}>
@@ -636,17 +644,17 @@ const BinaryAnalysisPage = observer(() => {
                         liveAccCR={liveAccCR}
                     />
                 </div>
-                <div className='pie card1'>
+                <div className='pie card4'>
                     <div className='odd_even_info'>
                         <h2 className='analysis_title'>Even/Odd</h2>
                         <div className='odd_even_settings'>
-                            <label className="switch">
+                            <label className='switch'>
                                 <input
                                     type='checkbox'
                                     checked={isEvenOddOneClickActive}
                                     onChange={handleIsEvenOddOneClick}
                                 />
-                                <span className="slider round"></span>
+                                <span className='slider round'></span>
                             </label>
                             <select name='ct_types' id='contract_types' onChange={handleEvenOddContractSelect}>
                                 <option value='DIGITEVEN'>Even</option>
@@ -666,11 +674,17 @@ const BinaryAnalysisPage = observer(() => {
                                 <input type='number' value={percentageValue} onChange={handlePercentageInputChange} />
                             </div>
                         </div>
-                        <div className='tick_stake'>{selectTickList()}</div>
+                        <div className='same_diff'>
+                            <select onChange={handleSameDiffEvenOddContractSelect}>
+                                <option value='SAME'>Same</option>
+                                <option value='OPPOSITE'>Opposite</option>
+                            </select>
+                            <div className='tick_stake'>{selectTickList()}</div>
+                        </div>
                     </div>
 
                     <div className='pie_container'>
-                        <MyResponsivePie
+                        <PieChart
                             allDigitList={getLastDigitList()}
                             contract_type={evenOddContract}
                             isEvenOddOneClickActive={isEvenOddOneClickActive}
@@ -683,13 +697,15 @@ const BinaryAnalysisPage = observer(() => {
                             setIsTradeActive={setIsTradeActive}
                             enableCopyDemo={enableCopyDemo}
                             liveAccCR={liveAccCR}
+                            sameDiffEvenOdd={sameDiffEvenOdd}
                         />
                     </div>
                 </div>
             </div>
             {/* Middle Cards */}
             <div className='rf_ou'>
-            -<div className='over_under card1'>
+                -
+                <div className='over_under card1'>
                     <div className='over_under_options'>
                         {/* <h2 className='analysis_title'>Over/Under</h2> */}
                         <div className='digit_inputs'>
@@ -712,13 +728,13 @@ const BinaryAnalysisPage = observer(() => {
                                         Buy
                                     </button>
                                 ) : (
-                                    <label className="switch">
+                                    <label className='switch'>
                                         <input
                                             type='checkbox'
                                             checked={isOverUnderOneClickActive}
                                             onChange={handleIsOverUnderOneClick}
                                         />
-                                        <span className="slider round"></span>
+                                        <span className='slider round'></span>
                                     </label>
                                 )}
 
@@ -789,13 +805,13 @@ const BinaryAnalysisPage = observer(() => {
                         {isTickChart && (
                             <div className='oct_trading_options'>
                                 <div className='details_options'>
-                                    <label className="switch">
+                                    <label className='switch'>
                                         <input
                                             type='checkbox'
                                             checked={isRiseFallOneClickActive}
                                             onChange={handleIsRiseFallOneClick}
                                         />
-                                        <span className="slider round"></span>
+                                        <span className='slider round'></span>
                                         {selectTickList()}
                                     </label>
                                 </div>
@@ -824,10 +840,10 @@ const BinaryAnalysisPage = observer(() => {
                 </div>
             </div>
             {/* Embedded YouTube Cards */}
-            <YouTubeEmbedCard title="Differ Guide" videoId="YOUR_YOUTUBE_VIDEO_ID_1" />
-            <YouTubeEmbedCard title="Rise and Fall Guide" videoId="YOUR_YOUTUBE_VIDEO_ID_2" />
-            <YouTubeEmbedCard title="Over Under Guide" videoId="YOUR_YOUTUBE_VIDEO_ID_3" />
-            <YouTubeEmbedCard title="Even Odd Guide" videoId="YOUR_YOUTUBE_VIDEO_ID_4" />
+            <YouTubeEmbedCard title='Differ Guide' videoId='YOUR_YOUTUBE_VIDEO_ID_1' />
+            <YouTubeEmbedCard title='Rise and Fall Guide' videoId='YOUR_YOUTUBE_VIDEO_ID_2' />
+            <YouTubeEmbedCard title='Over Under Guide' videoId='YOUR_YOUTUBE_VIDEO_ID_3' />
+            <YouTubeEmbedCard title='Even Odd Guide' videoId='YOUR_YOUTUBE_VIDEO_ID_4' />
         </div>
     );
 });

@@ -2,10 +2,40 @@ import { localize } from '@deriv/translations';
 
 const CRYPTO_CURRENCIES = ['BTC', 'ETH', 'LTC', 'BCH', 'UST'];
 
+export const resetVhVariables = () => {
+    config.vh_variables.vh_official = false;
+    config.vh_variables.max_steps = 1;
+    config.vh_variables.is_enabled = false;
+    config.vh_variables.current_step = 1;
+    config.vh_variables.current_trades_real = 0;
+    config.vh_variables.is_martingale_active = false;
+    config.vh_variables.mart_total_lost = 0;
+    config.vh_variables.allow_martingale = false;
+};
+
 export const config = {
     show_notifications: {
         show_tp: false,
         show_sl: false,
+    },
+    vh_variables: {
+        vh_official: false,
+        martingale: 1,
+        token: '',
+        max_steps: 1,
+        min_trades: 1,
+        take_profit: 8,
+        stop_loss: 20,
+        is_authorized: false,
+        is_enabled: false,
+        stake: 0.35,
+        current_step: 1,
+        current_trades_real: 0,
+        is_martingale_active: false,
+        mart_total_lost: 0,
+        allow_martingale: false,
+        mart_stake: 0,
+        total_loss: 0,
     },
     copy_trading: {
         is_active: false,

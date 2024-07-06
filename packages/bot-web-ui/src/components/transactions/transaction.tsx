@@ -156,6 +156,19 @@ const PopoverContent = ({ contract }: TPopoverContent) => (
 const Transaction = observer(({ contract }: TTransaction) => {
     const { transactions } = useDBotStore();
     const { active_transaction_id, setActiveTransactionId } = transactions;
+    const returnClasses = (contract: any) => {
+        if (contract.is_virtual_trade) {
+            return classNames({
+                'transactions__virtual_profit--win': contract.profit >= 0,
+                'transactions__virtual_profit--loss': contract.profit < 0,
+            });
+        } else {
+            return classNames({
+                'transactions__profit--win': contract.profit >= 0,
+                'transactions__profit--loss': contract.profit < 0,
+            });
+        }
+    };
 
     return (
         <Popover
@@ -215,15 +228,14 @@ const Transaction = observer(({ contract }: TTransaction) => {
                 </div>
                 <div className='transactions__cell transactions__profit'>
                     {contract?.is_completed ? (
-                        <div
-                            className={classNames({
-                                'transactions__profit--win': contract.profit >= 0,
-                                'transactions__profit--loss': contract.profit < 0,
-                            })}
-                        >
-                            <Money amount={Math.abs(contract.profit)} currency={contract.currency} show_currency />
+                        <div className={returnClasses(contract)}>
+                            {contract.is_virtual_trade ? (
+                                <div>{contract.profit >= 0 ? 'virtual won' : 'virtual lost'}</div>
+                            ) : (
+                                <Money amount={Math.abs(contract.profit)} currency={contract.currency} show_currency />
+                            )}
                         </div>
-                    ) : (
+                    )  : (
                         <TransactionFieldLoader />
                     )}
                 </div>

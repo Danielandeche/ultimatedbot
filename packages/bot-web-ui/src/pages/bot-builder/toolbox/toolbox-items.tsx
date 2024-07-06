@@ -153,8 +153,8 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
             <Block type='after_purchase' />
             <Block type='trade_again' />
         </Category>
-        
-        <Category id='utility' name={localize('Binarytools')}>           
+
+        <Category id='utility' name={localize('Binarytools')}>
             <Category name={localize('Binarytool Notifyer')} id='notifications'>
                 <Block type='btnotify'>
                     <Field name='NOTIFICATION_TYPE'>success</Field>
@@ -167,6 +167,54 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
 
                 <Block type='set_tp' />
                 <Block type='set_sl' />
+
+                <Block type='vh_settings'>
+                    <Statement name='STATEMENT'>
+                        <Block type='martingale' deletable='false' movable='false'>
+                            <Value name='MARTINGALE'>
+                                <Shadow type='math_number'>
+                                    <Field name='NUM'>1.5</Field>
+                                </Shadow>
+                            </Value>
+                            <Next>
+                                <Block type='max_steps' deletable='false' movable='false'>
+                                    <Value name='MAX_STEPS'>
+                                        <Shadow type='math_number'>
+                                            <Field name='NUM'>3</Field>
+                                        </Shadow>
+                                    </Value>
+                                    <Next>
+                                        <Block type='min_trades' deletable='false' movable='false'>
+                                            <Value name='MIN_TRADES'>
+                                                <Shadow type='math_number'>
+                                                    <Field name='NUM'>1</Field>
+                                                </Shadow>
+                                            </Value>
+                                            <Next>
+                                                <Block type='take_profit' deletable='false' movable='false'>
+                                                    <Value name='TAKE_PROFIT'>
+                                                        <Shadow type='math_number'>
+                                                            <Field name='NUM'>5</Field>
+                                                        </Shadow>
+                                                    </Value>
+                                                    <Next>
+                                                        <Block type='stop_loss' deletable='false' movable='false'>
+                                                            <Value name='STOP_LOSS'>
+                                                                <Shadow type='math_number'>
+                                                                    <Field name='NUM'>50</Field>
+                                                                </Shadow>
+                                                            </Value>
+                                                        </Block>
+                                                    </Next>
+                                                </Block>
+                                            </Next>
+                                        </Block>
+                                    </Next>
+                                </Block>
+                            </Next>
+                        </Block>
+                    </Statement>
+                </Block>
             </Category>
         </Category>
         <Category id='analysis' name={localize('Analysis')}>
@@ -1382,7 +1430,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                                     </Field>
                                                 </Block>
                                             </Value>
-                                        </Block>                          
+                                        </Block>
                                     </Next>
                                     <Next>
                                         <Block type='btnotify'>
@@ -1398,7 +1446,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                                     </Field>
                                                 </Block>
                                             </Value>
-                                        </Block>                          
+                                        </Block>
                                     </Next>
                                 </Block>
                             </Statement>

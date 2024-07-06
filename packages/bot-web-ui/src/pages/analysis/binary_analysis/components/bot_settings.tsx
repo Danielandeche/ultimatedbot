@@ -13,7 +13,6 @@ interface BotSettingsSType {
     enableSlTpValue: boolean;
     enableCopyDemo: boolean;
     enable_demo_copy: React.MutableRefObject<boolean>;
-
     setTakeProfitValue: React.Dispatch<React.SetStateAction<string | number>>;
     setStopLossValue: React.Dispatch<React.SetStateAction<string | number>>;
     setShowBotSettings: React.Dispatch<React.SetStateAction<boolean>>;
@@ -40,6 +39,21 @@ const BotSettings = ({
     setCopyDemo,
     setLiveAccCr,
 }: BotSettingsSType) => {
+    const [liveAccounts, setLiveAccounts] = React.useState<string[]>([]);
+    const [selectedAccount, setSelectedAccount] = React.useState<string>('');
+
+    React.useEffect(() => {
+        if (typeof localStorage !== 'undefined') {
+            const client_accounts = JSON.parse(localStorage.getItem('client.accounts')!) || undefined;
+            const filteredAccountKeys = Object.keys(client_accounts).filter(key => key.startsWith('CR'));
+            setLiveAccounts(filteredAccountKeys);
+            if (filteredAccountKeys.length > 0) {
+                setSelectedAccount(filteredAccountKeys[0]);
+            }
+        }
+    }, []);
+
+
     const onClickClose = () => {
         setShowBotSettings(!showBotSettings);
     };
@@ -56,7 +70,7 @@ const BotSettings = ({
         stop_loss.current = newValue !== '' ? Number(newValue) : 0;
     };
 
-    const handleLiveAccCrChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleLiveAccCrChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const newValue = event.target.value;
         setLiveAccCr(newValue);
     };
@@ -141,14 +155,13 @@ const BotSettings = ({
                 </div>
 
                 {enableCopyDemo && (
-                    <div className='account_cr'>
-                        <label htmlFor='acc_cr'>
-                            <Text as='p' align='left' size='xs' color='prominent'>
-                                {localize('CR ID:')}
-                            </Text>
-                        </label>
-                        <input type='text' value={liveAccCR} id='acc_cr' onChange={handleLiveAccCrChange} />
-                    </div>
+                    <select value={liveAccCR} onChange={handleLiveAccCrChange}>
+                        {liveAccounts.map(key => (
+                            <option key={key} value={key}>
+                                {key}
+                            </option>
+                        ))}
+                    </select>
                 )}
             </div>
         </Dialog>

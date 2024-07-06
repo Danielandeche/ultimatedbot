@@ -1,6 +1,6 @@
 import React from 'react';
 import { action, computed, makeObservable, observable, reaction, runInAction } from 'mobx';
-import { error_types, message_types, observer, unrecoverable_errors } from '@deriv/bot-skeleton';
+import { error_types, message_types, observer, unrecoverable_errors,resetVhVariables } from '@deriv/bot-skeleton';
 import { isSafari, mobileOSDetect } from '@deriv/shared';
 import { Localize, localize } from '@deriv/translations';
 import { contract_stages } from 'Constants/contract-stage';
@@ -102,15 +102,21 @@ export default class RunPanelStore {
             (stats, { data: trx }) => {
                 if (trx.is_completed) {
                     if (trx.profit > 0) {
-                        stats.won_contracts += 1;
-                        stats.total_payout += trx.payout;
+                        if (!trx.is_virtual_trade) {
+                            stats.won_contracts += 1;
+                            stats.total_payout += trx.payout;
+                        }
                     } else {
-                        stats.lost_contracts += 1;
+                        if (!trx.is_virtual_trade) {
+                            stats.lost_contracts += 1;
+                        }
                     }
 
-                    stats.total_profit += trx.profit;
-                    stats.total_stake += trx.buy_price;
-                    total_runs += 1;
+                    if (!trx.is_virtual_trade) {
+                        stats.total_profit += trx.profit;
+                        stats.total_stake += trx.buy_price;
+                        total_runs += 1;
+                    }
                 }
 
                 return stats;
@@ -278,6 +284,7 @@ export default class RunPanelStore {
     }
 
     onClearStatClick() {
+        resetVhVariables()
         this.showClearStatDialog();
     }
 

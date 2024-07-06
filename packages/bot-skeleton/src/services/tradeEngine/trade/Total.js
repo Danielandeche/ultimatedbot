@@ -4,7 +4,9 @@ import { info, log } from '../utils/broadcast';
 import { createError } from '../../../utils/error';
 import { observer as globalObserver } from '../../../utils/observer';
 import { log_types } from '../../../constants/messages';
-
+import { config } from '../../../constants/config';
+import { api_base, api_base2 } from '../../api/api-base';
+import { calculateLostStatus, calculateWonStatus, handleLostLiveStep, handleWonLiveStep } from '../../binary_functions';
 const skeleton = {
     totalProfit: 0,
     totalWins: 0,
@@ -37,6 +39,8 @@ export default Engine =>
         updateTotals(contract) {
             const { sell_price: sellPrice, buy_price: buyPrice, currency } = contract;
 
+            if (config.vh_variables.is_enabled) return;
+
             const profit = getRoundedNumber(Number(sellPrice) - Number(buyPrice), currency);
 
             const win = profit > 0;
@@ -54,6 +58,26 @@ export default Engine =>
             accountStat.totalStake = getRoundedNumber(Number(accountStat.totalStake) + Number(buyPrice), currency);
 
             accountStat.totalPayout = getRoundedNumber(Number(accountStat.totalPayout) + Number(sellPrice), currency);
+
+            if (config.vh_variables.vh_official) {
+                if (win) {
+                    if (config.vh_variables.is_enabled) {
+                        handleWonLiveStep(parseFloat(accountStat.totalProfit));
+                    } else {
+                        calculateWonStatus(parseFloat(accountStat.totalProfit));
+                    }
+                } else {
+                    if (config.vh_variables.is_enabled) {
+                        handleLostLiveStep(parseFloat(accountStat.totalProfit));
+                    } else {
+                        const isRunning = api_base.is_running;
+                        const isRunning1 = api_base2.is_running;
+                        if (isRunning || isRunning1) {
+                            calculateLostStatus(profit, parseFloat(accountStat.totalProfit));
+                        }
+                    }
+                }
+            }
 
             info({
                 profit,
@@ -80,6 +104,16 @@ export default Engine =>
         getTotalRuns() {
             const accountStat = this.getAccountStat();
             return accountStat.totalRuns;
+        }
+
+        getTotalWins() {
+            const accountStat = this.getAccountStat();
+            return accountStat.totalWins;
+        }
+
+        getTotalLosts() {
+            const accountStat = this.getAccountStat();
+            return accountStat.totalLosses;
         }
 
         getTotalProfit(toString, currency) {
@@ -126,6 +160,7 @@ export default Engine =>
         }
 
         getAccountStat() {
+            this.accountInfo = api_base.account_info;
             const { loginid: accountID } = this.accountInfo;
 
             if (!(accountID in globalStat)) {

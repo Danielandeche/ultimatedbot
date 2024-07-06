@@ -3,7 +3,7 @@ import { BEFORE_PURCHASE } from './state/constants';
 import { contractStatus, info, log } from '../utils/broadcast';
 import { getUUID, recoverFromError, doUntilDone, tradeOptionToBuy } from '../utils/helpers';
 import { log_types } from '../../../constants/messages';
-import { api_base } from '../../api/api-base';
+import { api_base, api_base2 } from '../../api/api-base';
 import { getToken, getLiveAccToken } from '../../api/appId';
 import { config } from '../../../constants/config';
 import { mantain_tp_sl_block } from '../../appwrite/appwrite_functions';
@@ -55,13 +55,18 @@ export default Engine =>
             cp_tokens = JSON.parse(cp_tokens);
             const isCPActive = config.copy_trading.is_active;
             const demo_copy = config.copy_trading.allow_demo_copy;
-            mantain_tp_sl_block(this.tradeOptions.amount);
+            const vh_active = config.vh_variables.is_enabled;
+            mantain_tp_sl_block(this.tradeOptions.amount,contract_type);
 
             if (this.is_proposal_subscription_required) {
-                const { id, askPrice } = this.selectProposal(contract_type);
+                const { id, askPrice } = vh_active
+                    ? this.selectProposalVH(contract_type)
+                    : this.selectProposal(contract_type);
 
                 const action = () =>
-                    demo_copy
+                    vh_active
+                        ? api_base2.api.send({ buy: id, price: askPrice })
+                        : demo_copy
                         ? api_base.api.send({
                               buy_contract_for_multiple_accounts: id,
                               price: askPrice,
@@ -91,7 +96,7 @@ export default Engine =>
                     (errorCode, makeDelay) => {
                         // if disconnected no need to resubscription (handled by live-api)
                         if (errorCode !== 'DisconnectError') {
-                            this.renewProposalsOnPurchase();
+                            !vh_active ? this.renewProposalsOnPurchase() : this.renewProposalsOnPurchaseVH();
                         } else {
                             this.clearProposals();
                         }
@@ -109,7 +114,7 @@ export default Engine =>
                 ).then(onSuccess);
             }
             const trade_option = tradeOptionToBuy(contract_type, this.tradeOptions);
-            const action = () => api_base.api.send(trade_option);
+            const action = () => (vh_active ? api_base2.api.send(trade_option) : api_base.api.send(trade_option));
 
             this.isSold = false;
 

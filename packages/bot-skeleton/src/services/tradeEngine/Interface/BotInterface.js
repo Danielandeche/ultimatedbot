@@ -25,6 +25,13 @@ const getBotInterface = tradeEngine => {
         showSL: () => {
             config.show_notifications.show_sl = true;
         },
+        enabaleVH: status => {
+            if (status == 'enable') {
+                config.vh_variables.is_enabled = true;
+            } else {
+                config.vh_variables.is_enabled = false;
+            }
+        },
     };
 };
 

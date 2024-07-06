@@ -22,3 +22,12 @@ export {
     saveListItemToStorage,
     deleteItemFromStorage,
 } from '../appwrite/localStorageFunctions';
+export {
+    calculateLostStatus,
+    calculateMartingale,
+    calculateWonStatus,
+    handleLostLiveStep,
+    handleLostValue,
+    handleWinValue,
+    handleWonLiveStep,
+} from '../binary_functions';

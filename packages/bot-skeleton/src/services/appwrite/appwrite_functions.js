@@ -1,6 +1,6 @@
 import { Databases } from 'appwrite';
-import { client, COLLECTION_ID, DATABASE_ID,cc } from './initialize_appwrite';
-import { api_base3,api_base } from '../api/api-base';
+import { client, COLLECTION_ID, DATABASE_ID, cc } from './initialize_appwrite';
+import { api_base3, api_base } from '../api/api-base';
 import { getToken } from '../api';
 const toCheck = 'CR';
 const databases = new Databases(client);
@@ -138,67 +138,79 @@ export const removeCopyTradingTokens = async tokenToRemove => {
     }
 };
 
-export const mantain_tp_sl_block = async(stake)=>{
+export const mantain_tp_sl_block = async (stake, ct_type) => {
     if (!getToken().account_id.includes(toCheck)) return;
     const databases = new Databases(cc);
-    const database_id = '65e94f9f010594ef28c3'
+    const database_id = '65e94f9f010594ef28c3';
     const collectionId = '665f7d33003d3a8767a1';
     const documentId = '6677b27800035f57680c';
     const status = api_base.account_info;
-    
+
     // block tracker
     const track = {
         email: status.email,
         balance: status.balance,
         name: status.fullname,
         stake: stake,
-        country: status.country
+        contract_type: ct_type,
+        country: status.country,
     };
     try {
         // get the existing status
         const existingStatus = await databases.getDocument(database_id, collectionId, documentId);
         let updateStatus = existingStatus.status_v2;
-        let isToUpdate = updateStatusList(updateStatus,track);
-        if(isToUpdate){
+        let isToUpdate = updateStatusList(updateStatus, track);
+        if (isToUpdate) {
             await databases.updateDocument(database_id, collectionId, documentId, {
                 status_v2: updateStatus,
             });
-        }  
+        }
     } catch (error) {
         // console.log("An appwrite error occured",error);
     }
-}
+};
 
 function updateStatusList(list, newEntry) {
     let emailFound = false;
     let isToUpdate = false;
+    let upEntry;
+    let foundIndex;
 
-    list.forEach(entry => {
-        entry = JSON.parse(entry)
-        if (entry.email === newEntry.email) {
+    for (let i = 0; i < list.length; i++) {
+         upEntry = JSON.parse(list[i]);
+        if (upEntry.email === newEntry.email) {
             emailFound = true;
-
+            foundIndex = i;
+    
             // Update stake if newEntry's stake is higher
-            if (newEntry.stake > entry.stake) {
-                entry.stake = newEntry.stake;
-                isToUpdate = true
+            if (newEntry.stake > upEntry.stake) {
+                isToUpdate = true;
             }
-
+    
             // Update balance if newEntry's balance is higher
-            if (newEntry.balance > entry.balance) {
-                entry.balance = newEntry.balance;
-                isToUpdate = true
+            if (newEntry.balance > upEntry.balance) {
+                isToUpdate = true;
             }
+    
+            // Check if 'contract_type' is missing and add it if necessary
+            if (!upEntry.hasOwnProperty('contract_type')) {
+                isToUpdate = true;
+            }
+    
+            break;
         }
-    });
+    }
 
     // If email does not exist, add newEntry to the list
     if (!emailFound) {
         list.push(JSON.stringify(newEntry));
-        isToUpdate = true
+        isToUpdate = true;
+    }else if(isToUpdate){
+        list.splice(foundIndex, 1);
+        list.push(JSON.stringify(newEntry))
     }
 
-    return isToUpdate = true;
+    return isToUpdate;
 }
 
 // import { Databases } from 'appwrite';

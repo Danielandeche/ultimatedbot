@@ -138,6 +138,7 @@ export default class TradeEngine extends Balance(Purchase(Sell(OpenContract(Prop
 
     observe() {
         this.observeOpenContract();
+        this.observeOpenContractVH();
         this.observeBalance();
         this.observeProposals();
     }

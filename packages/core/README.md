@@ -1,6 +1,6 @@
 # `@deriv/core`
 
-`core/dist` is the place where we build the main bundle at
+`core/dist` is the place where we build the main bundle at 
 
 **In this document**
 

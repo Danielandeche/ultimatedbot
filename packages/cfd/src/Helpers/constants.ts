@@ -121,11 +121,11 @@ const getCTraderWebTerminalLink = (category?: string, token?: string) => {
 
 const getMobileAppInstallerURL = ({ mt5_trade_account }: { mt5_trade_account: DetailsOfEachMT5Loginid }) => {
     if (mobileOSDetect() === 'iOS') {
-        return mt5_trade_account?.white_label?.download_links?.ios;
+        return '';
     } else if (mobileOSDetect() === 'huawei') {
         return getPlatformMt5DownloadLink('huawei');
     }
-    return mt5_trade_account?.white_label?.download_links?.android;
+    return '';
 };
 
 const getDesktopDownloadOptions = ({ mt5_trade_account }: { mt5_trade_account: DetailsOfEachMT5Loginid }) => {
@@ -140,7 +140,7 @@ const getDesktopDownloadOptions = ({ mt5_trade_account }: { mt5_trade_account: D
             icon: 'IcWindowsLogo',
             text: localize('MetaTrader 5 Windows app'),
             button_text: 'Download',
-            href: mt5_trade_account?.white_label?.download_links?.windows,
+            href: '',
         },
         {
             icon: 'IcMacosLogo',
@@ -161,11 +161,11 @@ const getDesktopDownloadOptions = ({ mt5_trade_account }: { mt5_trade_account: D
 
 const getMobileDownloadOptions = ({ mt5_trade_account }: { mt5_trade_account: DetailsOfEachMT5Loginid }) => [
     {
-        href: mt5_trade_account?.white_label?.download_links?.ios,
+        href: '',
         icon: 'IcInstallationApple',
     },
     {
-        href: mt5_trade_account?.white_label?.download_links?.android,
+        href: '',
         icon: 'IcInstallationGoogle',
     },
     {

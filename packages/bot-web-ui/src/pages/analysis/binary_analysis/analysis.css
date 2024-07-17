@@ -702,25 +702,25 @@
         flex-direction: column;
         gap: 10px;
     }
+}
 
-    .buttons {
-        display: flex;
-        justify-content: space-around;
-    }
-    
-    .button {
-        padding: 10px 20px;
-        margin: 5px;
-        border: none;
-        cursor: pointer;
-        background-color: #808080; /* Gray color */
-        color: #000000; /* Black color */
-    }
-    
-    .button.active {
-        background-color: #0000ff; /* Blue color */
-        color: #ffffff; /* White color */
-    }
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #808080; /* Gray color */
+  color: #000000; /* Black color */
+}
+
+.button.active {
+  background-color: #0000ff; /* Blue color */
+  color: #ffffff; /* White color */
 }
 
 /* Toggle switch styles */

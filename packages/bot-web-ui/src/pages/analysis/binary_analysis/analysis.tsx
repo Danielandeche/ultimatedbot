@@ -1,15 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react';
-import ApolloLineChart from './components/line_chart';
-import PieChart from './components/pie_chart';
-import OverUnderBarChart from './components/ou_bar_chart';
-import { observer, useStore } from '@deriv/stores';
-import DiffersBalls from './components/differs_balls';
-import { api_base4, api_base, getToken, getLiveAccToken } from '@deriv/bot-skeleton';
+import React, { useEffect, useRef, useState } from 'react';
 import { MdOutlineSettings } from 'react-icons/md';
-import RiseFallBarChart from './components/rf_bar_chart';
+import { api_base, api_base4, getLiveAccToken, getToken } from '@deriv/bot-skeleton';
+import { observer, useStore } from '@deriv/stores';
 import { useDBotStore } from 'Stores/useDBotStore';
-import './analysis.css';
 import BotSettings from './components/bot_settings';
+import DiffersBalls from './components/differs_balls';
+import ApolloLineChart from './components/line_chart';
+import OverUnderBarChart from './components/ou_bar_chart';
+import PieChart from './components/pie_chart';
+import RiseFallBarChart from './components/rf_bar_chart';
+import './analysis.css';
 
 function sleep(milliseconds: any) {
     return new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -49,7 +49,7 @@ type ActiveSymbolTypes = {
 const BinaryAnalysisPage = observer(() => {
     const [activeCard, setActiveCard] = useState('pie_diff');
     const [isSubscribed, setIsSubscribed] = useState(false);
-    const [currentTick, setCurrentTick] = useState<number | String>('Updating...');
+    const [currentTick, setCurrentTick] = useState<number | string>('Updating...');
     const [allLastDigitList, setAllLastDigitList] = useState<number[]>([]);
     const [isTickChart, setIsTickChart] = useState(true);
     const [lastDigit, setLastDigit] = useState(0);
@@ -491,10 +491,12 @@ const BinaryAnalysisPage = observer(() => {
     const handleIsOverUnderOneClick = () => {
         setIsOverUnderOneClickActive(!isOverUnderOneClickActive);
     };
-    const handleSetActiveCard = (cardName) => {
+    const handleSetActiveCard = cardName => {
         setActiveCard(cardName);
     };
-
+    const handleSetActiveCard = card => {
+        setActiveCard(card);
+    };
 
     return (
         <div className='main_app'>
@@ -522,9 +524,24 @@ const BinaryAnalysisPage = observer(() => {
                         <h3>{currentTick.toString()}</h3>
                     </div>
                     <div className='buttons'>
-                        <button onClick={() => setActiveCard('pie_diff')}>Digits</button>
-                        <button onClick={() => setActiveCard('over_under')}>Over/Under</button>
-                        <button onClick={() => setActiveCard('rise_fall')}>Rise/Fall</button>
+                        <button
+                            className={`button ${activeCard === 'pie_diff' ? 'active' : ''}`}
+                            onClick={() => handleSetActiveCard('pie_diff')}
+                        >
+                            Digits
+                        </button>
+                        <button
+                            className={`button ${activeCard === 'over_under' ? 'active' : ''}`}
+                            onClick={() => handleSetActiveCard('over_under')}
+                        >
+                            Over/Under
+                        </button>
+                        <button
+                            className={`button ${activeCard === 'rise_fall' ? 'active' : ''}`}
+                            onClick={() => handleSetActiveCard('rise_fall')}
+                        >
+                            Rise/Fall
+                        </button>
                     </div>
                 </div>
                 <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
@@ -584,7 +601,7 @@ const BinaryAnalysisPage = observer(() => {
                                                 checked={isOverUnderOneClickActive}
                                                 onChange={handleIsOverUnderOneClick}
                                             />
-                                            <span className='slider round'></span>
+                                            <span className='slider round' />
                                         </label>
                                     )}
 
@@ -600,7 +617,11 @@ const BinaryAnalysisPage = observer(() => {
                                             <option value='DIGITOVER'>Over</option>
                                             <option value='DIGITUNDER'>Under</option>
                                         </select>
-                                        <select name='tt_options' id='tt_options' onChange={handleOverUnderDirectionSelect}>
+                                        <select
+                                            name='tt_options'
+                                            id='tt_options'
+                                            onChange={handleOverUnderDirectionSelect}
+                                        >
                                             <option value='SAME'>Same</option>
                                             <option value='OPPOSITE'>Opposite</option>
                                             <option value='MANUAL'>Manual</option>
@@ -650,12 +671,8 @@ const BinaryAnalysisPage = observer(() => {
                     <div className='line_chart card2'>
                         <div className='linechat_oct'>
                             <select name='' id='linechat_oct_options' onChange={handleLineChartSelectChange}>
-                                {activeCard === 'rise_fall' && (
-                                    <option value='risefall'>Rise/Fall Chart</option>
-                                )}
-                                {activeCard === 'over_under' && (
-                                    <option value='lastdigit'>Last Digits Chart</option>
-                                )}
+                                {activeCard === 'rise_fall' && <option value='risefall'>Rise/Fall Chart</option>}
+                                {activeCard === 'over_under' && <option value='lastdigit'>Last Digits Chart</option>}
                             </select>
                             {!isTickChart && <h2 className='analysis_title'>Last Digits Chart</h2>}
                             {isTickChart && (
@@ -668,15 +685,25 @@ const BinaryAnalysisPage = observer(() => {
                                                     checked={isRiseFallOneClickActive}
                                                     onChange={handleIsRiseFallOneClick}
                                                 />
-                                                <span className='slider round'></span>
+                                                <span className='slider round' />
                                                 {selectTickList()}
                                             </label>
                                         </div>
                                     )}
                                     {activeCard === 'rise_fall' && (
                                         <div className='rise_fall_buttons'>
-                                            <button className='rise_btn' onClick={() => buy_contract('CALL', isRiseFallOneClickActive)}>Rise</button>
-                                            <button className='fall_btn' onClick={() => buy_contract('PUT', isRiseFallOneClickActive)}>Fall</button>
+                                            <button
+                                                className='rise_btn'
+                                                onClick={() => buy_contract('CALL', isRiseFallOneClickActive)}
+                                            >
+                                                Rise
+                                            </button>
+                                            <button
+                                                className='fall_btn'
+                                                onClick={() => buy_contract('PUT', isRiseFallOneClickActive)}
+                                            >
+                                                Fall
+                                            </button>
                                         </div>
                                     )}
                                 </div>
@@ -686,10 +713,10 @@ const BinaryAnalysisPage = observer(() => {
                     </div>
                 )}
                 {activeCard === 'rise_fall' && (
-                <div className='rise_fall card1'>
-                    <h2 className='analysis_title'>Rise/Fall</h2>
-                    <RiseFallBarChart allDigitList={getLastDigitList()} is_mobile={is_mobile} />
-                </div>
+                    <div className='rise_fall card1'>
+                        <h2 className='analysis_title'>Rise/Fall</h2>
+                        <RiseFallBarChart allDigitList={getLastDigitList()} is_mobile={is_mobile} />
+                    </div>
                 )}
             </div>
             {/* Bottom Cards */}
@@ -699,7 +726,10 @@ const BinaryAnalysisPage = observer(() => {
                         <div className='title_oc_trader'>
                             <h2 className='analysis_title'>Differs/Matches</h2>
                             {tradingDiffType === 'MANUAL' ? (
-                                <button className='custom_buy_btn' onClick={() => buy_contract_differs(oneClickContract)}>
+                                <button
+                                    className='custom_buy_btn'
+                                    onClick={() => buy_contract_differs(oneClickContract)}
+                                >
                                     Buy
                                 </button>
                             ) : (
@@ -712,7 +742,7 @@ const BinaryAnalysisPage = observer(() => {
                                                 checked={isAutoClickerActive}
                                                 onChange={handleIsAutoClicker}
                                             />
-                                            <span className='slider round'></span>
+                                            <span className='slider round' />
                                         </label>
                                     </div>
                                 )
@@ -722,8 +752,12 @@ const BinaryAnalysisPage = observer(() => {
                                     <>
                                         <h4>Enable:</h4>
                                         <label className='switch'>
-                                            <input type='checkbox' checked={isOneClickActive} onChange={handleIsOneClick} />
-                                            <span className='slider round'></span>
+                                            <input
+                                                type='checkbox'
+                                                checked={isOneClickActive}
+                                                onChange={handleIsOneClick}
+                                            />
+                                            <span className='slider round' />
                                         </label>
                                     </>
                                 )}
@@ -779,7 +813,7 @@ const BinaryAnalysisPage = observer(() => {
                                         checked={isEvenOddOneClickActive}
                                         onChange={handleIsEvenOddOneClick}
                                     />
-                                    <span className='slider round'></span>
+                                    <span className='slider round' />
                                 </label>
                                 <select name='ct_types' id='contract_types' onChange={handleEvenOddContractSelect}>
                                     <option value='DIGITEVEN'>Even</option>
@@ -796,7 +830,11 @@ const BinaryAnalysisPage = observer(() => {
                                 </div>
                                 <div className='percentage_value'>
                                     <small>% value</small>
-                                    <input type='number' value={percentageValue} onChange={handlePercentageInputChange} />
+                                    <input
+                                        type='number'
+                                        value={percentageValue}
+                                        onChange={handlePercentageInputChange}
+                                    />
                                 </div>
                             </div>
                             <div className='same_diff'>

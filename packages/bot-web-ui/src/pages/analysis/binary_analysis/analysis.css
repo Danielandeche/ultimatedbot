@@ -1,7 +1,30 @@
 /* #DFE1E7 */
+:root {
+  --background-light: #dfe1e7;
+  --light-text: #000;
+  --light-box-shadow: transparent;
+  --input-text-color: #fff;
+  --background-dark: #151516;
+  --background-dark-less: #2a2f3b;
+  --dark-text: #fff;
+  --dark-box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1), 0px 0px 0px 0px rgba(255, 255, 255, 0.1);
+  --background-color: var(--background-light);
+  --background-less-color: var(--background-light);
+  --primary-color: var(--light-text);
+  --box-shadow: var(--light-box-shadow);
+}
+
 .main_app {
     height: 100vh;
     overflow: auto;
+}
+
+.main_app.dark-mode {
+  --background-color: var(--background-dark);
+  --background-less-color: var(--background-dark-less);
+  --primary-color: var(--dark-text);
+  --box-shadow: var(--dark-box-shadow);
+  --input-text-color: var(--background-dark-less);
 }
 
 .main_app .top_bar {
@@ -15,6 +38,8 @@
     padding: 8px 20px;
     border: 2px solid #ffad3a;
     border-radius: 5px;
+    background: var(--background-less-color);
+    color: var(--primary-color);
 }
 
 .no_of_ticks {
@@ -22,6 +47,8 @@
     align-items: center;
     border: 2px solid #ffad3a;
     border-radius: 5px;
+    background: var(--background-less-color);
+    color: var(--primary-color);
 }
 
 .no_of_ticks input {
@@ -29,6 +56,8 @@
     border-radius: 2px;
     font-size: 14px;
     width: 70px;
+    background: var(--background-less-color);
+    color: var(--primary-color);
 }
 
 .no_of_ticks .sync_btn {
@@ -75,6 +104,7 @@
     font-size: 18px;
     color: #cc2e3d;
     font-weight: bolder;
+    background: var(--background-less-color);
 }
 
 .main_app .top_bar .guide {
@@ -299,6 +329,9 @@
     justify-content: center;
     align-items: center;
     border-radius: 6px;
+    background: var(--background-color);
+    color: var(--primary-color);
+    box-shadow: var(--box-shadow);
 }
 
 .card2 {
@@ -310,6 +343,9 @@
     align-items: center;
     border-radius: 6px;
     padding: 10px;
+    background: var(--background-color);
+    color: var(--primary-color);
+    box-shadow: var(--box-shadow);
 }
 
 .card3 {
@@ -321,6 +357,9 @@
     align-items: center;
     border-radius: 6px;
     padding: 10px;
+    background: var(--background-color);
+    color: var(--primary-color);
+    box-shadow: var(--box-shadow);
 }
 
 .card4 {
@@ -331,6 +370,9 @@
     justify-content: center;
     align-items: center;
     border-radius: 6px;
+    background: var(--background-color);
+    color: var(--primary-color);
+    box-shadow: var(--box-shadow);
 }
 
 .pie_diff .pie {
@@ -608,7 +650,7 @@
     }
     .main_app .rf_ou {
         flex-direction: column;
-        height: auto;
+        height: 125%;
     }
 
     .line_chart {
@@ -628,6 +670,7 @@
 
     .main_app .pie_diff {
         flex-direction: column;
+        height: 125%;
     }
 
     .pie_diff .pie {
@@ -659,6 +702,26 @@
         flex-direction: column;
         gap: 10px;
     }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+  }
+  
+  .button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      cursor: pointer;
+      background-color: gray;
+      color: black;
+  }
+  
+  .button.active {
+      background-color: blue;
+      color: white;
+  }
+  
 }
 
 /* Toggle switch styles */
@@ -714,3 +777,5 @@ input:checked + .slider:before {
     -ms-transform: translateX(20px); /* Adjusted from 26px to 20px */
     transform: translateX(20px); /* Adjusted from 26px to 20px */
 }
+
+

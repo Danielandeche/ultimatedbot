@@ -704,24 +704,23 @@
     }
 
     .buttons {
-      display: flex;
-      justify-content: space-around;
-  }
-  
-  .button {
-      padding: 10px 20px;
-      margin: 5px;
-      border: none;
-      cursor: pointer;
-      background-color: gray;
-      color: black;
-  }
-  
-  .button.active {
-      background-color: blue;
-      color: white;
-  }
-  
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .button {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        cursor: pointer;
+        background-color: #808080; /* Gray color */
+        color: #000000; /* Black color */
+    }
+    
+    .button.active {
+        background-color: #0000ff; /* Blue color */
+        color: #ffffff; /* White color */
+    }
 }
 
 /* Toggle switch styles */

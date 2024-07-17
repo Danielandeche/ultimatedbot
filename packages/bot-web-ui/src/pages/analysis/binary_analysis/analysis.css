@@ -117,7 +117,7 @@
 .main_app .rf_ou {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0rem;
 }
 
 .analysis_title {
@@ -135,8 +135,8 @@
 .main_app .over_under_options {
     display: flex;
     align-items: center;
-    width: 100%;
-    gap: 20px;
+    width: 90%;
+    gap: 0px;
 }
 
 .main_app .over_under_options .digit_inputs {
@@ -232,7 +232,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
 }
 
 .main_app .line_chart .oct_trading_options {
@@ -632,12 +632,12 @@
     }
 
     .pie_diff .pie {
-        width: 100%;
+        width: 90%;
         height: auto;
     }
 
     .main_app .digit_diff {
-        width: 100%;
+        width: 90%;
         height: auto;
     }
 
@@ -674,7 +674,8 @@
     border: none;
     cursor: pointer;
     background-color: #808080; /* Gray color */
-    color: #000000; /* Black color */
+    color: #ffffff; /* Black color */
+    border-radius: 5px;
 }
 
 .button.active {

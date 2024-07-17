@@ -608,7 +608,7 @@
     }
     .main_app .rf_ou {
         flex-direction: column;
-        height: auto;
+        height: 125%;
     }
 
     .line_chart {
@@ -628,15 +628,17 @@
 
     .main_app .pie_diff {
         flex-direction: column;
+        height: 125%;
     }
 
     .pie_diff .pie {
         width: 100%;
+        height: auto;
     }
 
     .main_app .digit_diff {
         width: 100%;
-        height: 33.5%;
+        height: auto;
     }
 
     .differs_container {
@@ -662,23 +664,24 @@
 }
 
 .buttons {
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 .button {
-  padding: 10px 20px;
-  margin: 5px;
-  border: none;
-  cursor: pointer;
-  background-color: #808080; /* Gray color */
-  color: #000000; /* Black color */
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #808080; /* Gray color */
+    color: #000000; /* Black color */
 }
 
 .button.active {
-  background-color: #0000ff; /* Blue color */
-  color: #ffffff; /* White color */
+    background-color: #0000ff; /* Blue color */
+    color: #ffffff; /* White color */
 }
+
 
 /* Toggle switch styles */
 .switch {

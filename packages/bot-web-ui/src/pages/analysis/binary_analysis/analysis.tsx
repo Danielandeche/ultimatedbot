@@ -491,6 +491,9 @@ const BinaryAnalysisPage = observer(() => {
     const handleIsOverUnderOneClick = () => {
         setIsOverUnderOneClickActive(!isOverUnderOneClickActive);
     };
+    const handleSetActiveCard = (card) => {
+        setActiveCard(card);
+    };
 
     return (
         <div className='main_app'>

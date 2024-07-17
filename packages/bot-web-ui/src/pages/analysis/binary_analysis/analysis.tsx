@@ -566,156 +566,157 @@ const BinaryAnalysisPage = observer(() => {
                 )}
             </div>
             {/* Middle Cards */}
-            <div className='rf_ou'>
-                -
-                {activeCard === 'over_under' && (
-                    <div className='over_under card1'>
-                        <div className='over_under_options'>
-                            {/* <h2 className='analysis_title'>Over/Under</h2> */}
-                            <div className='digit_inputs'>
-                                <div className='over_digit'>
-                                    <label htmlFor='over_input'>Over</label>
-                                    <input type='number' value={overValue} onChange={handleOverInputChange} />
-                                </div>
-                                <div className='under_digit'>
-                                    <label htmlFor='under_input'>Under</label>
-                                    <input type='number' value={underValue} onChange={handleUnderInputChange} />
-                                </div>
-                            </div>
-                            <div className='over_oct_container'>
-                                <div className='over_oct'>
-                                    {overUnderManual ? (
-                                        <button
-                                            onClick={() => buy_contract_differs(overUnderContract, true)}
-                                            className='overunder_buy_btn'
-                                        >
-                                            Buy
-                                        </button>
-                                    ) : (
-                                        <label className='switch'>
-                                            <input
-                                                type='checkbox'
-                                                checked={isOverUnderOneClickActive}
-                                                onChange={handleIsOverUnderOneClick}
-                                            />
-                                            <span className='slider round' />
-                                        </label>
-                                    )}
-
-                                    {selectTickList()}
-                                </div>
-                                <div className='over_under_settings'>
-                                    <div className='ct_types_ou'>
-                                        <select
-                                            name='ct_types'
-                                            id='contract_types'
-                                            onChange={handleOverUnderContractSelect}
-                                        >
-                                            <option value='DIGITOVER'>Over</option>
-                                            <option value='DIGITUNDER'>Under</option>
-                                        </select>
-                                        <select
-                                            name='tt_options'
-                                            id='tt_options'
-                                            onChange={handleOverUnderDirectionSelect}
-                                        >
-                                            <option value='SAME'>Same</option>
-                                            <option value='OPPOSITE'>Opposite</option>
-                                            <option value='MANUAL'>Manual</option>
-                                        </select>
+            {(activeCard === 'rise_fall' || activeCard === 'over_under') && (
+                <div className='rf_ou'>
+                    {activeCard === 'over_under' && (
+                        <div className='over_under card1'>
+                            <div className='over_under_options'>
+                                {/* <h2 className='analysis_title'>Over/Under</h2> */}
+                                <div className='digit_inputs'>
+                                    <div className='over_digit'>
+                                        <label htmlFor='over_input'>Over</label>
+                                        <input type='number' value={overValue} onChange={handleOverInputChange} />
                                     </div>
-                                    <div className='martingale'>
-                                        <small>martingale</small>
-                                        <input
-                                            type='number'
-                                            value={martingaleValueRef.current}
-                                            onChange={handleMartingaleInputChange}
-                                        />
-                                    </div>
-                                    <div className='percentage_value'>
-                                        <small>% value</small>
-                                        <input
-                                            type='number'
-                                            value={percentageValue}
-                                            onChange={handlePercentageInputChange}
-                                        />
+                                    <div className='under_digit'>
+                                        <label htmlFor='under_input'>Under</label>
+                                        <input type='number' value={underValue} onChange={handleUnderInputChange} />
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <OverUnderBarChart
-                            overUnderList={getLastDigitList()}
-                            overValue={overValue}
-                            underValue={underValue}
-                            is_mobile={is_mobile}
-                            active_symbol={active_symbol}
-                            isOverUnderOneClickActive={isOverUnderOneClickActive}
-                            oneClickAmount={oneClickAmount}
-                            oneClickDuration={oneClickDuration}
-                            isTradeActive={isTradeActive}
-                            percentageValue={percentageValue}
-                            overUnderContract={overUnderContract}
-                            overUnderDirection={overUnderDirection}
-                            setIsTradeActive={setIsTradeActive}
-                            isTradeActiveRef={isTradeActiveRef}
-                            enableCopyDemo={enableCopyDemo}
-                            liveAccCR={liveAccCR}
-                        />
-                    </div>
-                )}
-                {(activeCard === 'rise_fall' || activeCard === 'over_under') && (
-                    <div className='line_chart card2'>
-                        <div className='linechat_oct'>
-                            <select name='' id='linechat_oct_options' onChange={handleLineChartSelectChange}>
-                                {activeCard === 'rise_fall' && <option value='risefall'>Rise/Fall Chart</option>}
-                                {activeCard === 'over_under' && <option value='lastdigit'>Last Digits Chart</option>}
-                            </select>
-                            {!isTickChart && <h2 className='analysis_title'>Last Digits Chart</h2>}
-                            {isTickChart && (
-                                <div className='oct_trading_options'>
-                                    {activeCard === 'rise_fall' && (
-                                        <div className='details_options'>
+                                <div className='over_oct_container'>
+                                    <div className='over_oct'>
+                                        {overUnderManual ? (
+                                            <button
+                                                onClick={() => buy_contract_differs(overUnderContract, true)}
+                                                className='overunder_buy_btn'
+                                            >
+                                                Buy
+                                            </button>
+                                        ) : (
                                             <label className='switch'>
                                                 <input
                                                     type='checkbox'
-                                                    checked={isRiseFallOneClickActive}
-                                                    onChange={handleIsRiseFallOneClick}
+                                                    checked={isOverUnderOneClickActive}
+                                                    onChange={handleIsOverUnderOneClick}
                                                 />
                                                 <span className='slider round' />
-                                                {selectTickList()}
                                             </label>
-                                        </div>
-                                    )}
-                                    {activeCard === 'rise_fall' && (
-                                        <div className='rise_fall_buttons'>
-                                            <button
-                                                className='rise_btn'
-                                                onClick={() => buy_contract('CALL', isRiseFallOneClickActive)}
+                                        )}
+
+                                        {selectTickList()}
+                                    </div>
+                                    <div className='over_under_settings'>
+                                        <div className='ct_types_ou'>
+                                            <select
+                                                name='ct_types'
+                                                id='contract_types'
+                                                onChange={handleOverUnderContractSelect}
                                             >
-                                                Rise
-                                            </button>
-                                            <button
-                                                className='fall_btn'
-                                                onClick={() => buy_contract('PUT', isRiseFallOneClickActive)}
+                                                <option value='DIGITOVER'>Over</option>
+                                                <option value='DIGITUNDER'>Under</option>
+                                            </select>
+                                            <select
+                                                name='tt_options'
+                                                id='tt_options'
+                                                onChange={handleOverUnderDirectionSelect}
                                             >
-                                                Fall
-                                            </button>
+                                                <option value='SAME'>Same</option>
+                                                <option value='OPPOSITE'>Opposite</option>
+                                                <option value='MANUAL'>Manual</option>
+                                            </select>
                                         </div>
-                                    )}
+                                        <div className='martingale'>
+                                            <small>martingale</small>
+                                            <input
+                                                type='number'
+                                                value={martingaleValueRef.current}
+                                                onChange={handleMartingaleInputChange}
+                                            />
+                                        </div>
+                                        <div className='percentage_value'>
+                                            <small>% value</small>
+                                            <input
+                                                type='number'
+                                                value={percentageValue}
+                                                onChange={handlePercentageInputChange}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                            )}
+                            </div>
+
+                            <OverUnderBarChart
+                                overUnderList={getLastDigitList()}
+                                overValue={overValue}
+                                underValue={underValue}
+                                is_mobile={is_mobile}
+                                active_symbol={active_symbol}
+                                isOverUnderOneClickActive={isOverUnderOneClickActive}
+                                oneClickAmount={oneClickAmount}
+                                oneClickDuration={oneClickDuration}
+                                isTradeActive={isTradeActive}
+                                percentageValue={percentageValue}
+                                overUnderContract={overUnderContract}
+                                overUnderDirection={overUnderDirection}
+                                setIsTradeActive={setIsTradeActive}
+                                isTradeActiveRef={isTradeActiveRef}
+                                enableCopyDemo={enableCopyDemo}
+                                liveAccCR={liveAccCR}
+                            />
                         </div>
-                        <ApolloLineChart data={getLineChartList()} />
-                    </div>
-                )}
-                {activeCard === 'rise_fall' && (
-                    <div className='rise_fall card1'>
-                        <h2 className='analysis_title'>Rise/Fall</h2>
-                        <RiseFallBarChart allDigitList={getLastDigitList()} is_mobile={is_mobile} />
-                    </div>
-                )}
-            </div>
+                    )}
+                    {(activeCard === 'rise_fall' || activeCard === 'over_under') && (
+                        <div className='line_chart card2'>
+                            <div className='linechat_oct'>
+                                <select name='' id='linechat_oct_options' onChange={handleLineChartSelectChange}>
+                                    {activeCard === 'rise_fall' && <option value='risefall'>Rise/Fall Chart</option>}
+                                    {activeCard === 'over_under' && <option value='lastdigit'>Last Digits Chart</option>}
+                                </select>
+                                {!isTickChart && <h2 className='analysis_title'>Last Digits Chart</h2>}
+                                {isTickChart && (
+                                    <div className='oct_trading_options'>
+                                        {activeCard === 'rise_fall' && (
+                                            <div className='details_options'>
+                                                <label className='switch'>
+                                                    <input
+                                                        type='checkbox'
+                                                        checked={isRiseFallOneClickActive}
+                                                        onChange={handleIsRiseFallOneClick}
+                                                    />
+                                                    <span className='slider round' />
+                                                    {selectTickList()}
+                                                </label>
+                                            </div>
+                                        )}
+                                        {activeCard === 'rise_fall' && (
+                                            <div className='rise_fall_buttons'>
+                                                <button
+                                                    className='rise_btn'
+                                                    onClick={() => buy_contract('CALL', isRiseFallOneClickActive)}
+                                                >
+                                                    Rise
+                                                </button>
+                                                <button
+                                                    className='fall_btn'
+                                                    onClick={() => buy_contract('PUT', isRiseFallOneClickActive)}
+                                                >
+                                                    Fall
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                            <ApolloLineChart data={getLineChartList()} />
+                        </div>
+                    )}
+                    {activeCard === 'rise_fall' && (
+                        <div className='rise_fall card1'>
+                            <h2 className='analysis_title'>Rise/Fall</h2>
+                            <RiseFallBarChart allDigitList={getLastDigitList()} is_mobile={is_mobile} />
+                        </div>
+                    )}
+                </div>
+            )}
             {/* Bottom Cards */}
             {activeCard === 'pie_diff' && (
                 <div className='pie_diff'>

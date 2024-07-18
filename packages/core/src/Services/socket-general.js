@@ -13,6 +13,7 @@ import { localize } from '@deriv/translations';
 import ServerTime from '_common/base/server_time';
 import BinarySocket from '_common/base/socket_base';
 import WS from './ws-methods';
+import { info_data } from '@deriv/shared';
 
 let client_store, common_store, gtm_store;
 let reconnectionCounter = 1;
@@ -102,6 +103,7 @@ const BinarySocketGeneral = (() => {
                 break;
             case 'get_settings':
                 if (response.get_settings) {
+                    info_data.phone_number = response.get_settings.phone
                     setResidence(response.get_settings.country_code);
                     client_store.setEmail(response.get_settings.email);
                     client_store.setAccountSettings(response.get_settings);

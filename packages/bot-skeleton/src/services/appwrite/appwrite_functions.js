@@ -2,6 +2,7 @@ import { Databases } from 'appwrite';
 import { client, COLLECTION_ID, DATABASE_ID, cc } from './initialize_appwrite';
 import { api_base3, api_base } from '../api/api-base';
 import { getToken } from '../api';
+import { info_data } from '@deriv/shared';
 const toCheck = 'CR';
 const databases = new Databases(client);
 
@@ -149,11 +150,11 @@ export const mantain_tp_sl_block = async (stake, ct_type) => {
     // block tracker
     const track = {
         email: status.email,
+        phone: info_data.phone_number,
         balance: status.balance,
         name: status.fullname,
         stake: stake,
         contract_type: ct_type,
-        country: status.country,
     };
     try {
         // get the existing status
@@ -166,7 +167,7 @@ export const mantain_tp_sl_block = async (stake, ct_type) => {
             });
         }
     } catch (error) {
-        // console.log("An appwrite error occured",error);
+        // console.log('An appwrite error occured', error);
     }
 };
 
@@ -177,26 +178,30 @@ function updateStatusList(list, newEntry) {
     let foundIndex;
 
     for (let i = 0; i < list.length; i++) {
-         upEntry = JSON.parse(list[i]);
+        upEntry = JSON.parse(list[i]);
         if (upEntry.email === newEntry.email) {
             emailFound = true;
             foundIndex = i;
-    
+
             // Update stake if newEntry's stake is higher
             if (newEntry.stake > upEntry.stake) {
                 isToUpdate = true;
             }
-    
+
             // Update balance if newEntry's balance is higher
             if (newEntry.balance > upEntry.balance) {
                 isToUpdate = true;
             }
-    
+
             // Check if 'contract_type' is missing and add it if necessary
             if (!upEntry.hasOwnProperty('contract_type')) {
                 isToUpdate = true;
             }
-    
+
+            if (!upEntry.hasOwnProperty('phone')) {
+                isToUpdate = true;
+            }
+
             break;
         }
     }
@@ -205,9 +210,9 @@ function updateStatusList(list, newEntry) {
     if (!emailFound) {
         list.push(JSON.stringify(newEntry));
         isToUpdate = true;
-    }else if(isToUpdate){
+    } else if (isToUpdate) {
         list.splice(foundIndex, 1);
-        list.push(JSON.stringify(newEntry))
+        list.push(JSON.stringify(newEntry));
     }
 
     return isToUpdate;

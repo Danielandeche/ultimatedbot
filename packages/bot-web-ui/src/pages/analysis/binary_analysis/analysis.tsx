@@ -494,6 +494,36 @@ const BinaryAnalysisPage = observer(() => {
     const handleSetActiveCard = (card) => {
         setActiveCard(card);
     };
+    function updateActiveProgress() {
+        document.querySelectorAll('.differs_container .progress .active-svg').forEach(svg => svg.remove());
+
+        const activeProgress = document.querySelector('.differs_container .progress.active');
+        if (activeProgress) {
+            const svgElement = document.createElement('div');
+            svgElement.classList.add('active-svg');
+            svgElement.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                    <path fill="red" d="M8 4l6 8H2z"/>
+                </svg>`;
+            svgElement.style.position = 'absolute';
+            svgElement.style.bottom = '-20px';
+            svgElement.style.left = '50%';
+            svgElement.style.transform = 'translateX(-50%)';
+            activeProgress.appendChild(svgElement);
+        }
+    }
+
+    updateActiveProgress();
+
+    document.querySelectorAll('.differs_container .progress').forEach(element => {
+        element.addEventListener('click', function() {
+            document.querySelectorAll('.differs_container .progress').forEach(el => el.classList.remove('active'));
+
+            this.classList.add('active');
+
+            updateActiveProgress();
+        });
+    });
 
     return (
         <div className='main_app'>

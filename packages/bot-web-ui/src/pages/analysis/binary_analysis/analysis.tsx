@@ -745,6 +745,38 @@ const BinaryAnalysisPage = observer(() => {
                             <RiseFallBarChart allDigitList={getLastDigitList()} is_mobile={is_mobile} />
                         </div>
                     )}
+                    {/* Embedded YouTube video for Over and Under guide */}
+                    {activeCard === 'over_under' && (
+                        <div className='guide_video'>
+                            <h2>Over & Under Guide</h2>
+                            <iframe 
+                                width="560" 
+                                height="315" 
+                                src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    )}
+                    {/* Embedded YouTube video for Over and Under guide */}
+                    {activeCard === 'rise_fall' && (
+                        <div className='guide_video'>
+                            <h2>Rise & Fall Guide</h2>
+                            <iframe 
+                                width="560" 
+                                height="315" 
+                                src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    )}
+
+
                 </div>
             )}
             {/* Bottom Cards */}

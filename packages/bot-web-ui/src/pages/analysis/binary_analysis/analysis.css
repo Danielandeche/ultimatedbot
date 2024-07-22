@@ -512,7 +512,7 @@
 .differs_container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+    gap: 25px;
     padding: 20px;
     justify-content: center;
     align-items: center;

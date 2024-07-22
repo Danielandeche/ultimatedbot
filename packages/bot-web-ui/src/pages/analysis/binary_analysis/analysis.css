@@ -687,7 +687,23 @@
     margin-bottom: 10px;
 }
 
+iframe {
+    width: 90%;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin: 0 auto;
+    display: block;
+    border: 0;
+}
 
+
+@media (min-width: 768px) {
+    iframe {
+        width: 480px;
+        height: 269px;
+        padding-bottom: 0;
+    }
+}
 
 /* Toggle switch styles */
 .switch {

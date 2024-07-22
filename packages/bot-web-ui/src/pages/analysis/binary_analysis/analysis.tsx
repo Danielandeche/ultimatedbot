@@ -752,8 +752,6 @@ const BinaryAnalysisPage = observer(() => {
                         <div className='guide_video'>
                             <h2>Over & Under Guide</h2>
                             <iframe
-                                width='560'
-                                height='315'
                                 src='https://www.youtube.com/embed/YOUR_VIDEO_ID'
                                 title='YouTube video player'
                                 frameBorder='0'
@@ -767,8 +765,6 @@ const BinaryAnalysisPage = observer(() => {
                         <div className='guide_video'>
                             <h2>Rise & Fall Guide</h2>
                             <iframe
-                                width='560'
-                                height='315'
                                 src='https://www.youtube.com/embed/YOUR_VIDEO_ID'
                                 title='YouTube video player'
                                 frameBorder='0'

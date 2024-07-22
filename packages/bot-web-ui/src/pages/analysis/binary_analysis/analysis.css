@@ -510,13 +510,12 @@
 
 /* ========== DIFFERSBALLS CSS =============== */
 .differs_container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     padding: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 .differs_container .progress {

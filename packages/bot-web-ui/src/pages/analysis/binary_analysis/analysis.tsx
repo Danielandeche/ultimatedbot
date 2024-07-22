@@ -491,7 +491,7 @@ const BinaryAnalysisPage = observer(() => {
     const handleIsOverUnderOneClick = () => {
         setIsOverUnderOneClickActive(!isOverUnderOneClickActive);
     };
-    const handleSetActiveCard = (card) => {
+    const handleSetActiveCard = card => {
         setActiveCard(card);
     };
     function updateActiveProgress() {
@@ -516,7 +516,7 @@ const BinaryAnalysisPage = observer(() => {
     updateActiveProgress();
 
     document.querySelectorAll('.differs_container .progress').forEach(element => {
-        element.addEventListener('click', function() {
+        element.addEventListener('click', function () {
             document.querySelectorAll('.differs_container .progress').forEach(el => el.classList.remove('active'));
 
             this.classList.add('active');
@@ -699,7 +699,9 @@ const BinaryAnalysisPage = observer(() => {
                             <div className='linechat_oct'>
                                 <select name='' id='linechat_oct_options' onChange={handleLineChartSelectChange}>
                                     {activeCard === 'rise_fall' && <option value='risefall'>Rise/Fall Chart</option>}
-                                    {activeCard === 'over_under' && <option value='lastdigit'>Last Digits Chart</option>}
+                                    {activeCard === 'over_under' && (
+                                        <option value='lastdigit'>Last Digits Chart</option>
+                                    )}
                                 </select>
                                 {!isTickChart && <h2 className='analysis_title'>Last Digits Chart</h2>}
                                 {isTickChart && (
@@ -749,34 +751,32 @@ const BinaryAnalysisPage = observer(() => {
                     {activeCard === 'over_under' && (
                         <div className='guide_video'>
                             <h2>Over & Under Guide</h2>
-                            <iframe 
-                                width="560" 
-                                height="315" 
-                                src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-                                title="YouTube video player" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
+                            <iframe
+                                width='560'
+                                height='315'
+                                src='https://www.youtube.com/embed/YOUR_VIDEO_ID'
+                                title='YouTube video player'
+                                frameBorder='0'
+                                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                                allowfullscreen
+                            />
                         </div>
                     )}
                     {/* Embedded YouTube video for Over and Under guide */}
                     {activeCard === 'rise_fall' && (
                         <div className='guide_video'>
                             <h2>Rise & Fall Guide</h2>
-                            <iframe 
-                                width="560" 
-                                height="315" 
-                                src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-                                title="YouTube video player" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
+                            <iframe
+                                width='560'
+                                height='315'
+                                src='https://www.youtube.com/embed/YOUR_VIDEO_ID'
+                                title='YouTube video player'
+                                frameBorder='0'
+                                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                                allowfullscreen
+                            />
                         </div>
                     )}
-
-
                 </div>
             )}
             {/* Bottom Cards */}

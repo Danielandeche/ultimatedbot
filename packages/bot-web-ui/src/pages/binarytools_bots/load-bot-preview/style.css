@@ -11,7 +11,7 @@
 .binarytools-list__item {
     display: flex;
     padding: 0.8rem 1rem;
-    background: linear-gradient(45deg, rgba(0, 212, 255, 0.858) 0%, rgba(48, 47, 73, 0.939) 55%);
+    background: linear-gradient(-55deg, #000046, #119dc4);
     margin: 1rem;
     color: #fff;
     text-align: center;
@@ -25,7 +25,7 @@
 }
 
 .binarytools-list__item:hover {
-    background: #00ff5b;
+    background: #003366;
     color: #000;
 }
 
@@ -36,6 +36,6 @@
 @media screen and (max-width: 720px) {
     .binarytools-list__wrapper {
         grid-template-columns: none;
-        height: calc(100vh - 40rem);
+        height: calc(100vh - 25rem);
     }
 }

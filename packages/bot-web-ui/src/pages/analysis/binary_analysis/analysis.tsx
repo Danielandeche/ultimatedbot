@@ -506,7 +506,7 @@ const BinaryAnalysisPage = observer(() => {
                     <path fill="red" d="M8 4l6 8H2z"/>
                 </svg>`;
             svgElement.style.position = 'absolute';
-            svgElement.style.bottom = '-20px';
+            svgElement.style.bottom = '-15px';
             svgElement.style.left = '50%';
             svgElement.style.transform = 'translateX(-50%)';
             activeProgress.appendChild(svgElement);

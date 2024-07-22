@@ -303,7 +303,7 @@
 
         &__table {
             @include mobile-tablet-mix {
-                width: calc(100% - 9.3rem);
+                width: calc(100%);
             }
 
             &--minimized {

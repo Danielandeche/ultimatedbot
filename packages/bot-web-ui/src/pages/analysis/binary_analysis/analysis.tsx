@@ -550,26 +550,6 @@ const BinaryAnalysisPage = observer(() => {
                         <h4>CURRENT TICK</h4>
                         <h3>{currentTick.toString()}</h3>
                     </div>
-                    <div className='buttons'>
-                        <button
-                            className={`button ${activeCard === 'pie_diff' ? 'active' : ''}`}
-                            onClick={() => handleSetActiveCard('pie_diff')}
-                        >
-                            Digits
-                        </button>
-                        <button
-                            className={`button ${activeCard === 'over_under' ? 'active' : ''}`}
-                            onClick={() => handleSetActiveCard('over_under')}
-                        >
-                            Over/Under
-                        </button>
-                        <button
-                            className={`button ${activeCard === 'rise_fall' ? 'active' : ''}`}
-                            onClick={() => handleSetActiveCard('rise_fall')}
-                        >
-                            Rise/Fall
-                        </button>
-                    </div>
                 </div>
                 <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
                     <MdOutlineSettings /> Risk Management
@@ -594,6 +574,26 @@ const BinaryAnalysisPage = observer(() => {
                         setLiveAccCr={setLiveAccCr}
                     />
                 )}
+                <div className='buttons'>
+                    <button
+                        className={`button ${activeCard === 'pie_diff' ? 'active' : ''}`}
+                        onClick={() => handleSetActiveCard('pie_diff')}
+                    >
+                        Digits
+                    </button>
+                    <button
+                        className={`button ${activeCard === 'over_under' ? 'active' : ''}`}
+                        onClick={() => handleSetActiveCard('over_under')}
+                    >
+                        Over/Under
+                    </button>
+                    <button
+                        className={`button ${activeCard === 'rise_fall' ? 'active' : ''}`}
+                        onClick={() => handleSetActiveCard('rise_fall')}
+                    >
+                        Rise/Fall
+                    </button>
+                </div>
             </div>
             {/* Middle Cards */}
             {(activeCard === 'rise_fall' || activeCard === 'over_under') && (
@@ -747,12 +747,10 @@ const BinaryAnalysisPage = observer(() => {
                             <RiseFallBarChart allDigitList={getLastDigitList()} is_mobile={is_mobile} />
                         </div>
                     )}
-                    {/* Embedded YouTube video for Over and Under guide */}
                     {activeCard === 'over_under' && (
-                        <div className='guide_video'>
-                            <h2>Over & Under Guide</h2>
+                        <div className='guidevideo card5'>
                             <iframe
-                                src='https://www.youtube.com/embed/YOUR_VIDEO_ID'
+                                src='https://www.youtube.com/embed/VIDEO_ID'
                                 title='YouTube video player'
                                 frameBorder='0'
                                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -760,12 +758,10 @@ const BinaryAnalysisPage = observer(() => {
                             />
                         </div>
                     )}
-                    {/* Embedded YouTube video for Over and Under guide */}
                     {activeCard === 'rise_fall' && (
-                        <div className='guide_video'>
-                            <h2>Rise & Fall Guide</h2>
+                        <div className='guidevideo card5'>
                             <iframe
-                                src='https://www.youtube.com/embed/YOUR_VIDEO_ID'
+                                src='https://www.youtube.com/embed/VIDEO_ID'
                                 title='YouTube video player'
                                 frameBorder='0'
                                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -919,6 +915,15 @@ const BinaryAnalysisPage = observer(() => {
                                 sameDiffEvenOdd={sameDiffEvenOdd}
                             />
                         </div>
+                    </div>
+                    <div className='guidevideo card5'>
+                        <iframe
+                            src='https://www.youtube.com/embed/VIDEO_ID'
+                            title='YouTube video player'
+                            frameBorder='0'
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                            allowfullscreen
+                        />
                     </div>
                 </div>
             )}

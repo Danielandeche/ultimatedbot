@@ -323,6 +323,17 @@
     padding: 10px;
 }
 
+.card5 {
+    background: #dfe1e7;
+    width: 600px;
+    height: 269px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    padding: 10px;
+}
+
 .card4 {
     background: #dfe1e7;
     width: 320px;
@@ -331,6 +342,17 @@
     justify-content: center;
     align-items: center;
     border-radius: 6px;
+}
+
+.card5 {
+    background: #dfe1e7;
+    width: 600px;
+    height: 269px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    padding: 10px;
 }
 
 .pie_diff .pie {
@@ -544,8 +566,27 @@
 
 .differs_container .progress.active {
     transform: scale(1.2);
-    margin: 0px 8px;
-    padding-bottom: 20px; 
+    transform-origin: center;
+    padding-bottom: 20px;
+}
+
+.differs_container .progress.active:after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background: #CD5C5C;
+    z-index: 0;
+}
+
+.differs_container .progress:hover {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background: #4bb4b3;
+    z-index: 0;
+    transform: scale(1.15);
 }
 
 
@@ -554,6 +595,7 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transform-origin: center;
     font-size: 1.5rem;
     z-index: 1;
     font-weight: 500;
@@ -565,6 +607,7 @@
     left: 54%;
     font-size: 1rem;
     transform: translateX(-50%);
+    transform-origin: center;
     z-index: 1;
     font-weight: 500;
     color: #fff;
@@ -637,7 +680,7 @@
 
     .differs_container {
         display: grid;
-        gap: 30px 4px;
+        gap: 30px 10px;
         grid-template-columns: repeat(5, 1fr);
     }
     .differs_container .progress {
@@ -675,34 +718,6 @@
 .button.active {
     background-color: #0000ff; /* Blue color */
     color: #ffffff; /* White color */
-}
-
-.guide_video {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.guide_video h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-iframe {
-    width: 90%;
-    height: 0;
-    padding-bottom: 56.25%;
-    margin: 0 auto;
-    display: block;
-    border: 0;
-}
-
-
-@media (min-width: 768px) {
-    iframe {
-        width: 480px;
-        height: 269px;
-        padding-bottom: 0;
-    }
 }
 
 /* Toggle switch styles */
@@ -757,4 +772,13 @@ input:checked + .slider:before {
     -webkit-transform: translateX(20px); /* Adjusted from 26px to 20px */
     -ms-transform: translateX(20px); /* Adjusted from 26px to 20px */
     transform: translateX(20px); /* Adjusted from 26px to 20px */
+}
+
+.guidevideo.card5 {
+    width: 90%;
+}
+
+.guidevideo.card5 iframe {
+    width: 100%;
+    height: 100%;
 }

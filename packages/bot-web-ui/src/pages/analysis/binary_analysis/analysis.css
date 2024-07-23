@@ -568,17 +568,6 @@
     z-index: 0;
 }
 
-.differs_container .progress:hover {
-    content: '';
-    position: absolute;
-    inset: 5px;
-    border-radius: 50%;
-    background: #4bb4b3;
-    z-index: 0;
-    transform: scale(1.15);
-}
-
-
 .differs_container .progress h3 {
     position: absolute;
     top: 40%;

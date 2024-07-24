@@ -94,7 +94,7 @@ const BotSettings = ({
         >
             <div className='dc-dialog__content__header'>
                 <Text data-testid='data-title' weight='bold' as='p' align='left' size='s' color='prominent'>
-                    {localize('Market Analysis Settings')}
+                    {localize('Pro Analysistool Settings')}
                 </Text>
                 <div
                     data-testid='data-close-button'

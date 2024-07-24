@@ -86,7 +86,7 @@
   
   .guide svg {
     font-size: 28px;
-    color: #0ba70b;
+    color: #ff0000;
   }
   
   @keyframes rotate360 {
@@ -148,6 +148,7 @@
 
 .analysis_title {
     font-size: 14px;
+    font-weight: 900;
 }
 
 .main_app .rf_ou .rise_fall,
@@ -319,7 +320,7 @@
 
 .card1 {
     background: #dfe1e7;
-    width: 320px;
+    width: 400px;
     height: 269px;
     display: flex;
     justify-content: center;
@@ -351,7 +352,7 @@
 
 .card4 {
     background: #dfe1e7;
-    width: 320px;
+    width: 400px;
     height: 290px;
     display: flex;
     justify-content: center;
@@ -456,28 +457,61 @@
 
 .main_app .pie_diff .pie .pie_container {
     width: 60%;
-    height: 86%;
+    height: 75%;
 }
 
 .main_app .pie_diff .digit_diff .title_oc_trader {
-    display: flex;
     justify-content: space-between;
     width: 80%;
     align-items: center;
 }
 
-.main_app .pie_diff .digit_diff .title_oc_trader .auto_clicker {
+.main_app .pie_diff .digit_diff .title_oc_trader .differs_choices {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+}
+.main_app .pie_diff .digit_diff .title_oc_trader .differs_choices .auto_clicker {
+    display: flex;
     flex-direction: column;
-    gap: 5px;
-    font-size: 12px;
+    text-align: center;
+    gap: 2px;
+    align-items: center;
 }
 
-.main_app .pie_diff .digit_diff .title_oc_trader .auto_clicker input {
+.main_app .pie_diff .digit_diff .title_oc_trader .differs_choices .auto_clicker input {
     width: 16px;
     height: 16px;
 }
+
+.main_app .pie_diff .digit_diff .title_oc_trader .differs_choices input {
+    width: 16px;
+    height: 16px;
+}
+/*some modification*/
+.main_app .pie_diff .digit_diff .title_oc_trader .differs_choices {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.main_app .on_off_btn {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2px;
+    align-items: center;
+}
+
+.main_app .auto_btn {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2px;
+    align-items: center;
+}
+
+/*end of modification*/
 
 .main_app .pie_diff .digit_diff .title_oc_trader .oneclick_trader {
     display: flex;
@@ -505,6 +539,7 @@
 .main_app .pie_diff .digit_diff .title_oc_trader .oneclick_trader .oneclick_amout {
     display: flex;
     align-items: center;
+    flex-direction: column;
     gap: 3px;
     font-size: 13px;
 }
@@ -516,7 +551,7 @@
     border-radius: 2px;
 }
 
-.main_app .pie_diff .digit_diff .title_oc_trader .oneclick_trader .diff_options {
+.main_app .pie_diff .digit_diff .title_oc_trader .diff_options {
     display: flex;
     flex-direction: column;
     gap: 2px;

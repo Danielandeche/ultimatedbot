@@ -77,11 +77,34 @@
     font-weight: bolder;
 }
 
-.main_app .top_bar .guide {
-    font-size: 1.8rem;
-    color: #0ba70b;
+.guide {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
     cursor: pointer;
-}
+  }
+  
+  .guide svg {
+    font-size: 28px;
+    color: #0ba70b;
+  }
+  
+  @keyframes rotate360 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(180deg);
+    }
+  }
+  .guide svg:hover {
+    animation: rotate360 0.3s linear;
+  }
+  
+  .guide h5 {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
 
 .main_app .top_bar .bot_options {
     display: flex;
@@ -94,13 +117,16 @@
 .main_app .top_bar .bot_options .sl,
 .main_app .top_bar .bot_options .active_inactive,
 .main_app .top_bar .bot_options .copy_demo_trades,
-.main_app .top_bar .bot_options .account_cr {
+.main_app .top_bar .bot_options .account_cr,
+.main_app .top_bar .bot_options .ticks,
+.main_app .top_bar .bot_options .stake {
     display: flex;
     gap: 2rem;
 }
 
 .main_app .top_bar .bot_options .tp input,
-.main_app .top_bar .bot_options .sl input {
+.main_app .top_bar .bot_options .sl input,
+.main_app .top_bar .bot_options .stake input {
     font-size: 12px;
     text-align: center;
     border: none;
@@ -555,17 +581,12 @@
 
 .differs_container .progress.active {
     transform: scale(1.2);
-    transform-origin: center;
     padding-bottom: 20px;
+    
 }
 
 .differs_container .progress.active:after {
-    content: '';
-    position: absolute;
-    inset: 5px;
-    border-radius: 50%;
     background: #CD5C5C;
-    z-index: 0;
 }
 
 .differs_container .progress h3 {
@@ -573,7 +594,6 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transform-origin: center;
     font-size: 1.5rem;
     z-index: 1;
     font-weight: 500;
@@ -585,7 +605,6 @@
     left: 54%;
     font-size: 1rem;
     transform: translateX(-50%);
-    transform-origin: center;
     z-index: 1;
     font-weight: 500;
     color: #fff;
@@ -598,6 +617,14 @@
     inset: 5px;
     border-radius: 50%;
     background: #222;
+}
+
+.differs_container .progress:hover:after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background: #4bb4b3;
 }
 
 /* Responsive Desktop */

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { MdOutlineSettings } from 'react-icons/md';
+import { TbSettingsDollar } from "react-icons/tb";
 import { api_base, api_base4, getLiveAccToken, getToken } from '@deriv/bot-skeleton';
 import { observer, useStore } from '@deriv/stores';
 import { useDBotStore } from 'Stores/useDBotStore';
@@ -253,28 +253,6 @@ const BinaryAnalysisPage = observer(() => {
         setOneClickAmount(oneClickDefaultAmount.current);
     };
 
-    const selectTickList = () => {
-        return (
-            <>
-                <select name='intervals' id='contract_duration' onChange={handleDurationSelect}>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                    <option value='4'>4</option>
-                    <option value='5'>5</option>
-                    <option value='6'>6</option>
-                    <option value='7'>7</option>
-                    <option value='8'>8</option>
-                    <option value='9'>9</option>
-                </select>
-                <div className='oneclick_amout'>
-                    <input type='number' value={oneClickAmount} onChange={handleOneClickAmountInputChange} />
-                    <h3 className='user_currency'>{accountCurrency}</h3>
-                </div>
-            </>
-        );
-    };
-
     const getOverUnderValue = () => {
         if (overUnderContract === 'DIGITOVER') {
             return overValue;
@@ -494,9 +472,20 @@ const BinaryAnalysisPage = observer(() => {
     const handleSetActiveCard = card => {
         setActiveCard(card);
     };
+    const selectTickList = () => {
+        return (
+            <>
+                <div className='oneclick_amout'>
+                    <h3>Stake:</h3>
+                    <input type='number' value={oneClickAmount} onChange={handleOneClickAmountInputChange} />
+                    <h3 className='user_currency'>{accountCurrency}</h3>
+                </div>
+            </>
+        );
+    };
     function updateActiveProgress() {
         document.querySelectorAll('.differs_container .progress .active-svg').forEach(svg => svg.remove());
-
+    
         const activeProgress = document.querySelector('.differs_container .progress.active');
         if (activeProgress) {
             const svgElement = document.createElement('div');
@@ -512,18 +501,8 @@ const BinaryAnalysisPage = observer(() => {
             activeProgress.appendChild(svgElement);
         }
     }
-
-    updateActiveProgress();
-
-    document.querySelectorAll('.differs_container .progress').forEach(element => {
-        element.addEventListener('click', function () {
-            document.querySelectorAll('.differs_container .progress').forEach(el => el.classList.remove('active'));
-
-            this.classList.add('active');
-
-            updateActiveProgress();
-        });
-    });
+    
+    updateActiveProgress();   
 
     return (
         <div className='main_app'>
@@ -550,9 +529,6 @@ const BinaryAnalysisPage = observer(() => {
                         <h4>CURRENT TICK</h4>
                         <h3>{currentTick.toString()}</h3>
                     </div>
-                </div>
-                <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
-                    <MdOutlineSettings /> Risk Management
                 </div>
                 {showBotSettings && (
                     <BotSettings
@@ -631,8 +607,10 @@ const BinaryAnalysisPage = observer(() => {
                                                 <span className='slider round' />
                                             </label>
                                         )}
-
                                         {selectTickList()}
+                                        <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
+                                            <TbSettingsDollar />
+                                        </div>
                                     </div>
                                     <div className='over_under_settings'>
                                         <div className='ct_types_ou'>
@@ -715,7 +693,6 @@ const BinaryAnalysisPage = observer(() => {
                                                         onChange={handleIsRiseFallOneClick}
                                                     />
                                                     <span className='slider round' />
-                                                    {selectTickList()}
                                                 </label>
                                             </div>
                                         )}
@@ -732,7 +709,11 @@ const BinaryAnalysisPage = observer(() => {
                                                     onClick={() => buy_contract('PUT', isRiseFallOneClickActive)}
                                                 >
                                                     Fall
-                                                </button>
+                                                </button>                                               
+                                                {selectTickList()}
+                                                    <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
+                                                        <TbSettingsDollar />
+                                                    </div>
                                             </div>
                                         )}
                                     </div>
@@ -802,8 +783,8 @@ const BinaryAnalysisPage = observer(() => {
                             <div className='oneclick_trader'>
                                 {tradingDiffType !== 'MANUAL' && (
                                     <>
-                                        <h4>Enable:</h4>
                                         <label className='switch'>
+                                            <h4>Enable:</h4>
                                             <input
                                                 type='checkbox'
                                                 checked={isOneClickActive}
@@ -811,6 +792,7 @@ const BinaryAnalysisPage = observer(() => {
                                             />
                                             <span className='slider round' />
                                         </label>
+                                        {selectTickList()}
                                     </>
                                 )}
                                 <div className='diff_options'>
@@ -831,7 +813,9 @@ const BinaryAnalysisPage = observer(() => {
                                         onChange={handleCustomPredictionInputChange}
                                     />
                                 )}
-                                {selectTickList()}
+                                <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
+                                    <TbSettingsDollar />
+                                </div>
                             </div>
                         </div>
                         <DiffersBalls
@@ -894,7 +878,10 @@ const BinaryAnalysisPage = observer(() => {
                                     <option value='SAME'>Same</option>
                                     <option value='OPPOSITE'>Opposite</option>
                                 </select>
-                                <div className='tick_stake'>{selectTickList()}</div>
+                                {selectTickList()}                               
+                                <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
+                                    <TbSettingsDollar /> 
+                                </div>
                             </div>
                         </div>
 

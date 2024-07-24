@@ -41,6 +41,9 @@ const BotSettings = ({
 }: BotSettingsSType) => {
     const [liveAccounts, setLiveAccounts] = React.useState<string[]>([]);
     const [selectedAccount, setSelectedAccount] = React.useState<string>('');
+    const [tickInterval, setTickInterval] = React.useState<string>('1');
+    const [oneClickAmount, setOneClickAmount] = React.useState<number>(0);
+    const [accountCurrency, setAccountCurrency] = React.useState<string>('USD');
 
     React.useEffect(() => {
         if (typeof localStorage !== 'undefined') {
@@ -49,10 +52,10 @@ const BotSettings = ({
             setLiveAccounts(filteredAccountKeys);
             if (filteredAccountKeys.length > 0) {
                 setSelectedAccount(filteredAccountKeys[0]);
+                setAccountCurrency('USD'); // Set default or retrieve dynamically
             }
         }
     }, []);
-
 
     const onClickClose = () => {
         setShowBotSettings(!showBotSettings);
@@ -75,6 +78,14 @@ const BotSettings = ({
         setLiveAccCr(newValue);
     };
 
+    const handleTickIntervalChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setTickInterval(event.target.value);
+    };
+
+    const handleOneClickAmountInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setOneClickAmount(Number(event.target.value));
+    };
+
     const handleIsActiveInActive = () => {
         setEnableSlTpValue(!enableSlTpValue);
         enable_tp_sl.current = !enable_tp_sl.current;
@@ -84,6 +95,28 @@ const BotSettings = ({
         setCopyDemo(!enableCopyDemo);
         enable_demo_copy.current = !enable_demo_copy.current;
     };
+
+    const selectTickList = () => {
+        return (
+            <><div className="ticks">
+                <Text as='p' align='left' size='xs' color='prominent'>
+                    {localize('Number of Ticks:')}
+                </Text>
+                <select name='intervals' id='contract_duration' value={tickInterval} onChange={handleTickIntervalChange}>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
+                    <option value='9'>9</option>
+                </select>
+            </div></>
+        );
+    };    
+
     return (
         <Dialog
             is_visible={true}
@@ -94,7 +127,7 @@ const BotSettings = ({
         >
             <div className='dc-dialog__content__header'>
                 <Text data-testid='data-title' weight='bold' as='p' align='left' size='s' color='prominent'>
-                    {localize('Market Analysis Settings')}
+                    {localize('Pro-Analysistool Settings')}
                 </Text>
                 <div
                     data-testid='data-close-button'
@@ -163,6 +196,7 @@ const BotSettings = ({
                         ))}
                     </select>
                 )}
+                {selectTickList()}
             </div>
         </Dialog>
     );

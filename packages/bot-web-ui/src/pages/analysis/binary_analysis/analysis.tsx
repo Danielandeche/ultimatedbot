@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { TbSettingsDollar } from "react-icons/tb";
+import { TbSettingsDollar } from 'react-icons/tb';
 import { api_base, api_base4, getLiveAccToken, getToken } from '@deriv/bot-skeleton';
 import { observer, useStore } from '@deriv/stores';
 import { useDBotStore } from 'Stores/useDBotStore';
@@ -475,6 +475,17 @@ const BinaryAnalysisPage = observer(() => {
     const selectTickList = () => {
         return (
             <>
+                <select name='intervals' id='contract_duration' onChange={handleDurationSelect}>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
+                    <option value='9'>9</option>
+                </select>
                 <div className='oneclick_amout'>
                     <h3>Stake:</h3>
                     <input type='number' value={oneClickAmount} onChange={handleOneClickAmountInputChange} />
@@ -485,7 +496,7 @@ const BinaryAnalysisPage = observer(() => {
     };
     function updateActiveProgress() {
         document.querySelectorAll('.differs_container .progress .active-svg').forEach(svg => svg.remove());
-    
+
         const activeProgress = document.querySelector('.differs_container .progress.active');
         if (activeProgress) {
             const svgElement = document.createElement('div');
@@ -501,8 +512,8 @@ const BinaryAnalysisPage = observer(() => {
             activeProgress.appendChild(svgElement);
         }
     }
-    
-    updateActiveProgress();   
+
+    updateActiveProgress();
 
     return (
         <div className='main_app'>
@@ -548,8 +559,6 @@ const BinaryAnalysisPage = observer(() => {
                         enable_demo_copy={enable_demo_copy}
                         liveAccCR={liveAccCR}
                         setLiveAccCr={setLiveAccCr}
-                        tickInterval={tickInterval} // Pass tickInterval
-                        setTickInterval={setTickInterval}
                     />
                 )}
                 <div className='buttons'>
@@ -711,11 +720,14 @@ const BinaryAnalysisPage = observer(() => {
                                                     onClick={() => buy_contract('PUT', isRiseFallOneClickActive)}
                                                 >
                                                     Fall
-                                                </button>                                               
+                                                </button>
                                                 {selectTickList()}
-                                                    <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
-                                                        <TbSettingsDollar />
-                                                    </div>
+                                                <div
+                                                    className='guide'
+                                                    onClick={() => setShowBotSettings(!showBotSettings)}
+                                                >
+                                                    <TbSettingsDollar />
+                                                </div>
                                             </div>
                                         )}
                                     </div>
@@ -880,9 +892,9 @@ const BinaryAnalysisPage = observer(() => {
                                     <option value='SAME'>Same</option>
                                     <option value='OPPOSITE'>Opposite</option>
                                 </select>
-                                {selectTickList()}                               
+                                {selectTickList()}
                                 <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
-                                    <TbSettingsDollar /> 
+                                    <TbSettingsDollar />
                                 </div>
                             </div>
                         </div>

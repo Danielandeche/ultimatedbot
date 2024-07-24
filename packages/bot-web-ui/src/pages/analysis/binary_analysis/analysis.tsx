@@ -548,6 +548,8 @@ const BinaryAnalysisPage = observer(() => {
                         enable_demo_copy={enable_demo_copy}
                         liveAccCR={liveAccCR}
                         setLiveAccCr={setLiveAccCr}
+                        tickInterval={tickInterval} // Pass tickInterval
+                        setTickInterval={setTickInterval}
                     />
                 )}
                 <div className='buttons'>

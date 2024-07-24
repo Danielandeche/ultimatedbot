@@ -13,12 +13,14 @@ interface BotSettingsSType {
     enableSlTpValue: boolean;
     enableCopyDemo: boolean;
     enable_demo_copy: React.MutableRefObject<boolean>;
+    tickInterval: string;
     setTakeProfitValue: React.Dispatch<React.SetStateAction<string | number>>;
     setStopLossValue: React.Dispatch<React.SetStateAction<string | number>>;
     setShowBotSettings: React.Dispatch<React.SetStateAction<boolean>>;
     setEnableSlTpValue: React.Dispatch<React.SetStateAction<boolean>>;
     setCopyDemo: React.Dispatch<React.SetStateAction<boolean>>;
     setLiveAccCr: React.Dispatch<React.SetStateAction<string>>;
+    setTickInterval: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const BotSettings = ({
@@ -32,22 +34,23 @@ const BotSettings = ({
     enableCopyDemo,
     enable_demo_copy,
     liveAccCR,
+    tickInterval,
     setShowBotSettings,
     setTakeProfitValue,
     setStopLossValue,
     setEnableSlTpValue,
     setCopyDemo,
     setLiveAccCr,
+    setTickInterval,
 }: BotSettingsSType) => {
     const [liveAccounts, setLiveAccounts] = React.useState<string[]>([]);
     const [selectedAccount, setSelectedAccount] = React.useState<string>('');
-    const [tickInterval, setTickInterval] = React.useState<string>('1');
     const [oneClickAmount, setOneClickAmount] = React.useState<number>(0);
     const [accountCurrency, setAccountCurrency] = React.useState<string>('USD');
 
     React.useEffect(() => {
         if (typeof localStorage !== 'undefined') {
-            const client_accounts = JSON.parse(localStorage.getItem('client.accounts')!) || undefined;
+            const client_accounts = JSON.parse(localStorage.getItem('client.accounts')!) || {};
             const filteredAccountKeys = Object.keys(client_accounts).filter(key => key.startsWith('CR'));
             setLiveAccounts(filteredAccountKeys);
             if (filteredAccountKeys.length > 0) {
@@ -98,11 +101,16 @@ const BotSettings = ({
 
     const selectTickList = () => {
         return (
-            <><div className="ticks">
+            <>
                 <Text as='p' align='left' size='xs' color='prominent'>
                     {localize('Number of Ticks:')}
                 </Text>
-                <select name='intervals' id='contract_duration' value={tickInterval} onChange={handleTickIntervalChange}>
+                <select
+                    name='intervals'
+                    id='contract_duration'
+                    value={tickInterval}
+                    onChange={handleTickIntervalChange}
+                >
                     <option value='1'>1</option>
                     <option value='2'>2</option>
                     <option value='3'>3</option>
@@ -113,9 +121,13 @@ const BotSettings = ({
                     <option value='8'>8</option>
                     <option value='9'>9</option>
                 </select>
-            </div></>
+                <div className='oneclick_amount'>
+                    <input type='number' value={oneClickAmount} onChange={handleOneClickAmountInputChange} />
+                    <h3 className='user_currency'>{accountCurrency}</h3>
+                </div>
+            </>
         );
-    };    
+    };
 
     return (
         <Dialog
@@ -127,7 +139,7 @@ const BotSettings = ({
         >
             <div className='dc-dialog__content__header'>
                 <Text data-testid='data-title' weight='bold' as='p' align='left' size='s' color='prominent'>
-                    {localize('Pro-Analysistool Settings')}
+                    {localize('Market Analysis Settings')}
                 </Text>
                 <div
                     data-testid='data-close-button'
@@ -165,14 +177,14 @@ const BotSettings = ({
                             {localize('Enable/Disable')}
                         </Text>
                     </label>
-                    <label className="switch">
+                    <label className='switch'>
                         <input
                             type='checkbox'
                             checked={enableSlTpValue}
                             id='enable_tp_sl'
                             onChange={handleIsActiveInActive}
                         />
-                        <span className="slider round"></span>
+                        <span className='slider round' />
                     </label>
                 </div>
                 <div className='copy_demo_trades'>
@@ -181,9 +193,9 @@ const BotSettings = ({
                             {localize('Copy Demo Status:')}
                         </Text>
                     </label>
-                    <label className="switch">
+                    <label className='switch'>
                         <input type='checkbox' checked={enableCopyDemo} id='copy_demo' onChange={handleDemoCopy} />
-                        <span className="slider round"></span>
+                        <span className='slider round' />
                     </label>
                 </div>
 
@@ -196,6 +208,7 @@ const BotSettings = ({
                         ))}
                     </select>
                 )}
+
                 {selectTickList()}
             </div>
         </Dialog>

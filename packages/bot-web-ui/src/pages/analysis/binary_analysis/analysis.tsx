@@ -583,6 +583,12 @@ const BinaryAnalysisPage = observer(() => {
                     >
                         Rise/Fall
                     </button>
+                    <button
+                        className={`button ${activeCard === 'tutorial' ? 'active' : ''}`}
+                        onClick={() => handleSetActiveCard('tutorial')}
+                    >
+                        Tutorials
+                    </button>
                 </div>
             </div>
             {/* Middle Cards */}
@@ -925,6 +931,46 @@ const BinaryAnalysisPage = observer(() => {
                                 sameDiffEvenOdd={sameDiffEvenOdd}
                             />
                         </div>
+                    </div>
+                </div>
+            )}
+            {activeCard === 'tutorial' && (
+                <div className='tutorial'>
+                    <div className='guidevideo card5'>
+                        <iframe
+                            src='https://www.youtube.com/embed/VIDEO_ID' // Replace VIDEO_ID with actual ID
+                            title='YouTube video player'
+                            frameBorder='0'
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                            allowFullScreen
+                        />
+                    </div>
+                    <div className='guidevideo card5'>
+                        <iframe
+                            src='https://www.youtube.com/embed/VIDEO_ID' // Replace VIDEO_ID with actual ID
+                            title='YouTube video player'
+                            frameBorder='0'
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                            allowFullScreen
+                        />
+                    </div>
+                    <div className='guidevideo card5'>
+                        <iframe
+                            src='https://www.youtube.com/embed/VIDEO_ID' // Replace VIDEO_ID with actual ID
+                            title='YouTube video player'
+                            frameBorder='0'
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                            allowFullScreen
+                        />
+                    </div>
+                    <div className='guidevideo card5'>
+                        <iframe
+                            src='https://www.youtube.com/embed/VIDEO_ID' // Replace VIDEO_ID with actual ID
+                            title='YouTube video player'
+                            frameBorder='0'
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                            allowFullScreen
+                        />
                     </div>
                 </div>
             )}

@@ -151,6 +151,12 @@
     gap: 1rem;
 }
 
+.main_app .tutorial {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .analysis_title {
     font-size: 14px;
     font-weight: 900;
@@ -672,6 +678,46 @@
 }
 
 /* Responsive Desktop */
+@media (min-width: 900px) {
+    .main_app .pie_diff {
+        justify-content: center;
+    }
+
+    .main_app .rf_ou {
+        justify-content: center;
+    }
+
+    .main_app .tutorial {
+        justify-content: center;
+    }
+
+    .card1 {
+        width: 400px;
+        height: 320px;
+    }
+
+    .card2 {
+        width: 480px;
+        height: 320px;
+    }
+
+    .card3 {
+        width: 600px;
+        height: 320px;
+    }
+
+    .card4 {
+        width: 400px;
+        height: 320px;
+    }
+
+    .card5 {
+        width: 400px;
+        height: 320px;
+    }
+}
+
+/* Responsive Desktop */
 @media (max-height: 660px) {
     .main_app .pie_diff {
         height: 70%;
@@ -692,6 +738,11 @@
         gap: 0.8rem;
     }
     .main_app .rf_ou {
+        flex-direction: column;
+        height: 125%;
+    }
+
+    .main_app .tutorial {
         flex-direction: column;
         height: 125%;
     }
@@ -759,8 +810,8 @@
 }
 
 .button {
-    padding: 10px 20px;
-    margin: 5px;
+    padding: 10px;
+    margin: 4px;
     border: none;
     cursor: pointer;
     background-color: #808080; /* Gray color */

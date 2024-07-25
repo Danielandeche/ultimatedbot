@@ -489,12 +489,6 @@
     height: 16px;
 }
 /*some modification*/
-.main_app .pie_diff .digit_diff .title_oc_trader .differs_choices {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
 .main_app .on_off_btn {
     display: flex;
     flex-direction: column;

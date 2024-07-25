@@ -1,10 +1,10 @@
 import { action, makeObservable, reaction, when } from 'mobx';
+import { TApiHelpersStore, TDbotStore } from 'src/types/stores.types';
 import { ApiHelpers, DBot, runIrreversibleEvents } from '@deriv/bot-skeleton';
 import { ContentFlag, isEuResidenceWithOnlyVRTC, routes, showDigitalOptionsUnavailableError } from '@deriv/shared';
+import { TStores } from '@deriv/stores/types';
 import { localize } from '@deriv/translations';
 import RootStore from './root-store';
-import { TStores } from '@deriv/stores/types';
-import { TApiHelpersStore, TDbotStore } from 'src/types/stores.types';
 
 const Blockly = window.Blockly;
 export default class AppStore {
@@ -18,19 +18,20 @@ export default class AppStore {
     disposeSwitchAccountListener: unknown;
     disposeLandingCompanyChangeReaction: unknown;
     disposeResidenceChangeReaction: unknown;
+
     constructor(root_store: RootStore, core: TStores) {
         makeObservable(this, {
-            onMount: action.bound,
-            onUnmount: action.bound,
-            onBeforeUnload: action.bound,
-            registerReloadOnLanguageChange: action.bound,
-            registerCurrencyReaction: action.bound,
-            registerOnAccountSwitch: action.bound,
-            registerLandingCompanyChangeReaction: action.bound,
-            registerResidenceChangeReaction: action.bound,
-            setDBotEngineStores: action.bound,
-            onClickOutsideBlockly: action.bound,
-            showDigitalOptionsMaltainvestError: action.bound,
+            onMount: action,
+            onUnmount: action,
+            onBeforeUnload: action,
+            registerReloadOnLanguageChange: action,
+            registerCurrencyReaction: action,
+            registerOnAccountSwitch: action,
+            registerLandingCompanyChangeReaction: action,
+            registerResidenceChangeReaction: action,
+            setDBotEngineStores: action,
+            onClickOutsideBlockly: action,
+            showDigitalOptionsMaltainvestError: action,
         });
 
         this.root_store = root_store;
@@ -44,19 +45,37 @@ export default class AppStore {
         text: localize(
             'Unfortunately, this trading platform is not available for EU Deriv account. Please switch to a non-EU account to continue trading.'
         ),
-        title: localize('Binarytool Bot is unavailable for this account'),
+        title: localize('Deriv Bot is unavailable for this account'),
         link: localize('Switch to another account'),
     });
 
-    getErrorForEuClients = (is_logged_in = false) => {
+    getErrorForEuClients = (is_logged_in = false, country: string | undefined = undefined) => {
         return {
             text: ' ',
             title: is_logged_in
-                ? localize('Binarytool Bot is not available for EU clients')
-                : localize('Binarytool Bot is unavailable in the EU'),
+                ? localize(`Deriv Bot is not available for ${country || 'EU'} clients`)
+                : localize(`Deriv Bot is unavailable in ${country || 'the EU'}`),
             link: is_logged_in ? localize("Back to Trader's Hub") : '',
             route: routes.traders_hub,
         };
+    };
+
+    throwErrorForExceptionCountries = (client_country: string) => {
+        const { client, common } = this.core;
+
+        const not_allowed_clients_country: { [key: string]: string } = {
+            au: 'Australian',
+            sg: 'Singaporean',
+        };
+
+        const country_name = not_allowed_clients_country[client_country];
+
+        if (country_name) {
+            return showDigitalOptionsUnavailableError(
+                common.showError,
+                this.getErrorForEuClients(client.is_logged_in, country_name)
+            );
+        }
     };
 
     handleErrorForEu = (show_default_error = false) => {
@@ -64,6 +83,11 @@ export default class AppStore {
         const toggleAccountsDialog = ui?.toggleAccountsDialog;
 
         if (!client?.is_logged_in && client?.is_eu_country) {
+            if (client?.has_logged_out) {
+                window.location.href = routes.traders_hub;
+            }
+
+            this.throwErrorForExceptionCountries(client?.clients_country);
             return showDigitalOptionsUnavailableError(common.showError, this.getErrorForEuClients());
         }
 
@@ -71,7 +95,8 @@ export default class AppStore {
             return false;
         }
 
-        if (window.location.pathname === routes.bot) {
+        if (window.location.pathname.includes(routes.bot)) {
+            this.throwErrorForExceptionCountries(client?.account_settings?.country_code as string);
             if (client.should_show_eu_error) {
                 return showDigitalOptionsUnavailableError(
                     common.showError,
@@ -115,7 +140,7 @@ export default class AppStore {
         return false;
     };
 
-    onMount() {
+    onMount = () => {
         const { blockly_store, run_panel } = this.root_store;
         const { client, ui, traders_hub } = this.core;
         this.showDigitalOptionsMaltainvestError();
@@ -159,9 +184,9 @@ export default class AppStore {
             () => traders_hub?.content_flag,
             () => this.showDigitalOptionsMaltainvestError()
         );
-    }
+    };
 
-    onUnmount() {
+    onUnmount = () => {
         DBot.terminateBot();
         DBot.terminateConnection();
         if (Blockly.derivWorkspace) {
@@ -190,12 +215,12 @@ export default class AppStore {
         // Ensure account switch is re-enabled.
         const { ui } = this.core;
 
-        ui.setAccountSwitcherDisabledMessage(false);
+        ui.setAccountSwitcherDisabledMessage();
         ui.setPromptHandler(false);
 
         if (this.timer) clearInterval(this.timer);
         performance.clearMeasures();
-    }
+    };
 
     onBeforeUnload = (event: Event) => {
         const { is_stop_button_visible } = this.root_store.run_panel;
@@ -204,7 +229,8 @@ export default class AppStore {
             event.returnValue = true;
         }
     };
-    registerReloadOnLanguageChange() {
+
+    registerReloadOnLanguageChange = () => {
         this.disposeReloadOnLanguageChangeReaction = reaction(
             () => this.core.common.current_language,
             () => {
@@ -216,8 +242,9 @@ export default class AppStore {
                 if (is_bot) window.location.reload();
             }
         );
-    }
-    registerCurrencyReaction() {
+    };
+
+    registerCurrencyReaction = () => {
         // Syncs all trade options blocks' currency with the client's active currency.
         this.disposeCurrencyReaction = reaction(
             () => this.core.client.currency,
@@ -230,15 +257,16 @@ export default class AppStore {
                         b =>
                             b.type === 'trade_definition_tradeoptions' ||
                             b.type === 'trade_definition_multiplier' ||
+                            b.type === 'trade_definition_accumulator' ||
                             (b.isDescendantOf('trade_definition_multiplier') && b.category_ === 'trade_parameters')
                     );
 
                 trade_options_blocks.forEach(trade_options_block => trade_options_block.setCurrency(currency));
             }
         );
-    }
+    };
 
-    registerOnAccountSwitch() {
+    registerOnAccountSwitch = () => {
         const { client } = this.core;
 
         this.disposeSwitchAccountListener = reaction(
@@ -264,37 +292,41 @@ export default class AppStore {
                                 });
                         });
                     }
+                    DBot.initializeInterpreter();
                 }
             }
         );
-    }
+    };
 
-    registerLandingCompanyChangeReaction() {
+    registerLandingCompanyChangeReaction = () => {
         const { client } = this.core;
 
         this.disposeLandingCompanyChangeReaction = reaction(
             () => client.landing_company_shortcode,
             () => this.handleErrorForEu()
         );
-    }
+    };
 
-    registerResidenceChangeReaction() {
+    registerResidenceChangeReaction = () => {
         const { client } = this.core;
 
         this.disposeResidenceChangeReaction = reaction(
             () => client.account_settings.country_code,
             () => this.handleErrorForEu()
         );
-    }
+    };
 
-    setDBotEngineStores() {
-        // DO NOT pass the rootstore in, if you need a prop define it in dbot-skeleton-store ans pass it through.
+    setDBotEngineStores = () => {
+        // DO NOT pass the rootstore in, if you need a prop define it in dbot-skeleton-store and pass it through.
         const { flyout, toolbar, save_modal, dashboard, load_modal, run_panel, blockly_store, summary_card } =
             this.root_store;
         const { client } = this.core;
         const { handleFileChange } = load_modal;
         const { setLoading } = blockly_store;
         const { setContractUpdateConfig } = summary_card;
+        const {
+            ui: { is_mobile },
+        } = this.core;
 
         this.dbot_store = {
             client,
@@ -307,13 +339,14 @@ export default class AppStore {
             setLoading,
             setContractUpdateConfig,
             handleFileChange,
+            is_mobile,
         };
 
         this.api_helpers_store = {
             server_time: this.core.common.server_time,
             ws: this.root_store.ws,
         };
-    }
+    };
 
     onClickOutsideBlockly = (event: Event) => {
         if (document.querySelector('.injectionDiv')) {

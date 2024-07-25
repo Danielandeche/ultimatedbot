@@ -1,6 +1,6 @@
 import { action, makeObservable } from 'mobx';
 
-import { log_types } from '@deriv/bot-skeleton';
+import { LogTypes } from '@deriv/bot-skeleton';
 import { localize } from '@deriv/translations';
 
 export default class DownloadStore {
@@ -17,25 +17,25 @@ export default class DownloadStore {
     getSuccessJournalMessage = (message, extra) => {
         const { profit, sold_for, longcode, transaction_id, current_currency } = extra;
         switch (message) {
-            case log_types.LOAD_BLOCK: {
+            case LogTypes.LOAD_BLOCK: {
                 return localize('Blocks are loaded successfully');
             }
-            case log_types.NOT_OFFERED: {
+            case LogTypes.NOT_OFFERED: {
                 return localize('Resale of this contract is not offered.');
             }
-            case log_types.PURCHASE: {
+            case LogTypes.PURCHASE: {
                 return localize('Bought: {{longcode}} (ID: {{transaction_id}})', { longcode, transaction_id });
             }
-            case log_types.SELL: {
+            case LogTypes.SELL: {
                 return localize('Sold for: {{sold_for}}', { sold_for });
             }
-            case log_types.PROFIT: {
+            case LogTypes.PROFIT: {
                 return localize('Profit amount: {{profit}}', { profit });
             }
-            case log_types.LOST: {
+            case LogTypes.LOST: {
                 return localize('Loss amount: {{profit}}', { profit });
             }
-            case log_types.WELCOME_BACK: {
+            case LogTypes.WELCOME_BACK: {
                 if (current_currency)
                     return localize(
                         'Welcome back! Your messages have been restored. You are using your {{current_currency}} account.',
@@ -43,7 +43,7 @@ export default class DownloadStore {
                     );
                 return localize('Welcome back! Your messages have been restored.');
             }
-            case log_types.WELCOME: {
+            case LogTypes.WELCOME: {
                 if (current_currency)
                     return localize('You are using your {{current_currency}} account.', { current_currency });
                 break;

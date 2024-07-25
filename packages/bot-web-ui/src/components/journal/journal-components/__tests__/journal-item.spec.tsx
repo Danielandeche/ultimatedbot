@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { message_types, log_types } from '@deriv/bot-skeleton';
+import { message_types, LogTypes } from '@deriv/bot-skeleton';
 import JournalItem from '../journal-item';
 
 jest.mock('@deriv/bot-skeleton/src/scratch/blockly', () => jest.fn());

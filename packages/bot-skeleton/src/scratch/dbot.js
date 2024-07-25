@@ -5,6 +5,7 @@ import ApiHelpers from '../services/api/api-helpers';
 import Interpreter from '../services/tradeEngine/utils/interpreter';
 import { compareXml, observer as globalObserver } from '../utils';
 import { getSavedWorkspaces, saveWorkspaceToRecent } from '../utils/local-storage';
+import { isDbotRTL } from '../utils/workspace';
 
 import main_xml from './xml/main.xml';
 import DBotStore from './dbot-store';
@@ -72,7 +73,10 @@ class DBot {
             const { name, type } = event;
 
             if (type === Blockly.Events.BLOCK_CHANGE) {
-                if (name === 'SYMBOL_LIST' || name === 'TRADETYPECAT_LIST') {
+                const is_symbol_list_change = name === 'SYMBOL_LIST';
+                const is_trade_type_cat_list_change = name === 'TRADETYPECAT_LIST';
+
+                if (is_symbol_list_change || is_trade_type_cat_list_change) {
                     const { contracts_for } = ApiHelpers.instance;
                     const top_parent_block = this.getTopParent();
                     const market_block = top_parent_block.getChildByType('trade_definition_market');
@@ -82,7 +86,7 @@ class DBot {
                     const category = this.getFieldValue('TRADETYPECAT_LIST');
                     const trade_type = this.getFieldValue('TRADETYPE_LIST');
 
-                    if (name === 'SYMBOL_LIST') {
+                    if (is_symbol_list_change) {
                         contracts_for.getTradeTypeCategories(market, submarket, symbol).then(categories => {
                             const category_field = this.getField('TRADETYPECAT_LIST');
                             if (category_field) {
@@ -104,13 +108,12 @@ class DBot {
                             if (run_button) run_button.disabled = true;
 
                             that.interpreter.unsubscribeFromTicksService().then(async () => {
-                                await that.interpreter.bot.tradeEngine.watchTicks(symbol);
+                                await that.interpreter?.bot.tradeEngine.watchTicks(symbol);
                             });
                         }
-                    } else if (name === 'TRADETYPECAT_LIST' && event.blockId === this.id) {
+                    } else if (is_trade_type_cat_list_change && event.blockId === this.id) {
                         contracts_for.getTradeTypes(market, submarket, symbol, category).then(trade_types => {
                             const trade_type_field = this.getField('TRADETYPE_LIST');
-
                             trade_type_field.updateOptions(trade_types, {
                                 default_value: trade_type,
                                 should_pretend_empty: true,
@@ -151,6 +154,8 @@ class DBot {
                     scrollbars: true,
                 });
 
+                this.workspace.RTL = isDbotRTL();
+
                 this.workspace.cached_xml = { main: main_xml };
                 this.workspace.binarytools_cached_xml = binarytools_bot_list;
 
@@ -159,6 +164,12 @@ class DBot {
                 this.workspace.addChangeListener(event => this.workspace.dispatchBlockEventEffects(event));
                 this.workspace.addChangeListener(event => {
                     if (event.type === 'endDrag' && !is_mobile) validateErrorOnBlockDelete();
+                    if (event.type == Blockly.Events.BLOCK_CHANGE) {
+                        const block = this.workspace.getBlockById(event.blockId);
+                        if (block && event.element == 'collapsed') {
+                            block.contextMenu = false;
+                        }
+                    }
                 });
 
                 Blockly.derivWorkspace = this.workspace;
@@ -172,6 +183,7 @@ class DBot {
                 this.workspace.current_strategy_id = Blockly.utils.genUid();
                 Blockly.derivWorkspace.strategy_to_load = main_xml;
                 Blockly.mainWorkspace.strategy_to_load = main_xml;
+                Blockly.mainWorkspace.RTL = isDbotRTL();
                 let file_name = config.default_file_name;
                 if (recent_files && recent_files.length) {
                     const latest_file = recent_files[0];
@@ -252,6 +264,13 @@ class DBot {
 
     shouldRunBot() {
         return this.before_run_funcs.every(func => !!func());
+    }
+
+    async initializeInterpreter() {
+        if (this.interpreter) {
+            await this.interpreter.terminateSession();
+        }
+        this.interpreter = Interpreter();
     }
 
     /**

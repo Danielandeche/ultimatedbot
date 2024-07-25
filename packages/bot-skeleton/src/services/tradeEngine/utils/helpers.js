@@ -43,15 +43,19 @@ export const tradeOptionToProposal = (trade_option, purchase_reference) =>
         return proposal;
     });
 
-const getStakeAmount = trade_option => {
-    if (config.vh_variables.is_martingale_active) {
-        return config.vh_variables.mart_stake;
-    } else if (config.vh_variables.is_enabled) {
-        return config.vh_variables.stake;
-    } else {
-        return trade_option.amount;
-    }
-};
+    const getStakeAmount = (trade_option, contract_type) => {
+        if (config.vh_variables.is_martingale_active) {
+            return config.vh_variables.mart_stake;
+        } else if (config.vh_variables.is_enabled) {
+            if (contract_type == 'ACCU') {
+                return 1;
+            } else {
+                return config.vh_variables.stake;
+            }
+        } else {
+            return trade_option.amount;
+        }
+    };
 
 export const tradeOptionToBuy = (contract_type, trade_option) => {
     let cp_tokens = localStorage.getItem(`${getToken().account_id}_tokens`);
@@ -64,9 +68,9 @@ export const tradeOptionToBuy = (contract_type, trade_option) => {
             ? {
                   buy: '1',
                   subscribe: 1,
-                  price: getStakeAmount(trade_option),
+                  price: getStakeAmount(trade_option,contract_type),
                   parameters: {
-                      amount: getStakeAmount(trade_option),
+                      amount: getStakeAmount(trade_option,contract_type),
                       basis: trade_option.basis,
                       contract_type,
                       currency: trade_option.currency,
@@ -78,9 +82,9 @@ export const tradeOptionToBuy = (contract_type, trade_option) => {
               }
             : {
                   buy: '1',
-                  price: getStakeAmount(trade_option),
+                  price: getStakeAmount(trade_option,contract_type),
                   parameters: {
-                      amount: getStakeAmount(trade_option),
+                      amount: getStakeAmount(trade_option,contract_type),
                       basis: trade_option.basis,
                       contract_type,
                       currency: trade_option.currency,
@@ -94,10 +98,10 @@ export const tradeOptionToBuy = (contract_type, trade_option) => {
         ? {
               buy_contract_for_multiple_accounts: '1',
               tokens: [getToken().token, ...cp_tokens],
-              price: getStakeAmount(trade_option),
+              price: getStakeAmount(trade_option,contract_type),
               subscribe: 1,
               parameters: {
-                  amount: getStakeAmount(trade_option),
+                  amount: getStakeAmount(trade_option,contract_type),
                   basis: trade_option.basis,
                   contract_type,
                   currency: trade_option.currency,
@@ -110,9 +114,9 @@ export const tradeOptionToBuy = (contract_type, trade_option) => {
         : {
               buy_contract_for_multiple_accounts: '1',
               tokens: [getToken().token, ...cp_tokens],
-              price: getStakeAmount(trade_option),
+              price: getStakeAmount(trade_option,contract_type),
               parameters: {
-                  amount: getStakeAmount(trade_option),
+                  amount: getStakeAmount(trade_option,contract_type),
                   basis: trade_option.basis,
                   contract_type,
                   currency: trade_option.currency,
@@ -166,6 +170,8 @@ export const tradeOptionToBuy = (contract_type, trade_option) => {
     }
     // This will be required only in the case of accumulator contracts
     if (['ACCU'].includes(contract_type)) {
+        buy.parameters.duration = undefined;
+        buy.parameters.duration_unit = undefined;
         buy.parameters.growth_rate = trade_option.growth_rate;
     }
     return buy;
@@ -197,35 +203,62 @@ export const getLastDigitForList = (tick, pip_size = 0) => {
     return value[value.length - 1];
 };
 
-const getBackoffDelayInMs = (error, delay_index) => {
+const getBackoffDelayInMs = (error_obj, delay_index) => {
     const base_delay = 2.5;
     const max_delay = 15;
     const next_delay_in_seconds = Math.min(base_delay * delay_index, max_delay);
 
-    if (error.error.code === 'RateLimit') {
-        logError(
-            localize('You are rate limited for: {{ message_type }}, retrying in {{ delay }}s (ID: {{ request }})', {
-                message_type: error.msg_type,
-                delay: next_delay_in_seconds,
-                request: error.echo_req.req_id,
-            })
-        );
-    } else if (error.error.code === 'DisconnectError') {
-        logError(
-            localize('You are disconnected, retrying in {{ delay }}s', {
-                delay: next_delay_in_seconds,
-            })
-        );
-    } else if (error.error.code === 'MarketIsClosed') {
-        logError(localize('This market is presently closed.'));
+    const { error = {}, msg_type = '' } = error_obj;
+    const { code = '', message = '' } = error;
+    let message_to_print = '';
+
+    if (code) {
+        switch (code) {
+            case 'RateLimit':
+                message_to_print = localize(
+                    'You are rate limited for: {{ message_type }}, retrying in {{ delay }}s (ID: {{ request }})',
+                    {
+                        message_type: error.msg_type,
+                        delay: next_delay_in_seconds,
+                        request: error.echo_req.req_id,
+                    }
+                );
+
+                break;
+            case 'DisconnectError':
+                message_to_print = localize('You are disconnected, retrying in {{ delay }}s', {
+                    delay: next_delay_in_seconds,
+                });
+                break;
+            case 'MarketIsClosed':
+                message_to_print = localize('{{ message }}, retrying in {{ delay }}s', {
+                    message: message || localize('The market is closed'),
+                    delay: next_delay_in_seconds,
+                });
+                break;
+            case 'OpenPositionLimitExceeded':
+                message_to_print = localize(
+                    'You already have an open position for this contract type, retrying in {{ delay }}s',
+                    {
+                        delay: next_delay_in_seconds,
+                    }
+                );
+                break;
+            default:
+                message_to_print = localize('Request failed for: {{ message_type }}, retrying in {{ delay }}s', {
+                    message_type: msg_type || localize('unknown'),
+                    delay: next_delay_in_seconds,
+                });
+                break;
+        }
     } else {
-        logError(
-            localize('Request failed for: {{ message_type }}, retrying in {{ delay }}s', {
-                message_type: error.msg_type || localize('unknown'),
-                delay: next_delay_in_seconds,
-            })
-        );
+        message_to_print = localize('Request failed for: {{ message_type }}, retrying in {{ delay }}s', {
+            message_type: msg_type || localize('unknown'),
+            delay: next_delay_in_seconds,
+        });
     }
+
+    logError(message_to_print);
 
     return next_delay_in_seconds * 1000;
 };
@@ -253,6 +286,7 @@ export const shouldThrowError = (error, errors_to_ignore = []) => {
         'RateLimit',
         'DisconnectError',
         'MarketIsClosed',
+        'OpenPositionLimitExceeded',
     ];
     updateErrorMessage(error);
     const is_ignorable_error = errors_to_ignore.concat(default_errors_to_ignore).includes(error.error.code);

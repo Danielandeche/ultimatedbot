@@ -1,6 +1,6 @@
 import { action, computed, makeObservable, observable, reaction, when } from 'mobx';
 
-import { log_types, message_types } from '@deriv/bot-skeleton';
+import { LogTypes, MessageTypes } from '@deriv/bot-skeleton';
 import { config } from '@deriv/bot-skeleton/src/constants/config';
 import { formatDate } from '@deriv/shared';
 import { localize } from '@deriv/translations';
@@ -44,9 +44,9 @@ export default class JournalStore {
     is_filter_dialog_visible = false;
 
     filters = [
-        { id: message_types.ERROR, label: localize('Errors') },
-        { id: message_types.NOTIFY, label: localize('Notifications') },
-        { id: message_types.SUCCESS, label: localize('System') },
+        { id: MessageTypes.ERROR, label: localize('Errors') },
+        { id: MessageTypes.NOTIFY, label: localize('Notifications') },
+        { id: MessageTypes.SUCCESS, label: localize('System') },
     ];
     journal_filters = [];
     unfiltered_messages = [];
@@ -74,11 +74,11 @@ export default class JournalStore {
 
     onLogSuccess(message) {
         const { log_type, extra } = message;
-        this.pushMessage(log_type, message_types.SUCCESS, '', extra);
+        this.pushMessage(log_type, MessageTypes.SUCCESS, '', extra);
     }
 
     onError(message) {
-        this.pushMessage(message, message_types.ERROR);
+        this.pushMessage(message, MessageTypes.ERROR);
     }
 
     onNotify(data) {
@@ -90,13 +90,13 @@ export default class JournalStore {
                 { message, block_id, variable_name },
                 run_panel.showErrorMessage,
                 () => dbot.centerAndHighlightBlock(block_id, true),
-                parsed_message => this.pushMessage(parsed_message, message_type || message_types.NOTIFY, className)
+                parsed_message => this.pushMessage(parsed_message, message_type || MessageTypes.NOTIFY, className)
             )
         ) {
             this.playAudio(sound);
             return;
         }
-        this.pushMessage(message, message_type || message_types.NOTIFY, className);
+        this.pushMessage(message, message_type || MessageTypes.NOTIFY, className);
         this.playAudio(sound);
     }
 
@@ -107,7 +107,7 @@ export default class JournalStore {
         if (loginid) {
             const current_account = account_list?.find(account => account?.loginid === loginid);
             extra.current_currency = current_account?.is_virtual ? 'Demo' : current_account?.title;
-        } else if (message === log_types.WELCOME) {
+        } else if (message === LogTypes.WELCOME) {
             return;
         }
 
@@ -150,11 +150,11 @@ export default class JournalStore {
     }
 
     welcomeBackUser() {
-        this.pushMessage(log_types.WELCOME_BACK, message_types.SUCCESS, 'journal__text');
+        this.pushMessage(LogTypes.WELCOME_BACK, MessageTypes.SUCCESS, 'journal__text');
     }
 
     welcomeUser() {
-        this.pushMessage(log_types.WELCOME, message_types.SUCCESS, 'journal__text');
+        this.pushMessage(LogTypes.WELCOME, MessageTypes.SUCCESS, 'journal__text');
     }
 
     registerReactions() {

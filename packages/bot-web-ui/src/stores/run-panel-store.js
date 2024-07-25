@@ -1,6 +1,6 @@
 import React from 'react';
 import { action, computed, makeObservable, observable, reaction, runInAction } from 'mobx';
-import { error_types, message_types, observer, unrecoverable_errors,resetVhVariables } from '@deriv/bot-skeleton';
+import { ErrorTypes, MessageTypes, observer, unrecoverable_errors,resetVhVariables } from '@deriv/bot-skeleton';
 import { isSafari, mobileOSDetect } from '@deriv/shared';
 import { Localize, localize } from '@deriv/translations';
 import { contract_stages } from 'Constants/contract-stage';
@@ -543,7 +543,7 @@ export default class RunPanelStore {
             this.unregisterBotListeners();
             self_exclusion.resetSelfExclusion();
         };
-        if (this.error_type === error_types.RECOVERABLE_ERRORS) {
+        if (this.error_type === ErrorTypes.RECOVERABLE_ERRORS) {
             // Bot should indicate it started in below cases:
             // - When error happens it's a recoverable error
             const { shouldRestartOnError, timeMachineEnabled } = this.dbot.interpreter.bot.tradeEngine.options;
@@ -556,7 +556,7 @@ export default class RunPanelStore {
                 this.setIsRunning(false);
                 indicateBotStopped();
             }
-        } else if (this.error_type === error_types.UNRECOVERABLE_ERRORS) {
+        } else if (this.error_type === ErrorTypes.UNRECOVERABLE_ERRORS) {
             // Bot should indicate it stopped in below cases:
             // - When error happens and it's an unrecoverable error
             this.setIsRunning(false);
@@ -649,9 +649,9 @@ export default class RunPanelStore {
         const error = data.error || data;
         if (unrecoverable_errors.includes(error.code)) {
             this.root_store.summary_card.clear();
-            this.error_type = error_types.UNRECOVERABLE_ERRORS;
+            this.error_type = ErrorTypes.UNRECOVERABLE_ERRORS;
         } else {
-            this.error_type = error_types.RECOVERABLE_ERRORS;
+            this.error_type = ErrorTypes.RECOVERABLE_ERRORS;
         }
 
         const error_message = error?.message;
@@ -662,7 +662,7 @@ export default class RunPanelStore {
         const { journal } = this.root_store;
         const { notifications, ui } = this.core;
         journal.onError(data);
-        if (journal.journal_filters.some(filter => filter === message_types.ERROR)) {
+        if (journal.journal_filters.some(filter => filter === MessageTypes.ERROR)) {
             this.toggleDrawer(true);
             this.setActiveTabIndex(run_panel.JOURNAL);
             ui.setPromptHandler(false);
@@ -675,7 +675,7 @@ export default class RunPanelStore {
     switchToJournal() {
         const { journal } = this.root_store;
         const { notifications } = this.core;
-        journal.journal_filters.push(message_types.ERROR);
+        journal.journal_filters.push(MessageTypes.ERROR);
         this.setActiveTabIndex(run_panel.JOURNAL);
         this.toggleDrawer(true);
         notifications.toggleNotificationsModal();

@@ -862,14 +862,17 @@ const BinaryAnalysisPage = observer(() => {
                         <div className='odd_even_info'>
                             <h2 className='analysis_title'>Even/Odd</h2>
                             <div className='odd_even_settings'>
-                                <label className='switch'>
-                                    <input
-                                        type='checkbox'
-                                        checked={isEvenOddOneClickActive}
-                                        onChange={handleIsEvenOddOneClick}
-                                    />
-                                    <span className='slider round' />
-                                </label>
+                                <div className='martingale'>
+                                    <small>Enable</small>
+                                    <label className='switch'>
+                                        <input
+                                            type='checkbox'
+                                            checked={isEvenOddOneClickActive}
+                                            onChange={handleIsEvenOddOneClick}
+                                        />
+                                        <span className='slider round' />
+                                    </label>
+                                </div>
                                 <select name='ct_types' id='contract_types' onChange={handleEvenOddContractSelect}>
                                     <option value='DIGITEVEN'>Even</option>
                                     <option value='DIGITODD'>Odd</option>
@@ -891,6 +894,9 @@ const BinaryAnalysisPage = observer(() => {
                                         onChange={handlePercentageInputChange}
                                     />
                                 </div>
+                                <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
+                                    <TbSettingsDollar />
+                                </div>
                             </div>
                             <div className='same_diff'>
                                 <select onChange={handleSameDiffEvenOddContractSelect}>
@@ -898,9 +904,6 @@ const BinaryAnalysisPage = observer(() => {
                                     <option value='OPPOSITE'>Opposite</option>
                                 </select>
                                 <div className='tick_stake'>{selectTickList()}</div>
-                                <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
-                                    <TbSettingsDollar />
-                                </div>
                             </div>
                         </div>
 

@@ -2,6 +2,7 @@
 .main_app {
     height: 100vh;
     overflow: auto;
+    color: var(--text-general);
 }
 
 .main_app .top_bar {
@@ -22,6 +23,9 @@
     align-items: center;
     border: 2px solid #ffad3a;
     border-radius: 5px;
+    color: var(--text-prominent);
+    font-size: 16px;
+    width: max-content;
 }
 
 .no_of_ticks input {
@@ -69,6 +73,7 @@
     padding: 10px 30px;
     border-radius: 10px;
     text-align: center;
+    color: var(--text-prominent);
 }
 
 .main_app .symbol_price .current_price h3 {
@@ -320,17 +325,19 @@
 }
 
 .card1 {
-    background: #dfe1e7;
     width: 400px;
     height: 269px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 6px;
+    background: var(--general-section-1);
+    box-shadow: 0 2px 4px var(--text-general),
+                0 3px 10px var(--text-general);
 }
 
+
 .card2 {
-    background: #dfe1e7;
     width: 480px;
     height: 269px;
     display: flex;
@@ -338,10 +345,15 @@
     align-items: center;
     border-radius: 6px;
     padding: 10px;
+    background: var(--general-section-1);
+    box-shadow: 0 2px 4px var(--text-general),
+                0 3px 10px var(--text-general);
 }
 
 .card3 {
-    background: #dfe1e7;
+    background: var(--general-section-1);
+    box-shadow: 0 2px 4px var(--text-general),
+                0 3px 10px var(--text-general);
     width: 600px;
     height: 269px;
     display: flex;
@@ -352,7 +364,9 @@
 }
 
 .card4 {
-    background: #dfe1e7;
+    background: var(--general-section-1);
+    box-shadow: 0 2px 4px var(--text-general),
+                0 3px 10px var(--text-general);
     width: 400px;
     height: 290px;
     display: flex;
@@ -362,7 +376,9 @@
 }
 
 .card5 {
-    background: #dfe1e7;
+    background: var(--general-section-1);
+    box-shadow: 0 2px 4px var(--text-general),
+                0 3px 10px var(--text-general);
     width: 600px;
     height: 269px;
     display: flex;
@@ -387,12 +403,11 @@
 .main_app .digit_diff {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 
 .main_app .pie_diff {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     margin-top: 2rem;
 }
 
@@ -679,6 +694,10 @@
     .main_app .rf_ou {
         flex-direction: column;
         height: 125%;
+    }
+
+    .main_app .rf_ou .rise_fall, .main_app .rf_ou .over_under {
+        width: 90%;
     }
 
     .line_chart {

@@ -536,7 +536,7 @@ const BinaryAnalysisPage = observer(() => {
                         </select>
                     </div>
                     <div className='no_of_ticks'>
-                        <h4>NO. OF TICKS:</h4>
+                        <h4>No. of Ticks</h4>
                         <input type='number' name='' id='' value={numberOfTicks} onChange={handleInputChange} />
                     </div>
                     <div className='current_price'>

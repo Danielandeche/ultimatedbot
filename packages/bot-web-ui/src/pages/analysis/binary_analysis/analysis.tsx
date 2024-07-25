@@ -788,23 +788,23 @@ const BinaryAnalysisPage = observer(() => {
                                         <>
                                             <div className='differs_choices'>
                                                 <div className='auto_clicker'>
+                                                    <h4>Enable</h4>
+                                                    <label className='switch'>
+                                                        <input
+                                                            type='checkbox'
+                                                            checked={isOneClickActive}
+                                                            onChange={handleIsOneClick}
+                                                        />
+                                                        <span className='slider round' />
+                                                    </label>
+                                                </div>
+                                                <div className='auto_clicker'>
                                                     <small>Auto Differ</small>
                                                     <label className='switch'>
                                                         <input
                                                             type='checkbox'
                                                             checked={isAutoClickerActive}
                                                             onChange={handleIsAutoClicker}
-                                                        />
-                                                        <span className='slider round' />
-                                                    </label>
-                                                </div>
-                                                <div className='auto_clicker'>
-                                                    <h4>Enable:</h4>
-                                                    <label className='switch'>
-                                                        <input
-                                                            type='checkbox'
-                                                            checked={isOneClickActive}
-                                                            onChange={handleIsOneClick}
                                                         />
                                                         <span className='slider round' />
                                                     </label>

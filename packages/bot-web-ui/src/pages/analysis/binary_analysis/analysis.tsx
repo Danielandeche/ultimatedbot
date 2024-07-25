@@ -700,6 +700,7 @@ const BinaryAnalysisPage = observer(() => {
                                     <div className='oct_trading_options'>
                                         {activeCard === 'rise_fall' && (
                                             <div className='details_options'>
+                                                <small>Enable</small>
                                                 <label className='switch'>
                                                     <input
                                                         type='checkbox'

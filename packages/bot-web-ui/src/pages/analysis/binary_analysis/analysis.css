@@ -271,7 +271,8 @@
 .main_app .line_chart .oct_trading_options .details_options {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
+    flex-direction: column;
 }
 
 .main_app .line_chart .oct_trading_options .details_options input {
@@ -286,7 +287,7 @@
     font-size: 12px;
 }
 
-.main_app .line_chart .oct_trading_options .details_options .oneclick_amout input {
+.main_app .line_chart .oct_trading_options .rise_fall_buttons .oneclick_amout input {
     text-align: center;
     width: 65px;
     padding: 5px 0px;

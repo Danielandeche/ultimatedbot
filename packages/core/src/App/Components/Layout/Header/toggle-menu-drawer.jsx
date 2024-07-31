@@ -249,7 +249,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                     className='header__mobile-drawer-icon'
                 />
             </a>
-            <a id='dt_mobile_drawer_toggle' href='https://t.me/binarytools' className='header__mobile-drawer-toggle'>
+            <a id='dt_mobile_drawer_toggle' href='https://t.me/binarytools' className='header__mobile-drawer-toggle' target='_blank' rel='noopener noreferrer'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 256 256">
                     <defs>
                         <linearGradient id="logosTelegram0" x1="50%" x2="50%" y1="0%" y2="100%">
@@ -261,12 +261,16 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                     <path fill="#fff" d="M57.94 126.648c37.32-16.256 62.2-26.974 74.64-32.152c35.56-14.786 42.94-17.354 47.76-17.441c1.06-.017 3.42.245 4.96 1.49c1.28 1.05 1.64 2.47 1.82 3.467c.16.996.38 3.266.2 5.038c-1.92 20.24-10.26 69.356-14.5 92.026c-1.78 9.592-5.32 12.808-8.74 13.122c-7.44.684-13.08-4.912-20.28-9.63c-11.26-7.386-17.62-11.982-28.56-19.188c-12.64-8.328-4.44-12.906 2.76-20.386c1.88-1.958 34.64-31.748 35.26-34.45c.08-.338.16-1.598-.6-2.262c-.74-.666-1.84-.438-2.64-.258c-1.14.256-19.12 12.152-54 35.686c-5.1 3.508-9.72 5.218-13.88 5.128c-4.56-.098-13.36-2.584-19.9-4.708c-8-2.606-14.38-3.984-13.82-8.41c.28-2.304 3.46-4.662 9.52-7.072"/>
                 </svg>
             </a>
+
             {/* Use img tag with src pointing to the  */}
             <a id='dt_mobile_drawer_toggle' href='https://www.youtube.com/@BinarytoolTutorial' className='header__mobile-drawer-toggle'>
             <svg width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="red" d="M14.712 4.633a1.754 1.754 0 00-1.234-1.234C12.382 3.11 8 3.11 8 3.11s-4.382 0-5.478.289c-.6.161-1.072.634-1.234 1.234C1 5.728 1 8 1 8s0 2.283.288 3.367c.162.6.635 1.073 1.234 1.234C3.618 12.89 8 12.89 8 12.89s4.382 0 5.478-.289a1.754 1.754 0 001.234-1.234C15 10.272 15 8 15 8s0-2.272-.288-3.367z"/><path fill="#ffffff" d="M6.593 10.11l3.644-2.098-3.644-2.11v4.208z"/></svg>
             </a>
-            <a id='dt_mobile_drawer_toggle' href='https://app.binarytool.site/bot#pro-analysistool' className='header__mobile-drawer-toggle'>
-            <svg width="20px" height="20px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 7L7 6L4.70711 3.70711L5.29289 3.12132C6.01086 2.40335 6.98464 2 8 2C9.01536 2 9.98914 2.40335 10.7071 3.12132L10.7929 3.20711C11.5658 3.98 12 5.02828 12 6.12132L12 7L14 7V6.12132C14 4.49785 13.3551 2.94086 12.2071 1.79289L12.1213 1.70711C11.0283 0.614064 9.5458 0 8 0C6.45421 0 4.97172 0.614064 3.87868 1.70711L3.29289 2.29289L1 0L0 1V7H6Z" fill="#FF0000"/><path d="M10.7071 12.8787C9.98914 13.5966 9.01536 14 8 14C6.98464 14 6.01086 13.5967 5.29289 12.8787L5.20711 12.7929C4.43421 12.02 4 10.9717 4 9.87868L4 9L2 9V9.87868C2 11.5022 2.64492 13.0591 3.79289 14.2071L3.87868 14.2929C4.97172 15.3859 6.45421 16 8 16C9.54579 16 11.0283 15.3859 12.1213 14.2929L12.7071 13.7071L15 16L16 15L16 9L10 9L9 10L11.2929 12.2929L10.7071 12.8787Z" fill="#FF0000"/></svg>
+            <a id='dt_mobile_drawer_toggle' href='#' className='header__mobile-drawer-toggle' onclick="window.location.reload(); return false;">
+                <svg width="20px" height="20px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 7L7 6L4.70711 3.70711L5.29289 3.12132C6.01086 2.40335 6.98464 2 8 2C9.01536 2 9.98914 2.40335 10.7071 3.12132L10.7929 3.20711C11.5658 3.98 12 5.02828 12 6.12132L12 7L14 7V6.12132C14 4.49785 13.3551 2.94086 12.2071 1.79289L12.1213 1.70711C11.0283 0.614064 9.5458 0 8 0C6.45421 0 4.97172 0.614064 3.87868 1.70711L3.29289 2.29289L1 0L0 1V7H6Z" fill="#FF0000"/>
+                    <path d="M10.7071 12.8787C9.98914 13.5966 9.01536 14 8 14C6.98464 14 6.01086 13.5967 5.29289 12.8787L5.20711 12.7929C4.43421 12.02 4 10.9717 4 9.87868L4 9L2 9V9.87868C2 11.5022 2.64492 13.0591 3.79289 14.2071L3.87868 14.2929C4.97172 15.3859 6.45421 16 8 16C9.54579 16 11.0283 15.3859 12.1213 14.2929L12.7071 13.7071L15 16L16 15L16 9L10 9L9 10L11.2929 12.2929L10.7071 12.8787Z" fill="#FF0000"/>
+                </svg>
             </a>
 
             <MobileDrawer

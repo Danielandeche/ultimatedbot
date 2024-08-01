@@ -44,3 +44,10 @@
         -webkit-tap-highlight-color: transparent;
     }
 }
+.platform-switcher__separator {
+    width: 1px;
+    height: 25px;
+    background-color: #ccc;
+    margin: 0 10px;
+    display: inline-block;
+}

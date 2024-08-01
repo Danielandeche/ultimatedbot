@@ -250,7 +250,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                 />
             </a>
             <a id='dt_mobile_drawer_toggle' href='https://t.me/binarytools' className='header__mobile-drawer-toggle' target='_blank' rel='noopener noreferrer'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 256 256">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="20px" viewBox="0 0 256 256">
                     <defs>
                         <linearGradient id="logosTelegram0" x1="50%" x2="50%" y1="0%" y2="100%">
                             <stop offset="0%" stopColor="#2aabee"/>
@@ -264,13 +264,16 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
 
             {/* Use img tag with src pointing to the  */}
             <a id='dt_mobile_drawer_toggle' href='https://www.youtube.com/@BinarytoolTutorial' className='header__mobile-drawer-toggle'>
-            <svg width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="red" d="M14.712 4.633a1.754 1.754 0 00-1.234-1.234C12.382 3.11 8 3.11 8 3.11s-4.382 0-5.478.289c-.6.161-1.072.634-1.234 1.234C1 5.728 1 8 1 8s0 2.283.288 3.367c.162.6.635 1.073 1.234 1.234C3.618 12.89 8 12.89 8 12.89s4.382 0 5.478-.289a1.754 1.754 0 001.234-1.234C15 10.272 15 8 15 8s0-2.272-.288-3.367z"/><path fill="#ffffff" d="M6.593 10.11l3.644-2.098-3.644-2.11v4.208z"/></svg>
+            <svg width="30px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="red" d="M14.712 4.633a1.754 1.754 0 00-1.234-1.234C12.382 3.11 8 3.11 8 3.11s-4.382 0-5.478.289c-.6.161-1.072.634-1.234 1.234C1 5.728 1 8 1 8s0 2.283.288 3.367c.162.6.635 1.073 1.234 1.234C3.618 12.89 8 12.89 8 12.89s4.382 0 5.478-.289a1.754 1.754 0 001.234-1.234C15 10.272 15 8 15 8s0-2.272-.288-3.367z"/><path fill="#ffffff" d="M6.593 10.11l3.644-2.098-3.644-2.11v4.208z"/></svg>
             </a>
             <a id='dt_mobile_drawer_toggle' href='#' className='header__mobile-drawer-toggle' onClick={(e) => { e.preventDefault(); window.location.reload(); }}>
-                <svg width="20px" height="20px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 7L7 6L4.70711 3.70711L5.29289 3.12132C6.01086 2.40335 6.98464 2 8 2C9.01536 2 9.98914 2.40335 10.7071 3.12132L10.7929 3.20711C11.5658 3.98 12 5.02828 12 6.12132L12 7L14 7V6.12132C14 4.49785 13.3551 2.94086 12.2071 1.79289L12.1213 1.70711C11.0283 0.614064 9.5458 0 8 0C6.45421 0 4.97172 0.614064 3.87868 1.70711L3.29289 2.29289L1 0L0 1V7H6Z" fill="#FF0000"/>
-                    <path d="M10.7071 12.8787C9.98914 13.5966 9.01536 14 8 14C6.98464 14 6.01086 13.5967 5.29289 12.8787L5.20711 12.7929C4.43421 12.02 4 10.9717 4 9.87868L4 9L2 9V9.87868C2 11.5022 2.64492 13.0591 3.79289 14.2071L3.87868 14.2929C4.97172 15.3859 6.45421 16 8 16C9.54579 16 11.0283 15.3859 12.1213 14.2929L12.7071 13.7071L15 16L16 15L16 9L10 9L9 10L11.2929 12.2929L10.7071 12.8787Z" fill="#FF0000"/>
-                </svg>
+            <svg width="100px" height="20px" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(0, 0)">
+                <path d="M6 7L7 6L4.70711 3.70711L5.29289 3.12132C6.01086 2.40335 6.98464 2 8 2C9.01536 2 9.98914 2.40335 10.7071 3.12132L10.7929 3.20711C11.5658 3.98 12 5.02828 12 6.12132L12 7L14 7V6.12132C14 4.49785 13.3551 2.94086 12.2071 1.79289L12.1213 1.70711C11.0283 0.614064 9.5458 0 8 0C6.45421 0 4.97172 0.614064 3.87868 1.70711L3.29289 2.29289L1 0L0 1V7H6Z" fill="#FF0000"/>
+                <path d="M10.7071 12.8787C9.98914 13.5966 9.01536 14 8 14C6.98464 14 6.01086 13.5967 5.29289 12.8787L5.20711 12.7929C4.43421 12.02 4 10.9717 4 9.87868L4 9L2 9V9.87868C2 11.5022 2.64492 13.0591 3.79289 14.2071L3.87868 14.2929C4.97172 15.3859 6.45421 16 8 16C9.54579 16 11.0283 15.3859 12.1213 14.2929L12.7071 13.7071L15 16L16 15L16 9L10 9L9 10L11.2929 12.2929L10.7071 12.8787Z" fill="#FF0000"/>
+            </g>
+            <text x="20" y="14" fill="#FF0000" font-size="15" font-weight="bold">REFRESH</text>
+            </svg>
             </a>
             <MobileDrawer
                 alignment={is_appstore ? 'right' : 'left'}

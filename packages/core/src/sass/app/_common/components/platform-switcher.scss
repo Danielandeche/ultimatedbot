@@ -1,28 +1,22 @@
 .platform-switcher {
     display: flex;
     align-items: center;
-    padding: 0.8rem;
     transition: background-color 0.3s;
-    cursor: pointer;
-
-    &:not(&--is-mobile):hover {
-        background-color: var(--general-hover);
-    }
-    & svg:first-child,
-    p,
-    h1 {
-        margin: 0 0 0 0.8rem;
-    }
-    & svg:last-child {
-        margin: 0 0.8rem;
-    }
+    
     &__arrow {
         transition: transform 0.3s ease;
         transform: rotate(0deg);
+        cursor: pointer;
     }
+
+    &__arrow:hover {
+        background-color: var(--general-hover);
+    }
+
     &__arrow .color1-fill {
         fill: var(--text-general);
     }
+
     &__preloader {
         margin-top: 4px;
         align-self: center;
@@ -32,9 +26,11 @@
             width: 162px;
         }
     }
+
     &--active &__arrow {
         transform: rotate(180deg);
     }
+
     @include mobile {
         width: 100%;
         height: 100%;
@@ -44,10 +40,22 @@
         -webkit-tap-highlight-color: transparent;
     }
 }
+
 .platform-switcher__separator {
     width: 1px;
     height: 25px;
     background-color: #ccc;
     margin: 0 10px;
     display: inline-block;
+}
+
+.platform-switcher__link {
+    display: inline-block;
+    transition: background-color 0.3s;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.platform-switcher__link:hover {
+    background-color: var(--general-hover);
 }

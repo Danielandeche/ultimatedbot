@@ -1,9 +1,9 @@
 {
-    "name": "Dbot",
-    "short_name": "DBOT",
+    "name": "Binarytool App",
+    "short_name": "Binarytool App",
     "description": "Binarytool gives everyone an easy way to participate in the financial markets.",
     "id": "/",
-    "start_url": "{start_url_base}",
+    "start_url": "/bot",
     "display": "standalone",
     "orientation": "portrait",
     "icons": [

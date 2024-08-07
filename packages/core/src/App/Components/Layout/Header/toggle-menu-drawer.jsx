@@ -262,8 +262,8 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                 </svg>
             </a>
             <a id='dt_mobile_drawer_toggle' href='#' className='header__mobile-drawer-toggle' onClick={(e) => { e.preventDefault(); window.location.reload(); }}>
-            <svg width="70px" height="20px" viewBox="0 0 70 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="20" y="14" fill="#FF0000" font-size="15" font-weight="bold">RELOAD</text>
+            <svg width="60" height="20" xmlns="http://www.w3.org/2000/svg">
+                <text x="0" y="12" fill="#FF0000" font-size="15" font-weight="bold" text-anchor="start" dominant-baseline="middle">RELOAD</text>
             </svg>
             </a>
             <MobileDrawer

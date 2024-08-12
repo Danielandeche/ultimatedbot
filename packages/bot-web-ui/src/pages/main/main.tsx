@@ -13,18 +13,19 @@ import { DBOT_TABS, TAB_IDS } from 'Constants/bot-contents';
 import { useDBotStore } from 'Stores/useDBotStore';
 import RunPanel from '../../components/run-panel';
 import StrategyNotification from '../../components/strategy-notification';
+import AnalysisPage from '../analysis';
 import AnalysisTool from '../analysistool';
-import Strategies from '../strategies';
-import ChartModal from '../chart/chart-modal';
-import Chart from '../chart';
-import Dashboard from '../dashboard';
 import BinaryToolsBots from '../binarytools_bots';
+import Chart from '../chart';
+import ChartModal from '../chart/chart-modal';
+import CopyTrading from '../copytrading';
+import Dashboard from '../dashboard';
 import RunStrategy from '../dashboard/run-strategy';
+import PrivacyPolicy from '../privacy';
+import Strategies from '../strategies';
+import TradingView from '../trading_view';
 import Tutorial from '../tutorials';
 import { tour_list } from '../tutorials/dbot-tours/utils';
-import CopyTrading from '../copytrading';
-import TradingView from '../trading_view';
-import AnalysisPage from '../analysis';
 
 const AppWrapper = observer(() => {
     const { dashboard, load_modal, run_panel, quick_strategy, summary_card } = useDBotStore();
@@ -48,7 +49,19 @@ const AppWrapper = observer(() => {
     const init_render = React.useRef(true);
     const { ui } = useStore();
     const { url_hashed_values, is_mobile } = ui;
-    const hash = ['dashboard', 'bot_builder', 'pro-analysistool','binarytools_bots', 'copytrading', 'analysistool', 'strategies', 'tradingview', 'chart', 'tutorial'];
+    const hash = [
+        'dashboard',
+        'bot_builder',
+        'pro-analysistool',
+        'binarytools_bots',
+        'copytrading',
+        'analysistool',
+        'strategies',
+        'tradingview',
+        'chart',
+        'privacy&policy',
+        'tutorial',
+    ];
 
     let tab_value: number | string = active_tab;
     const GetHashedValue = (tab: number) => {
@@ -234,6 +247,17 @@ const AppWrapper = observer(() => {
                             }
                         >
                             <Chart />
+                        </div>
+                        <div
+                            icon='IcReports'
+                            label={<Localize i18n_default_text='Privacy Policy' />}
+                            id={
+                                is_chart_modal_visible || is_trading_view_modal_visible
+                                    ? 'id-privacy-policy--disabled'
+                                    : 'id-privacy-policy'
+                            }
+                        >
+                            <PrivacyPolicy />
                         </div>
                         <div
                             icon='IcTutorialsTabs'

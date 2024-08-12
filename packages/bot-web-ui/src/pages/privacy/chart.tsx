@@ -6,7 +6,7 @@ const PrivacyPolicy = observer(() => {
         <div className='privacy-policy'>
             <h1>Privacy Policy for BinaryTool</h1>
             <p><strong>1. Introduction</strong></p>
-            <p>BinaryTool, powered by Deriv,We operates the BinaryTool app (the “App”).</p>
+            <p>BinaryTool, powered by Deriv, operates the BinaryTool app (the “App”).</p>
 
             <p><strong>2. Information Collection and Use</strong></p>
             <p>We do not collect any personal and sensitive user data. However, we may collect non-personal data, such as app usage statistics, to improve the user experience.</p>
@@ -28,6 +28,14 @@ const PrivacyPolicy = observer(() => {
 
             <p><strong>8. Contact Us</strong></p>
             <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:binarytoolsite@gmail.com">binarytoolsite@gmail.com</a>.</p>
+
+            <h2>Risk Disclaimer</h2>
+            <p><strong>Deriv offers complex derivatives, such as options and contracts for difference (“CFDs”).</strong> These products may not be suitable for all clients, and trading them puts you at risk. Please make sure that you understand the following risks before trading Deriv products:</p>
+            <ul>
+                <li>You may lose some or all of the money you invest in the trade.</li>
+                <li>If your trade involves currency conversion, exchange rates will affect your profit and loss.</li>
+                <li>You should never trade with borrowed money or with money that you cannot afford to lose.</li>
+            </ul>
         </div>
     );
 });

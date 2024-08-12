@@ -10,24 +10,29 @@
     box-sizing: border-box;
 
     h1 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
         color: var(--text-main);
     }
 
     p {
-        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
         color: var(--text-secondary);
-        line-height: 1.6;
+        line-height: 1.8;
+    }
+
+    ul {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+        line-height: 1.8;
+        padding-left: 20px;
     }
 
     a {
         color: var(--link-color);
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
+        text-decoration: underline;
     }
 
     // Example media queries for responsiveness
@@ -35,11 +40,11 @@
         padding: 10px;
 
         h1 {
-            font-size: 1.5rem;
+            font-size: 2rem; 
         }
 
-        p {
-            font-size: 0.875rem;
+        p, ul {
+            font-size: 1rem;
         }
     }
 }

@@ -83,6 +83,7 @@ const BinaryAnalysisPage = observer(() => {
     const [takeProfitValue, setTakeProfitValue] = useState<string | number>(2);
     const [stopLossValue, setStopLossValue] = useState<string | number>(2);
     const [enableSlTpValue, setEnableSlTpValue] = useState<boolean>(false);
+    const [enableDisableMartingale, setEnableDisableMartingale] = useState<boolean>(true);
     const [enableCopyDemo, setCopyDemo] = useState<boolean>(false);
     const [liveAccCR, setLiveAccCr] = useState<string>('');
     const [overUnderManual, setOverUnderManual] = useState<boolean>(false);
@@ -101,6 +102,7 @@ const BinaryAnalysisPage = observer(() => {
     const total_profit = useRef<number>(0);
     const enable_tp_sl = useRef<boolean>(false);
     const enable_demo_copy = useRef<boolean>(false);
+    const enable_disable_martingale = useRef<boolean>(true);
 
     const { ui } = useStore();
     const DBotStores = useDBotStore();
@@ -111,6 +113,16 @@ const BinaryAnalysisPage = observer(() => {
 
     useEffect(() => {
         startApi();
+        // Setting up local saves
+        const no_of_ticks = localStorage.getItem('no_of_ticks');
+        const active_card = localStorage.getItem('active_card');
+        if (no_of_ticks !== null) {
+            setNumberOfTicks(parseFloat(no_of_ticks));
+        }
+
+        if (active_card !== null) {
+            setActiveCard(active_card);
+        }
     }, []);
 
     useEffect(() => {
@@ -209,16 +221,15 @@ const BinaryAnalysisPage = observer(() => {
                                 }
                             }
 
+                            console.log('Martingale Status',enable_disable_martingale.current)
                             if (proposal_open_contract.status === 'lost') {
                                 if (!current_contractids.current.includes(proposal_open_contract.contract_id)) {
                                     totalLostAmount.current += Math.abs(proposal_open_contract.profit);
                                     let newStake;
-                                    if (contract === 'DIGITDIFF') {
-                                        newStake = totalLostAmount.current * 12.5;
-                                    } else {
+                                    if (enable_disable_martingale.current) {
                                         newStake = totalLostAmount.current * parseFloat(martingaleValueRef.current);
+                                        setOneClickAmount(parseFloat(newStake.toFixed(2)));
                                     }
-                                    setOneClickAmount(parseFloat(newStake.toFixed(2)));
                                 }
                             } else {
                                 totalLostAmount.current = 0;
@@ -388,6 +399,7 @@ const BinaryAnalysisPage = observer(() => {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = event.target.value;
         setNumberOfTicks(newValue === '' ? '' : Number(newValue));
+        localStorage.setItem('no_of_ticks', newValue);
     };
     const handleOverInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = event.target.value;
@@ -469,8 +481,9 @@ const BinaryAnalysisPage = observer(() => {
     const handleIsOverUnderOneClick = () => {
         setIsOverUnderOneClickActive(!isOverUnderOneClickActive);
     };
-    const handleSetActiveCard = card => {
+    const handleSetActiveCard = (card: any) => {
         setActiveCard(card);
+        localStorage.setItem('active_card', card);
     };
     const selectTickList = () => {
         return (
@@ -562,6 +575,9 @@ const BinaryAnalysisPage = observer(() => {
                         enable_demo_copy={enable_demo_copy}
                         liveAccCR={liveAccCR}
                         setLiveAccCr={setLiveAccCr}
+                        enableDisableMartingale={enableDisableMartingale}
+                        enable_disable_martingale={enable_disable_martingale}
+                        setEnableDisableMartingale={setEnableDisableMartingale}
                     />
                 )}
                 <div className='buttons'>
@@ -839,6 +855,14 @@ const BinaryAnalysisPage = observer(() => {
                                     />
                                 )}
                                 {selectTickList()}
+                                <div className='martingale'>
+                                    <small>martingale</small>
+                                    <input
+                                        type='number'
+                                        value={martingaleValueRef.current}
+                                        onChange={handleMartingaleInputChange}
+                                    />
+                                </div>
                                 <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
                                     <TbSettingsDollar />
                                 </div>

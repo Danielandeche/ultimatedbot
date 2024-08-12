@@ -13,12 +13,15 @@ interface BotSettingsSType {
     enableSlTpValue: boolean;
     enableCopyDemo: boolean;
     enable_demo_copy: React.MutableRefObject<boolean>;
+    enableDisableMartingale: boolean;
+    enable_disable_martingale: React.MutableRefObject<boolean>;
     setTakeProfitValue: React.Dispatch<React.SetStateAction<string | number>>;
     setStopLossValue: React.Dispatch<React.SetStateAction<string | number>>;
     setShowBotSettings: React.Dispatch<React.SetStateAction<boolean>>;
     setEnableSlTpValue: React.Dispatch<React.SetStateAction<boolean>>;
     setCopyDemo: React.Dispatch<React.SetStateAction<boolean>>;
     setLiveAccCr: React.Dispatch<React.SetStateAction<string>>;
+    setEnableDisableMartingale: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const BotSettings = ({
@@ -32,6 +35,9 @@ const BotSettings = ({
     enableCopyDemo,
     enable_demo_copy,
     liveAccCR,
+    enableDisableMartingale,
+    enable_disable_martingale,
+    setEnableDisableMartingale,
     setShowBotSettings,
     setTakeProfitValue,
     setStopLossValue,
@@ -49,10 +55,10 @@ const BotSettings = ({
             setLiveAccounts(filteredAccountKeys);
             if (filteredAccountKeys.length > 0) {
                 setSelectedAccount(filteredAccountKeys[0]);
+                setLiveAccCr(filteredAccountKeys[0]);
             }
         }
     }, []);
-
 
     const onClickClose = () => {
         setShowBotSettings(!showBotSettings);
@@ -78,6 +84,11 @@ const BotSettings = ({
     const handleIsActiveInActive = () => {
         setEnableSlTpValue(!enableSlTpValue);
         enable_tp_sl.current = !enable_tp_sl.current;
+    };
+
+    const handleEnableDisableMart = () => {
+        setEnableDisableMartingale(!enableDisableMartingale);
+        enable_disable_martingale.current = !enableDisableMartingale;
     };
 
     const handleDemoCopy = () => {
@@ -132,14 +143,30 @@ const BotSettings = ({
                             {localize('Enable/Disable')}
                         </Text>
                     </label>
-                    <label className="switch">
+                    <label className='switch'>
                         <input
                             type='checkbox'
                             checked={enableSlTpValue}
                             id='enable_tp_sl'
                             onChange={handleIsActiveInActive}
                         />
-                        <span className="slider round"></span>
+                        <span className='slider round'></span>
+                    </label>
+                </div>
+                <div className='active_inactive'>
+                    <label htmlFor='enable_disbale_martingale'>
+                        <Text as='p' align='left' size='xs' color='prominent'>
+                            {localize('Enable/Disable Martingale')}
+                        </Text>
+                    </label>
+                    <label className='switch'>
+                        <input
+                            type='checkbox'
+                            checked={enableDisableMartingale}
+                            id='enable_disbale_martingale'
+                            onChange={handleEnableDisableMart}
+                        />
+                        <span className='slider round'></span>
                     </label>
                 </div>
                 <div className='copy_demo_trades'>
@@ -148,9 +175,9 @@ const BotSettings = ({
                             {localize('Copy Demo Status:')}
                         </Text>
                     </label>
-                    <label className="switch">
+                    <label className='switch'>
                         <input type='checkbox' checked={enableCopyDemo} id='copy_demo' onChange={handleDemoCopy} />
-                        <span className="slider round"></span>
+                        <span className='slider round'></span>
                     </label>
                 </div>
 

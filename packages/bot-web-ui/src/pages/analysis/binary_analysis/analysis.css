@@ -257,6 +257,12 @@
     text-align: center;
     border-radius: 2px;
 }
+.main_app .martingale{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5px;
+}
 
 .main_app .over_under_options .over_oct_container .over_under_settings .martingale,
 .main_app .over_under_options .over_oct_container .over_under_settings .percentage_value {
@@ -538,6 +544,12 @@
 .main_app .pie_diff .digit_diff .title_oc_trader .oneclick_trader input {
     width: 20px;
     height: 20px;
+}
+
+.main_app .oneclick_trader .martingale input{
+    padding: 5px 0px;
+    width: 60px !important;
+    text-align: center;
 }
 
 .main_app .pie_diff .digit_diff .title_oc_trader .oneclick_trader #contract_types {

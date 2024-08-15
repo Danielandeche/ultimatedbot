@@ -61,8 +61,6 @@ export const tradeOptionToBuy = (contract_type, trade_option) => {
     let cp_tokens = localStorage.getItem(`${getToken().account_id}_tokens`);
     const demo_copy = config.copy_trading.allow_demo_copy;
     cp_tokens = JSON.parse(cp_tokens);
-    const vh_active = config.vh_variables.is_enabled;
-    console.log('The Demo copier', demo_copy);
 
     const buy = !config.copy_trading.is_active
         ? demo_copy
@@ -83,6 +81,7 @@ export const tradeOptionToBuy = (contract_type, trade_option) => {
               }
             : {
                   buy: '1',
+                  subscribe: 1,
                   price: getStakeAmount(trade_option, contract_type),
                   parameters: {
                       amount: getStakeAmount(trade_option, contract_type),

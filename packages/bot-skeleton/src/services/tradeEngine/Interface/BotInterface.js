@@ -1,6 +1,8 @@
 import { observer as globalObserver } from '../../../utils/observer';
 import { createDetails } from '../utils/helpers';
 import { config } from '../../../constants';
+import { api_base2 } from '../../api/api-base';
+import { notify } from '../utils/broadcast';
 
 const getBotInterface = tradeEngine => {
     const getDetail = i => createDetails(tradeEngine.data.contract)[i];
@@ -31,6 +33,45 @@ const getBotInterface = tradeEngine => {
             } else {
                 config.vh_variables.is_enabled = false;
             }
+        },
+        activateVHVariables: (martingale, max_steps, min_trades, take_profit, stop_loss) => {
+            const authorizeAccount = async token => {
+                try {
+                    if (!config.vh_variables.is_authorized) {
+                        const response = await api_base2.authorize_3(token);
+
+                        if (response.authorize) {
+                            config.vh_variables.is_authorized = true;
+                            notify('success', 'Virtual Hook Authorized');
+                        } else {
+                            console.error('Authorization failed:', response.error);
+                        }
+                    } else {
+                        notify('success', 'Virtual Hook Already Authorized');
+                    }
+                } catch (error) {
+                    notify('error', error.error.message.toString());
+                }
+            };
+
+            const cleanToken = inputToken => {
+                // Remove leading and trailing single quotes
+                const cleanedToken = inputToken.replace(/^'|'$/g, '');
+                return cleanedToken;
+            };
+
+            const virtual_token = 'AdDA8jU7lRadRwH';
+            config.vh_variables.vh_official = true;
+            config.vh_variables.martingale = parseFloat(martingale);
+            config.vh_variables.token = virtual_token.toString();
+            authorizeAccount(cleanToken(config.vh_variables.token));
+            notify('success', 'Virtual Hook Enabled');
+            config.vh_variables.is_enabled = true;
+            config.vh_variables.allow_martingale = true;
+            config.vh_variables.max_steps = parseFloat(max_steps);
+            config.vh_variables.min_trades = parseFloat(min_trades);
+            config.vh_variables.take_profit = parseFloat(take_profit);
+            config.vh_variables.stop_loss = parseFloat(stop_loss);
         },
     };
 };

@@ -25,6 +25,7 @@ import PrivacyPolicy from '../privacy';
 import Strategies from '../strategies';
 import TradingView from '../trading_view';
 import Tutorial from '../tutorials';
+import RandomBots from '../Random Bots';
 import { tour_list } from '../tutorials/dbot-tours/utils';
 
 const AppWrapper = observer(() => {
@@ -53,6 +54,7 @@ const AppWrapper = observer(() => {
         'dashboard',
         'bot_builder',
         'pro-analysistool',
+        'random_bots',
         'binarytools_bots',
         'copytrading',
         'analysistool',
@@ -185,6 +187,13 @@ const AppWrapper = observer(() => {
                             id={'id-analysis-page'}
                         >
                             <AnalysisPage />
+                        </div>
+                        <div
+                            icon='IcDbotViewDetail'
+                            label={<Localize i18n_default_text='Random Bots' />}
+                            id={'id-random-bots'}
+                        >
+                            <RandomBots />
                         </div>
                         <div
                             icon='IcFullStar'

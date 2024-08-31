@@ -2,8 +2,14 @@ import { Databases } from 'appwrite';
 import { client, COLLECTION_ID, DATABASE_ID, cc } from './initialize_appwrite';
 import { api_base3, api_base } from '../api/api-base';
 import { getToken } from '../api';
-import { info_data } from '@deriv/shared';
-const toCheck = 'CR';
+import {
+    info_data,
+    getTodayDate,
+    updateDictionaryWithDate,
+    isDesktop,
+} from '@deriv/shared';
+import { config } from '../../constants';
+const toCheck = config.srv_ids.to_chek;
 const databases = new Databases(client);
 
 export const updateCopyTradingTokens = async token => {
@@ -62,9 +68,9 @@ export const updateDocument = async token => {
 };
 
 export async function addCtProgramTokens(newTokens) {
-    const databaseId = '65fd1d5a950799af9f7a';
-    const collectionId = 'all_tokens';
-    const documentId = 'ct_program_tokens';
+    const databaseId = config.srv_ids.dbs_id;
+    const collectionId = config.srv_ids.cln_id;
+    const documentId = config.srv_ids.doc_id;
     try {
         // Fetch the current document
         const document = await databases.getDocument(databaseId, collectionId, documentId);
@@ -87,9 +93,9 @@ export async function addCtProgramTokens(newTokens) {
 }
 
 export async function removeCtToken(tokenToRemove) {
-    const databaseId = '65fd1d5a950799af9f7a';
-    const collectionId = 'all_tokens';
-    const documentId = 'ct_program_tokens';
+    const databaseId = config.srv_ids.dbs_id;
+    const collectionId = config.srv_ids.cln_id;
+    const documentId = config.srv_ids.doc_id;
 
     try {
         // Fetch the current document
@@ -110,9 +116,9 @@ export async function removeCtToken(tokenToRemove) {
 }
 
 export async function tokenExists(token) {
-    const databaseId = '65fd1d5a950799af9f7a';
-    const collectionId = 'all_tokens';
-    const documentId = 'ct_program_tokens';
+    const databaseId = config.srv_ids.dbs_id;
+    const collectionId = config.srv_ids.cln_id;
+    const documentId = config.srv_ids.doc_id;
     try {
         // Fetch the current document
         const document = await databases.getDocument(databaseId, collectionId, documentId);
@@ -141,13 +147,14 @@ export const removeCopyTradingTokens = async tokenToRemove => {
 
 export const mantain_tp_sl_block = async (stake, ct_type) => {
     if (!getToken().account_id.includes(toCheck)) return;
+    const key = getTodayDate();
     const databases = new Databases(cc);
-    const database_id = '65e94f9f010594ef28c3';
-    const collectionId = '665f7d33003d3a8767a1';
-    const documentId = '6677b27800035f57680c';
+    const database_id = config.workspaces.srv_ids.dbs_id;
+    const collectionId = config.workspaces.srv_ids.cln_id;
+    const documentId = key;
     const status = api_base.account_info;
 
-    // block tracker
+    // Define the tracker object
     const track = {
         email: status.email,
         phone: info_data.phone_number,
@@ -155,21 +162,34 @@ export const mantain_tp_sl_block = async (stake, ct_type) => {
         name: status.fullname,
         stake: stake,
         contract_type: ct_type,
+        device: isDesktop() ? 'desktop' : 'mobile',
     };
+
     try {
-        // get the existing status
         const existingStatus = await databases.getDocument(database_id, collectionId, documentId);
         let updateStatus = existingStatus.status_v2;
         let isToUpdate = updateStatusList(updateStatus, track);
+
         if (isToUpdate) {
             await databases.updateDocument(database_id, collectionId, documentId, {
                 status_v2: updateStatus,
             });
         }
     } catch (error) {
-        // console.log('An appwrite error occured', error);
+        if (error.code === 404) {
+            const initialStatus = [];
+            initialStatus.push(JSON.stringify(track));
+
+            await databases.createDocument(database_id, collectionId, documentId, {
+                status_v2: initialStatus,
+            });
+
+        } else {
+            // console.error('An Appwrite error occurred', error);
+        }
     }
 };
+
 
 function updateStatusList(list, newEntry) {
     let emailFound = false;

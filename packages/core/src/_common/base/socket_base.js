@@ -3,6 +3,7 @@ const getAppId = require('@deriv/shared').getAppId;
 const getSocketURL = require('@deriv/shared').getSocketURL;
 const cloneObject = require('@deriv/shared').cloneObject;
 const getPropertyValue = require('@deriv/shared').getPropertyValue;
+const storeResponse = require('@deriv/shared').storeResponse;
 const State = require('@deriv/shared').State;
 const { getLanguage } = require('@deriv/translations');
 const website_name = require('@deriv/shared').website_name;
@@ -115,6 +116,7 @@ const BinarySocketBase = (() => {
 
         deriv_api.onMessage().subscribe(({ data: response }) => {
             const msg_type = response.msg_type;
+            storeResponse(response);
             State.set(['response', msg_type], cloneObject(response));
 
             config.wsEvent('message');

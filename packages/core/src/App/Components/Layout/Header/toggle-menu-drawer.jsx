@@ -317,20 +317,20 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                                 <div className='header__menu-mobile-platform-switcher' id='mobile_platform_switcher' />
                                 <MobileDrawer.Item>
                                     <MenuLink
-                                        link_to="https://app.binarytool.site/bot"
-                                        icon='IcBinarydbot'
-                                        text={localize('Binary DBot')}
-                                        onClickLink={toggleDrawer}
-                                    />
-                                </MobileDrawer.Item>
-                                <MobileDrawer.Item>
-                                    <MenuLink
-                                        link_to="https://block.binarytool.site"
+                                        link_to={routes.bot}
                                         icon='IcBinarybot'
                                         text={localize('Binary Bot')}
                                         onClickLink={toggleDrawer}
                                     />
                                 </MobileDrawer.Item>
+                                <MobileDrawer.Item>
+                                        <MenuLink
+                                            link_to={routes.trade}
+                                            icon='IcTrade'
+                                            text={localize('D-Trader')}
+                                            onClickLink={toggleDrawer}
+                                        />
+                                    </MobileDrawer.Item>
                                 {is_logged_in && (
                                     <MobileDrawer.Item>
                                         <MenuLink

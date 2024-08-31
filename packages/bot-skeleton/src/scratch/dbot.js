@@ -14,36 +14,42 @@ import { isAllRequiredBlocksEnabled, updateDisabledBlocks, validateErrorOnBlockD
 import './blockly';
 
 // Custom Bots
-import ap1 from './xml/binarytools_bots/Over 4 Virtual Hook.xml';
-import ap2 from './xml/binarytools_bots/GREEN GOAT V1.xml';
-import ap3 from './xml/binarytools_bots/GREEN GOAT V2.xml';
-import ap4 from './xml/binarytools_bots/GREEN GOAT V3.xml';
-import ap5 from './xml/binarytools_bots/Over 2 {If last 2 digits are bellow 2}.xml';
-import ap6 from './xml/binarytools_bots/Over 2 {If last 3 digits are bellow 2}.xml';
-import ap7 from './xml/binarytools_bots/AUTO C4 VOLT 🇬🇧 2 🇬🇧 AI PREMIUM ROBOT.xml';
-import ap8 from './xml/binarytools_bots/$DollarprinterbotOrignal$.xml';
-import ap9 from './xml/binarytools_bots/Big  Boyz Rise fall.xml';
-import ap10 from './xml/binarytools_bots/KTT 77 Battalion Pro Max.xml';
-import ap11 from './xml/binarytools_bots/KTT Russian V12 Bot.xml';
-import ap12 from './xml/binarytools_bots/KTT Small Account Bot.xml';
-import ap13 from './xml/binarytools_bots/M27 Auto Switch bot 2024.xml';
-import ap14 from './xml/binarytools_bots/TRADE CITY BOT Version 2.0.xml';
+import ap1 from './xml/binarytools_bots/Enhanced Auto C4 (With VirtualHook).xml';
+import ap2 from './xml/binarytools_bots/Even Odd Virtual Hook.xml';
+import ap3 from './xml/binarytools_bots/Rise Fall Virtual Hook.xml';
+import ap4 from './xml/binarytools_bots/Over 4 Virtual Hook.xml';
+import ap5 from './xml/binarytools_bots/GREEN GOAT V1.xml';
+import ap6 from './xml/binarytools_bots/GREEN GOAT V2.xml';
+import ap7 from './xml/binarytools_bots/GREEN GOAT V3.xml';
+import ap8 from './xml/binarytools_bots/Over 2 {If last 2 digits are bellow 2}.xml';
+import ap9 from './xml/binarytools_bots/Over 2 {If last 3 digits are bellow 2}.xml';
+import ap10 from './xml/binarytools_bots/AUTO C4 VOLT 🇬🇧 2 🇬🇧 AI PREMIUM ROBOT.xml';
+import ap11 from './xml/binarytools_bots/$DollarprinterbotOrignal$.xml';
+import ap12 from './xml/binarytools_bots/Big  Boyz Rise fall.xml';
+import ap13 from './xml/binarytools_bots/KTT 77 Battalion Pro Max.xml';
+import ap14 from './xml/binarytools_bots/KTT Russian V12 Bot.xml';
+import ap15 from './xml/binarytools_bots/KTT Small Account Bot.xml';
+import ap16 from './xml/binarytools_bots/M27 Auto Switch bot 2024.xml';
+import ap17 from './xml/binarytools_bots/TRADE CITY BOT Version 2.0.xml';
 
 export const binarytools_bot_list = [
-    { id: 0, name: 'Over 4 Virtual Hook', xml: ap1 },
-    { id: 1, name: 'GREEN GOAT V1', xml: ap2 },
-    { id: 2, name: 'GREEN GOAT V2🔥', xml: ap3 },
-    { id: 3, name: 'GREEN GOAT V3', xml: ap4 },
-    { id: 4, name: 'Over 2 {If last 2 digits are bellow 2', xml: ap5 },
-    { id: 5, name: 'Over 2 {If last 3 digits are bellow 2🔥', xml: ap6 },
-    { id: 6, name: 'AUTO C4 VOLT 🇬🇧 2 🇬🇧 AI PREMIUM ROBOT', xml: ap7 },
-    { id: 7, name: '$DollarprinterbotOrignal$', xml: ap8 },
-    { id: 8, name: 'Big  Boyz Rise fall', xml: ap9 },
-    { id: 9, name: 'KTT 77 Battalion Pro Max', xml: ap10 },
-    { id: 10, name: 'KTT Russian V12 Bot', xml: ap11 },
-    { id: 11, name: 'KTT Small Account Bot', xml: ap12 },
-    { id: 12, name: 'M27 Auto Switch bot 2024', xml: ap13 },
-    { id: 13, name: 'TRADE CITY BOT Version 2.0', xml: ap14 },
+    { id: 0, name: 'Enhanced Auto C4 (With VirtualHook)', xml: ap1 },
+    { id: 1, name: 'Even Odd Virtual Hook', xml: ap2 },
+    { id: 2, name: 'Rise Fall Virtual Hook', xml: ap3 },
+    { id: 3, name: 'Over 4 Virtual Hook', xml: ap4 },
+    { id: 4, name: 'GREEN GOAT V1', xml: ap5 },
+    { id: 5, name: 'GREEN GOAT V2🔥', xml: ap6 },
+    { id: 6, name: 'GREEN GOAT V3', xml: ap7 },
+    { id: 7, name: 'Over 2 {If last 2 digits are bellow 2', xml: ap8 },
+    { id: 8, name: 'Over 2 {If last 3 digits are bellow 2🔥', xml: ap9 },
+    { id: 9, name: 'AUTO C4 VOLT 🇬🇧 2 🇬🇧 AI PREMIUM ROBOT', xml: ap10 },
+    { id: 10, name: '$DollarprinterbotOrignal$', xml: ap11 },
+    { id: 11, name: 'Big  Boyz Rise fall', xml: ap12 },
+    { id: 12, name: 'KTT 77 Battalion Pro Max', xml: ap13 },
+    { id: 13, name: 'KTT Russian V12 Bot', xml: ap14 },
+    { id: 14, name: 'KTT Small Account Bot', xml: ap15 },
+    { id: 15, name: 'M27 Auto Switch bot 2024', xml: ap16 },
+    { id: 16, name: 'TRADE CITY BOT Version 2.0', xml: ap17 },
 ]
 class DBot {
     constructor() {

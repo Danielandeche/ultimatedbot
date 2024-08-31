@@ -8,7 +8,7 @@ export type TSidebarItem = {
 
 export const SIDEBAR_INTRO: TSidebarItem[] = [
     {
-        label: localize('Welcome to D-binarytools Bot!'),
+        label: localize('Welcome to Binarytool!'),
         content: [
             {
                 data: localize(
@@ -28,7 +28,7 @@ export const SIDEBAR_INTRO: TSidebarItem[] = [
         label: localize('FAQs'),
         content: [
             {
-                data: localize('What is D-binarytools Bot?'),
+                data: localize('What is Binarytool?'),
                 faq_id: 'faq-0',
             },
             {

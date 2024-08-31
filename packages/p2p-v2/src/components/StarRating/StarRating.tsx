@@ -27,8 +27,8 @@ const StarRating = ({
             allowHalfIcon
             allowHover={false}
             className='p2p-v2-star-rating'
-            emptyIcon={<LabelPairedStarLgRegularIcon fill='#FFAD3A' />}
-            fullIcon={<LabelPairedStarLgFillIcon fill='#FFAD3A' />}
+            emptyIcon={<LabelPairedStarLgRegularIcon fill='#FFAD3B' />}
+            fullIcon={<LabelPairedStarLgFillIcon fill='#FFAD3B' />}
             iconsCount={5}
             initialValue={ratingValue}
             onClick={onClick}

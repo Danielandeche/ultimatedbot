@@ -172,7 +172,7 @@ const dark_theme = {
     grey_border: '#6e6e6e',
     lost: '#cc2e3d',
     open: '#377cfc',
-    sold: '#ffad3a',
+    sold: '#ffad3b',
     won: '#00a79e',
 };
 
@@ -182,7 +182,7 @@ const light_theme = {
     grey_border: '#999999',
     lost: '#ec3f3f',
     open: '#377cfc',
-    sold: '#ffad3a',
+    sold: '#ffad3b',
     won: '#4bb4b3',
 };
 

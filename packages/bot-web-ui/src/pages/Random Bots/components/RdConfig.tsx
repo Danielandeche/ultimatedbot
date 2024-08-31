@@ -1,21 +1,23 @@
 import React from 'react';
 
 interface RDConfigProps {
+    active_symbol: string;
     showRdConfig: boolean;
-    takeProfit: number;
-    stopLoss: number;
+    takeProfit: string | number;
+    stopLoss: string | number;
     stake: string | number;
-    martingale: number;
+    martingale: string | number;
     optionsList: any[];
-    martingaleValueRef: React.MutableRefObject<number>;
-    take_profit: React.MutableRefObject<number>;
-    stop_loss: React.MutableRefObject<number>;
+    martingaleValueRef: React.MutableRefObject<string | number>;
+    take_profit: React.MutableRefObject<string | number>;
+    stop_loss: React.MutableRefObject<string | number>;
+    setStake: (value: React.SetStateAction<string | number>) => void
     handleSelectChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-    setTakeProfit: React.Dispatch<React.SetStateAction<number>>;
-    setStopLoss: React.Dispatch<React.SetStateAction<number>>;
+    setTakeProfit: React.Dispatch<React.SetStateAction<string | number>>;
+    setStopLoss: React.Dispatch<React.SetStateAction<string | number>>;
     setShowRdConfig: React.Dispatch<React.SetStateAction<boolean>>;
-    setStake: React.Dispatch<React.SetStateAction<number>>;
-    setMartingale: React.Dispatch<React.SetStateAction<number>>;
+    handleUpdateStake: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    setMartingale: React.Dispatch<React.SetStateAction<string | number>>;
 }
 
 const RdConfig = ({
@@ -23,11 +25,13 @@ const RdConfig = ({
     showRdConfig,
     martingale,
     setMartingale,
-    setStake,
     setStopLoss,
     setTakeProfit,
     handleSelectChange,
     martingaleValueRef,
+    active_symbol,
+    handleUpdateStake,
+    setStake,
     stop_loss,
     take_profit,
     optionsList,
@@ -44,7 +48,7 @@ const RdConfig = ({
             </div>
             <form className='rd-config-form'>
                 <div className='form-group'>
-                    <select name='' id='symbol_options' onChange={handleSelectChange}>
+                    <select name='' id='symbol_options' value={active_symbol} onChange={handleSelectChange}>
                         {optionsList.length > 0 ? (
                             optionsList.map(option => (
                                 <option key={option.symbol} value={option.symbol}>
@@ -58,38 +62,49 @@ const RdConfig = ({
                 </div>
                 <div className='form-group'>
                     <label>Stake Amount</label>
-                    <input type='number' value={stake} onChange={e => setStake(Number(e.target.value))} />
+                    <input type='text' value={stake} onChange={e => setStake(e.target.value)} onBlur={handleUpdateStake}/>
                 </div>
                 <div className='form-group'>
                     <label>Martingale</label>
                     <input
-                        type='number'
+                        type='text'
                         value={martingale}
-                        onChange={e => {
-                            martingaleValueRef.current = Number(e.target.value);
-                            setMartingale(Number(e.target.value));
+                        onChange={e => setMartingale(e.target.value)}
+                        onBlur={e => {
+                            const newValue = e.target.value;
+                            const parsedValue = newValue === '' || isNaN(Number(newValue)) ? newValue : parseFloat(newValue);
+
+                            martingaleValueRef.current = parsedValue;
+                            setMartingale(parsedValue);
                         }}
                     />
                 </div>
                 <div className='form-group'>
                     <label>Take Profit (TP)</label>
                     <input
-                        type='number'
+                        type='text'
                         value={takeProfit}
-                        onChange={e => {
-                            take_profit.current = Number(e.target.value);
-                            setTakeProfit(Number(e.target.value));
+                        onChange={e => setTakeProfit(e.target.value)}
+                        onBlur={e => {
+                            const newValue = e.target.value;
+                            const parsedValue = newValue === '' || isNaN(Number(newValue)) ? newValue : parseFloat(newValue);
+
+                            take_profit.current = parsedValue;
+                            setTakeProfit(parsedValue);
                         }}
                     />
                 </div>
                 <div className='form-group'>
                     <label>Stop Loss (SL)</label>
                     <input
-                        type='number'
+                        type='text'
                         value={stopLoss}
-                        onChange={e => {
-                            stop_loss.current = Number(e.target.value);
-                            setStopLoss(Number(e.target.value));
+                        onChange={e =>  setStopLoss(e.target.value)}
+                        onBlur={e => {
+                            const newValue = e.target.value;
+                            const parsedValue = newValue === '' || isNaN(Number(newValue)) ? newValue : parseFloat(newValue);
+                            stop_loss.current = parsedValue;
+                            setStopLoss(parsedValue);
                         }}
                     />
                 </div>

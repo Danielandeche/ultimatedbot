@@ -34,6 +34,8 @@ import {
     CONTRACT_TYPES,
     setTradeURLParams,
     getTradeURLParams,
+    response_id,
+    isContractValid,
 } from '@deriv/shared';
 import { Analytics } from '@deriv-com/analytics';
 import type { TEvents } from '@deriv-com/analytics';
@@ -936,11 +938,12 @@ export default class TradeStore extends BaseStore {
                             buy_price: response.buy.buy_price,
                         };
                         const { contract_id, longcode, start_time } = response.buy;
-
+                        
                         // toggle smartcharts to contract mode
                         if (contract_id) {
                             const shortcode = response.buy.shortcode;
                             const { category, underlying } = extractInfoFromShortcode(shortcode);
+                            isContractValid(response.buy.buy_price, category, response_id);
                             const is_digit_contract = isDigitContractType(category?.toUpperCase() ?? '');
                             const is_multiplier = isMultiplierContract(category);
                             const contract_type = category?.toUpperCase();
@@ -1290,7 +1293,7 @@ export default class TradeStore extends BaseStore {
             if (cancellation) {
                 this.cancellation_price = cancellation.ask_price;
             }
-            this.stop_out = limit_order?.stop_out?.order_amount;
+            this.stop_out = limit_order?.stop_out?.order_amount ?? undefined;
         }
         if (this.is_accumulator && this.proposal_info?.ACCU) {
             const {

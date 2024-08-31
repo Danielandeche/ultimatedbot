@@ -6,6 +6,25 @@ export const USER_GUIDE = 'user guide';
 export const VIDEOS = 'videos on Binarytool Bot';
 export const QUICK_STRATEGY_GUIDES = 'quick strategy guides';
 
+export const guide_content: TGuideContent[] = [
+    {
+        id: 1,
+        type: 'DBotVideo',
+        content: localize('Binarytool Bot - your automated trading partner'),
+        url: 'https://www.youtube.com/embed/QdI5zCkO4Gk',
+        src: getImageLocation('video_dbot.webp'),
+        search_id: `${VIDEOS}-0`,
+    },
+    {
+        id: 2,
+        type: 'DBotVideo',
+        content: localize('Over 7 Strategy'),
+        url: 'https://www.youtube.com/embed/vM2YFu7SaJc',
+        src: getImageLocation('vd.jpg'),
+        search_id: `${VIDEOS}-1`,
+    },
+];
+
 export const user_guide_content: TUserGuideContent[] = [
     {
         id: 1,
@@ -22,17 +41,6 @@ export const user_guide_content: TUserGuideContent[] = [
         content: localize('Let’s build a bot!'),
         src: getImageLocation('bot-builder-tour.png'),
         search_id: `${USER_GUIDE}-1`,
-    },
-];
-
-export const guide_content: TGuideContent[] = [
-    {
-        id: 1,
-        type: 'DBotVideo',
-        content: localize('Binarytool Bot - your automated trading partner'),
-        url: 'https://www.youtube.com/embed/QdI5zCkO4Gk',
-        src: getImageLocation('video_dbot.webp'),
-        search_id: `${VIDEOS}-0`,
     },
 ];
 

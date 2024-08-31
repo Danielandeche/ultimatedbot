@@ -41,7 +41,7 @@ export const handleLostLiveStep = total_profit => {
         alert('Stop Loss Hitted!!');
         dbot.stopBot();
     } else {
-        config.vh_variables.current_trades_real++;
+        // config.vh_variables.current_trades_real++;
     }
 };
 
@@ -62,9 +62,15 @@ export const calculateWonStatus = total_profit => {
         alert('Take Profit Hitted!!');
         dbot.stopBot();
     } else {
-        config.vh_variables.is_enabled = true;
-        config.vh_variables.is_martingale_active = false;
+        config.vh_variables.current_trades_real++;
+        config.vh_variables.is_enabled = false;
         config.vh_variables.mart_total_lost = 0;
+        if (config.vh_variables.current_trades_real >= config.vh_variables.min_trades) {
+            config.vh_variables.is_enabled = true;
+            config.vh_variables.is_martingale_active = false;
+            config.vh_variables.current_step = 1;
+            config.vh_variables.current_trades_real = 0;
+        }
     }
 };
 

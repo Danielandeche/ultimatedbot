@@ -233,6 +233,55 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                 </Block>
             </Category>
         </Category>
+        <Category id='utility' name={localize('Virtual Hook')}>
+            <Block type='vh_settings'>
+                <Statement name='STATEMENT'>
+                    <Block type='martingale' deletable='false' movable='false'>
+                        <Value name='MARTINGALE'>
+                            <Shadow type='math_number'>
+                                <Field name='NUM'>2</Field>
+                            </Shadow>
+                        </Value>
+                        <Next>
+                            <Block type='max_steps' deletable='false' movable='false'>
+                                <Value name='MAX_STEPS'>
+                                    <Shadow type='math_number'>
+                                        <Field name='NUM'>3</Field>
+                                    </Shadow>
+                                </Value>
+                                <Next>
+                                    <Block type='min_trades' deletable='false' movable='false'>
+                                        <Value name='MIN_TRADES'>
+                                            <Shadow type='math_number'>
+                                                <Field name='NUM'>1</Field>
+                                            </Shadow>
+                                        </Value>
+                                        <Next>
+                                            <Block type='take_profit' deletable='false' movable='false'>
+                                                <Value name='TAKE_PROFIT'>
+                                                    <Shadow type='math_number'>
+                                                        <Field name='NUM'>5</Field>
+                                                    </Shadow>
+                                                </Value>
+                                                <Next>
+                                                    <Block type='stop_loss' deletable='false' movable='false'>
+                                                        <Value name='STOP_LOSS'>
+                                                            <Shadow type='math_number'>
+                                                                <Field name='NUM'>50</Field>
+                                                            </Shadow>
+                                                        </Value>
+                                                    </Block>
+                                                </Next>
+                                            </Block>
+                                        </Next>
+                                    </Block>
+                                </Next>
+                            </Block>
+                        </Next>
+                    </Block>
+                </Statement>
+            </Block>
+        </Category>
         <Category id='analysis' name={localize('Analysis')}>
             <Category id='indicators' name={localize('Indicators')}>
                 <Block type='sma_statement'>

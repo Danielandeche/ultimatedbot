@@ -1,6 +1,6 @@
 <h1 align="center">BinaryTool</h1>
 
-This repository contains the various platforms of the Deriv application.
+This repository contains the various platforms of the Binarytool application.
 
 ![CircleCI](https://img.shields.io/circleci/build/github/binary-com/deriv-app) ![Prerequisite](https://img.shields.io/badge/node-18.x-blue.svg) ![Prerequisite](https://img.shields.io/badge/npm-9.x-blue.svg)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)

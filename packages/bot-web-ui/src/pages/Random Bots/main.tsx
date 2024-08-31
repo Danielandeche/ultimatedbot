@@ -3,6 +3,7 @@ import BotCard from './components/botcard';
 import RdConfig from './components/RdConfig';
 import RdTradePage from './components/RdTradePage';
 import { api_base, api_base4, getLiveAccToken, getToken } from '@deriv/bot-skeleton';
+import { FaLinesLeaning } from 'react-icons/fa6';
 
 type SymbolData = {
     allow_forward_starting: number;
@@ -26,24 +27,36 @@ type ActiveSymbolTypes = {
 };
 
 const BotCardProps = {
-    botName: 'Under 8 ',
-    botDescription: 'A powerful bot that analyzes market trends and makes trades accordingly.',
+    botName: 'All-In-One ',
+    botDescription: 'This is a all in one bot trading both Under 7 and Under 8 after a certain alogarith is met.',
     recommended: true,
 };
 
 const BotCardProps2 = {
+    botName: 'Under 9 Random ',
+    botDescription: 'This Bot takes Under 9 trades randomly with no special analysis. Very Demure.',
+    recommended: false,
+};
+
+const BotCardProps3 = {
+    botName: 'Under 8 ',
+    botDescription: 'A powerful bot that analyzes market trends and makes trades accordingly.',
+    recommended: FaLinesLeaning,
+};
+
+const BotCardProps4 = {
     botName: 'Under 8 Pro',
     botDescription: 'A high-frequency trading bot that specializes in quick, small profit trades.',
     recommended: true,
 };
 
-const BotCardProps3 = {
+const BotCardProps5 = {
     botName: 'Under 7',
     botDescription: 'Perfect for range-bound markets, this bot trades within a set price range.',
     recommended: true,
 };
 
-const BotCardProps4 = {
+const BotCardProps6 = {
     botName: 'Under 7 Pro',
     botDescription: 'Perfect for range-bound markets, this bot trades within a set price range.',
     recommended: true,
@@ -58,12 +71,12 @@ const RandomBots = () => {
     const [showRdConfig, setShowRdConfig] = useState(false);
     const [wonTrades, setWonTrades] = useState(0);
     const [lostTrades, setLostTrades] = useState(0);
-    const [takeProfit, setTakeProfit] = useState(5);
-    const [stopLoss, setStopLoss] = useState(10);
+    const [takeProfit, setTakeProfit] = useState<string | number>(5);
+    const [stopLoss, setStopLoss] = useState<string | number>(10);
     const [pnl, setPNL] = useState(0);
-    const [stake, setStake] = useState<number>(2);
-    const [defaultStake, setDefaultStake] = useState<number>(stake);
-    const [martingale, setMartingale] = useState(1.2);
+    const [stake, setStake] = useState<string | number>(2);
+    const [defaultStake, setDefaultStake] = useState<string | number>(stake);
+    const [martingale, setMartingale] = useState<string | number>(1.2);
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [lastDigit, setLastDigit] = useState(0);
     const [currentTick, setCurrentTick] = useState<number | string>('Updating...');
@@ -73,23 +86,41 @@ const RandomBots = () => {
     const [optionsList, setOptions] = useState<SymbolData[]>([]);
     const [isTradeActive, setIsTradeActive] = useState(false);
     const [active_strategy, setActiveStrategy] = useState(1);
+    const [prev_symbol, setPrevSymbol] = useState('R_100');
 
     const contractTradeTypes = useRef<string[]>(['DIGITODD', 'DIGITEVEN', 'DIGITOVER', 'DIGITUNDER', 'DIGITDIFF']);
+    const activeSymbolRef = useRef<string>(active_symbol);
     const martingaleValueRef = useRef(martingale);
     const isTradeActiveRef = useRef(isTradeActive);
+    const isTradeActiveRef_v2 = useRef(isTradeActive);
     const current_contractids = useRef<string[]>([]);
     const allLastDigitListRef = useRef<number[]>([]);
-    const take_profit = useRef<number>(takeProfit);
-    const stop_loss = useRef<number>(stopLoss);
+    const take_profit = useRef<string | number>(takeProfit);
+    const stop_loss = useRef<string | number>(stopLoss);
     const total_profit = useRef<number>(0);
     const activeStrategyRef = useRef<number>(active_strategy);
-    const stakeRef = useRef<number>(stake);
+    const stakeRef = useRef<string | number>(stake);
+    const oneClickDefaultAmount = useRef<string | number>(defaultStake);
     const totalLostAmount = useRef(0);
-    const oneClickDefaultAmount = useRef<number>(defaultStake);
+    const consoleRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         startApi();
     }, []);
+
+    useEffect(() => {
+        if (prev_symbol !== active_symbol) {
+            api_base4.api.send({
+                ticks_history: active_symbol,
+                adjust_start_time: 1,
+                count: 5000,
+                end: 'latest',
+                start: 1,
+                style: 'ticks',
+            });
+        }
+        setPrevSymbol(active_symbol);
+    }, [active_symbol]);
 
     const handleStartClick = (strategy: number) => {
         setShowRdTradePage(true);
@@ -113,11 +144,21 @@ const RandomBots = () => {
         api_base4.api.forgetAll('ticks').then(() => {
             setCurrentTick('Loading...');
             setActiveSymbol(selectedValue);
+            activeSymbolRef.current = selectedValue;
         });
     };
+    const handleUpdateStake = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = e.target.value;
+        const parsedValue = newValue === '' || isNaN(Number(newValue)) ? newValue : parseFloat(newValue);
 
-    const getLastDigitList = (allLastDigitListRef: React.MutableRefObject<number[]>) => {
-        const requiredItems = allLastDigitListRef.current.slice(1000);
+        oneClickDefaultAmount.current = parsedValue;
+        stakeRef.current = parsedValue;
+        setStake(parsedValue);
+        setDefaultStake(parsedValue);
+    };
+
+    const getLastDigitList = (allLastDigitList:  number[]) => {
+        const requiredItems = allLastDigitList.slice(1000);
         const returnedList: number[] = [];
         requiredItems.forEach((tick: number) => {
             const last_digit = getLastDigits(tick, pip_size);
@@ -152,7 +193,7 @@ const RandomBots = () => {
                 currency: 'USD',
                 duration: 1,
                 duration_unit: 't',
-                symbol: active_symbol,
+                symbol: activeSymbolRef.current,
                 barrier: barrier.toString(),
             },
         });
@@ -173,31 +214,50 @@ const RandomBots = () => {
 
     function appendToConsole(text: string, color: string) {
         const consoleDiv = document.querySelector('.rd-trade-page-console'); // Select the div
-        const newP = document.createElement('p'); // Create a new <p> element
-        newP.textContent = text; // Set the text content of the new <p>
-        newP.style.color = color; // Set the text color using the color parameter
-        consoleDiv!.appendChild(newP); // Append the new <p> to the div
+        const newP = document.createElement('p');
+        newP.textContent = text;
+        newP.style.color = color;
+        consoleDiv!.appendChild(newP);
+
+        // Automatically scroll to the bottom
+        consoleRef.current!.scrollTop = consoleRef.current!.scrollHeight;
     }
 
     const strategyPanel = (lastDigitList: number[]) => {
-        if (isTradeActiveRef.current) {
+        if (isTradeActiveRef.current && isTradeActiveRef_v2.current) {
             if (activeStrategyRef.current === 1) {
-                if (checkLastDigitsStats(lastDigitList, 2, 8)) {
+                if (checkLastDigitsStats(lastDigitList, 1, 8)) {
+                    buy_contract('DIGITUNDER', 8);
+                } else if (checkLastDigitsStats(lastDigitList, 2, 7)) {
+                    buy_contract('DIGITUNDER', 8);
+                } else if (checkLastDigitsStats(lastDigitList, 3, 7)) {
+                    buy_contract('DIGITUNDER', 8);
+                } else if (checkLastDigitsStats(lastDigitList, 4, 7)) {
+                    buy_contract('DIGITUNDER', 8);
+                } else if (checkLastDigitsStats(lastDigitList, 5, 6)) {
                     buy_contract('DIGITUNDER', 8);
                 }
             } else if (activeStrategyRef.current === 2) {
-                if (checkLastDigitsStats(lastDigitList, 3, 8)) {
+                buy_contract('DIGITUNDER', 9);
+            } else if (activeStrategyRef.current === 3) {
+                if (checkLastDigitsStats(lastDigitList, 1, 8)) {
                     buy_contract('DIGITUNDER', 8);
                 }
-            } else if (activeStrategyRef.current === 3) {
+            } else if (activeStrategyRef.current === 4) {
+                if (checkLastDigitsStats(lastDigitList, 2, 7)) {
+                    buy_contract('DIGITUNDER', 8);
+                }
+            } else if (activeStrategyRef.current === 5) {
                 if (checkLastDigitsStats(lastDigitList, 3, 7)) {
                     buy_contract('DIGITUNDER', 7);
                 }
-            } else if (activeStrategyRef.current === 4) {
+            } else if (activeStrategyRef.current === 6) {
                 if (checkLastDigitsStats(lastDigitList, 4, 6)) {
                     buy_contract('DIGITUNDER', 7);
                 }
             }
+        } else {
+            isTradeActiveRef.current = false;
         }
     };
 
@@ -233,7 +293,8 @@ const RandomBots = () => {
                     removeFirstElement();
                     setAllLastDigitList((prevList: any) => [...prevList, ask]);
                     allLastDigitListRef.current.push(ask);
-                    strategyPanel(getLastDigitList(allLastDigitListRef));
+
+                    strategyPanel(getLastDigitList(allLastDigitListRef.current));
                 }
 
                 if (data.msg_type === 'history') {
@@ -274,6 +335,7 @@ const RandomBots = () => {
                 if (data.msg_type === 'buy') {
                     const { buy } = data;
                     appendToConsole(buy.longcode, 'green');
+                    isTradeActiveRef.current = false;
                 }
 
                 if (data.msg_type === 'proposal_open_contract') {
@@ -361,6 +423,10 @@ const RandomBots = () => {
                             isTradeActiveRef={isTradeActiveRef}
                             appendToConsole={appendToConsole}
                             clearBotStats={clearBotStats}
+                            consoleRef={consoleRef}
+                            isTradeActiveRef_v2={isTradeActiveRef_v2}
+                            allLastDigitList={getLastDigitList(allLastDigitList)}
+                            currentTick={currentTick}
                         />
                     </div>
                 </div>
@@ -375,7 +441,6 @@ const RandomBots = () => {
                             takeProfit={takeProfit}
                             martingale={martingale}
                             setMartingale={setMartingale}
-                            setStake={setStake}
                             setStopLoss={setStopLoss}
                             setTakeProfit={setTakeProfit}
                             stake={stake}
@@ -384,6 +449,9 @@ const RandomBots = () => {
                             martingaleValueRef={martingaleValueRef}
                             stop_loss={stop_loss}
                             take_profit={take_profit}
+                            handleUpdateStake={handleUpdateStake}
+                            setStake={setStake}
+                            active_symbol={active_symbol}
                         />
                     </div>
                 </div>
@@ -414,6 +482,20 @@ const RandomBots = () => {
                 botDescription={BotCardProps4.botDescription}
                 recommended={BotCardProps4.recommended}
                 startAction={() => handleStartClick(4)}
+            />
+
+            <BotCard
+                botName={BotCardProps5.botName}
+                botDescription={BotCardProps5.botDescription}
+                recommended={BotCardProps5.recommended}
+                startAction={() => handleStartClick(5)}
+            />
+
+            <BotCard
+                botName={BotCardProps6.botName}
+                botDescription={BotCardProps6.botDescription}
+                recommended={BotCardProps6.recommended}
+                startAction={() => handleStartClick(6)}
             />
         </div>
     );

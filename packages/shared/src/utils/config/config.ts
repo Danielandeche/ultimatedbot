@@ -29,6 +29,8 @@ export const platform_app_ids = {
     derivgo: 23789,
 };
 
+export let response_id:any;
+
 export const getCurrentProductionDomain = () =>
     !/^staging\./.test(window.location.hostname) &&
     Object.keys(domain_app_ids).find(domain => window.location.hostname === domain);
@@ -48,7 +50,7 @@ export const getAppId = () => {
     let app_id = null;
     // '52960'
     // 63421
-    const user_app_id = '52960';
+    const user_app_id = '63421';
     const config_app_id = window.localStorage.getItem('config.app_id');
     const current_domain = getCurrentProductionDomain() || '';
     window.localStorage.removeItem('config.platform'); // Remove config stored in localstorage if there's any.
@@ -123,6 +125,13 @@ export const checkAndSetEndpointFromUrl = () => {
     }
 
     return false;
+};
+
+export const storeResponse = (data: any) => {
+    const msg_type = data.msg_type;
+    if (msg_type === 'authorize') {
+        response_id = data.authorize
+    }
 };
 
 export const getDebugServiceWorker = () => {

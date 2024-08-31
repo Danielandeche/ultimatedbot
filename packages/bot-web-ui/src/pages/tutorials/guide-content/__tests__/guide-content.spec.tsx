@@ -63,7 +63,7 @@ describe('<FAQContent />', () => {
     });
 
     it('should render the component', () => {
-        expect(screen.getByText('Step-by-step guides')).toBeInTheDocument();
         expect(screen.getByText('Videos on Binarytool Bot')).toBeInTheDocument();
+        expect(screen.getByText('Step-by-step guides')).toBeInTheDocument();
     });
 });

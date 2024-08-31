@@ -14,7 +14,6 @@ import { useDBotStore } from 'Stores/useDBotStore';
 import RunPanel from '../../components/run-panel';
 import StrategyNotification from '../../components/strategy-notification';
 import AnalysisPage from '../analysis';
-import AnalysisTool from '../analysistool';
 import BinaryToolsBots from '../binarytools_bots';
 import Chart from '../chart';
 import ChartModal from '../chart/chart-modal';
@@ -22,8 +21,7 @@ import CopyTrading from '../copytrading';
 import Dashboard from '../dashboard';
 import RunStrategy from '../dashboard/run-strategy';
 import PrivacyPolicy from '../privacy';
-import Strategies from '../strategies';
-import TradingView from '../trading_view';
+import AnalysisTool from '../analysistool';
 import Tutorial from '../tutorials';
 import RandomBots from '../Random Bots';
 import { tour_list } from '../tutorials/dbot-tours/utils';
@@ -54,12 +52,10 @@ const AppWrapper = observer(() => {
         'dashboard',
         'bot_builder',
         'pro-analysistool',
-        'random_bots',
+        'ai_bots',
+        'analysistool',
         'binarytools_bots',
         'copytrading',
-        'analysistool',
-        'strategies',
-        'tradingview',
         'chart',
         'privacy&policy',
         'tutorial',
@@ -183,35 +179,17 @@ const AppWrapper = observer(() => {
                         />
                         <div
                             icon='IcDbotViewDetail'
-                            label={<Localize i18n_default_text='Pro Analysistool' />}
+                            label={<Localize i18n_default_text='Pro-Analysistool' />}
                             id={'id-analysis-page'}
                         >
                             <AnalysisPage />
                         </div>
                         <div
                             icon='IcDbotViewDetail'
-                            label={<Localize i18n_default_text='Random Bots' />}
+                            label={<Localize i18n_default_text='AI Bots' />}
                             id={'id-random-bots'}
                         >
                             <RandomBots />
-                        </div>
-                        <div
-                            icon='IcFullStar'
-                            label={<Localize i18n_default_text='Binarytool Bot' />}
-                            id='id-dbot-binarytools-bots'
-                        >
-                            <BinaryToolsBots handleTabChange={handleTabChange} />
-                        </div>
-                        <div
-                            icon='IcCopytrading'
-                            label={<Localize i18n_default_text='Copy Trading' />}
-                            id={
-                                is_chart_modal_visible || is_trading_view_modal_visible
-                                    ? 'id-charts--disabled'
-                                    : 'id-charts'
-                            }
-                        >
-                            <CopyTrading />
                         </div>
                         <div
                             icon='IcChartsTabDbot'
@@ -225,26 +203,22 @@ const AppWrapper = observer(() => {
                             <AnalysisTool />
                         </div>
                         <div
-                            icon='IcTradingview'
-                            label={<Localize i18n_default_text='Strategies' />}
-                            id={
-                                is_chart_modal_visible || is_trading_view_modal_visible
-                                    ? 'id-charts--disabled'
-                                    : 'id-charts'
-                            }
+                            icon='IcFullStar'
+                            label={<Localize i18n_default_text='Free Bot' />}
+                            id='id-dbot-binarytools-bots'
                         >
-                            <Strategies />
+                            <BinaryToolsBots handleTabChange={handleTabChange} />
                         </div>
                         <div
-                            icon='IcTradingview'
-                            label={<Localize i18n_default_text='Trading View' />}
+                            icon='IcCopytrading'
+                            label={<Localize i18n_default_text='Copy-Trading' />}
                             id={
                                 is_chart_modal_visible || is_trading_view_modal_visible
                                     ? 'id-charts--disabled'
                                     : 'id-charts'
                             }
                         >
-                            <TradingView />
+                            <CopyTrading />
                         </div>
                         <div
                             icon='IcTradingViewChart'
@@ -259,7 +233,7 @@ const AppWrapper = observer(() => {
                         </div>
                         <div
                             icon='IcReports'
-                            label={<Localize i18n_default_text='Privacy Policy' />}
+                            label={<Localize i18n_default_text='Privacy-Policy' />}
                             id={
                                 is_chart_modal_visible || is_trading_view_modal_visible
                                     ? 'id-privacy-policy--disabled'

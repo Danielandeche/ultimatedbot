@@ -402,13 +402,13 @@ module.exports = {
                         general: '#ffffff',
                         information: '#377cfc',
                         success: '#00a79e',
-                        warning: '#ffad3a',
+                        warning: '#ffad3b',
                     },
                     light: {
                         danger: '#ec3f3f',
                         information: '#377cfc',
                         success: '#4bb4b3',
-                        warning: '#ffad3a',
+                        warning: '#ffad3b',
                     },
                 },
                 system: {

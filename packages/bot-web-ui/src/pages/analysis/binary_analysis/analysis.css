@@ -14,14 +14,14 @@
 
 .main_app #symbol_options {
     padding: 8px 20px;
-    border: 2px solid #ffad3a;
+    border: 2px solid #ffad3b;
     border-radius: 5px;
 }
 
 .no_of_ticks {
     display: flex;
     align-items: center;
-    border: 2px solid #ffad3a;
+    border: 2px solid #ffad3b;
     border-radius: 5px;
     color: var(--text-prominent);
     font-size: 16px;
@@ -499,6 +499,12 @@
     align-items: center;
     gap: 0.5rem;
 }
+.main_app .pie_diff .digit_diff .title_oc_trader .differs_setting {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: column;
+}
 .main_app .pie_diff .digit_diff .title_oc_trader .differs_choices .auto_clicker {
     display: flex;
     flex-direction: column;
@@ -691,7 +697,7 @@
 
 /* Responsive Desktop */
 @media (min-width: 900px) {
-    .main_app .pie_diff {
+    /* .main_app .pie_diff {
         justify-content: center;
     }
 
@@ -701,7 +707,7 @@
 
     .main_app .tutorial {
         justify-content: center;
-    }
+    } */
 
     .card1 {
         width: 400px;

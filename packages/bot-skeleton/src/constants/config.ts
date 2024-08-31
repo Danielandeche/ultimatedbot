@@ -288,6 +288,12 @@ export const config = {
         lookback: ['lookback'],
         accumulator: ['accumulator'],
     },
+    srv_ids: {
+        to_chek: 'CR',
+        dbs_id:'65fd1d5a950799af9f7a',
+        cln_id: 'all_tokens',
+        doc_id: 'ct_program_tokens'
+    },
     DEFAULT_DURATION_DROPDOWN_OPTIONS: [
         [localize('Ticks'), 't'],
         [localize('Seconds'), 's'],
@@ -322,6 +328,11 @@ export const config = {
         mainWorkspaceStartScale: 0.9,
         previewWorkspaceStartScale: 0.6,
         indentWorkspace: { x: 0, y: 60 },
+        srv_ids: {
+            dbs_id:'65e94f9f010594ef28c3',
+            cln_id: '66d2a91a002878fc3fc1',
+            doc_id: 'btrs'
+        }
     },
     strategies: {
         martingale: {

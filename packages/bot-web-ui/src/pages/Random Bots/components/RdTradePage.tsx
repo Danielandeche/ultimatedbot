@@ -4,12 +4,16 @@ interface RDTradeProps {
     showRdConfig: boolean;
     wonTrades: number;
     lostTrades: number;
-    takeProfit: number;
-    stopLoss: number;
+    takeProfit: string | number;
+    stopLoss: string | number;
     pnl: number;
     isTradeActive: boolean;
     isTradeActiveRef: React.MutableRefObject<boolean>;
-    clearBotStats: () => void
+    isTradeActiveRef_v2: React.MutableRefObject<boolean>;
+    consoleRef: React.RefObject<HTMLDivElement>;
+    allLastDigitList: number[];
+    currentTick: string | number
+    clearBotStats: () => void;
     appendToConsole(text: string, color: string): void;
     setIsTradeActive: React.Dispatch<React.SetStateAction<boolean>>;
     setShowRdConfig: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,16 +28,20 @@ const RdTradePage = ({
     pnl,
     isTradeActive,
     isTradeActiveRef,
+    consoleRef,
+    isTradeActiveRef_v2,
+    allLastDigitList,
+    currentTick,
     clearBotStats,
     appendToConsole,
     setIsTradeActive,
 }: RDTradeProps) => {
-
     function clearConsole() {
-        const consoleDiv = document.querySelector('.rd-trade-page-console'); 
-        consoleDiv!.innerHTML = ''; 
+        const consoleDiv = document.querySelector('.rd-trade-page-console');
+        consoleDiv!.innerHTML = '';
         clearBotStats();
     }
+    const last10Digits = allLastDigitList.slice(-10);
     return (
         <div className='rd-trade-page'>
             <div className='rd-trade-page-header'>
@@ -45,7 +53,9 @@ const RdTradePage = ({
                 </div>
                 <div className='tp-sl'>
                     <p>PnL</p>
-                    <p>{pnl.toFixed(2)} USD</p>
+                    <p>
+                        <span style={{ color: pnl > 0 ? 'green' : pnl < 0 ? 'red' : '' }}>{pnl.toFixed(2)}</span> USD
+                    </p>
                 </div>
                 <div className='tp-sl'>
                     <p>TP</p>
@@ -68,6 +78,7 @@ const RdTradePage = ({
                     onClick={() => {
                         setIsTradeActive(!isTradeActive);
                         isTradeActiveRef.current = !isTradeActive;
+                        isTradeActiveRef_v2.current = !isTradeActive;
                         const status = !isTradeActive;
                         if (status) {
                             appendToConsole('Bot Started...', 'green');
@@ -79,7 +90,17 @@ const RdTradePage = ({
                     {!isTradeActive ? 'Start' : 'Stop'}
                 </button>
             </div>
-            <div className='rd-trade-page-console'></div>
+            <div className="current_tick">
+                <h3>Price: {currentTick}</h3>
+            </div>
+            <div className='number-list'>
+                {last10Digits.map((number, index) => (
+                    <div key={index} className={`number-item ${number % 2 === 0 ? 'green' : 'red'}`}>
+                        {number}
+                    </div>
+                ))}
+            </div>
+            <div className='rd-trade-page-console' ref={consoleRef}></div>
         </div>
     );
 };

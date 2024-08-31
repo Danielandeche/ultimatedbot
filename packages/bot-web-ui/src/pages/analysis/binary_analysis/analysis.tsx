@@ -89,7 +89,7 @@ const BinaryAnalysisPage = observer(() => {
     const [overUnderManual, setOverUnderManual] = useState<boolean>(false);
 
     // Refs
-    const martingaleValueRef = useRef(martingaleValue);
+    const martingaleValueRef = useRef<string | number>(martingaleValue);
     const isTradeActiveRef = useRef(isTradeActive);
     const current_contractids = useRef<string[]>([]);
     const totalLostAmount = useRef(0);
@@ -599,12 +599,6 @@ const BinaryAnalysisPage = observer(() => {
                     >
                         Rise/Fall
                     </button>
-                    <button
-                        className={`button ${activeCard === 'tutorial' ? 'active' : ''}`}
-                        onClick={() => handleSetActiveCard('tutorial')}
-                    >
-                        Tutorials
-                    </button>
                 </div>
             </div>
             {/* Middle Cards */}
@@ -855,16 +849,18 @@ const BinaryAnalysisPage = observer(() => {
                                     />
                                 )}
                                 {selectTickList()}
-                                <div className='martingale'>
-                                    <small>martingale</small>
-                                    <input
-                                        type='number'
-                                        value={martingaleValueRef.current}
-                                        onChange={handleMartingaleInputChange}
-                                    />
-                                </div>
-                                <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
-                                    <TbSettingsDollar />
+                                <div className='differs_setting'>
+                                    <div className='martingale'>
+                                        <small>Martingale</small>
+                                        <input
+                                            type='number'
+                                            value={martingaleValueRef.current}
+                                            onChange={handleMartingaleInputChange}
+                                        />
+                                    </div>
+                                    <div className='guide' onClick={() => setShowBotSettings(!showBotSettings)}>
+                                        <TbSettingsDollar />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -958,7 +954,7 @@ const BinaryAnalysisPage = observer(() => {
                     </div>
                 </div>
             )}
-            {activeCard === 'tutorial' && (
+            {/* {activeCard === 'tutorial' && (
                 <div className='tutorial'>
                     <div className='guidevideo card5'>
                         <iframe
@@ -997,7 +993,7 @@ const BinaryAnalysisPage = observer(() => {
                         />
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     );
 });

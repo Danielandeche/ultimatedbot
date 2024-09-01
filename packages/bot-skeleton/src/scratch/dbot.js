@@ -14,7 +14,7 @@ import { isAllRequiredBlocksEnabled, updateDisabledBlocks, validateErrorOnBlockD
 import './blockly';
 
 // Custom Bots
-import ap1 from './xml/binarytools_bots/Enhanced Auto C4 (With VirtualHook).xml';
+import ap1 from './xml/binarytools_bots/Barriers Accumulator Master {app.binarytool.site_bot}.xml';
 import ap2 from './xml/binarytools_bots/Even Odd Virtual Hook.xml';
 import ap3 from './xml/binarytools_bots/Rise Fall Virtual Hook.xml';
 import ap4 from './xml/binarytools_bots/Over 4 Virtual Hook.xml';
@@ -33,7 +33,7 @@ import ap16 from './xml/binarytools_bots/M27 Auto Switch bot 2024.xml';
 import ap17 from './xml/binarytools_bots/TRADE CITY BOT Version 2.0.xml';
 
 export const binarytools_bot_list = [
-    { id: 0, name: 'Enhanced Auto C4 (With VirtualHook)', xml: ap1 },
+    { id: 0, name: 'Barriers Accumulator Master', xml: ap1 },
     { id: 1, name: 'Even Odd Virtual Hook', xml: ap2 },
     { id: 2, name: 'Rise Fall Virtual Hook', xml: ap3 },
     { id: 3, name: 'Over 4 Virtual Hook', xml: ap4 },

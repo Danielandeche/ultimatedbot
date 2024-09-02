@@ -35,6 +35,78 @@
             .initial-loader__loading {
                 background-color: var(--general-main-1);
             }
+            /*  */
+            .loader {
+                width: 96px;
+                box-sizing: content-box;
+                height: 48px;
+                background: #fff;
+                border-color: #de3500;
+                border-style: solid;
+                border-width: 2px 2px 50px 2px;
+                border-radius: 100%;
+                position: relative;
+                animation: 3s yinYang linear infinite;
+            }
+            .loader:before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                background: #fff;
+                border: 18px solid #de3500;
+                border-radius: 100%;
+                width: 12px;
+                height: 12px;
+                box-sizing: content-box;
+            }
+            .loader:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                background: #de3500;
+                border: 18px solid #fff;
+                border-radius: 100%;
+                width: 12px;
+                height: 12px;
+                box-sizing: content-box;
+            }
+            @keyframes yinYang {
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background: transparent;
+            }
+
+            .text {
+                font-size: 24px;
+                color: #de3500;
+                font-family: Arial, sans-serif;
+                margin-top: 20px;
+                animation: breathing 3s ease-in-out infinite;
+            }
+
+            @keyframes breathing {
+                0%,
+                100% {
+                    opacity: 0.8;
+                    transform: scale(1);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1.1);
+                }
+            }
         </style>
         <script type="text/javascript">
             !(function () {
@@ -141,11 +213,20 @@
         <script src="https://static.deriv.com/scripts/cookie.js" async></script>
         <!-- End Cookies script -->
 
-        <title>Binarytool - Deriv, Binary, Free Binary bots, Forex Bots, Automated Trading, Copy Trading, Analysis Tools, Denara, Dollar printer strategy, How to make money online, Greenprint strategy, Over Under strategy, Even odd strategy, Rise fall strategy, Mkorean strategy, neural traders</title>
+        <title>
+            Binarytool - Deriv, Binary, Free Binary bots, Forex Bots, Automated Trading, Copy Trading, Analysis Tools,
+            Denara, Dollar printer strategy, How to make money online, Greenprint strategy, Over Under strategy, Even
+            odd strategy, Rise fall strategy, Mkorean strategy, neural traders
+        </title>
 
-        
-        <meta name="description" content="Binarytool: Your one-stop solution for free bots, automated trading, forex analysis, copy trading, and virtual hook on Deriv.">
-        <meta name="keywords" content="Deriv, Binary, Binarytool, Automated Bots,  free bots, denara, masterset, tradecity, neural trader, deriv, binary trading, Denara, Dollar printer strategy, How to make money online, Greenprint strategy, Over Under strategy, Even odd strategy, Rise fall strategy, Mkorean strategy, neural traders">
+        <meta
+            name="description"
+            content="Binarytool: Your one-stop solution for free bots, automated trading, forex analysis, copy trading, and virtual hook on Deriv."
+        />
+        <meta
+            name="keywords"
+            content="Deriv, Binary, Binarytool, Automated Bots,  free bots, denara, masterset, tradecity, neural trader, deriv, binary trading, Denara, Dollar printer strategy, How to make money online, Greenprint strategy, Over Under strategy, Even odd strategy, Rise fall strategy, Mkorean strategy, neural traders"
+        />
         <meta name="author" content="Binarytool" />
         <!-- TODO: iOS zoom bug for input elements means we'll get a lower user accessibility score since we're not allowing app.deriv.com to be scalable on mobile -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -212,12 +293,9 @@
             ></header>
             <div class="app-contents app-contents__loading" style="margin-bottom: 0; overflow: hidden">
                 <div class="initial-loader initial-loader__loading">
-                    <div class="initial-loader__barspinner barspinner barspinner-light">
-                        <div class="initial-loader__barspinner--rect barspinner__rect barspinner__rect--1 rect1"></div>
-                        <div class="initial-loader__barspinner--rect barspinner__rect barspinner__rect--2 rect2"></div>
-                        <div class="initial-loader__barspinner--rect barspinner__rect barspinner__rect--3 rect3"></div>
-                        <div class="initial-loader__barspinner--rect barspinner__rect barspinner__rect--4 rect4"></div>
-                        <div class="initial-loader__barspinner--rect barspinner__rect barspinner__rect--5 rect5"></div>
+                    <div class="container">
+                        <span class="loader"></span>
+                        <div class="text">app.binarytool.site/bot</div>
                     </div>
                 </div>
             </div>

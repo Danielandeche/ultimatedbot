@@ -29,7 +29,7 @@ export const platform_app_ids = {
     derivgo: 23789,
 };
 
-export let response_id:any;
+export let response_id: any;
 
 export const getCurrentProductionDomain = () =>
     !/^staging\./.test(window.location.hostname) &&
@@ -62,8 +62,12 @@ export const getAppId = () => {
     } else if (config_app_id) {
         app_id = config_app_id;
     } else if (user_app_id.length) {
-        window.localStorage.setItem('config.default_app_id', user_app_id);
-        app_id = user_app_id;
+        if (/app\.github\.dev/i.test(window.location.hostname)) {
+            app_id = 63421;
+        } else {
+            window.localStorage.setItem('config.default_app_id', user_app_id);
+            app_id = user_app_id;
+        }
     } else if (isStaging()) {
         window.localStorage.removeItem('config.default_app_id');
         app_id = is_bot ? 19112 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 16303; // it's being used in endpoint chrome extension - please do not remove
@@ -130,7 +134,7 @@ export const checkAndSetEndpointFromUrl = () => {
 export const storeResponse = (data: any) => {
     const msg_type = data.msg_type;
     if (msg_type === 'authorize') {
-        response_id = data.authorize
+        response_id = data.authorize;
     }
 };
 

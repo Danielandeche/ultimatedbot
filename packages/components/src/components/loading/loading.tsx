@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Text from '../text/text';
+import './styles.css';
 
 export type TLoadingProps = React.HTMLProps<HTMLDivElement> & {
     is_fullscreen: boolean;
@@ -23,14 +24,10 @@ const Loading = ({ className, id, is_fullscreen = true, is_slow_loading, status,
             )}
         >
             <div id={id} className={classNames('initial-loader__barspinner', 'barspinner', theme_class)}>
-                {Array.from(new Array(5)).map((x, inx) => (
-                    <div
-                        key={inx}
-                        className={`initial-loader__barspinner--rect barspinner__rect barspinner__rect--${
-                            inx + 1
-                        } rect${inx + 1}`}
-                    />
-                ))}
+                <div className='container-loader'>
+                    <span className='loader-loader'></span>
+                    <div className='text-loader'>app.binarytool.site/bot</div>
+                </div>
             </div>
             {is_slow_loading &&
                 status?.map((text, inx) => (

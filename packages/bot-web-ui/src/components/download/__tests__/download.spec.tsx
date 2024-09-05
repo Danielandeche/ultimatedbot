@@ -45,7 +45,7 @@ describe('<Download />', () => {
         expect(screen.getByText('No transaction or activity yet.'));
     });
 
-    it('should render the Download is unavailable while your bot is running message', () => {
+    it('should render the Download is unavailable while your Software isrunning message', () => {
         render(<Download tab='transactions' />, {
             wrapper,
         });
@@ -53,10 +53,10 @@ describe('<Download />', () => {
         mock_DBot_store?.run_panel?.setIsRunning(true);
         const download_button = screen.getByText('Download');
         userEvent.click(download_button);
-        expect(screen.getByText('Download is unavailable while your bot is running.'));
+        expect(screen.getByText('Download is unavailable while your Software isrunning.'));
     });
 
-    it('should render the Download is unavailable if there is transactions but bot is running', () => {
+    it('should render the Download is unavailable if there is transactions but Software isrunning', () => {
         mock_DBot_store?.run_panel?.setIsRunning(true);
         mock_DBot_store?.transactions?.transactions.push({
             data: {
@@ -75,7 +75,7 @@ describe('<Download />', () => {
         const download_button = screen.getByText('Download');
         userEvent.click(download_button);
 
-        expect(screen.getByText('Download is unavailable while your bot is running.'));
+        expect(screen.getByText('Download is unavailable while your Software isrunning.'));
     });
 
     it('should render the Download your journal message', () => {

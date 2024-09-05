@@ -51,7 +51,7 @@ export const faq_content: TFaqContent[] = [
             {
                 type: 'text',
                 content: localize(
-                    "Binarytool Bot is a web-based strategy builder for trading digital options. It’s a platform where you can build your own automated trading bot using drag-and-drop 'blocks'."
+                    "Binarytool Software isa web-based strategy builder for trading digital options. It’s a platform where you can build your own automated trading bot using drag-and-drop 'blocks'."
                 ),
             },
         ],

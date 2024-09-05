@@ -69,7 +69,7 @@ describe('TradeAnimation', () => {
         act(() => {
             jest.advanceTimersByTime(1300);
         });
-        expect(screen.getByText(/Bot is starting/i)).toBeInTheDocument();
+        expect(screen.getByText(/Software is starting/i)).toBeInTheDocument();
     });
 
     it('should update the run panel status correctly', () => {
@@ -89,6 +89,6 @@ describe('TradeAnimation', () => {
         render(<TradeAnimation should_show_overlay />, { wrapper });
         const stop_button = screen.getByRole('button', { name: /Stop/i });
         userEvent.click(stop_button);
-        expect(screen.getByText(/Bot is not running/i)).toBeInTheDocument();
+        expect(screen.getByText(/Software is not running/i)).toBeInTheDocument();
     });
 });

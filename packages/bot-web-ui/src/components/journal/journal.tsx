@@ -76,7 +76,7 @@ const Journal = observer(() => {
                                     <ul className='journal-empty__list'>
                                         <li>
                                             <Text size='xxs' color='less-prominent'>
-                                                {localize('The bot is not running')}
+                                                {localize('The software is not running')}
                                             </Text>
                                         </li>
                                         <li>

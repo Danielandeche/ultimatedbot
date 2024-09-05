@@ -61,7 +61,7 @@ describe('Toolbar component', () => {
         expect(screen.getByTestId('dashboard__toolbar')).toBeInTheDocument();
     });
 
-    it('Toolbar should renders a modal window, when the bot is running and dialog is open', () => {
+    it('Toolbar should renders a modal window, when the Software isrunning and dialog is open', () => {
         (useDBotStore as jest.Mock).mockReturnValue({
             ...mockDbotStore,
             run_panel: { ...mockDbotStore.run_panel, is_running: true },

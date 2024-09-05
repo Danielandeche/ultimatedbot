@@ -38,7 +38,7 @@ const faqContent = [
         description: [
             {
                 type: 'text',
-                content: 'Binarytool Bot is a web-based strategy builder for trading digital options',
+                content: 'Binarytool Software isa web-based strategy builder for trading digital options',
             },
         ],
     },

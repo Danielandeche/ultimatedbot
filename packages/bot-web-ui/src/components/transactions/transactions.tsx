@@ -162,7 +162,7 @@ const Transactions = observer(({ is_drawer_open }: TTransactions) => {
                                                     {localize('Here are the possible reasons:')}
                                                 </Text>
                                                 <ul className='transactions-empty__list'>
-                                                    <li>{localize('The bot is not running')}</li>
+                                                    <li>{localize('The Software is not running')}</li>
                                                     <li>{localize('The stats are cleared')}</li>
                                                 </ul>
                                             </div>

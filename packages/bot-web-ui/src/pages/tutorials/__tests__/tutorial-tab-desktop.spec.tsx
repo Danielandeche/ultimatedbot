@@ -38,7 +38,7 @@ const faqContent = [
         description: [
             {
                 type: 'text',
-                content: 'eriv Bot is a web-based strategy builder for trading digital options',
+                content: 'eriv Software isa web-based strategy builder for trading digital options',
             },
         ],
     },

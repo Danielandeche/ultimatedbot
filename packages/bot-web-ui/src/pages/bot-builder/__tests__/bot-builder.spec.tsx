@@ -98,7 +98,7 @@ describe('BotBuilder', () => {
         expect(screen.getByText('WorkspaceWrapper')).toBeInTheDocument();
     });
 
-    it('should show warning on change of block if bot is running', () => {
+    it('should show warning on change of block if Software isrunning', () => {
         window.Blockly = getMockBlockly('not-ui');
         mock_DBot_store?.run_panel.setIsRunning(true);
         mock_DBot_store?.toolbar.setResetButtonState(false);
@@ -106,7 +106,7 @@ describe('BotBuilder', () => {
         expect(screen.getByText(/Changes you make will not affect your running bot./i)).toBeInTheDocument();
     });
 
-    it('should not show warning on change of block if bot is running but reset is clicked', () => {
+    it('should not show warning on change of block if Software isrunning but reset is clicked', () => {
         window.Blockly = getMockBlockly('not-ui');
         mock_DBot_store?.run_panel.setIsRunning(true);
         mock_DBot_store?.toolbar.setResetButtonState(true);

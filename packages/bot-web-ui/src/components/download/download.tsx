@@ -26,7 +26,7 @@ const Download = observer(({ tab }: TDownloadProps) => {
         disabled = is_clear_stat_disabled;
         if (disabled) popover_message = localize('No transaction or activity yet.');
     }
-    if (is_running) popover_message = localize('Download is unavailable while your bot is running.');
+    if (is_running) popover_message = localize('Download is unavailable while your Software is running.');
 
     return (
         <Popover

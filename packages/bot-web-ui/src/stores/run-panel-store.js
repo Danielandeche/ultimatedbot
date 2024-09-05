@@ -208,7 +208,7 @@ export default class RunPanelStore {
 
         ui.setAccountSwitcherDisabledMessage(
             localize(
-                'Account switching is disabled while your bot is running. Please stop your bot before switching accounts.'
+                'Account switching is disabled while your Software isrunning. Please stop your bot before switching accounts.'
             )
         );
         runInAction(() => {
@@ -255,12 +255,12 @@ export default class RunPanelStore {
         ui.setPromptHandler(false);
 
         if (this.error_type) {
-            // when user click stop button when there is a error but bot is retrying
+            // when user click stop button when there is a error but Software isretrying
             this.setContractStage(contract_stages.NOT_RUNNING);
             ui.setAccountSwitcherDisabledMessage(false);
             this.setIsRunning(false);
         } else if (this.has_open_contract) {
-            // when user click stop button when bot is running
+            // when user click stop button when Software isrunning
             this.setContractStage(contract_stages.IS_STOPPING);
         } else {
             // when user click stop button before bot start running

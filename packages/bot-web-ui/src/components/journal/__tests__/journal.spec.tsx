@@ -61,7 +61,7 @@ describe('Journal', () => {
 
         const expected_messages = [
             'There are no messages to display',
-            'The bot is not running',
+            'The software is not running',
             'The stats are cleared',
             'All messages are filtered out',
         ];

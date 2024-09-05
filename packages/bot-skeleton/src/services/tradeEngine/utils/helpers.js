@@ -283,7 +283,7 @@ export const recoverFromError = (promiseFn, recoverFn, errors_to_ignore, delay_i
         if (promise) {
             promise.then(resolve).catch(error => {
                 /**
-                 * if bot is not running there is no point of recovering from error
+                 * if Software isnot running there is no point of recovering from error
                  * `!api_base.is_running` will check the bot status if it is not running it will kick out the control from loop
                  */
                 if (shouldThrowError(error, errors_to_ignore) || (api_base && !api_base.is_running)) {
@@ -325,7 +325,7 @@ export const recoverFromError = (promiseFn, recoverFn, errors_to_ignore, delay_i
 /**
  * @param {*} promiseFn api call - it could be api call or subscription
  * @param {*} errors_to_ignore list of errors to ignore
- * @param {*} api_base instance of APIBase class to check if the bot is running or not
+ * @param {*} api_base instance of APIBase class to check if the Software isrunning or not
  * @returns a new promise
  */
 export const doUntilDone = (promiseFn, errors_to_ignore, api_base) => {

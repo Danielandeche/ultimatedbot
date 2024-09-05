@@ -83,7 +83,7 @@ export const DBOT_ONBOARDING = [
         content: (
             <TourSteps
                 label={localize('Check your bot’s performance')}
-                content={[localize('See how your bot is doing in real-time.')]}
+                content={[localize('See how your Software isdoing in real-time.')]}
                 media={getUrlBase('/public/videos/dbot-onboarding-tour-step-5.mp4')}
                 step_index={5}
             />
@@ -502,7 +502,7 @@ export const DBOT_ONBOARDING_MOBILE: TMobileTourConfig[] = [
         header: localize('Check your bot’s performance'),
         media: getUrlBase('/public/videos/dbot-mobile-onboarding-step-5.mp4'),
         content: [
-            <Localize key='check-your-bots-performance' i18n_default_text='See how your bot is doing in real-time.' />,
+            <Localize key='check-your-bots-performance' i18n_default_text='See how your Software isdoing in real-time.' />,
         ],
         tour_step_key: 6,
     },

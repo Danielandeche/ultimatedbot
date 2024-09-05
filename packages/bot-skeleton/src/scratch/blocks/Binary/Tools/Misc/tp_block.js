@@ -18,7 +18,7 @@ Blockly.Blocks.set_tp = {
         return {
             display_name: localize('Take Profit'),
             description: localize(
-                'Your bot is stopped automatically when your profit is more than or equals to your set take profit.'
+                'Your Software isstopped automatically when your profit is more than or equals to your set take profit.'
             ),
             key_words: localize('take profit'),
         };

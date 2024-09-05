@@ -79,10 +79,10 @@ describe('Transactions', () => {
         const { container } = render(<Transactions is_drawer_open />, { wrapper });
         expect(container).toBeInTheDocument();
         expect(screen.getByText('There are no transactions to display')).toBeInTheDocument();
-        expect(screen.getByText('The bot is not running')).toBeInTheDocument();
+        expect(screen.getByText('The Software is not running')).toBeInTheDocument();
     });
 
-    it('should render the Transaction component while bot is starting', () => {
+    it('should render the Transaction component while Software is starting', () => {
         mock_DBot_store?.run_panel?.setContractStage(1);
 
         render(<Transactions is_drawer_open />, { wrapper });

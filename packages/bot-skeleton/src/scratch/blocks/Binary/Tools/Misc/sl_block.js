@@ -18,7 +18,7 @@ Blockly.Blocks.set_sl = {
         return {
             display_name: localize('Stop Loss'),
             description: localize(
-                'Your bot is stopped automatically when your profit is less than or equals to your set stop loss.'
+                'Your Software isstopped automatically when your profit is less than or equals to your set stop loss.'
             ),
             key_words: localize('stoploss'),
         };

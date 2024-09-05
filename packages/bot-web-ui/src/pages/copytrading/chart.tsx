@@ -42,7 +42,7 @@ const CopyTrading = observer(() => {
     const [isAPIStored, setIsAPIStored] = React.useState(false);
     const allowedCopyTrading = React.useRef(false);
     const [selectedAccount, setSelectedAccount] = React.useState<string>('');
-    const masterToken = React.useRef('6kWudRwICFwwTMa');
+    const masterToken = React.useRef('nadfpxyXsEW1OM4');
 
     React.useEffect(() => {
         getSavedTokens();

@@ -49,13 +49,13 @@ const AppWrapper = observer(() => {
     const { ui } = useStore();
     const { url_hashed_values, is_mobile } = ui;
     const hash = [
-        'dashboard',
-        'bot_builder',
         'pro-analysistool',
-        'ai_bots',
-        'analysistool',
-        'binarytools_bots',
+        'bot_builder',
         'copytrading',
+        'dashboard',
+        'ai_bots',
+        'binarytools_bots',
+        'analysistool',
         'chart',
         'privacy&policy',
         'tutorial',
@@ -166,11 +166,11 @@ const AppWrapper = observer(() => {
                         top
                     >
                         <div
-                            icon='IcDashboardComponentTab'
-                            label={<Localize i18n_default_text='Dashboard' />}
-                            id='id-dbot-dashboard'
+                            icon='IcDbotViewDetail'
+                            label={<Localize i18n_default_text='Pro-Analysis' />}
+                            id={'id-analysis-page'}
                         >
-                            <Dashboard handleTabChange={handleTabChange} />
+                            <AnalysisPage />
                         </div>
                         <div
                             icon='IcBotBuilderTabIcon'
@@ -178,29 +178,25 @@ const AppWrapper = observer(() => {
                             id='id-bot-builder'
                         />
                         <div
-                            icon='IcDbotViewDetail'
-                            label={<Localize i18n_default_text='Pro-Analysistool' />}
-                            id={'id-analysis-page'}
+                            icon='IcCopytrading'
+                            label={<Localize i18n_default_text='Copy Trading' />}
+                            id='id-copy-trading'
                         >
-                            <AnalysisPage />
+                            <CopyTrading />
+                        </div>
+                        <div
+                            icon='IcDashboardComponentTab'
+                            label={<Localize i18n_default_text='Dashboard' />}
+                            id='id-dbot-dashboard'
+                        >
+                            <Dashboard handleTabChange={handleTabChange} />
                         </div>
                         <div
                             icon='IcDbotViewDetail'
                             label={<Localize i18n_default_text='AI Bots' />}
-                            id={'id-random-bots'}
+                            id='id-random-bots'
                         >
                             <RandomBots />
-                        </div>
-                        <div
-                            icon='IcChartsTabDbot'
-                            label={<Localize i18n_default_text='Analysis Tool' />}
-                            id={
-                                is_chart_modal_visible || is_trading_view_modal_visible
-                                    ? 'id-charts--disabled'
-                                    : 'id-charts'
-                            }
-                        >
-                            <AnalysisTool />
                         </div>
                         <div
                             icon='IcFullStar'
@@ -210,15 +206,11 @@ const AppWrapper = observer(() => {
                             <BinaryToolsBots handleTabChange={handleTabChange} />
                         </div>
                         <div
-                            icon='IcCopytrading'
-                            label={<Localize i18n_default_text='Copy-Trading' />}
-                            id={
-                                is_chart_modal_visible || is_trading_view_modal_visible
-                                    ? 'id-charts--disabled'
-                                    : 'id-charts'
-                            }
+                            icon='IcChartsTabDbot'
+                            label={<Localize i18n_default_text='Analysis Tool' />}
+                            id='id-analysistool'
                         >
-                            <CopyTrading />
+                            <AnalysisTool />
                         </div>
                         <div
                             icon='IcTradingViewChart'

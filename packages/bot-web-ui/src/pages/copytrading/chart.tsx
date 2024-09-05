@@ -289,28 +289,19 @@ const CopyTrading = observer(() => {
                             });
                         }
                     }}
-                    style={{ backgroundColor: '#ff444f', borderRadius: '2px', fontSize: '16px' }}
-                >
-                    {!allowedCTProgram ? 'Start Copying my trades' : 'Stop Copying my trades'}
-                </button>
-                {/* <button
                     style={{
-                        marginTop: ' 4px',
-                        backgroundColor: '#ff444f',
-                        color: '#fff',
-                        border: 'none',
-                        padding: '4px',
+                        backgroundColor: !allowedCopyTrading.current ? '#28a745' : '#ff444f',
                         borderRadius: '5px',
-                        fontSize: '14px',
+                        fontSize: '16px',
                         cursor: 'pointer',
-                    }}
-                    onClick={() => {
-                        setCtProgram(!ctProgram);
+                        padding: '4px',
+                        color: '#fff',
                     }}
                 >
-                    COPY TRADING PROGRAM 
-                </button> */}
-                <a href='https://app.deriv.com/account/api-token' target='_blank' rel='noreferrer'>
+                    {!allowedCopyTrading.current ? 'START COPYING MY TRADES' : 'STOP COPYING MY TRADES'}
+                </button>
+
+                {/* <a href='https://app.deriv.com/account/api-token' target='_blank' rel='noreferrer'>
                     <button
                         style={{
                             backgroundColor: '#04AA6D',
@@ -323,7 +314,7 @@ const CopyTrading = observer(() => {
                     >
                         CREATE API TOKEN
                     </button>
-                </a>
+                </a> */}
             </div>
             <div className={`input_content ${is_dark_mode_on && 'dark_active'}`}>
                 <div>

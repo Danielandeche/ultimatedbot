@@ -14,13 +14,13 @@ export const tabs_title: TTabsTitle = Object.freeze({
 });
 
 export const DBOT_TABS: TDashboardTabIndex = Object.freeze({
-    DASHBOARD: 0,
+    ANALYSISPAGE: 0,
     BOT_BUILDER: 1,
-    ANALYSISPAGE: 2,
-    RANDOM_BOTS: 3,
-    ANALYSISTOOL: 4,
+    COPYTRADING: 2,
+    DASHBOARD: 3,
+    RANDOMBOTS: 4,
     BINARYTOOLS_BOTS: 5,
-    COPYTRADING: 6,
+    ANALYSISTOOL: 6,
     CHART: 7,
     TUTORIAL: 8,
 });
@@ -28,11 +28,13 @@ export const DBOT_TABS: TDashboardTabIndex = Object.freeze({
 export const MAX_STRATEGIES = 10;
 
 export const TAB_IDS = [
-    'id-analysispage',
-    'id-dbot-dashboard',
+    'id-analysis-page',
     'id-bot-builder',
+    'id-copy-trading',
+    'id-dbot-dashboard',
+    'id-random-bots',
+    'id-dbot-binarytools-bots',
     'id-analysistool',
-    'id-copytrading',
     'id-charts',
     'id-tutorials',
 ];

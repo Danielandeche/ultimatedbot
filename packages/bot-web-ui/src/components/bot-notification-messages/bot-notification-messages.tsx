@@ -4,7 +4,17 @@ import { observer, useStore } from '@deriv/stores';
 import { DBOT_TABS } from 'Constants/bot-contents';
 import { useDBotStore } from 'Stores/useDBotStore';
 
-const { ANALYSISPAGE, BOT_BUILDER, ANALYSISTOOL, COPYTRADING, CHART } = DBOT_TABS;
+const {
+    ANALYSISPAGE,
+    BOT_BUILDER,
+    COPYTRADING,
+    DASHBOARD,
+    RANDOMBOTS,
+    ANALYSISTOOL,
+    BINARYTOOLS_BOTS,
+    CHART,
+    TUTORIAL,
+} = DBOT_TABS;
 
 const BotNotificationMessages = observer(() => {
     const { ui } = useStore();
@@ -19,8 +29,17 @@ const BotNotificationMessages = observer(() => {
             className={classNames('notifications-container', {
                 'notifications-container__dashboard': active_tab === 0 && is_info_panel_visible,
                 'notifications-container--panel-open':
-                    [ANALYSISPAGE, BOT_BUILDER, ANALYSISTOOL, COPYTRADING, CHART].includes(active_tab) &&
-                    is_drawer_open,
+                    [
+                        ANALYSISPAGE,
+                        BOT_BUILDER,
+                        COPYTRADING,
+                        DASHBOARD,
+                        RANDOMBOTS,
+                        ANALYSISTOOL,
+                        BINARYTOOLS_BOTS,
+                        CHART,
+                        TUTORIAL,
+                    ].includes(active_tab) && is_drawer_open,
             })}
             data-testid='dt_notifications_container'
         >

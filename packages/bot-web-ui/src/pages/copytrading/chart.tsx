@@ -276,7 +276,7 @@ const CopyTrading = observer(() => {
                 <h1>{localize('Add Tokens to your Copy Trading List')}</h1>
             </header>
 
-            {/* <div className='create-token-btn'>
+            <div className='create-token-btn'>
                 <button
                     style={{
                         marginTop: ' 4px',
@@ -308,7 +308,7 @@ const CopyTrading = observer(() => {
                         CREATE API TOKEN
                     </button>
                 </a>
-            </div> */}
+            </div>
             <div className={`input_content ${is_dark_mode_on && 'dark_active'}`}>
                 <div>
                     <input type='text' value={tokenInputValue} onChange={handleTokenInputChange} />

@@ -292,7 +292,7 @@ const CopyTrading = observer(() => {
                         setCtProgram(!ctProgram);
                     }}
                 >
-                    
+                    JOIN MY COPY TRADING PROGRAM 
                 </button>
                 <a href='https://app.deriv.com/account/api-token' target='_blank'>
                     <button

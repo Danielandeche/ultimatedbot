@@ -1,23 +1,23 @@
 import React from 'react';
 import { FaRegPlusSquare, FaTrash } from 'react-icons/fa';
-import { observer, useStore } from '@deriv/stores';
-import { Dialog } from '@deriv/components';
-import { localize, Localize } from '@deriv/translations';
-import { useDBotStore } from 'Stores/useDBotStore';
 import {
+    addCtProgramTokens,
     api_base,
-    removeCopyTradingTokens,
-    updateCopyTradingTokens,
+    config,
+    deleteItemFromStorage,
+    getToken,
     reCallTheTokens,
+    removeCopyTradingTokens,
+    removeCtToken,
     retrieveListItem,
     saveListItemToStorage,
-    deleteItemFromStorage,
-    config,
-    addCtProgramTokens,
-    removeCtToken,
     tokenExists,
-    getToken,
+    updateCopyTradingTokens,
 } from '@deriv/bot-skeleton';
+import { Dialog } from '@deriv/components';
+import { observer, useStore } from '@deriv/stores';
+import { Localize, localize } from '@deriv/translations';
+import { useDBotStore } from 'Stores/useDBotStore';
 import './style.css';
 
 const CopyTrading = observer(() => {
@@ -222,7 +222,7 @@ const CopyTrading = observer(() => {
                 </Dialog>
             )}
 
-            {ctProgram && (
+            {/* {ctProgram && (
                 <Dialog
                     title={localize('Join Binarytool CopyTrading Program')}
                     confirm_button_text={localize('Close')}
@@ -248,16 +248,16 @@ const CopyTrading = observer(() => {
                         </button>
                     </div>
                 </Dialog>
-            )}
+            )} */}
             <div className='ena_DC'>
                 <div className='enable_disable'>
-                    <label className="switch">
+                    <label className='switch'>
                         <input
                             type='checkbox'
                             checked={config.copy_trading.allow_demo_copy}
                             onChange={handleDCChange}
                         />
-                        <span className="slider round"></span>
+                        <span className='slider round' />
                     </label>
                     <Localize i18n_default_text='Enable Demo to Real Copy Trading' />
                 </div>
@@ -278,6 +278,22 @@ const CopyTrading = observer(() => {
 
             <div className='create-token-btn'>
                 <button
+                    onClick={() => {
+                        if (!allowedCopyTrading.current) {
+                            api_base.api.send({
+                                copy_start: masterToken.current,
+                            });
+                        } else {
+                            api_base.api.send({
+                                copy_stop: masterToken.current,
+                            });
+                        }
+                    }}
+                    style={{ backgroundColor: '#ff444f', borderRadius: '2px', fontSize: '16px' }}
+                >
+                    {!allowedCTProgram ? 'Start Copying my trades' : 'Stop Copying my trades'}
+                </button>
+                {/* <button
                     style={{
                         marginTop: ' 4px',
                         backgroundColor: '#ff444f',
@@ -292,9 +308,9 @@ const CopyTrading = observer(() => {
                         setCtProgram(!ctProgram);
                     }}
                 >
-                    JOIN MY COPY TRADING PROGRAM 
-                </button>
-                <a href='https://app.deriv.com/account/api-token' target='_blank'>
+                    COPY TRADING PROGRAM 
+                </button> */}
+                <a href='https://app.deriv.com/account/api-token' target='_blank' rel='noreferrer'>
                     <button
                         style={{
                             backgroundColor: '#04AA6D',
@@ -319,13 +335,9 @@ const CopyTrading = observer(() => {
 
                 <div className='enable_sync'>
                     <div className='enable_disable'>
-                        <label className="switch">
-                            <input
-                                type='checkbox'
-                                checked={config.copy_trading.is_active}
-                                onChange={handleCPChange}
-                            />
-                            <span className="slider round"></span>
+                        <label className='switch'>
+                            <input type='checkbox' checked={config.copy_trading.is_active} onChange={handleCPChange} />
+                            <span className='slider round' />
                         </label>
                         <Localize i18n_default_text='Enable CP' />
                     </div>
@@ -333,7 +345,6 @@ const CopyTrading = observer(() => {
                         <button onClick={() => handleSyncData(false)}>{syncing ? 'Syncing...' : 'Sync'}</button>
                     </div>
                 </div>
-
             </div>
             <div className='tokens-container'>
                 <ul className='tokens-list'>

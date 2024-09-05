@@ -249,32 +249,6 @@ const CopyTrading = observer(() => {
                     </div>
                 </Dialog>
             )} */}
-            <div className='ena_DC'>
-                <div className='enable_disable'>
-                    <label className='switch'>
-                        <input
-                            type='checkbox'
-                            checked={config.copy_trading.allow_demo_copy}
-                            onChange={handleDCChange}
-                        />
-                        <span className='slider round' />
-                    </label>
-                    <Localize i18n_default_text='Enable Demo to Real Copy Trading' />
-                </div>
-                {enableDC && (
-                    <select value={selectedAccount} onChange={handleLiveAccountsChange}>
-                        {liveAccounts.map(key => (
-                            <option key={key} value={key}>
-                                {key}
-                            </option>
-                        ))}
-                    </select>
-                )}
-            </div>
-
-            <header className={`title ${is_dark_mode_on && 'dark_active'}`}>
-                <h1>{localize('Add Tokens to your Copy Trading List')}</h1>
-            </header>
 
             <div className='create-token-btn'>
                 <button
@@ -316,6 +290,34 @@ const CopyTrading = observer(() => {
                     </button>
                 </a> */}
             </div>
+
+            <div className='ena_DC'>
+                <div className='enable_disable'>
+                    <label className='switch'>
+                        <input
+                            type='checkbox'
+                            checked={config.copy_trading.allow_demo_copy}
+                            onChange={handleDCChange}
+                        />
+                        <span className='slider round' />
+                    </label>
+                    <Localize i18n_default_text='Enable Demo to Real Copy Trading' />
+                </div>
+                {enableDC && (
+                    <select value={selectedAccount} onChange={handleLiveAccountsChange}>
+                        {liveAccounts.map(key => (
+                            <option key={key} value={key}>
+                                {key}
+                            </option>
+                        ))}
+                    </select>
+                )}
+            </div>
+
+            <header className={`title ${is_dark_mode_on && 'dark_active'}`}>
+                <h1>{localize('Add Tokens to your Copy Trading List')}</h1>
+            </header>
+
             <div className={`input_content ${is_dark_mode_on && 'dark_active'}`}>
                 <div>
                     <input type='text' value={tokenInputValue} onChange={handleTokenInputChange} />

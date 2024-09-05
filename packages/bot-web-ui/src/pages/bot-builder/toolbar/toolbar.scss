@@ -10,7 +10,7 @@
     background-color: var(--general-main-1);
 
     @include mobile {
-        left: 16em;
+        left: 0;
         overflow-x: auto;
         overflow-y: hidden;
         width: 100%;

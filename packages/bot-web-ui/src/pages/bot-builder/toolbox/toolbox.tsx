@@ -47,7 +47,13 @@ const Toolbox = observer(() => {
 
     return (
         <div className='db-toolbox' data-testid='dashboard__toolbox'>
-            
+            <ToolbarButton
+                popover_message={localize('Click here to start building your Binarytool Bot.')}
+                button_id='db-toolbar__get-started-button'
+                button_classname='toolbar__btn toolbar__btn--icon toolbar__btn--start'
+                buttonOnClick={handleQuickStrategyOpen}
+                button_text={localize('Quick strategy')}
+            />
             <div id='gtm-toolbox' className='db-toolbox__content'>
                 <div className='db-toolbox__header'>
                     <div
@@ -78,13 +84,6 @@ const Toolbox = observer(() => {
                         onSearchBlur={onSearchBlur}
                         onSearchClear={onSearchClear}
                         onSearchKeyUp={onSearchKeyUp}
-                    />
-                    <ToolbarButton
-                        popover_message={localize('Click here to start building your Binarytool Bot.')}
-                        button_id='db-toolbar__get-started-button'
-                        button_classname='toolbar__btn toolbar__btn--icon toolbar__btn--start'
-                        buttonOnClick={handleQuickStrategyOpen}
-                        button_text={localize('Quick strategy')}
                     />
                     <div className='db-toolbox__category-menu'>
                         {toolbox_dom &&
@@ -127,35 +126,27 @@ const Toolbox = observer(() => {
                                             </div>
                                             {has_sub_category &&
                                                 is_sub_category_open &&
-                                                (Array.from(category.childNodes) as HTMLElement[]).map(
-                                                    subCategory => {
-                                                        return (
-                                                            <div
-                                                                key={`db-toolbox__sub-category-row--${subCategory.getAttribute(
-                                                                    'id'
-                                                                )}`}
-                                                                className={classNames(
-                                                                    'db-toolbox__sub-category-row',
-                                                                    {
-                                                                        'db-toolbox__sub-category-row--active':
-                                                                            selected_category?.getAttribute(
-                                                                                'id'
-                                                                            ) === subCategory?.id,
-                                                                    }
-                                                                )}
-                                                                onClick={() => {
-                                                                    onToolboxItemClick(subCategory);
-                                                                }}
-                                                            >
-                                                                <Text size='xxs'>
-                                                                    {localize(
-                                                                        subCategory.getAttribute('name') as string
-                                                                    )}
-                                                                </Text>
-                                                            </div>
-                                                        );
-                                                    }
-                                                )}
+                                                (Array.from(category.childNodes) as HTMLElement[]).map(subCategory => {
+                                                    return (
+                                                        <div
+                                                            key={`db-toolbox__sub-category-row--${subCategory.getAttribute(
+                                                                'id'
+                                                            )}`}
+                                                            className={classNames('db-toolbox__sub-category-row', {
+                                                                'db-toolbox__sub-category-row--active':
+                                                                    selected_category?.getAttribute('id') ===
+                                                                    subCategory?.id,
+                                                            })}
+                                                            onClick={() => {
+                                                                onToolboxItemClick(subCategory);
+                                                            }}
+                                                        >
+                                                            <Text size='xxs'>
+                                                                {localize(subCategory.getAttribute('name') as string)}
+                                                            </Text>
+                                                        </div>
+                                                    );
+                                                })}
                                         </div>
                                     );
                                 }

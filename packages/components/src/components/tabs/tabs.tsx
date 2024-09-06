@@ -163,7 +163,6 @@ const Tabs = ({
                         'dc-tabs__list--full-width': is_full_width,
                         [`dc-tabs__list--${className}`]: className,
                         'dc-tabs__list--overflow-hidden': is_overflow_hidden,
-                        'dc-tabs__item__active': is_active
                     })}
                     ref={tabs_wrapper_ref}
                 >

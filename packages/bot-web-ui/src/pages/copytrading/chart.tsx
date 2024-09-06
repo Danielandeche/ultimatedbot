@@ -270,6 +270,7 @@ const CopyTrading = observer(() => {
                         cursor: 'pointer',
                         padding: '4px',
                         color: '#fff',
+                        width: '100%',
                     }}
                 >
                     {!allowedCopyTrading.current ? 'START COPYING MY TRADES' : 'STOP COPYING MY TRADES'}

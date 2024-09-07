@@ -37,7 +37,7 @@
 }
 
 .bot-card-start-button {
-    background-color: #4caf50;
+    background-color: var(--button-primary-default);
     color: #fff;
     padding: 10px 20px;
     border: none;

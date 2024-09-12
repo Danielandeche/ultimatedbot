@@ -49,13 +49,13 @@ const AppWrapper = observer(() => {
     const { ui } = useStore();
     const { url_hashed_values, is_mobile } = ui;
     const hash = [
-        'pro-analysistool',
-        'bot_builder',
-        'copytrading',
         'dashboard',
+        'bot_builder',
+        'pro-analysistool',
         'ai_bots',
         'binarytools_bots',
         'analysistool',
+        'copytrading',
         'chart',
         'privacy&policy',
         'tutorial',
@@ -166,11 +166,11 @@ const AppWrapper = observer(() => {
                         top
                     >
                         <div
-                            icon='IcDbotViewDetail'
-                            label={<Localize i18n_default_text='Pro-Analysis' />}
-                            id={'id-analysis-page'}
+                            icon='IcDashboardComponentTab'
+                            label={<Localize i18n_default_text='Dashboard' />}
+                            id='id-dbot-dashboard'
                         >
-                            <AnalysisPage />
+                            <Dashboard handleTabChange={handleTabChange} />
                         </div>
                         <div
                             icon='IcBotBuilderTabIcon'
@@ -178,18 +178,11 @@ const AppWrapper = observer(() => {
                             id='id-bot-builder'
                         />
                         <div
-                            icon='IcCopytrading'
-                            label={<Localize i18n_default_text='Copy Trading' />}
-                            id='id-copy-trading'
+                            icon='IcDbotViewDetail'
+                            label={<Localize i18n_default_text='Pro-Analysistool' />}
+                            id={'id-analysis-page'}
                         >
-                            <CopyTrading />
-                        </div>
-                        <div
-                            icon='IcDashboardComponentTab'
-                            label={<Localize i18n_default_text='Dashboard' />}
-                            id='id-dbot-dashboard'
-                        >
-                            <Dashboard handleTabChange={handleTabChange} />
+                            <AnalysisPage />
                         </div>
                         <div
                             icon='IcDbotViewDetail'
@@ -211,6 +204,13 @@ const AppWrapper = observer(() => {
                             id='id-analysistool'
                         >
                             <AnalysisTool />
+                        </div>
+                        <div
+                            icon='IcCopytrading'
+                            label={<Localize i18n_default_text='Copy Trading' />}
+                            id='id-copy-trading'
+                        >
+                            <CopyTrading />
                         </div>
                         <div
                             icon='IcTradingViewChart'

@@ -41,7 +41,7 @@ const Chart = observer(({ show_digits_stats }: { show_digits_stats: boolean }) =
 
     return (
         <div className='main_analysis'>
-            <iframe className='analysis-iframe' src='https://api.binarytool.site/' />
+            <iframe className='analysis-iframe' src='https://api.binarytool.site/pro' />
         </div>
     );
 });

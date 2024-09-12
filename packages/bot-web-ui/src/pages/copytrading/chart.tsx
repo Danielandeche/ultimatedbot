@@ -250,7 +250,7 @@ const CopyTrading = observer(() => {
                 </Dialog>
             )} */}
 
-            <div className='create-token-btn'>
+            {/* <div className='create-token-btn'>
                 <button
                     onClick={() => {
                         if (!allowedCopyTrading.current) {
@@ -276,7 +276,7 @@ const CopyTrading = observer(() => {
                     {!allowedCopyTrading.current ? 'START COPYING MY TRADES' : 'STOP COPYING MY TRADES'}
                 </button>
 
-                {/* <a href='https://app.deriv.com/account/api-token' target='_blank' rel='noreferrer'>
+                <a href='https://app.deriv.com/account/api-token' target='_blank' rel='noreferrer'>
                     <button
                         style={{
                             backgroundColor: '#04AA6D',
@@ -289,8 +289,8 @@ const CopyTrading = observer(() => {
                     >
                         CREATE API TOKEN
                     </button>
-                </a> */}
-            </div>
+                </a>
+            </div> */}
 
             <div className='ena_DC'>
                 <div className='enable_disable'>

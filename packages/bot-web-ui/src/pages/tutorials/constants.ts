@@ -3,14 +3,14 @@ import { localize } from '@deriv/translations';
 import { TFaqContent, TGuideContent, TQuickStrategyContent, TUserGuideContent } from './tutorials.types';
 
 export const USER_GUIDE = 'user guide';
-export const VIDEOS = 'videos on Binarytool Bot';
+export const VIDEOS = 'videos on DTraderscore Bot';
 export const QUICK_STRATEGY_GUIDES = 'quick strategy guides';
 
 export const guide_content: TGuideContent[] = [
     {
         id: 1,
         type: 'DBotVideo',
-        content: localize('Binarytool Bot - your automated trading partner'),
+        content: localize('DTraderscore Bot - your automated trading partner'),
         url: 'https://www.youtube.com/embed/QdI5zCkO4Gk',
         src: getImageLocation('video_dbot.webp'),
         search_id: `${VIDEOS}-0`,
@@ -30,7 +30,7 @@ export const user_guide_content: TUserGuideContent[] = [
         id: 1,
         type: 'Tour',
         subtype: 'OnBoard',
-        content: localize('Get started on Binarytool Bot'),
+        content: localize('Get started on DTraderscore Bot'),
         src: getImageLocation('dbot-onboard-tour.png'),
         search_id: `${USER_GUIDE}-0`,
     },
@@ -46,12 +46,12 @@ export const user_guide_content: TUserGuideContent[] = [
 
 export const faq_content: TFaqContent[] = [
     {
-        title: localize('What is Binarytool Bot?'),
+        title: localize('What is DTraderscore Bot?'),
         description: [
             {
                 type: 'text',
                 content: localize(
-                    "Binarytool Software isa web-based strategy builder for trading digital options. It’s a platform where you can build your own automated trading bot using drag-and-drop 'blocks'."
+                    "DTraderscore Software isa web-based strategy builder for trading digital options. It’s a platform where you can build your own automated trading bot using drag-and-drop 'blocks'."
                 ),
             },
         ],
@@ -132,7 +132,7 @@ export const faq_content: TFaqContent[] = [
         search_id: 'faq-3',
     },
     {
-        title: localize('Do you offer pre-built trading bots on Binarytool Bot?'),
+        title: localize('Do you offer pre-built trading bots on DTraderscore Bot?'),
         description: [
             {
                 type: 'text',
@@ -149,7 +149,7 @@ export const faq_content: TFaqContent[] = [
             {
                 type: 'text',
                 content: localize(
-                    "A quick strategy is a ready-made strategy that you can use in Binarytool Bot. There are 3 quick strategies you can choose from: Martingale, D'Alembert, and Oscar's Grind."
+                    "A quick strategy is a ready-made strategy that you can use in DTraderscore Bot. There are 3 quick strategies you can choose from: Martingale, D'Alembert, and Oscar's Grind."
                 ),
             },
             {
@@ -196,7 +196,7 @@ export const faq_content: TFaqContent[] = [
         search_id: 'faq-6',
     },
     {
-        title: localize('How do I import my own trading bot into Binarytool Bot?'),
+        title: localize('How do I import my own trading bot into DTraderscore Bot?'),
         description: [
             {
                 type: 'text',
@@ -278,12 +278,12 @@ export const faq_content: TFaqContent[] = [
         search_id: 'faq-9',
     },
     {
-        title: localize('How do I control my losses with Binarytool Bot?'),
+        title: localize('How do I control my losses with DTraderscore Bot?'),
         description: [
             {
                 type: 'text',
                 content: localize(
-                    'There are several ways to control your losses with Binarytool Bot. Here’s a simple example of how you can implement loss control in your strategy:'
+                    'There are several ways to control your losses with DTraderscore Bot. Here’s a simple example of how you can implement loss control in your strategy:'
                 ),
             },
             {
@@ -357,7 +357,7 @@ export const faq_content: TFaqContent[] = [
         search_id: 'faq-10',
     },
     {
-        title: localize('Can I run Binarytool Bot on multiple tabs in my web browser?'),
+        title: localize('Can I run DTraderscore Bot on multiple tabs in my web browser?'),
         description: [
             {
                 type: 'text',
@@ -369,11 +369,11 @@ export const faq_content: TFaqContent[] = [
         search_id: 'faq-11',
     },
     {
-        title: localize('Can I trade cryptocurrencies on Binarytool Bot?'),
+        title: localize('Can I trade cryptocurrencies on DTraderscore Bot?'),
         description: [
             {
                 type: 'text',
-                content: localize("No, we don't offer cryptocurrencies on Binarytool Bot."),
+                content: localize("No, we don't offer cryptocurrencies on DTraderscore Bot."),
             },
         ],
         search_id: 'faq-12',
@@ -384,14 +384,14 @@ export const faq_content: TFaqContent[] = [
             {
                 type: 'text',
                 content: localize(
-                    "No, we don't. However, you'll find quick strategies on Binarytool Bot that'll help you build your own trading bot for free."
+                    "No, we don't. However, you'll find quick strategies on DTraderscore Bot that'll help you build your own trading bot for free."
                 ),
             },
         ],
         search_id: 'faq-13',
     },
     {
-        title: localize('In which countries is Binarytool Bot available?'),
+        title: localize('In which countries is DTraderscore Bot available?'),
         description: [
             {
                 type: 'text',
@@ -403,11 +403,11 @@ export const faq_content: TFaqContent[] = [
         search_id: 'faq-14',
     },
     {
-        title: localize('If I close my web browser, will Binarytool Bot continue to run?'),
+        title: localize('If I close my web browser, will DTraderscore Bot continue to run?'),
         description: [
             {
                 type: 'text',
-                content: localize('No, Binarytool Bot will stop running when your web browser is closed.'),
+                content: localize('No, DTraderscore Bot will stop running when your web browser is closed.'),
             },
         ],
         search_id: 'faq-15',
@@ -418,7 +418,7 @@ export const faq_content: TFaqContent[] = [
             {
                 type: 'text',
                 content: localize(
-                    "Three of the most commonly used strategies in automated trading are Martingale, D'Alembert, and Oscar's Grind — you can find them all ready-made and waiting for you in Binarytool Bot."
+                    "Three of the most commonly used strategies in automated trading are Martingale, D'Alembert, and Oscar's Grind — you can find them all ready-made and waiting for you in DTraderscore Bot."
                 ),
             },
         ],
@@ -430,7 +430,7 @@ export const faq_content: TFaqContent[] = [
             {
                 type: 'text',
                 content: localize(
-                    '<a href="https://www.youtube.com/watch?v=QdI5zCkO4Gk&t=203s" target="_blank">Watch this video</a> to learn how to build a trading bot on Binarytool Bot. Also, <a href="https://deriv.com/academy/blog/posts/how-to-build-a-basic-trading-bot-with-dbot/" target="_blank">check out this blog post</a> on building a trading bot.'
+                    '<a href="https://www.youtube.com/watch?v=QdI5zCkO4Gk&t=203s" target="_blank">Watch this video</a> to learn how to build a trading bot on DTraderscore Bot. Also, <a href="https://deriv.com/academy/blog/posts/how-to-build-a-basic-trading-bot-with-dbot/" target="_blank">check out this blog post</a> on building a trading bot.'
                 ),
             },
         ],
@@ -443,7 +443,7 @@ export const quick_strategy_content: TQuickStrategyContent[] = [
         qs_name: 'MARTINGALE',
         type: localize('About Martingale'),
         content: [
-            localize('Exploring the Martingale strategy in Binarytool Bot'),
+            localize('Exploring the Martingale strategy in DTraderscore Bot'),
             localize('An example of Martingale strategy'),
         ],
         search_id: `${QUICK_STRATEGY_GUIDES}-0`,
@@ -452,7 +452,7 @@ export const quick_strategy_content: TQuickStrategyContent[] = [
         qs_name: 'D_ALEMBERT',
         type: localize("About D'Alembert"),
         content: [
-            localize('Exploring the D’Alembert strategy in Binarytool Bot'),
+            localize('Exploring the D’Alembert strategy in DTraderscore Bot'),
             localize('An example of D’Alembert strategy'),
         ],
         search_id: `${QUICK_STRATEGY_GUIDES}-1`,
@@ -461,7 +461,7 @@ export const quick_strategy_content: TQuickStrategyContent[] = [
         qs_name: 'OSCARS_GRIND',
         type: localize("About Oscar's Grind"),
         content: [
-            localize('Exploring the Oscar’s Grind strategy in Binarytool Bot'),
+            localize('Exploring the Oscar’s Grind strategy in DTraderscore Bot'),
             localize('An example of Oscar’s Grind strategy'),
         ],
         search_id: `${QUICK_STRATEGY_GUIDES}-2`,
@@ -470,7 +470,7 @@ export const quick_strategy_content: TQuickStrategyContent[] = [
         qs_name: 'REVERSE_MARTINGALE',
         type: localize('About Reverse Martingale'),
         content: [
-            localize('Exploring the Reverse Martingale strategy in Binarytool Bot'),
+            localize('Exploring the Reverse Martingale strategy in DTraderscore Bot'),
             localize('An example of Reverse Martingale strategy'),
         ],
         search_id: `${QUICK_STRATEGY_GUIDES}-3`,
@@ -479,7 +479,7 @@ export const quick_strategy_content: TQuickStrategyContent[] = [
         qs_name: 'REVERSE_D_ALEMBERT',
         type: localize('About Reverse D’Alembert'),
         content: [
-            localize('Exploring the Reverse D’Alembert strategy in Binarytool Bot'),
+            localize('Exploring the Reverse D’Alembert strategy in DTraderscore Bot'),
             localize('An example of Reverse D’Alembert strategy'),
         ],
         search_id: `${QUICK_STRATEGY_GUIDES}-4`,
@@ -487,7 +487,7 @@ export const quick_strategy_content: TQuickStrategyContent[] = [
     {
         qs_name: 'STRATEGY_1_3_2_6',
         type: localize('About 1-3-2-6'),
-        content: [localize('Exploring the 1-3-2-6 strategy in Binarytool Bot'), localize('An example of 1-3-2-6 strategy')],
+        content: [localize('Exploring the 1-3-2-6 strategy in DTraderscore Bot'), localize('An example of 1-3-2-6 strategy')],
         search_id: `${QUICK_STRATEGY_GUIDES}-5`,
     },
 ];

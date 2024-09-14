@@ -17,7 +17,7 @@ type THeader = {
 
 const HEADERS: THeader[] = [
     {
-        label: localize('Binarytool Bot'),
+        label: localize('DTraderscore Bot'),
         className: 'bot-list__header__label',
     },
     {

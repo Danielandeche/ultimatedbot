@@ -12,7 +12,7 @@ It will cover:
 
     ## Test Framework
 
-    ​ We are using [Jest](https://jestjs.io/)  as test runner and [React Testing library](https://testing-library.com/docs/react-testing-library/intro/) as our main test component to have the Binarytool needed utilities.
+    ​ We are using [Jest](https://jestjs.io/)  as test runner and [React Testing library](https://testing-library.com/docs/react-testing-library/intro/) as our main test component to have the DTraderscore needed utilities.
 
     ### Jest
 

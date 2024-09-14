@@ -4,9 +4,9 @@ import { observer } from 'mobx-react-lite';
 const PrivacyPolicy = observer(() => {
     return (
         <div className='privacy-policy'>
-            <h1>Privacy Policy for BinaryTool</h1>
+            <h1>Privacy Policy for DTraderscore</h1>
             <p><strong>1. Introduction</strong></p>
-            <p>BinaryTool, powered by Deriv, operates the BinaryTool app (the “App”).</p>
+            <p>DTraderscore, powered by Deriv, operates the DTraderscore app (the “App”).</p>
 
             <p><strong>2. Information Collection and Use</strong></p>
             <p>We do not collect any personal and sensitive user data. However, we may collect non-personal data, such as app usage statistics, to improve the user experience.</p>

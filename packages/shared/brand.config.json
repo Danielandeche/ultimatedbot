@@ -1,6 +1,6 @@
 {
-    "brand_name": "Binarytool",
-    "domain_name": "Deriv.com",
+    "brand_name": "DTraderscore",
+    "domain_name": "dtraderscore.com",
     "legal_entities": {
         "fx": "Deriv (FX) Ltd",
         "malta": "Deriv (Europe) Limited",
@@ -16,7 +16,7 @@
             "icon": "IcRebrandingDerivTrader"
         },
         "dbot": {
-            "name": "Binarytool Bot",
+            "name": "DTraderscore Bot",
             "icon": "IcRebrandingDerivBot"
         },
         "mt5": {
@@ -51,7 +51,7 @@
             "availability": "All"
         },
         "dbot": {
-            "name": "Binarytool Bot",
+            "name": "DTraderscore Bot",
             "icon": "DBot",
             "availability": "Non-EU"
         },

@@ -17,7 +17,7 @@ const userGuideContent = [
         id: 1,
         type: 'Tour',
         subtype: 'OnBoard',
-        content: 'Get started on Binarytool Bot',
+        content: 'Get started on DTraderscore Bot',
         src: 'dbot-onboard-tour.png',
     },
 ];
@@ -26,7 +26,7 @@ const guideContent = [
     {
         id: 1,
         type: 'DBotVideo',
-        content: 'Binarytool Bot - your automated trading partner',
+        content: 'DTraderscore Bot - your automated trading partner',
         url: 'https://www.youtube.com/embed/QdI5zCkO4Gk',
         src: 'video_dbot.webp',
     },
@@ -34,11 +34,11 @@ const guideContent = [
 
 const faqContent = [
     {
-        title: 'What is Binarytool Bot?',
+        title: 'What is DTraderscore Bot?',
         description: [
             {
                 type: 'text',
-                content: 'Binarytool Software isa web-based strategy builder for trading digital options',
+                content: 'DTraderscore Software isa web-based strategy builder for trading digital options',
             },
         ],
     },
@@ -50,7 +50,7 @@ const qsContent = [
         description: [
             {
                 type: 'text',
-                content: 'Exploring the Martingale strategy in Binarytool Bot',
+                content: 'Exploring the Martingale strategy in DTraderscore Bot',
             },
         ],
     },

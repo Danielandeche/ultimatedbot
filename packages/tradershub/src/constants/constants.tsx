@@ -36,7 +36,7 @@ export const optionsAndMultipliersContent = (isEU: boolean) => [
         icon: <IconComponent icon='DBot' />,
         redirect: '/bot',
         smallIcon: <IconComponent height={32} icon='DBot' width={32} />,
-        title: 'Binarytool Bot',
+        title: 'DTraderscore Bot',
     },
     {
         description: 'Our legacy options trading platform.',

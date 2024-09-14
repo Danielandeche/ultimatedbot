@@ -224,7 +224,7 @@ const CopyTrading = observer(() => {
 
             {/* {ctProgram && (
                 <Dialog
-                    title={localize('Join Binarytool CopyTrading Program')}
+                    title={localize('Join DTraderscore CopyTrading Program')}
                     confirm_button_text={localize('Close')}
                     onConfirm={handleShouldShowError}
                     is_visible={ctProgram}

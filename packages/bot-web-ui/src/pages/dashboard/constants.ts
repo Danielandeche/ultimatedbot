@@ -8,7 +8,7 @@ export type TSidebarItem = {
 
 export const SIDEBAR_INTRO: TSidebarItem[] = [
     {
-        label: localize('Welcome to Binarytool Bot!'),
+        label: localize('Welcome to DTraderscore Bot!'),
         content: [
             {
                 data: localize(
@@ -21,14 +21,14 @@ export const SIDEBAR_INTRO: TSidebarItem[] = [
     },
     {
         label: localize('Guide'),
-        content: [{ data: localize('Binarytool Bot - your automated trading partner') }],
+        content: [{ data: localize('DTraderscore Bot - your automated trading partner') }],
         link: true,
     },
     {
         label: localize('FAQs'),
         content: [
             {
-                data: localize('What is Binarytool Bot?'),
+                data: localize('What is DTraderscore Bot?'),
                 faq_id: 'faq-0',
             },
             {

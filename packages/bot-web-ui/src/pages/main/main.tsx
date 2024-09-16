@@ -25,6 +25,7 @@ import AnalysisTool from '../analysistool';
 import Tutorial from '../tutorials';
 import RandomBots from '../Random Bots';
 import { tour_list } from '../tutorials/dbot-tours/utils';
+import RiskDisclaimer from 'Components/risk disclaimer/risk_disclaimer';
 
 const AppWrapper = observer(() => {
     const { dashboard, load_modal, run_panel, quick_strategy, summary_card } = useDBotStore();
@@ -38,6 +39,8 @@ const AppWrapper = observer(() => {
         setActiveTour,
         setTourDialogVisibility,
     } = dashboard;
+    const RootStore = useStore();
+    const { shouldShowDisclaimer } = RootStore.ui;
     const { onEntered, dashboard_strategies } = load_modal;
     const { is_dialog_open, is_drawer_open, dialog_options, onCancelButtonClick, onCloseDialog, onOkButtonClick } =
         run_panel;
@@ -245,6 +248,7 @@ const AppWrapper = observer(() => {
                         </div>
                     </Tabs>
                 </div>
+                {shouldShowDisclaimer !== 'false' && <RiskDisclaimer />}
             </div>
             <DesktopWrapper>
                 <div className='main__run-strategy-wrapper'>

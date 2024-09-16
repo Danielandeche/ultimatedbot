@@ -696,6 +696,8 @@ type TUiStore = {
     is_trading_assessment_for_existing_user_enabled: boolean;
     is_unsupported_contract_modal_visible: boolean;
     isUrlUnavailableModalVisible: boolean;
+    shouldShowDisclaimer: string | undefined | null;
+    setDontShowAgainDisclaimer(): void;
     onChangeUiStore: ({ name, value }: { name: string; value: unknown }) => void;
     openPositionsDrawer: () => void;
     openRealAccountSignup: (

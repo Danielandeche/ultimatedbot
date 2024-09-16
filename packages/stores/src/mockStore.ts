@@ -387,7 +387,7 @@ const mock = (): TStores & { is_mock: boolean } => {
             notification_messages_ui: jest.fn(),
             onChangeUiStore: jest.fn(),
             openPositionsDrawer: jest.fn(),
-            etDontShowAgainDisclaimer: jest.fn(),
+            setDontShowAgainDisclaimer: jest.fn(),
             openRealAccountSignup: jest.fn(),
             setChartCountdown: jest.fn(),
             setIsWalletModalVisible: jest.fn(),

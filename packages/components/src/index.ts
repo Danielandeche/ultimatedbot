@@ -105,6 +105,7 @@ export { default as SwipeableNotification } from './components/swipeable-notific
 export { default as SwipeableWrapper } from './components/swipeable-wrapper';
 export { default as RelativeDatepicker } from './components/relative-datepicker';
 export { default as RemainingTime } from './components/remaining-time';
+export { default as RiskDisclaimer } from './components/risk disclaimer';
 export { default as SearchBox } from './components/search-box';
 export { default as Table } from './components/table';
 export { default as Tabs } from './components/tabs';

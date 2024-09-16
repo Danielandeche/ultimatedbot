@@ -1,4 +1,4 @@
-<h1 align="center">Binarytool</h1>
+<h1 align="center">Binarytools</h1>
 
 This repository contains the various platforms of the Binarytool application.
 

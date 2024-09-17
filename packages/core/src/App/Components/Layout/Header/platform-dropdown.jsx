@@ -6,13 +6,14 @@ import { BinaryLink } from 'App/Components/Routes';
 import 'Sass/app/_common/components/platform-dropdown.scss';
 import { Localize } from '@deriv/translations';
 import { useHistory } from 'react-router';
+import './style.css';
 
 const PlatformBox = ({ platform: { icon, description } }) => (
     <React.Fragment>
         <div className='platform-dropdown__list-platform-background' />
 
         <div className='platform-switcher__dropdown' data-testid='dt_platform_box_icon'>
-            <Icon icon={icon} height={42} width={150} description={icon} />
+            <span className='logo_image'></span>
             <p className='platform-dropdown__list-platform-description'>{description()}</p>
         </div>
     </React.Fragment>

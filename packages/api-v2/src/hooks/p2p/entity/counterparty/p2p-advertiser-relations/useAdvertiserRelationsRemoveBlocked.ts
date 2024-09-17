@@ -5,14 +5,8 @@ import useAdvertiserRelations from './useAdvertiserRelations';
 const useAdvertiserRelationsRemoveBlocked = () => {
     const { mutate, data, ...rest } = useAdvertiserRelations();
 
-    const removeBlockedAdvertiser = useCallback(() => mutate({ payload: {} }), [mutate]);
 
-    return {
-        data,
-        /** Sends a request to unblock advertiser of the current user by passing the advertiser id. */
-        mutate: removeBlockedAdvertiser,
-        ...rest,
-    };
+    return {};
 };
 
 export default useAdvertiserRelationsRemoveBlocked;

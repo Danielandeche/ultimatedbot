@@ -80,6 +80,7 @@ export default class UIStore extends BaseStore {
     // app states for modal
     is_app_disabled = false;
     is_route_modal_on = false;
+    shouldShowDisclaimer = localStorage.getItem('dont_show_again');
 
     // real account signup
     is_real_acc_signup_on = false;
@@ -259,6 +260,7 @@ export default class UIStore extends BaseStore {
             is_accounts_switcher_on: observable,
 
             is_app_disabled: observable,
+            shouldShowDisclaimer: observable,
             is_cashier_visible: observable,
             is_cfd_page: observable,
             is_mt5_verification_failed_modal: observable,
@@ -327,6 +329,7 @@ export default class UIStore extends BaseStore {
             closeSuccessTopUpModal: action.bound,
             closeTopUpModal: action.bound,
             continueRouteAfterChooseCrypto: action.bound,
+            setDontShowAgainDisclaimer: action.bound,
             disableApp: action.bound,
             disableRouteModal: action.bound,
             enableApp: action.bound,
@@ -550,6 +553,11 @@ export default class UIStore extends BaseStore {
 
     enableApp() {
         this.is_app_disabled = false;
+    }
+
+    setDontShowAgainDisclaimer() {
+        this.shouldShowDisclaimer = 'false';
+        localStorage.setItem('dont_show_again', 'false');
     }
 
     toggleAccountsDialog(status = !this.is_accounts_switcher_on) {

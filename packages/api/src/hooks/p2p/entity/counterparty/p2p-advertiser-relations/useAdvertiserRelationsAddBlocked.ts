@@ -5,14 +5,7 @@ import useAdvertiserRelations from './useAdvertiserRelations';
 const useAdvertiserRelationsAddBlocked = () => {
     const { mutate, data, ...rest } = useAdvertiserRelations();
 
-    const addBlockedAdvertiser = useCallback(() => mutate({ payload: {} }), [mutate]);
-
-    return {
-        data,
-        /** Sends a request to block advertiser of the current user by passing the advertiser id. */
-        mutate: addBlockedAdvertiser,
-        ...rest,
-    };
+    return {};
 };
 
 export default useAdvertiserRelationsAddBlocked;

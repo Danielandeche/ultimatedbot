@@ -330,6 +330,7 @@ const mock = (): TStores & { is_mock: boolean } => {
             advanced_duration_unit: 't',
             advanced_expiry_type: 'duration',
             account_switcher_disabled_message: '',
+            shouldShowDisclaimer: 'true',
             app_contents_scroll_ref: {
                 current: null,
             },
@@ -386,6 +387,7 @@ const mock = (): TStores & { is_mock: boolean } => {
             notification_messages_ui: jest.fn(),
             onChangeUiStore: jest.fn(),
             openPositionsDrawer: jest.fn(),
+            setDontShowAgainDisclaimer: jest.fn(),
             openRealAccountSignup: jest.fn(),
             setChartCountdown: jest.fn(),
             setIsWalletModalVisible: jest.fn(),

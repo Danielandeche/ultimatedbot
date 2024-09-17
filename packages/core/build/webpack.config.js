@@ -11,9 +11,9 @@ module.exports = function (env) {
         devServer: {
             publicPath: base,
             openPage: sub_path,
-            host: 'localhost.binary.sx',
+            host: 'localhost',
             https: true,
-            port: 443,
+            port: 8443,
             historyApiFallback: true,
             hot:true,
             stats: {

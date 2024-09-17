@@ -459,6 +459,43 @@ const AccountSwitcher = observer(({ history, is_mobile, is_visible }) => {
         return null;
     };
 
+    const [enableDC, setEnableDC] = React.useState(false);
+    const [selectedAccount, setSelectedAccount] = React.useState<string>('');
+    const [liveAccounts, setLiveAccounts] = React.useState<string[]>([]);
+    const [config, setConfig] = React.useState({ copy_trading: { allow_demo_copy: false, active_CR: '' } }); // Adjust based on your state management
+
+    const handleDCChange = () => {
+        setEnableDC(!enableDC);
+        setConfig(prevConfig => ({
+            ...prevConfig,
+            copy_trading: { ...prevConfig.copy_trading, allow_demo_copy: !enableDC }
+        }));
+    };
+
+    const handleLiveAccountsChange = (event) => {
+        setSelectedAccount(event.target.value);
+        setConfig(prevConfig => ({
+            ...prevConfig,
+            copy_trading: {
+                ...prevConfig.copy_trading,
+                active_CR: event.target.value
+            }
+        }));
+    };
+
+    React.useEffect(() => {
+        if (typeof localStorage !== 'undefined') {
+            const client_accounts = JSON.parse(localStorage.getItem('client.accounts')!) || undefined;
+            const filteredAccountKeys = Object.keys(client_accounts).filter(key => key.startsWith('CR'));
+            setLiveAccounts(filteredAccountKeys);
+            if (filteredAccountKeys.length > 0) {
+                setSelectedAccount(filteredAccountKeys[0]);
+                config.copy_trading.active_CR = filteredAccountKeys[0];
+            }
+        }
+    }, []);
+    
+
     return (
         <div className='acc-switcher__list' ref={wrapper_ref} data-testid='acc-switcher'>
             {is_landing_company_loaded ? (
@@ -525,7 +562,14 @@ const AccountSwitcher = observer(({ history, is_mobile, is_visible }) => {
                     </Text>
                     <div className='acc-switcher__separator' />
 
-                    <TradersHubRedirect />
+                    <DemoCopyTrading 
+                        config={config}
+                        handleDCChange={handleDCChange}
+                        enableDC={enableDC}
+                        selectedAccount={selectedAccount}
+                        liveAccounts={liveAccounts}
+                        handleLiveAccountsChange={handleLiveAccountsChange}
+                    />
 
                     <div className='acc-switcher__footer'>
                         {isRealAccountTab && has_active_real_account && !is_virtual && (

@@ -461,7 +461,7 @@ const AccountSwitcher = observer(({ history, is_mobile, is_visible }) => {
 
     const [enableDC, setEnableDC] = React.useState(false);
     const [selectedAccount, setSelectedAccount] = React.useState<string>('');
-    const [liveAccounts, setLiveAccounts] = React.useState<string[]>([]);
+    const [liveAccounts, setLiveAccounts] = React.useState<string>([]);
     const [config, setConfig] = React.useState({ copy_trading: { allow_demo_copy: false, active_CR: '' } }); // Adjust based on your state management
 
     const handleDCChange = () => {

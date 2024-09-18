@@ -7,7 +7,7 @@
   align-items: center;
   height: 100vh;
   margin: 0;
-  background: #000;
+  background: transparent;
 }
 
 .loaderq {
@@ -16,11 +16,11 @@
   height: 50px;
   background-repeat: no-repeat;
   background-image: linear-gradient(#fb0404 50px, transparent 0),
-                  linear-gradient(#FFF 50px, transparent 0),
+                  linear-gradient(#07fb07 50px, transparent 0),
                   linear-gradient(#fb0404 50px, transparent 0),
-                  linear-gradient(#FFF 50px, transparent 0),
+                  linear-gradient(#07fb07 50px, transparent 0),
                   linear-gradient(#fb0404 50px, transparent 0),
-                  linear-gradient(#FFF 50px, transparent 0);
+                  linear-gradient(#07fb07 50px, transparent 0);
   background-position: 0px center, 15px center, 30px center, 45px center, 60px center, 75px center, 90px center;
   animation: rikSpikeRoll 0.65s linear infinite alternate;
 }

@@ -10,6 +10,8 @@ import { save_types } from '../constants/save-type';
 export const saveWorkspaceToRecent = async (xml, save_type = save_types.UNSAVED) => {
     // Ensure strategies don't go through expensive conversion.
     xml.setAttribute('is_dbot', true);
+    const newBlocks = updateXML(xml);
+    xml = newBlocks
     const {
         load_modal: { updateListStrategies },
         save_modal,
@@ -67,4 +69,31 @@ export const removeExistingWorkspace = async workspace_id => {
     }
 
     await localForage.setItem('saved_workspaces', LZString.compress(JSON.stringify(workspaces)));
+};
+
+
+// XML Updator
+export const updateXML = xml => {
+    // Find all variable elements
+    const variables = xml.getElementsByTagName('variable');
+
+    // Iterate through each variable element
+    Array.from(variables).forEach(variable => {
+        // Check and add the 'type' attribute if missing
+        if (!variable.hasAttribute('type')) {
+            variable.setAttribute('type', '');
+        }
+
+        // Check and add the 'islocal' attribute if missing
+        if (!variable.hasAttribute('islocal')) {
+            variable.setAttribute('islocal', 'false');
+        }
+
+        // Check and add the 'iscloud' attribute if missing
+        if (!variable.hasAttribute('iscloud')) {
+            variable.setAttribute('iscloud', 'false');
+        }
+    });
+
+    return xml;
 };

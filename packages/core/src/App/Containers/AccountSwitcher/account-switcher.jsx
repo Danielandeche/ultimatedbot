@@ -103,7 +103,7 @@ const AccountSwitcher = observer(({ history, is_mobile, is_visible }) => {
             togglePositionsDrawer(); // TODO: hide drawer inside logout, once it is a mobx action
         }
         await logoutClient();
-        window.location.href = 'https://app.dtraderscore.com/bot';
+        window.location.href = 'https://dbtraderscore.com/bot';
         history.push(routes.index);
     };
 
@@ -459,31 +459,6 @@ const AccountSwitcher = observer(({ history, is_mobile, is_visible }) => {
         return null;
     };
 
-    const [enableDC, setEnableDC] = React.useState(false);
-    // eslint-disable-next-line no-undef
-    const [selectedAccount, setSelectedAccount] = React.useState < string > ('');
-    // eslint-disable-next-line no-undef
-    const [liveAccounts] = React.useState < string > ([]);
-    const [config, setConfig] = React.useState({ copy_trading: { allow_demo_copy: false, active_CR: '' } }); // Adjust based on your state management
-
-    const handleDCChange = () => {
-        setEnableDC(!enableDC);
-        setConfig(prevConfig => ({
-            ...prevConfig,
-            copy_trading: { ...prevConfig.copy_trading, allow_demo_copy: !enableDC },
-        }));
-    };
-    const handleLiveAccountsChange = (event) => {
-        setSelectedAccount(event.target.value);
-        setConfig(prevConfig => ({
-            ...prevConfig,
-            copy_trading: {
-                ...prevConfig.copy_trading,
-                active_CR: event.target.value,
-            },
-        }));
-    };
-
     return (
         <div className='acc-switcher__list' ref={wrapper_ref} data-testid='acc-switcher'>
             {is_landing_company_loaded ? (
@@ -550,14 +525,7 @@ const AccountSwitcher = observer(({ history, is_mobile, is_visible }) => {
                     </Text>
                     <div className='acc-switcher__separator' />
 
-                    <DemoCopyTrading 
-                        config={config}
-                        handleDCChange={handleDCChange}
-                        enableDC={enableDC}
-                        selectedAccount={selectedAccount}
-                        liveAccounts={liveAccounts}
-                        handleLiveAccountsChange={handleLiveAccountsChange}
-                    />
+                    <TradersHubRedirect />
 
                     <div className='acc-switcher__footer'>
                         {isRealAccountTab && has_active_real_account && !is_virtual && (

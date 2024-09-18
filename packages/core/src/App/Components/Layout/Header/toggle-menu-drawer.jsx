@@ -436,7 +436,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                                             toggleDrawer();
                                             history.push(routes.index);
                                             logoutClient().then(() => {
-                                                window.location.href = 'https://app.dtraderscore.com';
+                                                window.location.href = 'https://dtraderscore.com';
                                             });
                                         }}
                                         className='dc-mobile-drawer__item'

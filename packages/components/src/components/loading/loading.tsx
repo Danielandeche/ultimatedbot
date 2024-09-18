@@ -30,7 +30,7 @@ const Loading = ({ className, id, is_fullscreen = true, is_slow_loading, status,
                             Loading...
                             <span />
                         </div>
-                        <div className='text-loader'>app.dtraderscore.com/bot</div>
+                        <div className='text-loader'>dtraderscore.com/bot</div>
                     </div>
                 </div>
             </div>

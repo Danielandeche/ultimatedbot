@@ -15,7 +15,7 @@ export const livechat_client_id = '66aa088aad5a414484c1fd1fa8a5ace7';
 
 export const domain_app_ids = {
     // these domains as supported "production domains"
-    'app.dtraderscore.com/bot': 64215,
+    'dtraderscore.com/bot': 64215,
     'staging-app.deriv.com': 16303,
     'app.deriv.me': 1411,
     'staging-app.deriv.me': 1411, // TODO: setup staging for deriv.me

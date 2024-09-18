@@ -198,7 +198,7 @@
         <field name="NOTIFICATION_SOUND">silent</field>
         <value name="MESSAGE">
           <shadow type="text" id="|Ezly|mP:mc#t}Jkn?Bs">
-            <field name="TEXT">DTraderscore</field>
+            <field name="TEXT">MrDuke</field>
           </shadow>
           <block type="check_direction" id="dc`8f:X%p]#!XPZKrsZn">
             <field name="CHECK_DIRECTION">rise</field>

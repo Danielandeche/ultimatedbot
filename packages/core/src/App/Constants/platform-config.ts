@@ -15,21 +15,21 @@ const platform_config: TPlatformConfig[] = [
         icon: 'IcRebrandingBinarytoolsLogo',
         title: () => getPlatformSettings('trader').name,
         name: 'BT Trader',
-        description: () => localize('DTraderscore D-Trader.'),
+        description: () => localize('MrDuke D-Trader.'),
         link_to: routes.trade,
     },
     {
         icon: 'IcRebrandingDerivBot',
         title: () => getPlatformSettings('dbot').name,
         name: getPlatformSettings('dbot').name,
-        description: () => localize('DTraderscore DBOT.'),
+        description: () => localize('MrDuke DBOT.'),
         link_to: routes.bot,
     },
     {
         icon: 'IcRebrandingBinaryBot',
         title: () => getPlatformSettings('smarttrader').name,
         name: getPlatformSettings('smarttrader').name,
-        description: () => localize('DTraderscore Blocks'),
+        description: () => localize('MrDuke Blocks'),
         href: 'https://block.binarytool.site', 
     }
 ];

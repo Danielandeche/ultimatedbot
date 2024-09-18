@@ -33,7 +33,7 @@ describe('InfoPanel', () => {
             wrapper,
         });
         expect(container).toBeInTheDocument();
-        expect(screen.getByText('Welcome to DTraderscore Bot!')).toBeInTheDocument();
+        expect(screen.getByText('Welcome to MrDuke Bot!')).toBeInTheDocument();
     });
 
     it('should render the closing of the info panel on close icon click', () => {
@@ -47,7 +47,7 @@ describe('InfoPanel', () => {
     it('should render the switching of tabs upon clicking the text link', () => {
         render(<InfoPanel />, { wrapper });
 
-        const guide_tab = screen.getByText('DTraderscore Bot - your automated trading partner');
+        const guide_tab = screen.getByText('MrDuke Bot - your automated trading partner');
         userEvent.click(guide_tab);
         expect(mock_DBot_store?.dashboard.setActiveTab(DBOT_TABS.TUTORIAL));
     });
@@ -56,7 +56,7 @@ describe('InfoPanel', () => {
         mock_store.ui.is_mobile = true;
         render(<InfoPanel />, { wrapper });
 
-        const faq_tab = screen.getByText('What is DTraderscore Bot?');
+        const faq_tab = screen.getByText('What is MrDuke Bot?');
         userEvent.click(faq_tab);
         expect(mock_DBot_store?.dashboard.setActiveTabTutorial(1));
     });

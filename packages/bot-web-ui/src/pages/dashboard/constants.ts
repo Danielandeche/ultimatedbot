@@ -8,7 +8,7 @@ export type TSidebarItem = {
 
 export const SIDEBAR_INTRO: TSidebarItem[] = [
     {
-        label: localize('Welcome to DTraderscore Bot!'),
+        label: localize('Welcome to MrDuke Bot!'),
         content: [
             {
                 data: localize(
@@ -21,14 +21,14 @@ export const SIDEBAR_INTRO: TSidebarItem[] = [
     },
     {
         label: localize('Guide'),
-        content: [{ data: localize('DTraderscore Bot - your automated trading partner') }],
+        content: [{ data: localize('MrDuke Bot - your automated trading partner') }],
         link: true,
     },
     {
         label: localize('FAQs'),
         content: [
             {
-                data: localize('What is DTraderscore Bot?'),
+                data: localize('What is MrDuke Bot?'),
                 faq_id: 'faq-0',
             },
             {

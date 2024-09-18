@@ -17,7 +17,7 @@ Blockly.Blocks.vh_settings = {
                 {
                     type: 'field_variable',
                     name: 'VARIABLE',
-                    variable: 'DTraderscore virtual hook',
+                    variable: 'MrDuke virtual hook',
                 },
                 {
                     type: 'input_dummy',

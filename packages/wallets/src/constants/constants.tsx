@@ -20,7 +20,7 @@ export const optionsAndMultipliersContent = [
         icon: <IcAppstoreDerivBot />,
         redirect: '/bot',
         smallIcon: <IcAppstoreDerivBot height='3.2rem' width='3.2rem' />,
-        title: i18n.t('DTraderscore Bot'),
+        title: i18n.t('MrDuke Bot'),
     },
     {
         description: i18n.t('Our legacy options trading platform.'),

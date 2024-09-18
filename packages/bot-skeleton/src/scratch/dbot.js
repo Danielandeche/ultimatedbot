@@ -14,7 +14,7 @@ import { isAllRequiredBlocksEnabled, updateDisabledBlocks, validateErrorOnBlockD
 import './blockly';
 
 // Custom Bots
-import ap1 from './xml/binarytools_bots/Barriers Accumulator Master {app.dtraderscore.com_bot}.xml';
+import ap1 from './xml/binarytools_bots/Barriers Accumulator Master.xml';
 import ap2 from './xml/binarytools_bots/Even Odd Virtual Hook.xml';
 import ap3 from './xml/binarytools_bots/Rise Fall Virtual Hook.xml';
 import ap4 from './xml/binarytools_bots/Over 4 Virtual Hook.xml';

@@ -1,7 +1,7 @@
 {
-    "name": "DTraderscore App",
-    "short_name": "DTraderscore App",
-    "description": "DTraderscore gives everyone an easy way to participate in the financial markets.",
+    "name": "MrDuke App",
+    "short_name": "MrDuke App",
+    "description": "MrDuke gives everyone an easy way to participate in the financial markets.",
     "id": "/",
     "start_url": "/bot",
     "display": "standalone",

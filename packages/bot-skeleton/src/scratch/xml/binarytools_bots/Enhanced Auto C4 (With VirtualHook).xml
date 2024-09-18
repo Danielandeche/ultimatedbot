@@ -981,7 +981,7 @@
                         <field name="NOTIFICATION_SOUND">silent</field>
                         <value name="MESSAGE">
                           <shadow type="text" id="sTE|j{PA_dG*Q$=]7:xX">
-                            <field name="TEXT">DTraderscore</field>
+                            <field name="TEXT">MrDuke</field>
                           </shadow>
                           <block type="variables_get" id="RQ[i^pw=LAW)Rpx!C$u$">
                             <field name="VAR" id="|wXz)P15xQ#SX35kh*$U" variabletype="">text</field>
@@ -1084,7 +1084,7 @@
                         <field name="NOTIFICATION_SOUND">silent</field>
                         <value name="MESSAGE">
                           <shadow type="text" id=":f#@U!f$%pQx~ii{aR@,">
-                            <field name="TEXT">DTraderscore</field>
+                            <field name="TEXT">MrDuke</field>
                           </shadow>
                           <block type="variables_get" id="xHsk^4Sz0Ew#nd[nGS)t">
                             <field name="VAR" id="|wXz)P15xQ#SX35kh*$U" variabletype="">text</field>

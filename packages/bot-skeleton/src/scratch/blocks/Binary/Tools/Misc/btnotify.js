@@ -9,7 +9,7 @@ Blockly.Blocks.btnotify = {
     definition() {
         return {
             message0: localize(
-                'DTraderscore {{ notification_type }} with sound: {{ notification_sound }} {{ input_message }}',
+                'MrDuke {{ notification_type }} with sound: {{ notification_sound }} {{ input_message }}',
                 {
                     notification_type: '%1',
                     notification_sound: '%2',
@@ -44,7 +44,7 @@ Blockly.Blocks.btnotify = {
     },
     meta() {
         return {
-            display_name: localize('DTraderscore Notify'),
+            display_name: localize('MrDuke Notify'),
             description: localize(
                 'This block is designed to showcase messages with customizable features. You have the flexibility to designate the message color and select from a range of six distinct sound options.'
             ),

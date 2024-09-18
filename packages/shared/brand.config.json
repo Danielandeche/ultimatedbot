@@ -1,6 +1,6 @@
 {
-    "brand_name": "DTraderscore",
-    "domain_name": "dtraderscore.com",
+    "brand_name": "MrDuke",
+    "domain_name": "mrduke.site",
     "legal_entities": {
         "fx": "Deriv (FX) Ltd",
         "malta": "Deriv (Europe) Limited",
@@ -16,7 +16,7 @@
             "icon": "IcRebrandingDerivTrader"
         },
         "dbot": {
-            "name": "DTraderscore Bot",
+            "name": "MrDuke Bot",
             "icon": "IcRebrandingDerivBot"
         },
         "mt5": {
@@ -51,7 +51,7 @@
             "availability": "All"
         },
         "dbot": {
-            "name": "DTraderscore Bot",
+            "name": "MrDuke Bot",
             "icon": "DBot",
             "availability": "Non-EU"
         },

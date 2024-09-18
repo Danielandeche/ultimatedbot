@@ -407,8 +407,8 @@ export default class RunPanelStore {
         this.onOkButtonClick = this.onCloseDialog;
         this.onCancelButtonClick = undefined;
         this.dialog_options = {
-            title: localize("DTraderscore Bot isn't quite ready for real accounts"),
-            message: localize('Please switch to your demo account to run your DTraderscore Bot.'),
+            title: localize("MrDuke Bot isn't quite ready for real accounts"),
+            message: localize('Please switch to your demo account to run your MrDuke Bot.'),
         };
         this.is_dialog_open = true;
     }
@@ -433,7 +433,7 @@ export default class RunPanelStore {
         this.onCancelButtonClick = undefined;
         this.dialog_options = {
             title: localize('Import error'),
-            message: localize('This strategy is currently not compatible with DTraderscore Bot.'),
+            message: localize('This strategy is currently not compatible with MrDuke Bot.'),
         };
         this.is_dialog_open = true;
     }

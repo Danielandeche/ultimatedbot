@@ -13,17 +13,17 @@ import { DBOT_TABS, TAB_IDS } from 'Constants/bot-contents';
 import { useDBotStore } from 'Stores/useDBotStore';
 import RunPanel from '../../components/run-panel';
 import StrategyNotification from '../../components/strategy-notification';
-import AnalysisPage from '../analysis';
+import Ldp from '../ldp';
 import BinaryToolsBots from '../binarytools_bots';
 import Chart from '../chart';
 import ChartModal from '../chart/chart-modal';
 import CopyTrading from '../copytrading';
 import Dashboard from '../dashboard';
 import RunStrategy from '../dashboard/run-strategy';
-import PrivacyPolicy from '../privacy';
+import Binaryai from '../binaryai';
 import AnalysisTool from '../analysistool';
 import Tutorial from '../tutorials';
-import RandomBots from '../Random Bots';
+import Tradingview from '../tradingview';
 import { tour_list } from '../tutorials/dbot-tours/utils';
 import RiskDisclaimer from 'Components/risk disclaimer/risk_disclaimer';
 
@@ -54,13 +54,13 @@ const AppWrapper = observer(() => {
     const hash = [
         'dashboard',
         'bot_builder',
-        'pro-analysistool',
-        'ai_bots',
         'binarytools_bots',
         'analysistool',
+        'ldp',
+        'binaryai',
         'copytrading',
         'chart',
-        'privacy&policy',
+        'id-tradingview',
         'tutorial',
     ];
 
@@ -128,7 +128,7 @@ const AppWrapper = observer(() => {
         let timer: ReturnType<typeof setTimeout>;
         if (dashboard_strategies.length > 0) {
             // Needed to pass this to the Callback Queue as on tab changes
-            // document title getting override by 'DTraderscore' only
+            // document title getting override by 'MrDuke' only
             timer = setTimeout(() => {
                 updateWorkspaceName();
             });
@@ -181,20 +181,6 @@ const AppWrapper = observer(() => {
                             id='id-bot-builder'
                         />
                         <div
-                            icon='IcDbotViewDetail'
-                            label={<Localize i18n_default_text='Pro-Analysistool' />}
-                            id={'id-analysis-page'}
-                        >
-                            <AnalysisPage />
-                        </div>
-                        <div
-                            icon='IcDbotViewDetail'
-                            label={<Localize i18n_default_text='AI Bots' />}
-                            id='id-random-bots'
-                        >
-                            <RandomBots />
-                        </div>
-                        <div
                             icon='IcFullStar'
                             label={<Localize i18n_default_text='Free Bot' />}
                             id='id-dbot-binarytools-bots'
@@ -207,6 +193,20 @@ const AppWrapper = observer(() => {
                             id='id-analysistool'
                         >
                             <AnalysisTool />
+                        </div>
+                        <div
+                            icon='IcDbotViewDetail'
+                            label={<Localize i18n_default_text='LDP' />}
+                            id={'id-ldp'}
+                        >
+                            <Ldp />
+                        </div>
+                        <div
+                            icon='IcDbotViewDetail'
+                            label={<Localize i18n_default_text='Binary AI' />}
+                            id='id-binaryai'
+                        >
+                            <Binaryai />
                         </div>
                         <div
                             icon='IcCopytrading'
@@ -227,15 +227,11 @@ const AppWrapper = observer(() => {
                             <Chart />
                         </div>
                         <div
-                            icon='IcReports'
-                            label={<Localize i18n_default_text='Privacy-Policy' />}
-                            id={
-                                is_chart_modal_visible || is_trading_view_modal_visible
-                                    ? 'id-privacy-policy--disabled'
-                                    : 'id-privacy-policy'
-                            }
+                            icon='IcDbotViewDetail'
+                            label={<Localize i18n_default_text='Trading View' />}
+                            id='id-tradingview'
                         >
-                            <PrivacyPolicy />
+                            <Tradingview />
                         </div>
                         <div
                             icon='IcTutorialsTabs'

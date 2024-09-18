@@ -5,7 +5,7 @@ export const switch_account_notification = {
     key: 'bot_switch_account',
     header: localize('You have switched accounts.'),
     message: localize(
-        'Our system will finish any DTraderscore Bot trades that are running, and DTraderscore Bot will not place any new trades.'
+        'Our system will finish any MrDuke Bot trades that are running, and MrDuke Bot will not place any new trades.'
     ),
     type: 'warning',
     is_persistent: true,

@@ -27,7 +27,7 @@ const LinkTitle: React.FC<TLinkTitleProps> = ({ icon, title }) => {
             case 'Deriv Trader':
                 window.open(getStaticUrl(`/dtrader`));
                 break;
-            case 'DTraderscore Bot':
+            case 'MrDuke Bot':
                 window.open(getStaticUrl(`/dbot`));
                 break;
             case 'SmartTrader':

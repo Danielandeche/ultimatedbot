@@ -15,7 +15,7 @@ const LocalComponent = observer(() => {
     return (
         <div className='binarytools_massive_logo'>
             <Text size='m' line_height='xs' className='header__menu-link-text'>
-                <Localize i18n_default_text='DTraderscore' />
+                <Localize i18n_default_text='MrDuke' />
             </Text>
         </div>
     );

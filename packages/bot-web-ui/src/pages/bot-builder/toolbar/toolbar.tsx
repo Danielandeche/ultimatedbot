@@ -40,7 +40,7 @@ const Toolbar = observer(() => {
                 <div className='toolbar__section'>
                     {is_mobile && (
                         <ToolbarButton
-                            popover_message={localize('Click here to start building your DTraderscore Bot.')}
+                            popover_message={localize('Click here to start building your MrDuke Bot.')}
                             button_id='db-toolbar__get-started-button'
                             button_classname='toolbar__btn toolbar__btn--icon toolbar__btn--start'
                             buttonOnClick={handleQuickStrategyOpen}

@@ -35,7 +35,7 @@ const LinkTitle = ({ icon, title }: TLinkTitleProps) => {
             case 'Deriv Trader':
                 window.open(getDerivStaticURL(`/dtrader`));
                 break;
-            case 'DTraderscore Bot':
+            case 'MrDuke Bot':
                 window.open(getDerivStaticURL(`/dbot`));
                 break;
             case 'SmartTrader':

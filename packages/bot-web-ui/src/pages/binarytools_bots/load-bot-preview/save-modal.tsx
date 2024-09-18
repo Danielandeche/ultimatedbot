@@ -54,7 +54,7 @@ const SaveModalForm = ({
                         <div className='modal__content'>
                             <Text size='xs' line_height='l'>
                                 {localize(
-                                    'Enter your DTraderscore Bot name, choose to save on your computer or Google Drive, and hit '
+                                    'Enter your MrDuke Bot name, choose to save on your computer or Google Drive, and hit '
                                 )}
                                 <strong>{localize('Save.')}</strong>
                             </Text>
@@ -66,7 +66,7 @@ const SaveModalForm = ({
                                             type='text'
                                             placeholder={localize('Untitled Strategy')}
                                             error={touched[field.name] && errors[field.name]}
-                                            label={localize('DTraderscore Bot')}
+                                            label={localize('MrDuke Bot')}
                                             onFocus={e => setCurrentFocus(e.currentTarget.name)}
                                             onBlur={() => setCurrentFocus(null)}
                                             {...field}

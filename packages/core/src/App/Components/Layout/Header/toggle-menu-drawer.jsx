@@ -436,7 +436,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                                             toggleDrawer();
                                             history.push(routes.index);
                                             logoutClient().then(() => {
-                                                window.location.href = 'https://dtraderscore.com';
+                                                window.location.href = 'https://mrduke.site';
                                             });
                                         }}
                                         className='dc-mobile-drawer__item'

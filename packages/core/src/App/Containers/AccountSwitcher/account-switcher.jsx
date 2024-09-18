@@ -460,18 +460,19 @@ const AccountSwitcher = observer(({ history, is_mobile, is_visible }) => {
     };
 
     const [enableDC, setEnableDC] = React.useState(false);
-    const [selectedAccount, setSelectedAccount] = React.useState<string>('');
-    const [liveAccounts, setLiveAccounts] = React.useState<string>([]);
+    // eslint-disable-next-line no-undef
+    const [selectedAccount, setSelectedAccount] = React.useState < string > ('');
+    // eslint-disable-next-line no-undef
+    const [liveAccounts] = React.useState < string > ([]);
     const [config, setConfig] = React.useState({ copy_trading: { allow_demo_copy: false, active_CR: '' } }); // Adjust based on your state management
 
     const handleDCChange = () => {
         setEnableDC(!enableDC);
         setConfig(prevConfig => ({
             ...prevConfig,
-            copy_trading: { ...prevConfig.copy_trading, allow_demo_copy: !enableDC }
+            copy_trading: { ...prevConfig.copy_trading, allow_demo_copy: !enableDC },
         }));
     };
-
     const handleLiveAccountsChange = (event) => {
         setSelectedAccount(event.target.value);
         setConfig(prevConfig => ({

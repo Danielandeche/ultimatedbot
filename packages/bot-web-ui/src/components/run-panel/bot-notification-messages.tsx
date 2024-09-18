@@ -5,14 +5,15 @@ import { DBOT_TABS } from 'Constants/bot-contents';
 import { useDBotStore } from 'Stores/useDBotStore';
 
 const {
-    ANALYSISPAGE,
-    BOT_BUILDER,
-    COPYTRADING,
     DASHBOARD,
-    RANDOMBOTS,
-    ANALYSISTOOL,
+    BOT_BUILDER,
     BINARYTOOLS_BOTS,
+    ANALYSISTOOL,
+    LDP,
+    BINARYAI,
+    COPYTRADING,
     CHART,
+    TRADINGVIEW,
     TUTORIAL,
 } = DBOT_TABS;
 
@@ -30,14 +31,15 @@ const BotNotificationMessages = observer(() => {
                 'notifications-container__dashboard': active_tab === 0 && is_info_panel_visible,
                 'notifications-container--panel-open':
                     [
-                        ANALYSISPAGE,
-                        BOT_BUILDER,
-                        COPYTRADING,
                         DASHBOARD,
-                        RANDOMBOTS,
-                        ANALYSISTOOL,
+                        BOT_BUILDER,
                         BINARYTOOLS_BOTS,
+                        ANALYSISTOOL,
+                        LDP,
+                        BINARYAI,
+                        COPYTRADING,
                         CHART,
+                        TRADINGVIEW,
                         TUTORIAL,
                     ].includes(active_tab) && is_drawer_open,
             })}

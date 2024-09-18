@@ -247,15 +247,17 @@ const RunPanel = observer(() => {
     } = run_panel;
     const { active_tour, active_tab } = dashboard;
     const { total_payout, total_profit, total_stake, won_contracts, lost_contracts, number_of_runs } = statistics;
+
     const {
-        ANALYSISPAGE,
-        BOT_BUILDER,
-        COPYTRADING,
         DASHBOARD,
-        RANDOMBOTS,
-        ANALYSISTOOL,
+        BOT_BUILDER,
         BINARYTOOLS_BOTS,
+        ANALYSISTOOL,
+        LDP,
+        BINARYAI,
+        COPYTRADING,
         CHART,
+        TRADINGVIEW,
         TUTORIAL,
     } = DBOT_TABS;
 
@@ -301,14 +303,15 @@ const RunPanel = observer(() => {
 
     const show_run_panel =
         [
-            ANALYSISPAGE,
-            BOT_BUILDER,
-            COPYTRADING,
             DASHBOARD,
-            RANDOMBOTS,
-            ANALYSISTOOL,
+            BOT_BUILDER,
             BINARYTOOLS_BOTS,
+            ANALYSISTOOL,
+            LDP,
+            BINARYAI,
+            COPYTRADING,
             CHART,
+            TRADINGVIEW,
             TUTORIAL,
         ].includes(active_tab) || active_tour;
     if ((!show_run_panel && !is_mobile) || active_tour === 'bot_builder') return null;

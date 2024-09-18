@@ -25,7 +25,7 @@ const Loading = ({ className, id, is_fullscreen = true, is_slow_loading, status,
         >
             <div id={id} className={classNames('initial-loader__barspinner', 'barspinner', theme_class)}>
                 <div className='container'>
-                    <span className="loader"></span>
+                    <span className="loaderq"></span>
                 </div>
             </div>
             {is_slow_loading &&

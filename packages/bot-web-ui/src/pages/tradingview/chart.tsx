@@ -41,7 +41,7 @@ const Chart = observer(({ show_digits_stats }: { show_digits_stats: boolean }) =
 
     return (
         <div className='main_analysis'>
-            <iframe className='analysis-iframe' src='https://binarycampus.com/deriv_ldp/bc_deriv_market_ldp_analyzer' />
+            <iframe className='analysis-iframe' src='https://charts.deriv.com/deriv' />
         </div>
     );
 });

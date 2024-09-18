@@ -482,18 +482,6 @@ const AccountSwitcher = observer(({ history, is_mobile, is_visible }) => {
             }
         }));
     };
-
-    React.useEffect(() => {
-        if (typeof localStorage !== 'undefined') {
-            const client_accounts = JSON.parse(localStorage.getItem('client.accounts')!) || undefined;
-            const filteredAccountKeys = Object.keys(client_accounts).filter(key => key.startsWith('CR'));
-            setLiveAccounts(filteredAccountKeys);
-            if (filteredAccountKeys.length > 0) {
-                setSelectedAccount(filteredAccountKeys[0]);
-                config.copy_trading.active_CR = filteredAccountKeys[0];
-            }
-        }
-    }, []);
     
 
     return (

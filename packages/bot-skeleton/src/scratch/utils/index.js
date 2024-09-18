@@ -4,7 +4,7 @@ import BlockConversion from '../backward-compatibility';
 import { config } from '../../constants/config';
 import { observer as globalObserver } from '../../utils/observer';
 import { removeLimitedBlocks } from '../../utils/workspace';
-import { saveWorkspaceToRecent } from '../../utils/local-storage';
+import { saveWorkspaceToRecent,updateXML } from '../../utils/local-storage';
 import DBotStore from '../dbot-store';
 import { LogTypes } from '../../constants/messages';
 import { error_message_map } from '../../utils/error-config';
@@ -151,6 +151,8 @@ export const load = async ({
     } catch (e) {
         return showInvalidStrategyError();
     }
+
+    xml = updateXML(xml);
 
     const blockConversion = new BlockConversion();
     xml = blockConversion.convertStrategy(xml, showIncompatibleStrategyDialog);

@@ -479,11 +479,10 @@ const AccountSwitcher = observer(({ history, is_mobile, is_visible }) => {
             ...prevConfig,
             copy_trading: {
                 ...prevConfig.copy_trading,
-                active_CR: event.target.value
-            }
+                active_CR: event.target.value,
+            },
         }));
     };
-    
 
     return (
         <div className='acc-switcher__list' ref={wrapper_ref} data-testid='acc-switcher'>

@@ -54,13 +54,13 @@ const AppWrapper = observer(() => {
     const hash = [
         'dashboard',
         'bot_builder',
-        'binarytools_bots',
+        'pre-saved-bots',
         'analysistool',
         'ldp',
-        'binaryai',
+        'airobots',
         'copytrading',
         'chart',
-        'id-tradingview',
+        'tradingview',
         'tutorial',
     ];
 
@@ -182,7 +182,7 @@ const AppWrapper = observer(() => {
                         />
                         <div
                             icon='IcFullStar'
-                            label={<Localize i18n_default_text='Free Bot' />}
+                            label={<Localize i18n_default_text='Pre-Saved Bots' />}
                             id='id-dbot-binarytools-bots'
                         >
                             <BinaryToolsBots handleTabChange={handleTabChange} />
@@ -203,7 +203,7 @@ const AppWrapper = observer(() => {
                         </div>
                         <div
                             icon='IcDbotViewDetail'
-                            label={<Localize i18n_default_text='Binary AI' />}
+                            label={<Localize i18n_default_text='AI Tool' />}
                             id='id-binaryai'
                         >
                             <Binaryai />

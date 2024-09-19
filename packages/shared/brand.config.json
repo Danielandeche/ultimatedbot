@@ -1,6 +1,6 @@
 {
-    "brand_name": "MrDuke",
-    "domain_name": "mrduke.site",
+    "brand_name": "Ultimate Traders",
+    "domain_name": "dbot.ultimatedigits.ai",
     "legal_entities": {
         "fx": "Deriv (FX) Ltd",
         "malta": "Deriv (Europe) Limited",
@@ -16,7 +16,7 @@
             "icon": "IcRebrandingDerivTrader"
         },
         "dbot": {
-            "name": "MrDuke Bot",
+            "name": "Ultimate Traders Bot",
             "icon": "IcRebrandingDerivBot"
         },
         "mt5": {
@@ -51,7 +51,7 @@
             "availability": "All"
         },
         "dbot": {
-            "name": "MrDuke Bot",
+            "name": "Ultimate Traders Bot",
             "icon": "DBot",
             "availability": "Non-EU"
         },

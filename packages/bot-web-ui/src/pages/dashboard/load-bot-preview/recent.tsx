@@ -17,7 +17,7 @@ type THeader = {
 
 const HEADERS: THeader[] = [
     {
-        label: localize('MrDuke Bot'),
+        label: localize('Ultimate Traders Bot'),
         className: 'bot-list__header__label',
     },
     {

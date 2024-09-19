@@ -128,7 +128,7 @@ const AppWrapper = observer(() => {
         let timer: ReturnType<typeof setTimeout>;
         if (dashboard_strategies.length > 0) {
             // Needed to pass this to the Callback Queue as on tab changes
-            // document title getting override by 'MrDuke' only
+            // document title getting override by 'Ultimate Traders' only
             timer = setTimeout(() => {
                 updateWorkspaceName();
             });

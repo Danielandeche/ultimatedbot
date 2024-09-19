@@ -15,7 +15,7 @@ export const livechat_client_id = '66aa088aad5a414484c1fd1fa8a5ace7';
 
 export const domain_app_ids = {
     // these domains as supported "production domains"
-    'mrduke.site/bot': 64224,
+    'dbot.ultimatedigits.ai/bot': 39895,
     'staging-app.deriv.com': 16303,
     'app.deriv.me': 1411,
     'staging-app.deriv.me': 1411, // TODO: setup staging for deriv.me
@@ -50,7 +50,7 @@ export const getAppId = () => {
     let app_id = null;
     // '64224'
     // 63421
-    const user_app_id = '64224';
+    const user_app_id = '39895';
     const config_app_id = window.localStorage.getItem('config.app_id');
     const current_domain = getCurrentProductionDomain() || '';
     window.localStorage.removeItem('config.platform'); // Remove config stored in localstorage if there's any.
@@ -75,7 +75,7 @@ export const getAppId = () => {
         app_id = 36300;
     } else {
         window.localStorage.removeItem('config.default_app_id');
-        app_id = is_bot ? 19111 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 64224;
+        app_id = is_bot ? 19111 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 39895;
     }
 
     return app_id;

@@ -12,25 +12,25 @@ type TPlatformConfig = {
 
 const platform_config: TPlatformConfig[] = [
     {
-        icon: 'IcRebrandingBinarytoolsLogo',
+        icon: 'IcRebrandingUltimateTRADER',
         title: () => getPlatformSettings('trader').name,
         name: 'BT Trader',
-        description: () => localize('MrDuke D-Trader.'),
+        description: () => localize('Ultimate D-Trader.'),
         link_to: routes.trade,
     },
     {
-        icon: 'IcRebrandingDerivBot',
+        icon: 'IcRebrandingUltimateDBOT',
         title: () => getPlatformSettings('dbot').name,
         name: getPlatformSettings('dbot').name,
-        description: () => localize('MrDuke DBOT.'),
+        description: () => localize('Ultimate Traders DBOT.'),
         link_to: routes.bot,
     },
     {
-        icon: 'IcRebrandingBinaryBot',
+        icon: 'IcRebrandingUltimateBOT',
         title: () => getPlatformSettings('smarttrader').name,
         name: getPlatformSettings('smarttrader').name,
-        description: () => localize('MrDuke Blocks'),
-        href: 'https://block.binarytool.site', 
+        description: () => localize('Ultimate Traders Blocks'),
+        href: 'https://bot.ultimatedigits.ai/', 
     }
 ];
 

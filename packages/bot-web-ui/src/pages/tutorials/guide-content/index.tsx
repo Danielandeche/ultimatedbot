@@ -117,7 +117,7 @@ const GuideContent = ({ guide_tab_content, video_tab_content, is_dialog_open }: 
                                     line_height='s'
                                     size={is_mobile ? 'xs' : 's'}
                                 >
-                                    <Localize i18n_default_text='Videos on MrDuke Bot' />
+                                    <Localize i18n_default_text='Videos on Ultimate Traders Bot' />
                                 </Text>
                             </div>
 

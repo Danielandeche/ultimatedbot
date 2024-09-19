@@ -17,7 +17,7 @@ const userGuideContent = [
         id: 1,
         type: 'Tour',
         subtype: 'OnBoard',
-        content: 'Get started on MrDuke Bot',
+        content: 'Get started on Ultimate Traders Bot',
         src: 'dbot-onboard-tour.png',
     },
 ];
@@ -26,7 +26,7 @@ const guideContent = [
     {
         id: 1,
         type: 'DBotVideo',
-        content: 'MrDuke Bot - your automated trading partner',
+        content: 'Ultimate Traders Bot - your automated trading partner',
         url: 'https://www.youtube.com/embed/QdI5zCkO4Gk',
         src: 'video_dbot.webp',
     },
@@ -34,7 +34,7 @@ const guideContent = [
 
 const faqContent = [
     {
-        title: 'What is MrDuke Bot?',
+        title: 'What is Ultimate Traders Bot?',
         description: [
             {
                 type: 'text',

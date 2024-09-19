@@ -285,7 +285,7 @@ const StaticDashboard = observer(
                                         <div className='static-dashboard-wrapper__body--apps-item'>
                                             <StaticTradingAppCard
                                                 icon='DBot'
-                                                name='MrDuke DBot'
+                                                name='Ultimate Traders DBot'
                                                 description={localize('Automate your trading, no coding needed.')}
                                                 availability='Non-EU'
                                                 has_applauncher_account={has_applauncher_account}

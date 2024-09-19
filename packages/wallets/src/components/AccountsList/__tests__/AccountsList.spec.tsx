@@ -69,7 +69,7 @@ describe('AccountsList', () => {
         screen.getByText('Options & multipliers').click();
         expect(screen.getByText('Deriv Apps')).toBeInTheDocument();
         expect(screen.getByText('Deriv Trader')).toBeInTheDocument();
-        expect(screen.getByText('MrDuke Bot')).toBeInTheDocument();
+        expect(screen.getByText('Ultimate Traders Bot')).toBeInTheDocument();
         expect(screen.getByText('SmartTrader')).toBeInTheDocument();
         expect(screen.getByText('Binary Bot')).toBeInTheDocument();
         expect(screen.getByText('Deriv GO')).toBeInTheDocument();

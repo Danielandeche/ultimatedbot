@@ -8,7 +8,7 @@ export type TSidebarItem = {
 
 export const SIDEBAR_INTRO: TSidebarItem[] = [
     {
-        label: localize('Welcome to MrDuke Bot!'),
+        label: localize('Welcome to Ultimate Traders Bot!'),
         content: [
             {
                 data: localize(
@@ -21,14 +21,14 @@ export const SIDEBAR_INTRO: TSidebarItem[] = [
     },
     {
         label: localize('Guide'),
-        content: [{ data: localize('MrDuke Bot - your automated trading partner') }],
+        content: [{ data: localize('Ultimate Traders Bot - your automated trading partner') }],
         link: true,
     },
     {
         label: localize('FAQs'),
         content: [
             {
-                data: localize('What is MrDuke Bot?'),
+                data: localize('What is Ultimate Traders Bot?'),
                 faq_id: 'faq-0',
             },
             {

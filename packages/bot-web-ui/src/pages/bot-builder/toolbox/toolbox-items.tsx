@@ -170,12 +170,12 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
             <Block type='trade_again' />
         </Category>
 
-        <Category id='utility' name={localize('MrDuke')}>
+        <Category id='utility' name={localize('Ultimate Traders')}>
             <Block type='btnotify'>
                 <Field name='NOTIFICATION_TYPE'>success</Field>
                 <Value name='MESSAGE'>
                     <Shadow type='text'>
-                        <Field name='TEXT'>MrDuke</Field>
+                        <Field name='TEXT'>Ultimate Traders</Field>
                     </Shadow>
                 </Value>
             </Block>
@@ -1306,7 +1306,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                     <Field name='NOTIFICATION_SOUND'>silent</Field>
                     <Value name='MESSAGE'>
                         <Shadow type='text'>
-                            <Field name='TEXT'>MrDuke</Field>
+                            <Field name='TEXT'>Ultimate Traders</Field>
                         </Shadow>
                         <Block type='todatetime'>
                             <Value name='TIMESTAMP'>
@@ -1453,7 +1453,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                             <Field name='NOTIFICATION_SOUND'>silent</Field>
                                             <Value name='MESSAGE'>
                                                 <Shadow type='text'>
-                                                    <Field name='TEXT'>MrDuke</Field>
+                                                    <Field name='TEXT'>Ultimate Traders</Field>
                                                 </Shadow>
                                                 <Block type='variables_get'>
                                                     <Field name='VAR' variabletype=''>
@@ -1531,7 +1531,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                             <Field name='NOTIFICATION_SOUND'>silent</Field>
                                             <Value name='MESSAGE'>
                                                 <Shadow type='text'>
-                                                    <Field name='TEXT'>MrDuke</Field>
+                                                    <Field name='TEXT'>Ultimate Traders</Field>
                                                 </Shadow>
                                                 <Block type='variables_get'>
                                                     <Field name='VAR' variabletype=''>
@@ -1589,7 +1589,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                             <Field name='NOTIFICATION_SOUND'>silent</Field>
                             <Value name='MESSAGE'>
                                 <Shadow type='text'>
-                                    <Field name='TEXT'>MrDuke</Field>
+                                    <Field name='TEXT'>Ultimate Traders</Field>
                                 </Shadow>
                                 <Block type='variables_get'>
                                     <Field name='VAR' variabletype=''>
@@ -1671,7 +1671,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                     <Field name='NOTIFICATION_SOUND'>silent</Field>
                                     <Value name='MESSAGE'>
                                         <Shadow type='text'>
-                                            <Field name='TEXT'>MrDuke</Field>
+                                            <Field name='TEXT'>Ultimate Traders</Field>
                                         </Shadow>
                                         <Block type='variables_get'>
                                             <Field name='VAR' variabletype=''>
@@ -1733,7 +1733,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                             <Field name='NOTIFICATION_SOUND'>silent</Field>
                                             <Value name='MESSAGE'>
                                                 <Shadow type='text'>
-                                                    <Field name='TEXT'>MrDuke</Field>
+                                                    <Field name='TEXT'>Ultimate Traders</Field>
                                                 </Shadow>
                                             </Value>
                                         </Block>
@@ -1804,7 +1804,7 @@ export const ToolboxItems = ReactDomServer.renderToStaticMarkup(
                                             <Field name='NOTIFICATION_SOUND'>silent</Field>
                                             <Value name='MESSAGE'>
                                                 <Shadow type='text'>
-                                                    <Field name='TEXT'>MrDuke</Field>
+                                                    <Field name='TEXT'>Ultimate Traders</Field>
                                                 </Shadow>
                                             </Value>
                                         </Block>

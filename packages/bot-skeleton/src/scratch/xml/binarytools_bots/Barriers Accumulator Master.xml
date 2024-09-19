@@ -483,7 +483,7 @@
                 <field name="NOTIFICATION_SOUND">silent</field>
                 <value name="MESSAGE">
                   <shadow type="text" id="C)i]9ip)y4q*xML]kIiU">
-                    <field name="TEXT">MrDuke</field>
+                    <field name="TEXT">Ultimate Traders</field>
                   </shadow>
                   <block type="math_arithmetic" id="+r$3;y:zY|V*@sq:6qc@">
                     <field name="OP">MINUS</field>

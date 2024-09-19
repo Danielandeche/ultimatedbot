@@ -45,7 +45,7 @@ describe('<DerivPassword />', () => {
         ).toBeInTheDocument();
         expect(
             screen.getByText(
-                /use the to log in to deriv\.com, deriv go, deriv trader, smarttrader, MrDuke Bot and deriv ctrader\./i
+                /use the to log in to deriv\.com, deriv go, deriv trader, smarttrader, Ultimate Traders Bot and deriv ctrader\./i
             )
         ).toBeInTheDocument();
         expect(screen.queryByText(/BrandDerivRed/i)).toBeInTheDocument();

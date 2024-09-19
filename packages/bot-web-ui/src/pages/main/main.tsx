@@ -57,7 +57,7 @@ const AppWrapper = observer(() => {
         'pre-saved-bots',
         'analysistool',
         'ldp',
-        'airobots',
+        'airobot',
         'copytrading',
         'chart',
         'tradingview',

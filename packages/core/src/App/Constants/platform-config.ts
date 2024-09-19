@@ -14,7 +14,7 @@ const platform_config: TPlatformConfig[] = [
     {
         icon: 'IcRebrandingUltimateTrader',
         title: () => getPlatformSettings('trader').name,
-        name: 'BT Trader',
+        name: getPlatformSettings('trader').name,
         description: () => localize('Ultimate D-Trader.'),
         link_to: routes.trade,
     },

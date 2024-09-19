@@ -12,7 +12,7 @@ type TPlatformConfig = {
 
 const platform_config: TPlatformConfig[] = [
     {
-        icon: 'IcRebrandingUltimateTrader',
+        icon: 'IcRebrandingUltimateDtrader',
         title: () => getPlatformSettings('trader').name,
         name: getPlatformSettings('trader').name,
         description: () => localize('Ultimate D-Trader.'),

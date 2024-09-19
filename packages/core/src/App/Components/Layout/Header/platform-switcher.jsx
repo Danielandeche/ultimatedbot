@@ -96,7 +96,7 @@ const PlatformSwitcher = ({
                     />
                 <div className='platform-switcher__separator' />
                 <a 
-                    href="https://t.me/Ultimate Tradersbinarycommunity" 
+                    href="https://t.me/binaryboss101" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className='platform-switcher__link'

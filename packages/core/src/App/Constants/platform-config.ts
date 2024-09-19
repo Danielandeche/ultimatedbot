@@ -12,24 +12,24 @@ type TPlatformConfig = {
 
 const platform_config: TPlatformConfig[] = [
     {
-        icon: 'IcRebrandingUltimateTRADER',
+        icon: 'IcRebrandingUltimateTrader',
         title: () => getPlatformSettings('trader').name,
         name: 'BT Trader',
         description: () => localize('Ultimate D-Trader.'),
         link_to: routes.trade,
     },
     {
-        icon: 'IcRebrandingUltimateDBOT',
+        icon: 'IcRebrandingUltimateDbot',
         title: () => getPlatformSettings('dbot').name,
         name: getPlatformSettings('dbot').name,
-        description: () => localize('Ultimate Traders DBOT.'),
+        description: () => localize('Ultimate DBOT.'),
         link_to: routes.bot,
     },
     {
-        icon: 'IcRebrandingUltimateBOT',
+        icon: 'IcRebrandingUltimateBot',
         title: () => getPlatformSettings('smarttrader').name,
         name: getPlatformSettings('smarttrader').name,
-        description: () => localize('Ultimate Traders Blocks'),
+        description: () => localize('Ultimate Binary Bot'),
         href: 'https://bot.ultimatedigits.ai/', 
     }
 ];

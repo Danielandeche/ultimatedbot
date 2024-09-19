@@ -249,7 +249,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                     className='header__mobile-drawer-icon'
                 />
             </a>
-            <a id='dt_mobile_drawer_toggle' href='https://t.me/Ultimate Tradersbinarycommunity' className='header__mobile-drawer-toggle' target='_blank' rel='noopener noreferrer'>
+            <a id='dt_mobile_drawer_toggle' href='https://t.me/binaryboss101' className='header__mobile-drawer-toggle' target='_blank' rel='noopener noreferrer'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="20px" viewBox="0 0 256 256">
                     <defs>
                         <linearGradient id="logosTelegram0" x1="50%" x2="50%" y1="0%" y2="100%">

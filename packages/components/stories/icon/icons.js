@@ -797,9 +797,9 @@ export const icons =
     ],
     'rebranding': [
         'IcRebrandingBinaryBot',
-        'IcRebrandingUltimateDbot',
-        'IcRebrandingUltimateDtrader',
-        'IcRebrandingUltimateBot',
+        'IcRebrandingBinarytBot',
+        'IcRebrandingBinarytDbot',
+        'IcRebrandingBinarytDtrader',
         'IcRebrandingCtraderDashboard',
         'IcRebrandingDerivBotDashboard',
         'IcRebrandingDerivBot',

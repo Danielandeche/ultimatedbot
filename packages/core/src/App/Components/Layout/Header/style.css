@@ -2,7 +2,7 @@
     display: block;
     width: 32px;
     height: 32px;
-    /* background-image: url('../../../../public/images/favicons/favicon32.png'); */
+    background-image: url('../../../../public/images/favicons/favicon.ico');
     margin-left: 12px;
     background-size: cover;
 }

@@ -18,6 +18,7 @@ import Chart from '../chart';
 import ChartModal from '../chart/chart-modal';
 import CopyTrading from '../copytrading';
 import Dashboard from '../dashboard';
+import AnalysisPage from '../analysis';
 import RunStrategy from '../dashboard/run-strategy';
 import Tutorial from '../tutorials';
 import { tour_list } from '../tutorials/dbot-tours/utils';
@@ -176,6 +177,13 @@ const AppWrapper = observer(() => {
                             label={<Localize i18n_default_text='Bot Builder' />}
                             id='id-bot-builder'
                         />
+                        <div
+                            icon='IcDbotViewDetail'
+                            label={<Localize i18n_default_text='Pro AnalysisTool' />}
+                            id={'id-3'}
+                        >
+                            <AnalysisPage />
+                        </div>
                         <div
                             icon='IcFullStar'
                             label={<Localize i18n_default_text='Pre-Saved Bots' />}

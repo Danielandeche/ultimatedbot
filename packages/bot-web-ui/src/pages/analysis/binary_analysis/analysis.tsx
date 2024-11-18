@@ -226,11 +226,6 @@ const BinaryAnalysisPage = observer(() => {
         if (api_base.api) {
             const subscription = api_base.api.onMessage().subscribe(({ data }: { data: any }) => {
                 if (data.msg_type === 'proposal_open_contract') {
-                    const contractStatus = data.proposal_open_contract;
-                    setContractData({
-                        status: contractStatus.is_sold ? 'sold' : 'buy',
-                        profit: contractStatus.profit,
-                    });
                     const { proposal_open_contract } = data;
                     const contract = proposal_open_contract.contract_type;
 
@@ -249,29 +244,26 @@ const BinaryAnalysisPage = observer(() => {
                                 }
                             }
 
-                            console.log('Martingale Status', enable_disable_martingale.current);
+                            console.log('Martingale Status',enable_disable_martingale.current)
                             if (proposal_open_contract.status === 'lost') {
                                 if (!current_contractids.current.includes(proposal_open_contract.contract_id)) {
-                                    current_contractids.current.push(proposal_open_contract.contract_id);
                                     totalLostAmount.current += Math.abs(proposal_open_contract.profit);
                                     let newStake;
                                     if (enable_disable_martingale.current) {
                                         newStake = totalLostAmount.current * parseFloat(martingaleValueRef.current);
                                         setOneClickAmount(parseFloat(newStake.toFixed(2)));
                                     }
-                                    isTradeActiveRef.current = false;
-                                    setIsTradeActive(false);
                                 }
                             } else {
                                 totalLostAmount.current = 0;
                                 setOneClickAmount(oneClickDefaultAmount.current);
-                                isTradeActiveRef.current = false;
-                                setIsTradeActive(false);
                             }
                             if (
                                 isTradeActiveRef.current &&
                                 !current_contractids.current.includes(proposal_open_contract.contract_id)
                             ) {
+                                isTradeActiveRef.current = false;
+                                setIsTradeActive(false);
                                 current_contractids.current.push(proposal_open_contract.contract_id);
                             }
                         }
@@ -285,8 +277,11 @@ const BinaryAnalysisPage = observer(() => {
         setAccountCurrency(api_base.account_info.currency);
     };
 
-    const buy_contract = (contract_type: string, isTradeActive: boolean) => {
-        if (isTradeActive) {
+    const buy_contract = (contract_type: string) => {
+        if (!isTradeActiveRef.current) {
+            isTradeActiveRef.current = true;
+            setIsTradeActive(true);
+            
             !enableCopyDemo
                 ? api_base.api.send({
                       buy: '1',
@@ -317,7 +312,7 @@ const BinaryAnalysisPage = observer(() => {
                       },
                   });
         }
-    };
+    };    
 
     const buy_contract_differs = (contract_type: string, isOverUnder = false) => {
         !enableCopyDemo

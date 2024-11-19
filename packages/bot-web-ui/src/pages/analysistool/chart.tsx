@@ -51,56 +51,31 @@ const Chart = observer(({ show_digits_stats }: { show_digits_stats: boolean }) =
             {/* Floating button container for space-between layout */}
             <div className="floating-button-container">
                 <button
-                    className={classNames("floating-toggle-button", { active: view === 'chart' })}
-                    onClick={() => setView('chart')}
+                    className={classNames("floating-toggle-button", { active: view === 'api' })}
+                    onClick={() => setView('api')}
                 >
-                    Chart
+                    AnalysisTool
                 </button>
                 <button
                     className={classNames("floating-toggle-button", { active: view === 'tradingview' })}
                     onClick={() => setView('tradingview')}
                 >
-                    TradingView
+                    LDP
                 </button>
             </div>
 
-            {/* Conditionally render views based on the selected state */}
-            {view === 'chart' && (
-                <SmartChart
-                    id='dbot'
-                    barriers={barriers}
-                    showLastDigitStats={show_digits_stats}
-                    chartControlsWidgets={null}
-                    enabledChartFooter={false}
-                    chartStatusListener={(v: any) => setChartStatus(!v)}
-                    toolbarWidget={() => (
-                        <ToolbarWidgets
-                            updateChartType={updateChartType}
-                            updateGranularity={updateGranularity}
-                            position={is_mobile ? 'bottom' : null}
-                        />
-                    )}
-                    chartType={chart_type}
-                    isMobile={is_mobile}
-                    enabledNavigationWidget={is_desktop}
-                    granularity={granularity}
-                    requestAPI={wsSendRequest}
-                    requestForget={wsForget}
-                    requestForgetStream={wsForgetStream}
-                    requestSubscribe={wsSubscribe}
-                    settings={settings}
-                    symbol={symbol}
-                    topWidgets={() => <ChartTitle onChange={onSymbolChange} />}
-                    isConnectionOpened={is_socket_opened}
-                    getMarketsOrder={getMarketsOrder}
-                    isLive
-                    leftMargin={80}
+            {view === 'api' && (
+                <iframe
+                    src="https://api.binarytool.site/pro"
+                    title="Binary Tool API"
+                    className="dashboard__iframe"
+                    style={{ width: '100%', height: '100%', border: 'none' }}
                 />
             )}
 
             {view === 'tradingview' && (
                 <iframe
-                    src="https://charts.deriv.com/deriv"
+                    src="https://binarycampus.com/deriv_ldp/bc_deriv_market_ldp_analyzer"
                     title="TradingView Site"
                     className="dashboard__iframe"
                     style={{ width: '100%', height: '100%', border: 'none' }}

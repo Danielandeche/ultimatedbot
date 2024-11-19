@@ -15,6 +15,7 @@ import RunPanel from '../../components/run-panel';
 import StrategyNotification from '../../components/strategy-notification';
 import BinaryToolsBots from '../binarytools_bots';
 import Chart from '../chart';
+import Analysistool from '../analysistool';
 import ChartModal from '../chart/chart-modal';
 import CopyTrading from '../copytrading';
 import Dashboard from '../dashboard';
@@ -200,7 +201,18 @@ const AppWrapper = observer(() => {
                         </div>
                         <div
                             icon='IcTradingViewChart'
-                            label={<Localize i18n_default_text='Chart/ Analysistool/ Tradingview' />}
+                            label={<Localize i18n_default_text='Analysistool/ LDP' />}
+                            id={
+                                is_chart_modal_visible || is_trading_view_modal_visible
+                                    ? 'id-charts--disabled'
+                                    : 'id-charts'
+                            }
+                        >
+                            <Analysistool show_digits_stats={false} />
+                        </div>
+                        <div
+                            icon='IcTradingViewChart'
+                            label={<Localize i18n_default_text='Chart/ Tradingview' />}
                             id={
                                 is_chart_modal_visible || is_trading_view_modal_visible
                                     ? 'id-charts--disabled'
